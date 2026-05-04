@@ -1,40 +1,41 @@
 # Components
 
-Osstem Implant 디자인시스템 컴포넌트 스펙 문서.
-각 MD 파일에는 Figma Component Set ID, Variant 목록, Props, 사이즈, 색상, 사용 규칙을 담습니다.
+Osstem Implant 디자인시스템 컴포넌트 학습 문서.
+각 MD는 `figma-export.json`(2026-05-04 export)에서 추출한 색상·숫자 토큰과 typography 스타일 기준으로 작성됨.
+
+> **범위**: `tokens/color/component.js`, `tokens/number/component.js`에 선언된 컴포넌트만 다룬다.
+> 이 외 컴포넌트(avatar/badge/card/chip/divider/dropdown/gnb/segmented-control/textarea/...)는 향후 JS 토큰이 추가될 때 같이 작성한다.
 
 ## 목록
 
-| 카테고리 | 컴포넌트 | Figma Set ID |
+| 카테고리 | 컴포넌트 | 토큰 키 |
 |---|---|---|
-| Form | [Button](./button.md) | `2280:46527` |
-| Form | [Input (TextInput)](./input.md) | `2420:29885` |
-| Form | [Textarea](./textarea.md) | `1161:127652` |
-| Form | [Dropdown](./dropdown.md) | `3294:183091` |
-| Selection | [Checkbox](./checkbox.md) | `981:166538` |
-| Selection | [Radio](./radio.md) | `981:166618` |
-| Selection | [Switch](./switch.md) | `981:166599` |
-| Navigation | [Tab](./tab.md) | `1853:58694` 외 |
-| Navigation | [Segmented Control](./segmented-control.md) | `2441:103526` |
-| Navigation | [Context Menu](./context-menu.md) | `2533:20420` |
-| Navigation | [GNB](./gnb.md) | `3629:65813` |
-| Display | [Tag](./tag.md) | `2631:14801` |
-| Display | [Chip](./chip.md) | `2879:150759` |
-| Display | [Badge](./badge.md) | `671:29566` |
-| Display | [Avatar](./avatar.md) | `1866:71484` |
-| Display | [Divider](./divider.md) | `1028:50778` |
-| Layout | [Card](./card.md) | `2395:35784` 외 |
-| Layout | [Reservation Card](./reservation-card.md) | `4031:27295` |
-| Layout | [Table](./table.md) | `2413:88136` |
+| Form | [Button](./button.md) | `button` |
+| Form | [Input (TextInput)](./input.md) | `input` (textinput / input common) |
+| Selection | [Checkbox](./checkbox.md) | `checkbox` (selection control) |
+| Selection | [Radio](./radio.md) | `radio` (selection control) |
+| Selection | [Switch](./switch.md) | `switchControl` (control common) |
+| Navigation | [Tab](./tab.md) | `tab` (line_tab / contained_tab) |
+| Display | [Tag](./tag.md) | `tag` |
+| Layout | [Table](./table.md) | `table` |
 
 ## MD 작성 규칙
 
-각 컴포넌트 MD는 다음 섹션을 포함합니다:
+각 컴포넌트 MD는 다음 섹션을 포함:
 
-1. **Overview** — Component Set ID, Key, variant 개수
-2. **Variants / Props** — 모든 property와 값
-3. **Size** — 사이즈별 height, padding, font, line-height
-4. **State / Color** — state별 bg, border, text 색상
-5. **Variant IDs** — 자주 쓰는 조합의 ID 표
-6. **Anatomy / Override Path** — 인스턴스 오버라이드 경로
-7. **Usage Rules** — Do / Don't, 위계, 예외
+1. **Overview** — 토큰 collection 출처, 모드(light/dark)
+2. **Number tokens** — size·padding·radius·border (단위 px)
+3. **Color tokens** — 모드별 hex (light/dark)
+4. **Typography** — 사용되는 textStyle 이름·weight·size·line-height
+5. **Variants / States** — 토큰 이름에서 추출 가능한 state·variant 목록
+6. **Usage Notes** — 적용 시 주의사항
+
+## 출처
+
+- `figma-export.json` (2026-05-04 export, file: `공통 컴포넌트 (Copy)`)
+- Figma Variable Collections:
+  - 🟨 Color_component (`896:76023`) — light·dark
+  - 🟨 Color_primitive (`642:26063`) — Static palette
+  - 🟨 Color_semantic (`966:86157`) — alert·common·brand
+  - 1️⃣ Number_component (`923:58268`) — Mode 1
+  - 1️⃣ Number_sementic (`43:18571`) — Size·Typography
