@@ -1,5 +1,5 @@
 // Color · Semantic Tokens
-// Source: Figma Variable Collection 🟨 Color_semantic (966:86157)
+// Source: Figma Variable Collection  Color_semantic (966:86157)
 // Modes: light · dark
 // TODO: Figma에서 추출하여 채우기
 

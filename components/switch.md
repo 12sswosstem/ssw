@@ -2,7 +2,7 @@
 
 > 출처: `figma-export.json` → Color_component(`896:76023`), Number_component(`923:58268`).
 > JS 토큰: `tokens/color/component.js#switchControl`, `tokens/number/component.js#selectionControl`.
-> 토큰 prefix: `❤️control/*` (control common 공유) + `❤️control/common/switch-border`.
+> 토큰 prefix: `control/*` (control common 공유) + `control/common/switch-border`.
 
 ## Overview
 - Selection Control 공통 토큰(`control/*`) 사용 — checkbox·radio와 색상 토큰 공유

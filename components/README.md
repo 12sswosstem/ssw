@@ -34,8 +34,8 @@ Osstem Implant 디자인시스템 컴포넌트 학습 문서.
 
 - `figma-export.json` (2026-05-04 export, file: `공통 컴포넌트 (Copy)`)
 - Figma Variable Collections:
-  - 🟨 Color_component (`896:76023`) — light·dark
-  - 🟨 Color_primitive (`642:26063`) — Static palette
-  - 🟨 Color_semantic (`966:86157`) — alert·common·brand
-  - 1️⃣ Number_component (`923:58268`) — Mode 1
-  - 1️⃣ Number_sementic (`43:18571`) — Size·Typography
+  -  Color_component (`896:76023`) — light·dark
+  -  Color_primitive (`642:26063`) — Static palette
+  -  Color_semantic (`966:86157`) — alert·common·brand
+  -  Number_component (`923:58268`) — Mode 1
+  -  Number_sementic (`43:18571`) — Size·Typography

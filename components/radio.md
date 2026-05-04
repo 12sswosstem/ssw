@@ -2,7 +2,7 @@
 
 > 출처: `figma-export.json` → Color_component(`896:76023`), Number_component(`923:58268`).
 > JS 토큰: `tokens/color/component.js#radio`, `tokens/number/component.js#selectionControl`.
-> 토큰 prefix: `❤️control/*`, `❤️selection control/*`.
+> 토큰 prefix: `control/*`, `selection control/*`.
 
 ## Overview
 - Selection Control 공통 토큰(`control/*`) 사용 — checkbox·switch와 색상 토큰 공유
@@ -28,7 +28,7 @@
 
 ## Color tokens (light / dark)
 
-> Radio는 Checkbox와 동일한 `❤️control/*` 토큰을 사용. 아래는 Radio 관점에서 매핑.
+> Radio는 Checkbox와 동일한 `control/*` 토큰을 사용. 아래는 Radio 관점에서 매핑.
 
 ### control common (state 알파 오버레이)
 | token | light | dark |

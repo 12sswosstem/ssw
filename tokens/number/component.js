@@ -1,5 +1,5 @@
 // Number · Component Tokens
-// Source: Figma Variable Collection 1️⃣ Number_component (923:58268)
+// Source: Figma Variable Collection  Number_component (923:58268)
 // TODO: Figma에서 추출하여 채우기
 
 export const selectionControl = {}; // sm, md, lg

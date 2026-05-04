@@ -2,7 +2,7 @@
 
 > 출처: `figma-export.json` → Color_component(`896:76023`), Number_component(`923:58268`).
 > JS 토큰: `tokens/color/component.js#checkbox`, `tokens/number/component.js#selectionControl`.
-> 토큰 prefix: `❤️control/*`, `❤️selection control/*`.
+> 토큰 prefix: `control/*`, `selection control/*`.
 
 ## Overview
 - Selection Control 그룹(checkbox · radio · switch)이 동일 토큰 공유
@@ -91,6 +91,6 @@
 
 - checked 시 box bg = brand orange(`#eb6100` 계열) — Selection control 공통 룰
 - unchecked 시 weight=400, checked/indeterminate 시 weight=600
-- Required 표시는 `*` 텍스트 + `❤️text input/etc/required mark`(red) 사용
+- Required 표시는 `*` 텍스트 + `text input/etc/required mark`(red) 사용
 - hover/pressed는 알파 오버레이로 표현 (control/common/* 토큰)
 - Ranking style은 checked 상태만 존재 (yellow bg + white fg 별도 토큰)

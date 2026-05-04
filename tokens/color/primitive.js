@@ -1,5 +1,5 @@
 // Color · Primitive Tokens
-// Source: Figma Variable Collection 🟨 Color_primitive (642:26063)
+// Source: Figma Variable Collection  Color_primitive (642:26063)
 // Modes: light · dark
 // TODO: Figma에서 추출하여 채우기
 

@@ -2,7 +2,7 @@
 
 > 출처: `figma-export.json` → Color_component(`896:76023`), Number_component(`923:58268`).
 > JS 토큰: `tokens/color/component.js#input`, `tokens/number/component.js#input`.
-> 토큰 prefix: `❤️text input/*`, `❤️input common/*`, `❤️textinput/*`.
+> 토큰 prefix: `text input/*`, `input common/*`, `textinput/*`.
 
 ## Overview
 - 모드: **light · dark**

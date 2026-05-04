@@ -2,7 +2,7 @@
 
 > 출처: `figma-export.json` → Color_component(`896:76023`), Number_component(`923:58268`).
 > JS 토큰: `tokens/color/component.js#tag`.
-> 토큰 prefix: `❤️tag/bg/*`, `❤️tag/accent/*`.
+> 토큰 prefix: `tag/bg/*`, `tag/accent/*`.
 
 ## Overview
 - 모드: **light · dark**

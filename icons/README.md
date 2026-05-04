@@ -4,7 +4,7 @@ Osstem Implant 아이콘 라이브러리 ID 매핑.
 
 ## Source
 
-- Figma 파일: `📌icon 라이브러리 Shape`
+- Figma 파일: `icon 라이브러리 Shape`
 - Page: `2806:36607`
 - 총 **2,966 COMPONENT** (state variants 포함)
 - 318 의미있는 그룹

@@ -2,7 +2,7 @@
 
 > 출처: `figma-export.json` → Color_component(`896:76023`), Number_component(`923:58268`).
 > JS 토큰: `tokens/color/component.js#tab`.
-> 토큰 prefix: `❤️tab/line_tab/*`, `❤️tab/contained_tab/*`, `❤️tab/container/*`.
+> 토큰 prefix: `tab/line_tab/*`, `tab/contained_tab/*`, `tab/container/*`.
 
 ## Overview
 - 모드: **light · dark**

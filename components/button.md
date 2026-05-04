@@ -4,7 +4,7 @@
 > JS 토큰: `tokens/color/component.js#button`, `tokens/number/component.js#button`.
 
 ## Overview
-- `❤️button/*` 토큰을 사용하는 버튼 컴포넌트
+- `button/*` 토큰을 사용하는 버튼 컴포넌트
 - 모드: **light · dark**
 - 스타일 계열: `neutral-primary`, `neutral-secondary`, `neutral-tertiary`, `brand-primary`, `brand-secondary`, `destructive-primary`, `destructive-secondary`, `subtle`
 - 사이즈: xxs(20) → xs(24) → sm(28) → md(32) → lg(40) → xl(48) → 2xl(64) → 3xl(80) → 4xl(96)
