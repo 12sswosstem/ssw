@@ -1,0 +1,25 @@
+{
+  "_meta": {
+    "source": "Figma · 📌icon 라이브러리 Shape",
+    "page": "2806:36607",
+    "totalComponents": 2966,
+    "totalGroups": 318,
+    "states": ["default", "destructive", "disabled", "invert", "selected", "black"],
+    "todo": "Figma에서 추출하여 채우기"
+  },
+  "frames": {
+    "toolbar": { "id": "2806:36610", "count": 70 },
+    "pattern": { "id": "2853:39200", "count": 21 },
+    "nav": { "id": "2853:36854", "count": 36 },
+    "system": { "id": "2853:830", "count": 191 }
+  },
+  "system": {
+    "general": {}
+  },
+  "arrow": {},
+  "edit": {},
+  "modal": {},
+  "patient": {},
+  "nav": {},
+  "toolbar": {}
+}
