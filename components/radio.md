@@ -1,93 +1,133 @@
 # Radio
 
-> 출처: `figma-export.json` → Color_component(`896:76023`), Number_component(`923:58268`).
+> 출처:
+> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA`:
+>   - `981:166618` (production component)
+> - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`:
+>   - `1:341738`, `1:341167`, `1:340767` (가이드 페이지)
+>
 > JS 토큰: `tokens/color/component.js#radio`, `tokens/number/component.js#selectionControl`.
 > 토큰 prefix: `control/*`, `selection control/*`.
 
 ## Overview
-- Selection Control 공통 토큰(`control/*`) 사용 — checkbox·switch와 색상 토큰 공유
-- 모드: **light · dark**
-- 사이즈: sm / md / lg
-- active: unchecked / checked / checked-2 (외원만 색 / 외원·내부 모두 색)
+- Selection Control 그룹 — checkbox/switch와 `control/*` 토큰 공유
+- 모드: **light** (production variable_defs 기준)
+- 단일 선택 (라디오 그룹 내 1개만 active)
+- 4축 prop (checkbox와 유사)
 
 ## Number tokens (Mode 1)
 
 ### selection control / icon (외원 영역, px)
-| size | px |
+| size | container | inner circle |
+|---|---|---|
+| sm | 20 | 16 |
+| md | 24 | 19.2 |
+| lg | 32 | 24 |
+
+### selection control / text (라벨 사이즈)
+| size | text size |
 |---|---|
-| sm | 16 |
-| md | 20 |
-| lg | 24 |
+| sm | 14 |
+| md | 16 |
+| lg | 18 |
 
-### selection control / text (px)
-| size | px |
+### border 굵기
+| size | border |
 |---|---|
-| sm | 16 |
-| md | 20 |
-| lg | 24 |
+| sm | 1 |
+| md | 1.2 |
+| lg | 1.5 |
 
-## Color tokens (light / dark)
+## Variants — production prop verbatim
 
-> Radio는 Checkbox와 동일한 `control/*` 토큰을 사용. 아래는 Radio 관점에서 매핑.
+### prop verbatim (checkbox와 유사)
+- **active**: `unchecked` / `checked` / `checked-2`
+- **state**: `default` / **`active`** / `disabled` (3 values — checkbox와 동일하게 hover/pressed는 `active`로 통합)
+- **size**: `sm` / `md` / `lg`
+- **focusRing**: boolean
+- **label**: boolean
+- **requiredMark**: boolean
+- **text**: string (default "Label")
 
-### control common (state 알파 오버레이)
-| token | light | dark |
-|---|---|---|
-| `control/common/default` | `rgba(0,0,0,0)` | `rgba(0,0,0,0)` |
-| `control/common/hover` | `rgba(0,0,0,0.2)` | `rgba(0,0,0,0.2)` |
-| `control/common/hover-brand` | `rgba(59,99,251,0.2)` | `rgba(59,99,251,0.2)` |
-| `control/common/pressed` | `rgba(0,0,0,0.4)` | `rgba(0,0,0,0.2)` |
-| `control/common/pressed-brand` | `rgba(59,99,251,0.4)` | `rgba(59,99,251,0.4)` |
+### active 3가지 차이
+- `unchecked`: 외원만 (border=default)
+- `checked`: 외원 stroke=brand + 내부 dot (brand)
+- `checked-2`: 외원 채움(brand) + 내부 dot (흰색) — checkbox의 checked와 시각 유사
 
-### control bg (외원 내부 배경)
-| token | light | dark |
-|---|---|---|
-| `control/bg/bg-default` | `#020202` | `#f4f4f4` |
-| `control/bg/bg-disabled` | `#727272` | `#e9e9e9` |
-| `control/bg/bg-inactive` | `#727272` | `#e9e9e9` |
+## Color tokens — production (light)
 
-### control fg (내부 dot)
-| token | light | dark |
-|---|---|---|
-| `control/fg/fg-default` | `#020202` | `#020202` |
-| `control/fg/fg-disabled` | `#a5a5a5` | `#d2d2d2` |
+### bg
+| token | light |
+|---|---|
+| `control/bg/bg-default` | `#fefefe` (외원 내부 배경) |
+| `control/bg/bg-brand-1` | `#eb6100` (checked-2 시 외원 채움) |
+| `control/bg/bg-disabled` | `#d2d2d2` |
 
-### control border (외원 stroke)
-| token | light | dark |
-|---|---|---|
-| `control/border/border-default` | `#d2d2d2` | `#d2d2d2` |
-| `control/border/border-disabled` | `#a5a5a5` | `#dddddd` |
+### border (외원 stroke)
+| token | light |
+|---|---|
+| `control/border/border-default` | `#727272` |
+| `control/border/border-brand` | `#eb6100` (checked 시 외원) |
+| `control/border/border-disabled` | `#a5a5a5` |
 
-### control text (라벨)
-| token | light | dark |
-|---|---|---|
-| `control/text/text-default` | `#dddddd` | `#393939` |
-| `control/text/text-active` | `#f4f4f4` | `#000000` |
-| `control/text/text-disabled` | `#a5a5a5` | `#dddddd` |
+### fg (내부 dot)
+| token | light |
+|---|---|
+| `control/fg/fg-default` | `#fefefe` (checked-2 시 흰 dot) |
+| `control/fg/fg-disabled` | `#a5a5a5` |
+
+> radio의 checked 상태에서 dot은 brand orange (`#eb6100`) 직접 사용, fg-default는 checked-2의 흰 dot용.
+
+### text
+| token | light |
+|---|---|
+| `control/text/text-default` | `#565656` |
+| `control/text/text-active` | `#1d1d1d` |
+| `control/text/text-disabled` | `#a5a5a5` |
+
+## State별 시각
+
+| state \\ active | unchecked | checked | checked-2 |
+|---|---|---|---|
+| default | bg=`#fefefe` + border=`#727272` | border=`#eb6100` + dot=`#eb6100` | bg=`#eb6100` + dot=`#fefefe` |
+| active | bg=`#fefefe` + border=`#eb6100` | (동일) | (동일) |
+| disabled | bg=`#d2d2d2` + border=`#a5a5a5` | border=`#a5a5a5` + dot=`#a5a5a5` | bg=`#d2d2d2` + dot=`#a5a5a5` |
+
+## Anatomy
+
+```
+( ● ) Label *
+ ↑    ↑    ↑
+ 외원   text required
+  └ 내부 dot (checked 시)
+
+sm: 16×16 외원, dot 8 (centered), gap 4, text 14
+md: 19.2×19.2 외원, dot 10, gap 4, text 16
+lg: 24×24 외원, dot 12, gap 8, text 18
+```
 
 ## Typography
 
-| size | textStyle | font · size · line-height |
+| size | textStyle (default) | textStyle (active) |
 |---|---|---|
-| sm | `body/sm` | Pretendard 400 / 14 / 20 |
-| md | `body/md` | Pretendard 400 / 16 / 24 |
-| lg | `body/xl` | Pretendard 400 / 20 / 28 |
-
-> 선택 시 weight 600 (SemiBold)
-
-## Variants / States
-
-- **state**: default / hover / pressed / disabled
-- **active**:
-  - `unchecked` — 외원만 (border)
-  - `checked` — 외원 stroke = brand color, 내부에 dot (brand)
-  - `checked-2` — 외원 채움 + 내부 dot 흰색 (체크박스의 filled 느낌)
-- **size**: sm / md / lg
+| sm | `body/sm` (14/20) | `body/sm (SB)` (600) |
+| md | `body/md` (16/24) | `body/md (SB)` |
+| lg | `body/lg` (18/26) | `body/lg (SB)` |
 
 ## Usage Notes
 
-- Radio 그룹 안에서 항상 1개만 선택 가능 (단일 선택)
-- checked-2는 강조 변형 — 일반 폼에서는 `checked`(stroke형) 사용 권장
-- 라벨 weight: unchecked=400, checked=600
-- disabled 시 외원 bg는 회색(`#727272` light · `#e9e9e9` dark), border는 한 단계 옅게
-- hover/pressed 영역은 외원 둘레의 알파 ring으로 표현
+- variant 매칭 verbatim:
+  - `active=unchecked` / `checked` / `checked-2`
+  - `state=default` / `active` / `disabled` (3 values — hover/pressed 통합)
+  - `size=sm` / `md` / `lg`
+  - boolean prop: `focusRing`, `label`, `requiredMark`
+- Radio 그룹 내 항상 1개만 선택 (단일 선택)
+- `checked` (stroke 형) vs `checked-2` (filled 형):
+  - `checked`: 가벼운 표시 (외원 stroke + 내부 dot, 일반 폼)
+  - `checked-2`: 강한 표시 (외원 채움 + 흰 dot, 강조 필요 시)
+- 일반 사용은 `checked` 권장 — 시각적 가벼움
+- 라벨 weight: state=active 또는 active!=unchecked일 때 SemiBold(600)
+- disabled 시 외원 bg 회색(`#d2d2d2`), border 옅은 회색(`#a5a5a5`)
+- focus ring은 외원 둘레 + 라벨 영역 (키보드 Tab navigation)
+- Required(`*`) 표시는 라벨 우측, `Color(New)/Red/500` `#ef0101`
+- checkbox와 같은 `control/*` 토큰 사용 — 시각적 일관성
