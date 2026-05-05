@@ -63,6 +63,7 @@ Osstem Implant 디자인시스템 컴포넌트 학습 문서.
 | [Notification](./notification.md) | `notification` |
 | [Coachmark](./coachmark.md) | `coachmark` |
 | [Progress](./progress.md) | `progress` (circle & bar) |
+| [Progress Stepper](./progress-stepper.md) | `progress` (단계별) |
 | [Slider](./slider.md) | `slider` |
 
 ### Calendar / Date

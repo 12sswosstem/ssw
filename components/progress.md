@@ -31,6 +31,7 @@
   - Bar: blue `#3b63fb` (`progress circle & bar/progress bar_active`)
   - Circle: orange `#eb6100` (`progress circle & bar/active-primary-brand`)
   - 둘은 같은 `progress circle & bar/*` namespace에서 다른 token 사용
+- **Progress Stepper**(단계별 진행 표시)는 별도 문서: [`progress-stepper.md`](./progress-stepper.md) — bar/circle과 다른 컴포넌트군 (neutral dark gray 색상)
 
 ## Number tokens (Mode 1)
 
