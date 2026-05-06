@@ -207,6 +207,152 @@ gap=4-8  font  optional delete (show delete=true)
 - `rounded`: pill 형태 (radius=999 또는 480)
 - `sqaure`: 4px radius (각진 사각)
 
+## Description (Figma `1:220044` verbatim)
+
+칩(Chip)은 정보를 필터링하거나 선택 항목을 표현하는 컴팩트한 UI 요소입니다.
+
+사용자가 다수의 항목 중 하나 또는 여러 개를 선택할 때 활용되며, 색상과 모양 조합으로 선택 여부를 명확히 전달합니다.
+
+칩은 필터(Filter)와 선택(Choice) 두 가지 용도로 구분되며, 편집 아이콘(✎)과 삭제 아이콘(×)을 함께 표시할 수 있습니다.
+
+## Anatomy (verbatim)
+
+칩은 Container와 Label로 구성되며, 왼쪽에 Prefix Icon, 오른쪽에 Suffix(삭제) 아이콘을 선택적으로 표시할 수 있습니다.
+
+| 요소 | 설명 (verbatim) |
+|---|---|
+| 아이콘 (prefix Icon) | 칩의 맥락을 보조하는 아이콘. show icon 속성으로 표시 여부 제어 |
+| 레이블 (Lable) | 칩의 내용을 나타내는 텍스트. 필수 요소 |
+| 아이콘 (Suffic Icon) | 입력 칩에서 항목 제거 시 사용. show delete 속성으로 표시 여부 제어 |
+| 컨테이너 (Container) | 전체 칩 영역. 형태(rounded/square)와 크기(xsm/sm/md) 적용 |
+
+> ⚠ Figma 원본 verbatim — "레이블 (Lable)" / "아이콘 (Suffic Icon)" 오타 그대로 보존.
+
+## Properties (verbatim)
+
+### Size
+칩은 xsmall, small, medium의 총 3가지 사이즈로 제공합니다. xsmall부터 medium까지의 사이즈는 다양한 디바이스 환경에서 요소의 중요도와 배치 맥락에 맞게 선택하여 사용합니다. 상태에 따라 테두리, 배경, 텍스트 색상이 변경됩니다.
+
+### Shape
+칩의 외형 형태를 결정합니다. Rounded는 완전한 pill 형태이며, Square는 모서리가 4px인 직사각형입니다.
+
+### Layout
+칩은 아이콘과 레이블의 조합으로 구성되며, 아이콘은 칩의 맥락을 시각적으로 보조합니다. 아이콘을 앞에 배치하거나 삭제 아이콘을 뒤에 배치할 수 있어 상황에 맞게 유연하게 활용할 수 있습니다. Icon Only 레이아웃은 아이콘만으로 의미를 전달하기 때문에 접근성이 떨어집니다. 꼭 필요한 경우에만 사용하는 것을 권장합니다.
+
+### Varient
+칩의 선택 상태를 색상으로 표현하는 스타일입니다. Default 상태는 동일하며 Selected 상태는 맥락에 따라 Outline 또는 Filled(Orange, Gray)를 사용합니다.
+
+> ⚠ Figma 원본 헤딩 오타 — "Variant"가 "Varient"로 표기됨.
+
+### State
+칩은 Default, Hover, Selected, Selected-Filled(Orange/Gray), Focused, Disabled 총 7가지 상태를 가집니다. 상태에 따라 테두리, 배경, 텍스트 색상이 변경됩니다.
+
+| State | 설명 (verbatim) |
+|---|---|
+| Default | 메뉴 아이템의 기본 상태로, 사용자의 행동을 유도하는 액션 목록을 제공합니다. |
+| Hover | 마우스가 올라간 상태로, 상호작용 가능함을 시각적으로 안내합니다. |
+| Selected Outline | 현재 활성화되어 선택된 상태로, 선택형 항목에서 적용 중인 값을 나타냅니다. |
+| Selected Filled (Orange) | 현재 활성화되어 선택된 상태로, 선택형 항목에서 적용 중인 값을 나타냅니다. |
+| Selected Filled (Gray) | 현재 활성화되어 선택된 상태로, 선택형 항목에서 적용 중인 값을 나타냅니다. |
+| Focused | 키보드 탐색 등으로 포커스가 위치한 상태로, 접근성을 위한 시각적 표시입니다. |
+| Disabled | 사용자가 메뉴 아이템에 동작을 요구하지 못하는 비활성화 상태입니다. |
+
+> ⚠ Figma 원본 verbatim — Hover/Disabled 등 일부 설명이 "메뉴 아이템"으로 표기됨 (Dropdown 페이지 복사). 의미상은 "칩".
+
+## Guidelines (verbatim)
+
+### Chip의 활용 (Figma `1:220329` verbatim)
+Chip은 사용자가 선택하거나 입력하는 값을 표시할 때 단독으로 사용할 수 있으며 여러 개의 Chip을 함께 사용하는 경우 Chip Group 템플릿을 사용합니다. Chip Group은 단일 또는 다중 선택(Selection)의 용도로 사용할 수 있습니다.
+
+가이드 페이지의 시각 예시 (3 행):
+
+| Usage | 시각 |
+|---|---|
+| `Chip` | 단일 chip 5종: 채용중 (default / outline / filled-orange / filled-gray / disabled) — 각 person 아이콘 prefix |
+| `Chip Group - 다중선택` | 5 chips outline orange: 전체 27 / 예약 22 / 미이행 0 / 취소 0 / 이행 5 |
+| `Chip Group - 단일선택` | 3 chips: 전체 (filled orange) / Master Course (default) / Short Term Seminar (default) |
+
+### Hierarchy (Figma `1:220371` verbatim)
+칩은 단독으로 사용하거나 여러 개를 Chip Group으로 묶어 사용할 수 있습니다. Chip Group은 단일 선택(Single Selection)과 다중 선택(Multi Selection) 두 가지 용도로 사용할 수 있습니다.
+
+단일 선택에는 Filled(Solid) 스타일을 사용합니다. 하나의 항목만 강조되므로 채움 색상으로 눈에 띄게 강조합니다.
+
+다중 선택에는 Outline 스타일을 사용합니다. 선택된 항목이 여러 개일 때 Solid로 표현하면 시각적으로 너무 세기 때문에, 주목도가 낮은 Outline이 적합합니다.
+
+가이드 페이지의 Emphasis Level 표 (verbatim):
+
+| Emphasis Level | Varient | Usage |
+|---|---|---|
+| **Single Selection** (단일 선택) | `selected-filled-orange` / `selected-filled-gray` | 단일 선택(Single Selection)에 사용. 선택 항목 하나를 강하게 강조할 때 적합 |
+| **Multi Selection** (다중 선택) | `selected` | 다중 선택(Multi Selection)에 사용. 여러 항목이 선택돼도 시각적으로 과하지 않음 |
+
+### 같은 그룹 내 일관성 (Figma `1:220411` verbatim)
+동일한 칩 그룹 안에서 크기, 형태, 아이콘 유무를 통일합니다.
+
+| ✓ Do | ✗ Don't |
+|---|---|
+| 5 chips 모두 sm/rounded 동일, suffix 없음 (prefix만 일부) | sm/rounded는 같지만 prefix/suffix 아이콘 유무 혼용 |
+
+### 색상 적용 (Figma `1:220452` verbatim)
+같은 그룹 내에서 Filled Orange와 Filled Gray를 혼용하지 않습니다. 오렌지 또는 그레이 중 하나를 일관되게 사용하여 단일 색상 테마로 선택 상태를 명확히 전달합니다.
+
+| ✓ Do | ✗ Don't |
+|---|---|
+| 1 filled-gray + 4 default (모두 prefix 아이콘) — 단일 Gray 테마 | 1 filled-gray + 1 filled-orange + 3 default — Orange/Gray 혼용 |
+
+### 비활성화 처리 (Figma `1:220493` verbatim)
+선택 불가 칩은 Disabled 처리합니다. 항목의 존재를 인지시켜야 하기 때문에 선택 불가 항목을 아예 숨기지 않습니다.
+
+| ✓ Do | ✗ Don't |
+|---|---|
+| 3 chips: filled-gray + default + **disabled** (존재 인지) | 2 chips만: filled-gray + default — disabled 항목 숨김 |
+
+### 같은 그룹 내 일관성
+동일한 칩 그룹 안에서 크기, 형태, 아이콘 유무를 통일합니다.
+
+### 색상 적용
+같은 그룹 내에서 Filled Orange와 Filled Gray를 혼용하지 않습니다. 오렌지 또는 그레이 중 하나를 일관되게 사용하여 단일 색상 테마로 선택 상태를 명확히 전달합니다.
+
+### 비활성화 처리
+선택 불가 칩은 Disabled 처리합니다. 항목의 존재를 인지시켜야 하기 때문에 선택 불가 항목을 아예 숨기지 않습니다.
+
+## 접근성 (Figma verbatim)
+
+> ⚠ Figma 원본 본문은 일부 "버튼" 또는 "메뉴"로 표기 — 다른 페이지에서 복사된 것으로 보임. 의미상은 "칩".
+
+모든 사용자가 버튼의 기능을 인식하고 조작할 수 있도록, 아래 WCAG 및 ARIA 가이드라인을 준수합니다. 키보드, 스크린리더, 터치 등 다양한 입력 방식에서 일관된 접근성을 보장하여 사용 오류를 최소화합니다.
+
+### WCAG 2.2
+
+#### 키보드 접근성 (SC 2.1.1)
+Tab 키로 칩에 포커스를 이동할 수 있어야 합니다. Enter 또는 Space 키로 칩을 선택 및 해제할 수 있어야 합니다.
+
+#### 포커스 가시성 (SC 2.4.7)
+메뉴에 키보드 포커스가 있을 때 2px 이상의 고대비 포커스 인디케이터를 표시해야 합니다.
+
+#### 클릭 대상 크기 (PC 기준, SC 2.5.8)
+마우스·트랙패드 환경에서 클릭 가능한 메뉴 목표(target)는 최소 24×24 CSS 픽셀을 확보해야 하며, 목표가 이보다 작을 경우 요소 간 최소 24px 이상의 간격을 유지해야 합니다.
+
+#### 비활성화 상태
+비활성화된 메뉴는 시각적으로 명확히 구분되고, 클릭이 불가능해야 하며 키보드 포커스에서 제외합니다.
+
+## 상호작용 가이드라인 (verbatim)
+
+### 탐색
+
+| 구분 | 설명 |
+|---|---|
+| Tab | 칩 그룹 내 다음 칩으로 포커스 이동 |
+| Shift + Tab | 칩 그룹 내 이전 칩으로 포커스 이동 |
+| ← / → | 칩 그룹 내 좌우 이동 (선택적 구현) |
+
+### 실행
+
+| 구분 | 설명 |
+|---|---|
+| Enter / Space | 칩 선택 또는 해제 |
+| Delete / Backspace | 삭제 버튼이 있는 경우 항목 제거 |
+
 ## Usage Notes
 
 - variant 매칭 verbatim:

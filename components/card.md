@@ -68,15 +68,27 @@
 
 > 컴포넌트 셋 mannequin 크기는 모두 360×360. 실제 canvas instance는 type별로 크기 다름 (아래 참조).
 
-### type별 의미 (가이드 verbatim)
+### type별 의미 (UI-Kit-Guide `352:35727` verbatim — 신규 가이드 파일 `LxBPQF1oFOfiNdX5qzLcik`)
 
-| type | 가이드 설명 | 시각 |
+> 카드는 콘텐츠 성격과 배치 방식에 따라 구분합니다. **Basic, Vertical, Horizontal, Filled, Half**의 총 5가지 형태를 제공합니다.
+
+> **시각화 사이즈 메모** (spec.html 한정): Figma 가이드 페이지는 label/설명을 display_xs(24px / lh 40)로 표기하지만, spec sheet 시각화에서는 가독성과 밀도를 위해 label 18px(SemiBold) / 설명 14px(Regular, lh 22)로 축소 렌더. type 카드 본체(360×*)와 내부 콘텐츠(328×*)는 Figma verbatim 유지.
+
+> **시각화 비율 조정** (`1:406506` 가이드 실 사용 예 기반):
+> - Horizontal: 가이드 mannequin은 image 80×328 / body 238×328 (총 360×360)이지만, 실 사용 예시(`352:35760`)는 image 296×218 사용. spec.html은 비율 균형을 위해 `max-width: 520px`, `image: 40% / body: flex 1`로 렌더 (좁은 컬럼 들어가도 협소하지 않게).
+> - Filled/Half body: 가이드 spec은 fixed `height: 143px`이지만, body 콘텐츠(title + body text + button)가 좁은 폭에서 더 많은 줄을 차지하면 잘릴 수 있어 `min-height: 143px` + `gap: 4px` + `padding: 14px 16px`로 자동 확장하도록 조정. body width는 카드 폭에 맞춰 `width: 100%`로 반응형.
+> - **body 내 button 하단 고정**: `.card-body-slot .card-btns { margin-top: auto; }` — Horizontal/Vertical/Filled/Half 모두 이미지와 button이 카드 상하 양 끝에 정렬되어 시각 균형 유지. 본문(title/body/desc/badge/price)은 자연 위에서부터 흐름.
+> - **Horizontal 4면 정렬 핵심**: 카드의 fixed `height` 제거 + image `min-height: 220px`만 설정. parent의 `align-items: stretch`가 image와 body를 항상 같은 높이로 강제 → 이미지 상단 == 텍스트 상단, 이미지 하단 == 버튼 하단. 콘텐츠가 길어지면 image도 따라 늘어남. (이전 fixed 260px 높이는 좁은 컬럼에서 body text가 4줄 이상 wrap 되면 image와 정렬이 어긋났음.)
+
+| type | 가이드 verbatim 설명 | 시각 구조 |
 |---|---|---|
-| `basic` | "전체 이미지/텍스트형 일반 배너" | 단순 콘텐츠 (이미지 슬롯 없음) |
-| `vertical` | "상단 이미지 + 컨텐츠 수직 정렬" | 이미지 위 + 텍스트 아래 |
-| `horizontal` | "좌측 이미지 + 컨텐츠 수평정렬" | 이미지 좌 + 텍스트 우 |
-| `filled` | "전체이미지 + 컨텐츠(투명 BG)" | 이미지 가득 + 텍스트 영역 투명 |
-| `harf` | "상단 이미지 + 컨텐츠(화이트 BG)" | 이미지 가득 + 텍스트 영역 흰 BG (overlay) |
+| `Basic` | 텍스트 중심의 기본 카드입니다. 제목, 보조 정보, 가격 또는 최소 상태, CTA 등 최소 구성으로 이루어지며, 가장 범용적으로 사용할 수 있습니다. | 이미지 없음, 텍스트만 |
+| `Vertical` | 상단 이미지와 하단 정보가 수직으로 배치된 형태입니다. 상품 및 일반형 카드에 적합합니다. | 카드 padding 안쪽 상단에 이미지(rounded) + 하단 텍스트. **full bleed 아님** |
+| `Horizontal` | 이미지와 텍스트가 좌우로 배치된 형태입니다. 리스트형 카드에 적합합니다. | 카드 padding 안쪽 좌측에 이미지(rounded) + 우측 텍스트. **full bleed 아님** |
+| `Filled` | 카드 전체를 비주얼 또는 배경으로 활용하는 형태입니다. 프로모션 및 배너형 콘텐츠에 적합합니다. | 카드 전체가 이미지 배경, 텍스트는 이미지 위에 직접 (overlay 박스 없음) |
+| `Half` | 상하 또는 좌우로 영역을 분할한 형태입니다. 정보와 비주얼을 구분해 보여줄 때 적합합니다. | 상단 이미지(border radius 0) + 하단 흰색 텍스트 영역 — 영역 분할 |
+
+> **`harf` ↔ `Half` 표기 정정**: 신규 가이드 파일에서는 `Half`로 정정됨. 단, production component file (`2395:35784`)의 variant prop은 여전히 `harf` 오타 보존 — variant 매칭 시 코드는 `harf`, 디자인 문서는 `Half` 사용.
 
 ### type별 instance 실측 크기
 
@@ -169,15 +181,23 @@ set ID: `2395:36013`. 카드 내부의 텍스트+버튼 영역.
 └─────────────────────────┘
 ```
 
-## State별 시각 (production light)
+## State (UI-Kit-Guide `1:406577` verbatim)
 
-| state | bg | border | 비고 |
+> 카드는 상호작용과 정보 전달을 위해 상태를 가집니다.
+> 모든 유형은 공통된 상태 원칙을 따르며, 유형별 표현 방식만 달라질 수 있습니다.
+
+카드는 **6가지 상태**로 구성됩니다:
+
+| state | bg | border | 시각 |
 |---|---|---|---|
-| default | `#ffffff` | `#dadada` 1px | 기본 |
-| hover | `#ffffff` | `#292929` | border만 진해짐 |
-| pressed | `#f4f4f4` | `#292929` | bg 옅은 회색 |
-| selected | `#ffffff` | `#fc7d00` | brand orange border |
-| focus | transparent | inner `#393939` + outer 2px `#020202` | 이중 ring |
+| `Default` | `#ffffff` | `#dadada` 1px | 기본 상태 — 흰 배경 + 라이트 그레이 외곽선 |
+| `Hover` | `#ffffff` | `#292929` | 마우스 오버 — 진한 외곽선으로 강조 |
+| `Pressed` | `#f4f4f4` | `#292929` | 클릭/탭 중 — 옅은 회색 배경 + 진한 외곽선 |
+| `Focus` | `#ffffff` | black 2px outline ring | 키보드 tab focus — black outline ring |
+| `Selected` | `#ffffff` | `#fc7d00` (brand orange) | 사용자가 선택한 활성 상태 — orange 외곽선 |
+| `Disabled` | `#ffffff` | `#dadada` 1px | 비활성화 상태 — 콘텐츠 전체가 흐려짐 (opacity 0.4) |
+
+> 가이드 페이지(`1:406577`) 2×3 그리드 verbatim. (이전 `352:35789` 6-state 메모리는 BUTTON 상태로 잘못 매핑된 것이었고, 본 표는 CARD 자체의 상태.)
 
 ## Typography
 

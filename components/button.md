@@ -54,7 +54,7 @@
 | `bg/destructive-secondary` | `#ffffff00` (transparent) | `rgba(255,255,255,0)` |
 | `bg/text` | `#ffffff00` (transparent) | (미정의) |
 | `bg/subtle` | `#ffffff00` (transparent) | `rgba(255,255,255,0)` |
-| `bg/disabled` | `#bcbcbc` | (미정의) |
+| `bg/disabled` | `#dadada` | (미정의) |
 | `bg/disabled-gray` | `#bcbcbc` | `#f4f4f4` |
 | `bg/disabled-inactive` | `#8f8f8f` | `#bcbcbc` |
 
@@ -90,7 +90,7 @@
 | `border/destructive-secondary` | `#f03823` | (미정의) |
 | `border/text` | `#373d4c00` (transparent) | (미정의) |
 | `border/subtle` | `#373d4c00` (transparent) | `rgba(55,61,76,0)` |
-| `border/disabled` | `#bcbcbc` | (미정의) |
+| `border/disabled` | `#dadada` | (미정의) |
 | `border/disabled-gray` | `#a5a5a5` | `#f4f4f4` |
 | `border/disabled-inactive` | `#8f8f8f` | `#8f8f8f` |
 
@@ -115,7 +115,51 @@
 | `common/focus-ring` | `#000000` | (미정의) |
 | `common/focus-ring 2` | `#fefefe` (또는 `#020202`) | `#f9f9f9` |
 
-> focus는 외부 ring 2.5px(black) + 내부 ring 2.5px(white)의 이중 링 패턴. `focus-ring`은 외부, `focus-ring 2`는 내부.
+### State overlay 분기 (어두운 base vs 밝은 base)
+
+base 명도에 따라 overlay 색·강도가 다르다 (Figma `134:20061` 검증):
+
+| base 톤 | hover overlay | pressed overlay | 예 |
+|---|---|---|---|
+| 어두운/유채색 (brand-primary, neutral-primary, distructive-primary) | **white 15%** | **white 25%** | brand-primary `#eb6100` 위에 0.15/0.25 white |
+| 밝은 base (brand-secondary, neutral-secondary, neutral-tertiary, brand-tertiary) | black 5% (`common/hover`) | black 10% (`common/pressed`) | white bg 위에 0.05/0.10 black |
+
+이전 메모리의 "neutral은 white, light는 black"은 정확하지만, white의 농도를 5%/10% (`*-neutral` 토큰)로 봤던 것이 잘못 — 실제 production v0.22 brand 매트릭스는 **15%/25%** 사용.
+
+### Focus ring 구조 (`134:20102` brand-primary focused 행 verbatim)
+
+> **이전 메모리 정정**: focus는 "외부 black + 내부 white 이중 링"이 아니다.
+> 실제 구조 = 버튼 자체 border + 그 외부에 단일 black ring 1개 (inset 음수 절대 위치).
+> 두 링 사이의 **투명 갭**이 light 배경에서 흰색 띠처럼 보이는 것이 "white line"의 정체.
+
+| size | button border weight | focus ring inset | focus ring weight | focus ring radius |
+|---|---|---|---|---|
+| xxs (20) | 1 | -3 | 1 | 6 |
+| xs (24)  | 1 | -3 | 1 | 6 |
+| sm (28)  | 1 | -3 | 1 | 6 |
+| md (32)  | 1 | -3 | 1 | 8 |
+| lg (40)  | 1 | -3 | 1 | 8 |
+| xl (48)  | 1.5 | -3.5 | 1.5 | 10 |
+| 2xl (64) | 2 | -4 | 2 | 10 |
+| 3xl (80) | 2.5 | -4.5 | 2.5 | 13 |
+| 4xl (96) | 3 | -5 | 3 | 14 |
+
+- focus ring 두께 = 해당 사이즈의 button border 두께와 동일 (`button/border/{size}` 토큰 공유)
+- focus ring 반지름 = button corner radius + ~2px (4xl만 동일, 나머지는 +2)
+- focus ring 색상 = `common/focus-ring` (= `#000000`, light 모드 단일값)
+- **갭 폭 = `|inset|` − ring weight = 모든 사이즈 일정 2px** (Figma는 box-sizing: border-box처럼 ring 외각이 inset 값이므로 안쪽 시작점은 `|inset| − weight`)
+  - 예: md → inset 3 − weight 1 = 2px 갭
+  - 예: 4xl → inset 5 − weight 3 = 2px 갭
+- `common/focus-ring 2` (white) 토큰은 정의돼 있으나 현재 v0.22 브랜드 버튼 매트릭스에서는 **사용되지 않음** (legacy 또는 다크모드/inverse 케이스 예약 추정)
+
+CSS 구현 가이드:
+```css
+.btn--md.btn--focused {
+  outline: 1px solid #000;     /* common/focus-ring, weight = button/border/md */
+  outline-offset: 2px;          /* 갭 폭 (border edge → outline 시작점), 모든 사이즈 동일 */
+}
+```
+`outline-offset`은 border edge로부터 outline 시작점까지의 거리(=투명 갭 폭). outline-width는 그 시작점부터 바깥 방향으로 그려지므로, ring 외곽까지의 총 거리는 `offset + width`.
 
 ## Typography
 
@@ -154,11 +198,13 @@
 | # | state | 트리거 | 시각 |
 |---|---|---|---|
 | 1 | `Default` | 평상시 | base 색 |
-| 2 | `Hover` | 마우스 위에 | `common/hover` 또는 `common/hover-neutral` 알파 합성 |
-| 3 | `Pressed` | 클릭 중 | `common/pressed` 또는 `common/pressed-neutral` 알파 합성 |
-| 4 | `Focused` | 키보드 focus | `common/focus-ring` 외부 + `common/focus-ring 2` 내부 이중 링 |
-| 5 | `Disabled-1` | 읽기 전용 비활성 (회색 톤 약함) | `bg/disabled-inactive` 계열 |
-| 6 | `Disabled-2` | 완전 비활성 (회색 톤 강함) | `bg/disabled-gray` 또는 `bg/disabled` |
+| 2 | `Hover` | 마우스 위에 | base 색 위에 white 15% (밝은 base는 black 5% — `common/hover` token) 알파 합성 |
+| 3 | `Pressed` | 클릭 중 | base 색 위에 white 25% (밝은 base는 black 10% — `common/pressed` token) 알파 합성 |
+| 4 | `Focused` | 키보드 focus | `common/focus-ring` (black) 외부 단일 링 + 버튼 외곽선과 ring 사이 투명 갭 (위 Focus ring 구조 표 참조) |
+| 5 | `Inactive` | 1차 비활성 (브랜드 톤 유지, 약하게 보임) | **원본 스타일 색 그대로 + `opacity: 0.4`** 전체 적용 (별도 색 토큰 교체 없음) |
+| 6 | `Disabled` | 2차 완전 비활성 (회색 톤 교체) | bg `bg/disabled` (#dadada) · border `border/disabled` (#dadada) · text `fg/disabled` (#a5a5a5) — 토큰 풀 교체 |
+
+> **명칭 정정**: 이전 `Disabled-1`(faded) / `Disabled-2`(gray) → 신규 `Inactive` / `Disabled`로 통일. variant prop 매칭 시도 신규 명칭 사용.
 
 > Loading state는 별도 `state=Loading` variant로 처리 (가이드 6열에는 미포함).
 
@@ -170,19 +216,235 @@
 
 ## Icon Button (별도 가이드)
 
-> `1:274092` Icon button use it 페이지 — Button과 별개 매트릭스로 문서화.
+> `1:274092` `Icon button use it` 페이지 — Button과 별개 매트릭스로 문서화 (variable_defs 기준).
+> 인스턴스 prop: `layout=icon only` (Button set 공유) 또는 별도 `iconButton_*` variant.
 
-- 9 size × 9 style × 6 state 매트릭스 (Button과 동일 골격)
-- **icon-only 정사각**: 20 × 20, 24 × 24, 28 × 28, 32 × 32, 40 × 40, 48 × 48, 64 × 64, 80 × 80, 96 × 96
-- 라벨 없이 아이콘 1개만 — 접근성을 위해 `aria-label` 또는 tooltip 필수
-- variant 매칭 시 `layout=icon only`로 호출하면 Button set에서 직접 가져올 수 있음
+- 9 style × 6 state × 9 size 매트릭스 (Button과 동일 골격)
+- **icon-only 정사각**: width = height (라벨 없음)
+
+### 사이즈 매트릭스 (1:1 정사각)
+
+| size | px | corner radius | border | icon size (권장) |
+|---|---|---|---|---|
+| xxs | 20 × 20 | 4 | 1 | 12 |
+| xs  | 24 × 24 | 4 | 1 | 14 |
+| sm  | 28 × 28 | 4 | 1 | 16 |
+| md  | 32 × 32 | 6 | 1 | 16 |
+| lg  | 40 × 40 | 6 | 1 | 20 |
+| xl  | 48 × 48 | 8 | 1.5 | 24 |
+| 2xl | 64 × 64 | 8 | 2 | 28 |
+| 3xl | 80 × 80 | 12 | 2.5 | 32 |
+| 4xl | 96 × 96 | 14 | 3 | 40 |
+
+> width/height 토큰 = `button/size/{size}` (Button height와 동일 시리즈) · radius 토큰 = `button/corner-radius/{size}` 공유 · 아이콘 사이즈는 별도 정의되어 있지 않고 디자이너 가이드 권장값.
+
+### 스타일/상태/오버레이
+
+- 9 style 토큰 (bg/border/fg) 모두 Button과 **동일** (brand-primary, brand-secondary, brand-tertiary, neutral-primary, neutral-secondary, neutral-tertiary, text, distructive-primary, distructive-secondary)
+- 6 state도 Button과 동일 (default/hover/pressed/focused/disabled-1/disabled-2)
+- overlay·focus ring·disabled 동작도 Button과 동일 (위 표 그대로 적용)
+
+### `❤️button/common/*` 변수 verbatim (`1:274092` variable_defs)
+
+> 이 페이지에서 추출한 production 변수값 — 이전 `#0000000d` (5% black) 메모리는 별도 `*-neutral` 변형이거나 구버전. 현 v0.22 production은 white 알파 일원화.
+
+| 토큰 | hex | 알파 |
+|---|---|---|
+| `button/common/default` | `#00000000` | 0% |
+| `button/common/hover` | `#ffffff26` | white 15% (38/255) |
+| `button/common/pressed` | `#ffffff40` | white 25% (64/255) |
+| `button/common/focus-ring` | `#000000` | 100% black |
+| `button/common/focus-ring 2` | `#fefefe` | 미사용 (legacy) |
+
+### Anatomy
+
+- **container**: 정사각 box (size = corner radius 적용)
+- **icon**: 컨테이너 중앙 정렬, currentColor 사용 (fg 토큰 자동 상속)
+- **focus ring**: Button과 동일 매트릭스 (위 Focus ring 구조 표 참조)
+
+### 사용 가이드
+
+- 라벨 없이 아이콘 1개만 — 접근성을 위해 **`aria-label` 또는 tooltip 필수**
+- variant 매칭 시 Button set에서 `layout=icon only`로 호출 가능 (단일 source of truth)
+- icon-only 사용 시 사이즈가 작아 터치 타겟 가이드라인(44×44 이상) 충족 어려움 → xxs/xs/sm은 데스크탑 전용, 모바일은 lg 이상 권장
+- 의미가 명확한 경우(✕, ←, ⚙, 🔍 등)에만 사용 — 모호한 아이콘은 라벨 있는 Button 사용
+
+## Guidelines (`1:272816` verbatim)
+
+### Hierarchy
+버튼의 시각적 주목도는 배경색 대비에 따라 달라집니다. 화면에서 강조하려는 정도에 따라 적절한 Variant를 선택해서 사용해주세요.
+
+| Emphasis | Variants | 개수 | 용도 |
+|---|---|---|---|
+| High emphasis (대비가 강한 배경색) | `neutural-primary` / `brand-primary` / `distructive-primary` | 1개 | 가장 중요한 역할의 CTA에 사용 |
+| Medium emphasis (흰색 배경색) | `neutural-secondary` / `brand-secondary` | 여러 개 | 대부분의 액션에 사용 / High emphasis 버튼과 조합하여 사용 |
+| Low emphasis (대비가 약한 배경색) | `neutural-tertiary` / `brand-tertiary` | 여러 개 | 중요도가 낮은 보조 액션을 표현할 때 사용 |
+| No emphasis (배경색 없음) | `Subtle` (text) | 여러 개 | 취소 등의 버튼에 사용 |
+
+### Properties — 상황에 따라 적절한 Variant 사용하기
+화면 내 중요도에 따라 적절한 Variant를 선택해서 사용합니다.
+
+- **neutural-primary** — 대부분의 화면에서 CTA로 사용합니다. 고대비로 접근성과 가독성이 높아 사용자가 화면 정보에 집중할 수 있도록 돕습니다. 한 화면에 하나만 사용하는 것을 권장합니다.
+- **brand-primary** — 사용자 간 연결이 일어나는 서비스의 주요 기능에 사용합니다. 위계가 높고 브랜드 임팩트가 강한 액션이므로 한 화면에 하나만 사용하는 것을 권장합니다.
+- **distructive-primary** — 삭제나 초기화처럼 되돌릴 수 없는 중요한 작업에 사용합니다. 사용자에게 위험을 분명하게 알려주는 역할을 하며, 주로 Alert Dialog에서 사용됩니다.
+- **neutural-secondary** — 보조 기능이나 서브 액션에 사용합니다. primary보다 시각적 강조는 낮지만 버튼 형태는 유지되어, 화면 내 여러 기능을 안정적으로 구분해 전달할 수 있습니다. primary와 함께 사용할 때 보조 선택지로 활용하는 것을 권장합니다.
+- **brand-secondary** — 브랜드 성격을 유지하면서도 primary보다 한 단계 낮은 강조가 필요한 기능에 사용합니다. 주요 흐름을 방해하지 않으면서 서비스의 브랜드 톤을 드러낼 수 있으며, 동일 맥락의 보조 액션이나 연계 기능에 적합합니다.
+- **distructive-secondary** — 삭제, 해제, 취소 등 주의가 필요한 작업 중에서도 primary만큼 강한 경고가 필요하지 않은 경우에 사용합니다. 위험성은 전달하되 과도한 시각적 부담은 줄일 수 있어, 보조 위험 액션이나 선택적 파기 기능에 적합합니다.
+- **neutural-tertiary** — 배경의 영향 없이 가볍게 사용할 수 있는 저강도 액션에 사용합니다. 버튼의 존재감은 최소화하면서도 클릭 가능한 요소임을 전달할 수 있어, 리스트·툴바·필터 등 반복적으로 등장하는 기능에 적합합니다.
+- **brand-tertiary** — 브랜드 컬러를 활용해 가볍게 강조하고자 할 때 사용합니다. tertiary 특유의 낮은 위계를 유지하면서도 서비스의 정체성을 표현할 수 있어, 링크성 액션이나 보조 탐색 기능에 적합합니다.
+- **text** — 가장 낮은 위계의 액션에 사용합니다. 배경이나 테두리 없이 텍스트 중심으로 표현되어 화면 밀도를 높이지 않으며, 부가 기능, 링크성 동작, 보조 탐색 등 가벼운 상호작용에 적합합니다. 과도한 사용은 클릭 중요도를 낮출 수 있으므로 제한적으로 사용하는 것을 권장합니다.
+
+### Label 작성하기 (`1:273021` verbatim)
+
+버튼 라벨의 문구는 사용자가 수행할 행동을 **명확하고 예측 가능하게** 표현해야 합니다.
+
+항상 사용자 시점에서 작성하고, 동일한 액션에는 일관된 단어와 톤을 유지합니다.
+
+불필요한 단어나 모호한 표현은 피하고, 간결한 문장을 사용합니다. 사용자가 조치를 취하기 전에 대화 상자를 읽게 만드는 **모호하고 일반적인 라벨을 사용하지 마세요**.
+
+영문 표기시 버튼 레이블을 **모두 대문자 또는 대소문자를 섞어서 사용하지 마세요**.
+
+| ✓ Do | ✗ Don't |
+|---|---|
+| 전송하기 (간결한 동사) | DON'T USE UPPERCASE (전체 대문자) |
+| Use sentence case | Don't Use Title Case |
+| 시작하기 | 다음 (모호한 라벨) |
+| Dialog "삭제하시겠습니까?" + 삭제하기(destructive) / 취소 | Dialog "삭제하시겠습니까?" + 예 / 아니오 (모호한 yes/no) |
+| Dialog "Discard this comment?" + Cancel / Discard (액션 매칭) | Dialog "Discard this comment?" + Cancel / Delete (라벨/액션 불일치) |
+
+### Icon의 사용 (`1:273081` verbatim)
+
+아이콘은 버튼의 동작을 시각적으로 표현하고 강조하는 데 도움을 줍니다.
+
+아이콘은 라벨의 앞이나 뒤에 배치할 수 있으며, **Prefix는 주로 액션의 의미를 보조**하고, **Suffix는 Chevron처럼 동작을 보조하는 역할**을 합니다.
+
+| ✓ Do | ✗ Don't |
+|---|---|
+| `[✈ 전송]` (Prefix: 의미 보조) | `[🔍 환자 검색 ›]` (Prefix + Suffix 양쪽 동시) |
+| `[🔍 검색]` (Prefix) |  |
+| `[더 보기 ›]` (Suffix: chevron) |  |
+| `[필터 ▾]` (Suffix: chevron-down) |  |
+
+### Primary Button의 활용 (`1:273113` verbatim)
+
+사용자가 특정 작업을 수행하거나 흐름을 진행하거나, 확인 후 닫기 또는 작업을 완료할 수 있도록 **상황별로 프라이머리 버튼을 하나씩만** 사용하세요.
+
+화면에 여러개 프라이머리 버튼을 사용하지 마세요.
+
+프라이머리 버튼은 주요 동작을 수행해야 하며, 세컨더리 버튼은 해당 동작에 대한 대안을 제공할 수 있습니다.
+
+버튼이 콘텐츠와 함께 스크롤 되는 경우에는 primary 버튼을 맨 위에 배치합니다. 버튼들이 아래쪽에 고정되어 있다면 기본 버튼을 아래쪽에 배치합니다.
+
+> *예외: 웹의 경우 여러 패널이 표시되는 상황이라면 1개 이상의 값을 설정해도 됩니다. 이 경우에는 패널 당 하나씩 설정하는 것을 권장합니다.
+
+가이드 페이지(`1:273113`) 시각 구성 — 3개 sub-block:
+
+**Sub-block 1 (top, 2 Do + 1 Don't 3-column)**:
+
+| ✓ Do (위계 stacked) | ✓ Do (sheet) | ✗ Don't (2 primary) |
+|---|---|---|
+| primary / secondary / tertiary / subtle (1개씩) | Choose from library / Take new photo / Cancel | Primary / Primary / subtle |
+
+**Sub-block 2 (middle, Do horizontal hierarchy)**:
+- 행 1: Cancel(text) → tertiary `[Take new photo]` → secondary `[Take new photo]` → primary `[Choose from library]`
+- 행 2: subtle → tertiary → secondary → primary
+- 좌→우 위계 (primary가 가장 오른쪽)
+
+**Sub-block 3 (bottom, Don't horizontal)**:
+- 행 1: subtle → primary → tertiary → secondary (위계 뒤섞임)
+- 행 2: subtle → Primary → Primary (primary 2개)
+
+> **시각화 메모**: spec.html에서 가이드라인 카드 안의 버튼은 **자연 너비**(콘텐츠 크기) 사용. `width: 100%` / `flex: 1`로 영역 채우기 금지 — Figma 가이드 레이아웃 원본 따름.
+
+### 파괴적인 버튼 (`1:273181` verbatim)
+
+Destructive 버튼은 데이터를 영구적으로 삭제하는 것과 같이 **되돌리기 어렵거나 불가능한 작업에만** 사용하세요.
+
+파괴적인 행동에 대한 중요도가 낮을 경우, **Destructive-secondary** 버튼을 사용하세요.
+
+| ✓ Do | ✗ Don't |
+|---|---|
+| "삭제하시겠습니까?" + neutral-primary `[예]` / 아니오(text) | `[저장하기]` (destructive-primary) / 취소(text) — 일반 저장에 destructive 금지 |
+| "삭제하시겠습니까?" + destructive-primary `[삭제하기]` / 취소(text) |  |
+| destructive-primary `[Delete account]` / Cancel(text) |  |
+
+### 버튼 위계 (`1:273222` verbatim)
+
+버튼은 색상과 대비를 사용하여 세 가지 수준의 강조 및 계층 구조를 만듭니다.
+
+가장 강하게 강조된 버튼이 프라이머리 버튼(primary)이고, 그 다음이 세컨더리(secondary), 마지막이 터셔리 버튼(tertiary)입니다.
+
+대부분의 버튼에는 **뉴트럴 세컨더리(Neutral-Secondary)** 버튼을 사용하고 중요한 CTA 버튼에 **Neutral-primary** 버튼을 사용합니다.
+
+> *브랜드 프라이머리(Brand-primary) 버튼은 온라인 서비스의 경우, 주문, 결제 등 최종 단계의 CTA 버튼에 한정적으로 사용하세요.
+
+가이드 페이지(`1:273222`) 시각: 5행 가운데 정렬 — 좌측 위계 라벨(160px) + 우측 버튼(약 360px width).
+
+| 위계 | 예시 |
+|---|---|
+| Brand primary * | `[주문하기]` (orange) |
+| Neutral primary | `[저장하기]` (dark) |
+| Neutral secondary | `[수정하기]` (white + gray border) |
+| Neutral tertiary | `[수정하기]` (light gray) |
+| Subtle | `[취소]` (transparent text) |
+
+> **시각화 너비 가이드** (전체 가이드라인 공통):
+> - 짧은 라벨 (전송하기, 시작하기, 다음, 라벨): `min-width: 100px`
+> - 중간 라벨 (전체 dialog 버튼, Discard 등): `min-width: 80~240px`
+> - 긴 라벨 (긴 라벨을 사용하는 경우): `min-width: 280px`
+> - 위계 데모: `width: 360px` (라벨이 짧아도 시각 위계 강조)
+> - `width: 100%`로 컨테이너 전체 채우기 금지 — 버튼은 콘텐츠 + 적절한 여백 너비
+
+### 긴 라벨을 사용하는 경우 (`1:273260` verbatim)
+
+긴 라벨이 필요한 경우 버튼 그룹 레이아웃을 **Horizontal 에서 vertical 타입으로 전환**하여 적용하세요.
+
+버튼 위계에 맞게 위치를 사용하세요. **Primary 버튼은 오른쪽, 상단으로 적용**해야 합니다.
+
+| ✓ Do | ✗ Don't |
+|---|---|
+| Horizontal: 짧은 라벨 `[라벨]` `[라벨]` (primary 우측) | Horizontal: 긴 라벨 `[엄청 길고 긴 라벨을 사용하…]` `[엄청 길고 긴 라벨을 사용하…]` (overflow/잘림) |
+| Vertical: 긴 라벨 — primary `[긴 라벨을 사용하는 경우]` 상단 + secondary 하단 | Vertical: secondary 상단 + primary 하단 (위계 역전) |
+
+## 접근성 (`1:273285` verbatim)
+
+모든 사용자가 버튼의 기능을 인식하고 조작할 수 있도록, 아래 WCAG 및 ARIA 가이드라인을 준수합니다. 키보드, 스크린리더, 터치 등 다양한 입력 방식에서 일관된 접근성을 보장하여 사용 오류를 최소화합니다.
+
+### WCAG 2.2
+
+#### 키보드 접근성 (SC 2.1.1)
+모든 버튼은 Tab·Shift+Tab으로 포커스 이동이 가능하고, **Enter 또는 Space 키로 작동**해야 합니다.
+
+#### 포커스 가시성 (SC 2.4.7)
+버튼에 키보드 포커스가 있을 때 **2px 이상의 고대비 포커스 인디케이터**를 표시해야 합니다.
+
+#### 클릭 대상 크기 (PC 기준, SC 2.5.8)
+마우스·트랙패드 환경에서 클릭 가능한 버튼 목표(target)는 **최소 24×24 CSS 픽셀**을 확보해야 하며, 목표가 이보다 작을 경우 요소 간 **최소 24px 이상의 간격**을 유지해야 합니다.
+
+#### 비활성화 상태
+비활성화된 버튼은 시각적으로 명확히 구분되고, 클릭이 불가능해야 하며 **키보드 포커스에서 제외**됩니다.
+
+## 상호작용 가이드라인 (`1:273332` verbatim)
+
+### 탐색
+
+| 구분 | 설명 |
+|---|---|
+| Tab, Shift + Tab | 모든 버튼은 Tab, Shift + Tab 키를 눌렀을 때 접근할 수 있어야 한다. |
+
+### 실행
+
+| 구분 | 설명 |
+|---|---|
+| Click | 버튼의 동작을 실행시킨다. |
+| Enter, Space | 버튼이 초점을 가진 상태에서 버튼의 동작을 실행시킨다. |
 
 ## Usage Notes
 
 - 본 프로젝트에서는 **neutral 톤만 사용** (brand 톤은 사용자 명시 지시 시에만)
 - 한 화면에 `*-primary` 1개만 (위계: primary → secondary → tertiary → text)
 - `common/*` 오버레이는 state별로 base 위에 알파 합성 (default 위에 hover/pressed 알파 깔기)
-- focused는 외부(`focus-ring`) + 내부(`focus-ring 2`) 이중 링 — 단일 ring 금지
+- focused는 `common/focus-ring`(black) 단일 외부 링 — 버튼과 링 사이 투명 갭이 배경에 따라 흰색/회색으로 비침 (이전 "이중 링" 메모리 정정)
 - disabled 토큰 3종 공존:
   - `disabled` (단순)
   - `disabled-gray` (완전 비활성)

@@ -107,12 +107,40 @@ prop 형식: `type={default|image|initial}, style={circle|rounded|square}, size=
 | xl_64 | 64×64 | profile preview, dialog |
 | 2xl_80 | 80×80 | profile page hero, settings |
 
-## Booleans (인스턴스 prop)
+## 인스턴스 prop ↔ Style 9 variants 매핑
 
-- **activeRing**: 외곽 brand orange ring (활성 사용자 강조 — 채팅/통화 active)
-- **border**: 흰색 외곽선 (배경 위에 떠 있을 때 분리)
-- **indicator**: 우하단 점 (online status, 6~12px 크기)
-- **badge**: 우상단 카운트/아이콘 (알림, badges_v0.21_atom 사용)
+> **출처 명시**: 아래 boolean prop들은 가이드 페이지 별도 섹션이 아니라 `1:69377` "스타일(Style)" 행 9 variants에 통합 노출됨. 즉 Figma 가이드는 enum형 Style prop 1개로 보여주고, 실제 컴포넌트 인스턴스에서는 boolean toggle 조합으로 구현.
+
+| Style variant (Figma 가이드) | 대응 instance prop | 설명 |
+|---|---|---|
+| Default | (없음) | 기본 컨테이너만 |
+| Border | `border = true` | 외곽 ring (가시 회색 outline) |
+| Circle / Round / Square | `style = circle/rounded/square` | 모서리 형태 (3 단계 enum, 보조 axis) |
+| None | (없음) | 부가 요소 없음 (xs/sm은 이 옵션만 사용 가능) |
+| Number | `badge = true` | 우상단 카운트 뱃지 (`badges_v0.21_atom`) |
+| Icon Button | `iconButton = true` | 우하단 원형 quick action (전화/메시지 등) |
+| Dot | `indicator = true` | 우하단 status dot (~25% size, 흰색 2px ring) |
+
+추가 boolean prop:
+- **activeRing**: 외곽 brand orange ring (활성 사용자 강조). Style 9에는 없으나 인스턴스 prop으로 존재.
+
+> indicator/badge/iconButton는 avatar 외곽 코너에 배치되며 컨테이너 overflow를 벗어남 → 시각화 시 부모 wrapper에 `overflow: visible` 필수 (`.avatar` 자체는 image 클리핑 위해 `overflow: hidden` 유지).
+
+## 기본 아이콘 유형 (Default type)
+
+> `1:69582` 사용 예시 페이지에서 확인된 verbatim 패턴.
+
+`type=default` (이미지 없음, 이니셜 없음) 아바타는 **회색 배경(`common/avatar-bg-default` = `#c6c6c6`) + 흰색 사람 실루엣 아이콘** 으로 일관 표시. 모든 default 인스턴스(group/array/use case)에서 동일 아이콘 사용 — 별도 모드/사이즈 분기 없음.
+
+```
+[bg #c6c6c6]
+  └─ <svg fill=#fff>
+       <circle cx=12 cy=9 r=4>      ← 머리
+       <path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"> ← 몸통
+     </svg>
+```
+
+이니셜 폴백(initials)이나 photo 가 우선이고, 둘 다 없을 때만 default 아이콘 노출.
 
 ## Group — `✅avatar_group`
 
@@ -165,12 +193,18 @@ set ID: `4270:111923`. type × size = 12 variants:
 1. **아바타 (Avatar)** — H1 타이틀 + 설명 (1800×254)
 2. **구조 Anatomy** — H2 (Number 라벨링 1~6 도식)
 3. **유형 Type** — H2 + 4개 유형 설명 카드 (888×338 grid)
-4. (Light theme size matrix) — XS_24 / sm_32 / md_40 / lg_48 / xl_64 / 2xl_80
-5. (Light theme variant) — Default / Border / Circle / Round / Square / None / Number / Icon Button / Dot
-6. (avatar_group) — Single / 2 group / 3 groups / 4 groups
-7. (Spread vs Stack) — 두 레이아웃 비교
-8. **접근성** — H2 + 3개 H4 sub-section
-9. **사용가이드** — Do / Don't 박스 2세트 (각 880×656)
+4. **규격 Size & Style** (`1:69377`) — H1 sub-page
+   - **사이즈 (Size)** 행: XS_24 / sm_32 / md_40 / lg_48 / xl_64 / 2xl_80 (6 단계)
+   - **스타일 (Style)** 행: Default / Border / Circle / Round / Square / None / Number / Icon Button / Dot (9 시각 표현)
+     - Default / Border: container 외곽선 유무 (`border` boolean)
+     - Circle / Round / Square: 모서리 형태 (`style` prop, 3 단계)
+     - None / Number / Icon Button / Dot: 부가 요소 (boolean modifier 또는 badge slot)
+   - **주의**: xs/sm 사이즈는 `None` 뱃지 옵션만 선택 가능 (소형 아바타에 뱃지 부착 시 가독성 저하)
+5. **사용 예시 Use case** (`1:69454`) — H1 sub-page
+   - **그룹 아바타**: Single / 2 group / 3 groups / 4 groups — 4 단계 (stack 레이아웃, 흰색 외곽선으로 시각 분리)
+   - **아바타 적층 방식**: Spread vs Stack 비교 (5 아바타 나열)
+6. **접근성** — H2 + 3개 H4 sub-section
+7. **사용가이드** — Do / Don't 박스 2세트 (각 880×656)
 
 ## Usage Notes
 
