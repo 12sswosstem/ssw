@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 14 13.5" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="flatten">
+<g id="Vector">
+<path d="M14 11.5C14 12.6046 13.1046 13.5 12 13.5H2C0.895431 13.5 0 12.6046 0 11.5V5.5H14V11.5Z" fill="var(--fill-0, #565656)"/>
+<path d="M12 1.48926C13.1046 1.48926 14 2.38469 14 3.48926V4.5H0V3.48926C0 2.38469 0.895431 1.48926 2 1.48926H12Z" fill="var(--fill-0, #565656)"/>
+<path d="M3.5 0C3.77606 1.19867e-08 3.99987 0.22397 4 0.5V2H3V0.5C3.00013 0.22397 3.22394 3.20888e-08 3.5 0Z" fill="var(--fill-0, #565656)"/>
+<path d="M10.5 0C10.7761 1.19867e-08 10.9999 0.22397 11 0.5V2H10V0.5C10.0001 0.22397 10.2239 0 10.5 0Z" fill="var(--fill-0, #565656)"/>
+</g>
+</g>
+</svg>

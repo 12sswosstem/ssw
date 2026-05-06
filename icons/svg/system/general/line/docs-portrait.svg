@@ -1,0 +1,5 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="flatten">
+<path id="Union" d="M3 2H2V14H3L1.5 16L0 14H1V2H0L1.5 0L3 2ZM14.5 0C15.3284 0 16 0.671573 16 1.5V10.6631L10.9346 16H5.5C4.67174 15.9998 4 15.3283 4 14.5V1.5C4 0.671695 4.67174 0.00019788 5.5 0H14.5ZM5.5 1C5.22371 1.0002 5 1.2243 5 1.5V14.5C5 14.7757 5.22371 14.9998 5.5 15H9.75V10.25C9.75 9.97386 9.97386 9.75 10.25 9.75H15V1.5C15 1.22386 14.7761 1 14.5 1H5.5ZM10.75 14.7412L14.5381 10.75H10.75V14.7412Z" fill="var(--fill-0, #565656)"/>
+</g>
+</svg>

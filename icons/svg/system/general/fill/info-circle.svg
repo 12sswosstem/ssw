@@ -1,0 +1,5 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="flatten">
+<path id="Union" fill-rule="evenodd" clip-rule="evenodd" d="M8 0C12.4183 0 16 3.58172 16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0ZM6.22266 7.11133H7.11133V10.667H6.22266V11.5557H9.77734V10.667H8.88867V6.22168H6.22266V7.11133ZM8 3.55566C7.50912 3.55566 7.11139 3.95347 7.11133 4.44434C7.11133 4.93526 7.50908 5.33301 8 5.33301C8.49092 5.33301 8.88867 4.93526 8.88867 4.44434C8.88861 3.95347 8.49088 3.55566 8 3.55566Z" fill="var(--fill-0, #565656)"/>
+</g>
+</svg>

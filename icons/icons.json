@@ -1,25 +1,1587 @@
 {
   "_meta": {
-    "source": "Figma · 📌icon 라이브러리 Shape",
-    "page": "2806:36607",
-    "totalComponents": 2966,
-    "totalGroups": 318,
-    "states": ["default", "destructive", "disabled", "invert", "selected", "black"],
-    "todo": "Figma에서 추출하여 채우기"
+    "source": "Figma · 📌icon 라이브러리 State",
+    "fileKey": "Mqsx5woZR0ooLjQEkCfSn8",
+    "page": "3597:9614",
+    "totalSystemComponentSets": 385,
+    "exportedDefaultState": true,
+    "fillVariable": "var(--fill-0, #565656)",
+    "notes": [
+      "Each icon's default-state SVG is exported (state=default variant).",
+      "fill uses CSS custom property var(--fill-0, #565656) — override --fill-0 to theme.",
+      "2 icons (edit/fill/select, edit/line/select) are PNG due to Boolean Union — Figma serves as bitmap."
+    ]
   },
   "frames": {
-    "toolbar": { "id": "2806:36610", "count": 70 },
-    "pattern": { "id": "2853:39200", "count": 21 },
-    "nav": { "id": "2853:36854", "count": 36 },
-    "system": { "id": "2853:830", "count": 191 }
+    "system": {
+      "id": "3597:9615",
+      "componentSetCount": 385
+    }
   },
   "system": {
-    "general": {}
-  },
-  "arrow": {},
-  "edit": {},
-  "modal": {},
-  "patient": {},
-  "nav": {},
-  "toolbar": {}
+    "general": {
+      "fill": {
+        "add": {
+          "componentSetId": "3616:100292",
+          "path": "svg/system/general/fill/add.svg"
+        },
+        "add-circle": {
+          "componentSetId": "3616:100208",
+          "path": "svg/system/general/fill/add-circle.svg"
+        },
+        "address": {
+          "componentSetId": "3616:98934",
+          "path": "svg/system/general/fill/address.svg"
+        },
+        "agree": {
+          "componentSetId": "3616:100256",
+          "path": "svg/system/general/fill/agree.svg"
+        },
+        "alert-circle": {
+          "componentSetId": "3616:100100",
+          "path": "svg/system/general/fill/alert-circle.svg"
+        },
+        "alphabet-s": {
+          "componentSetId": "3616:101348",
+          "path": "svg/system/general/fill/alphabet-s.svg"
+        },
+        "block": {
+          "componentSetId": "3616:100304",
+          "path": "svg/system/general/fill/block.svg"
+        },
+        "bookmark": {
+          "componentSetId": "3616:99036",
+          "path": "svg/system/general/fill/bookmark.svg"
+        },
+        "brightness": {
+          "componentSetId": "3616:101408",
+          "path": "svg/system/general/fill/brightness.svg"
+        },
+        "calendar": {
+          "componentSetId": "3616:98916",
+          "path": "svg/system/general/fill/calendar.svg"
+        },
+        "call": {
+          "componentSetId": "3616:100915",
+          "path": "svg/system/general/fill/call.svg"
+        },
+        "call-incoming": {
+          "componentSetId": "3616:100891",
+          "path": "svg/system/general/fill/call-incoming.svg"
+        },
+        "call-missed": {
+          "componentSetId": "3616:100879",
+          "path": "svg/system/general/fill/call-missed.svg"
+        },
+        "call-outgoing": {
+          "componentSetId": "3616:100903",
+          "path": "svg/system/general/fill/call-outgoing.svg"
+        },
+        "camera": {
+          "componentSetId": "3616:99546",
+          "path": "svg/system/general/fill/camera.svg"
+        },
+        "capture": {
+          "componentSetId": "3616:101288",
+          "path": "svg/system/general/fill/capture.svg"
+        },
+        "card-view": {
+          "componentSetId": "4075:68924",
+          "path": "svg/system/general/fill/card-view.svg"
+        },
+        "change": {
+          "componentSetId": "3616:99473",
+          "path": "svg/system/general/fill/change.svg"
+        },
+        "check": {
+          "componentSetId": "3616:100244",
+          "path": "svg/system/general/fill/check.svg"
+        },
+        "check-circle": {
+          "componentSetId": "3616:100160",
+          "path": "svg/system/general/fill/check-circle.svg"
+        },
+        "check-tooth": {
+          "componentSetId": "3616:99030",
+          "path": "svg/system/general/fill/check-tooth.svg"
+        },
+        "contrast": {
+          "componentSetId": "4066:66800",
+          "path": "svg/system/general/fill/contrast.svg"
+        },
+        "copy": {
+          "componentSetId": "3616:100364",
+          "path": "svg/system/general/fill/copy.svg"
+        },
+        "cut": {
+          "componentSetId": "3616:100352",
+          "path": "svg/system/general/fill/cut.svg"
+        },
+        "delete": {
+          "componentSetId": "3616:100316",
+          "path": "svg/system/general/fill/delete.svg"
+        },
+        "delete-circle": {
+          "componentSetId": "3616:100112",
+          "path": "svg/system/general/fill/delete-circle.svg"
+        },
+        "disagree": {
+          "componentSetId": "3616:100268",
+          "path": "svg/system/general/fill/disagree.svg"
+        },
+        "docs": {
+          "componentSetId": "3616:100028",
+          "path": "svg/system/general/fill/docs.svg"
+        },
+        "docs-add": {
+          "componentSetId": "3616:100040",
+          "path": "svg/system/general/fill/docs-add.svg"
+        },
+        "docs-check": {
+          "componentSetId": "3616:100088",
+          "path": "svg/system/general/fill/docs-check.svg"
+        },
+        "docs-landscape": {
+          "componentSetId": "4038:67206",
+          "path": "svg/system/general/fill/docs-landscape.svg"
+        },
+        "docs-off": {
+          "componentSetId": "3616:100076",
+          "path": "svg/system/general/fill/docs-off.svg"
+        },
+        "docs-portrait": {
+          "componentSetId": "4038:67469",
+          "path": "svg/system/general/fill/docs-portrait.svg"
+        },
+        "docs-search": {
+          "componentSetId": "3616:100052",
+          "path": "svg/system/general/fill/docs-search.svg"
+        },
+        "docs-setting": {
+          "componentSetId": "3616:100064",
+          "path": "svg/system/general/fill/docs-setting.svg"
+        },
+        "download": {
+          "componentSetId": "3616:99486",
+          "path": "svg/system/general/fill/download.svg"
+        },
+        "drag-pan": {
+          "componentSetId": "3616:100009",
+          "path": "svg/system/general/fill/drag-pan.svg"
+        },
+        "dual-view": {
+          "componentSetId": "3981:65529",
+          "path": "svg/system/general/fill/dual-view.svg"
+        },
+        "e-chart": {
+          "componentSetId": "3616:99606",
+          "path": "svg/system/general/fill/e-chart.svg"
+        },
+        "edit": {
+          "componentSetId": "3616:98928",
+          "path": "svg/system/general/fill/edit.svg"
+        },
+        "excel": {
+          "componentSetId": "3616:99570",
+          "path": "svg/system/general/fill/excel.svg"
+        },
+        "family": {
+          "componentSetId": "3616:101276",
+          "path": "svg/system/general/fill/family.svg"
+        },
+        "favorite": {
+          "componentSetId": "3616:98952",
+          "path": "svg/system/general/fill/favorite.svg"
+        },
+        "filter": {
+          "componentSetId": "3616:100951",
+          "path": "svg/system/general/fill/filter.svg"
+        },
+        "flip-horiz": {
+          "componentSetId": "3616:100424",
+          "path": "svg/system/general/fill/flip-horiz.svg"
+        },
+        "flip-vert": {
+          "componentSetId": "3616:100412",
+          "path": "svg/system/general/fill/flip-vert.svg"
+        },
+        "folder": {
+          "componentSetId": "3616:98910",
+          "path": "svg/system/general/fill/folder.svg"
+        },
+        "grid-view": {
+          "componentSetId": "3616:100963",
+          "path": "svg/system/general/fill/grid-view.svg"
+        },
+        "heart": {
+          "componentSetId": "3648:52158",
+          "path": "svg/system/general/fill/heart.svg"
+        },
+        "help-circle": {
+          "componentSetId": "3616:100184",
+          "path": "svg/system/general/fill/help-circle.svg"
+        },
+        "history": {
+          "componentSetId": "3616:99461",
+          "path": "svg/system/general/fill/history.svg"
+        },
+        "home": {
+          "componentSetId": "3616:98940",
+          "path": "svg/system/general/fill/home.svg"
+        },
+        "horiz-center": {
+          "componentSetId": "3616:100448",
+          "path": "svg/system/general/fill/horiz-center.svg"
+        },
+        "horiz-left": {
+          "componentSetId": "3616:100436",
+          "path": "svg/system/general/fill/horiz-left.svg"
+        },
+        "horiz-right": {
+          "componentSetId": "3616:100460",
+          "path": "svg/system/general/fill/horiz-right.svg"
+        },
+        "image": {
+          "componentSetId": "3616:100376",
+          "path": "svg/system/general/fill/image.svg"
+        },
+        "info-circle": {
+          "componentSetId": "3616:100172",
+          "path": "svg/system/general/fill/info-circle.svg"
+        },
+        "invert": {
+          "componentSetId": "3616:101396",
+          "path": "svg/system/general/fill/invert.svg"
+        },
+        "keypad": {
+          "componentSetId": "4157:74426",
+          "path": "svg/system/general/fill/keypad.svg"
+        },
+        "layout-setting": {
+          "componentSetId": "3616:99973",
+          "path": "svg/system/general/fill/layout-setting.svg"
+        },
+        "link": {
+          "componentSetId": "3616:100220",
+          "path": "svg/system/general/fill/link.svg"
+        },
+        "list-delete": {
+          "componentSetId": "3616:100280",
+          "path": "svg/system/general/fill/list-delete.svg"
+        },
+        "list-view": {
+          "componentSetId": "3616:101240",
+          "path": "svg/system/general/fill/list-view.svg"
+        },
+        "lock": {
+          "componentSetId": "3616:99714",
+          "path": "svg/system/general/fill/lock.svg"
+        },
+        "logout": {
+          "componentSetId": "3616:101372",
+          "path": "svg/system/general/fill/logout.svg"
+        },
+        "mail": {
+          "componentSetId": "3616:98898",
+          "path": "svg/system/general/fill/mail.svg"
+        },
+        "mic-etc": {
+          "componentSetId": "3616:99106",
+          "path": "svg/system/general/fill/mic-etc.svg"
+        },
+        "mixed-view": {
+          "componentSetId": "3616:101252",
+          "path": "svg/system/general/fill/mixed-view.svg"
+        },
+        "monitor-setting": {
+          "componentSetId": "3616:100388",
+          "path": "svg/system/general/fill/monitor-setting.svg"
+        },
+        "more-horiz": {
+          "componentSetId": "3616:99522",
+          "path": "svg/system/general/fill/more-horiz.svg"
+        },
+        "more-vert": {
+          "componentSetId": "3616:99534",
+          "path": "svg/system/general/fill/more-vert.svg"
+        },
+        "new-patient": {
+          "componentSetId": "3906:66342",
+          "path": "svg/system/general/fill/new-patient.svg"
+        },
+        "next-reservation": {
+          "componentSetId": "3616:98922",
+          "path": "svg/system/general/fill/next-reservation.svg"
+        },
+        "panorama": {
+          "componentSetId": "3616:99642",
+          "path": "svg/system/general/fill/panorama.svg"
+        },
+        "pause-circle": {
+          "componentSetId": "3616:100124",
+          "path": "svg/system/general/fill/pause-circle.svg"
+        },
+        "pin": {
+          "componentSetId": "3616:99076",
+          "path": "svg/system/general/fill/pin.svg"
+        },
+        "plane": {
+          "componentSetId": "4001:66168",
+          "path": "svg/system/general/fill/plane.svg"
+        },
+        "play": {
+          "componentSetId": "3616:99997",
+          "path": "svg/system/general/fill/play.svg"
+        },
+        "play-circle": {
+          "componentSetId": "3616:100148",
+          "path": "svg/system/general/fill/play-circle.svg"
+        },
+        "print": {
+          "componentSetId": "3616:99082",
+          "path": "svg/system/general/fill/print.svg"
+        },
+        "profile": {
+          "componentSetId": "3616:100939",
+          "path": "svg/system/general/fill/profile.svg"
+        },
+        "recipient": {
+          "componentSetId": "3616:98904",
+          "path": "svg/system/general/fill/recipient.svg"
+        },
+        "reference": {
+          "componentSetId": "3616:100232",
+          "path": "svg/system/general/fill/reference.svg"
+        },
+        "refresh": {
+          "componentSetId": "3616:99449",
+          "path": "svg/system/general/fill/refresh.svg"
+        },
+        "save": {
+          "componentSetId": "3616:99666",
+          "path": "svg/system/general/fill/save.svg"
+        },
+        "save-as": {
+          "componentSetId": "3616:99678",
+          "path": "svg/system/general/fill/save-as.svg"
+        },
+        "search": {
+          "componentSetId": "3616:98892",
+          "path": "svg/system/general/fill/search.svg"
+        },
+        "search-insurance": {
+          "componentSetId": "3616:99024",
+          "path": "svg/system/general/fill/search-insurance.svg"
+        },
+        "send": {
+          "componentSetId": "3616:101264",
+          "path": "svg/system/general/fill/send.svg"
+        },
+        "setting": {
+          "componentSetId": "3616:98946",
+          "path": "svg/system/general/fill/setting.svg"
+        },
+        "shapes": {
+          "componentSetId": "3616:99985",
+          "path": "svg/system/general/fill/shapes.svg"
+        },
+        "slash": {
+          "componentSetId": "3794:52294",
+          "path": "svg/system/general/fill/slash.svg"
+        },
+        "slice-interval": {
+          "componentSetId": "3616:101384",
+          "path": "svg/system/general/fill/slice-interval.svg"
+        },
+        "slice-thickness": {
+          "componentSetId": "3616:101420",
+          "path": "svg/system/general/fill/slice-thickness.svg"
+        },
+        "square": {
+          "componentSetId": "3616:101300",
+          "path": "svg/system/general/fill/square.svg"
+        },
+        "squarebracket-left": {
+          "componentSetId": "3616:101324",
+          "path": "svg/system/general/fill/squarebracket-left.svg"
+        },
+        "squarebracket-right": {
+          "componentSetId": "3616:101336",
+          "path": "svg/system/general/fill/squarebracket-right.svg"
+        },
+        "stamp": {
+          "componentSetId": "3616:99088",
+          "path": "svg/system/general/fill/stamp.svg"
+        },
+        "stamp-done": {
+          "componentSetId": "3616:99094",
+          "path": "svg/system/general/fill/stamp-done.svg"
+        },
+        "statics": {
+          "componentSetId": "3616:100843",
+          "path": "svg/system/general/fill/statics.svg"
+        },
+        "stop-circle": {
+          "componentSetId": "3616:100136",
+          "path": "svg/system/general/fill/stop-circle.svg"
+        },
+        "substract-circle": {
+          "componentSetId": "3616:100196",
+          "path": "svg/system/general/fill/substract-circle.svg"
+        },
+        "subtract": {
+          "componentSetId": "4280:72343",
+          "path": "svg/system/general/fill/subtract.svg"
+        },
+        "supervisor-message": {
+          "componentSetId": "3616:99630",
+          "path": "svg/system/general/fill/supervisor-message.svg"
+        },
+        "table": {
+          "componentSetId": "3616:100328",
+          "path": "svg/system/general/fill/table.svg"
+        },
+        "tag": {
+          "componentSetId": "3616:99690",
+          "path": "svg/system/general/fill/tag.svg"
+        },
+        "tag-add": {
+          "componentSetId": "3616:99702",
+          "path": "svg/system/general/fill/tag-add.svg"
+        },
+        "talk": {
+          "componentSetId": "3616:100927",
+          "path": "svg/system/general/fill/talk.svg"
+        },
+        "text-list": {
+          "componentSetId": "3616:100346",
+          "path": "svg/system/general/fill/text-list.svg"
+        },
+        "textarea": {
+          "componentSetId": "3616:99558",
+          "path": "svg/system/general/fill/textarea.svg"
+        },
+        "textarea-resize": {
+          "componentSetId": "3961:65327",
+          "path": "svg/system/general/fill/textarea-resize.svg"
+        },
+        "thickness": {
+          "componentSetId": "3616:99618",
+          "path": "svg/system/general/fill/thickness.svg"
+        },
+        "tooth-mapping": {
+          "componentSetId": "3616:100400",
+          "path": "svg/system/general/fill/tooth-mapping.svg"
+        },
+        "tooth-system": {
+          "componentSetId": "3616:99654",
+          "path": "svg/system/general/fill/tooth-system.svg"
+        },
+        "triangle": {
+          "componentSetId": "3616:101312",
+          "path": "svg/system/general/fill/triangle.svg"
+        },
+        "turnleft": {
+          "componentSetId": "3616:99437",
+          "path": "svg/system/general/fill/turnleft.svg"
+        },
+        "turnright": {
+          "componentSetId": "3616:99190",
+          "path": "svg/system/general/fill/turnright.svg"
+        },
+        "two-view-close": {
+          "componentSetId": "3616:99594",
+          "path": "svg/system/general/fill/two-view-close.svg"
+        },
+        "two-view-open": {
+          "componentSetId": "3616:99582",
+          "path": "svg/system/general/fill/two-view-open.svg"
+        },
+        "unlock": {
+          "componentSetId": "3616:99961",
+          "path": "svg/system/general/fill/unlock.svg"
+        },
+        "vert-bottom": {
+          "componentSetId": "3616:100496",
+          "path": "svg/system/general/fill/vert-bottom.svg"
+        },
+        "vert-center": {
+          "componentSetId": "3616:100484",
+          "path": "svg/system/general/fill/vert-center.svg"
+        },
+        "vert-top": {
+          "componentSetId": "3616:100472",
+          "path": "svg/system/general/fill/vert-top.svg"
+        },
+        "visibility": {
+          "componentSetId": "3616:99112",
+          "path": "svg/system/general/fill/visibility.svg"
+        },
+        "visibility-off": {
+          "componentSetId": "3616:99118",
+          "path": "svg/system/general/fill/visibility-off.svg"
+        },
+        "voice": {
+          "componentSetId": "3616:99100",
+          "path": "svg/system/general/fill/voice.svg"
+        },
+        "wifi": {
+          "componentSetId": "3616:100867",
+          "path": "svg/system/general/fill/wifi.svg"
+        },
+        "wifi-off": {
+          "componentSetId": "3616:100861",
+          "path": "svg/system/general/fill/wifi-off.svg"
+        },
+        "zoom-in": {
+          "componentSetId": "3616:99498",
+          "path": "svg/system/general/fill/zoom-in.svg"
+        },
+        "zoom-out": {
+          "componentSetId": "3616:99510",
+          "path": "svg/system/general/fill/zoom-out.svg"
+        }
+      },
+      "line": {
+        "add": {
+          "componentSetId": "3616:100298",
+          "path": "svg/system/general/line/add.svg"
+        },
+        "add-circle": {
+          "componentSetId": "3616:100214",
+          "path": "svg/system/general/line/add-circle.svg"
+        },
+        "address": {
+          "componentSetId": "3616:98976",
+          "path": "svg/system/general/line/address.svg"
+        },
+        "agree": {
+          "componentSetId": "3616:100262",
+          "path": "svg/system/general/line/agree.svg"
+        },
+        "alert-circle": {
+          "componentSetId": "3616:100106",
+          "path": "svg/system/general/line/alert-circle.svg"
+        },
+        "alphabet-s": {
+          "componentSetId": "3616:101354",
+          "path": "svg/system/general/line/alphabet-s.svg"
+        },
+        "block": {
+          "componentSetId": "3616:100310",
+          "path": "svg/system/general/line/block.svg"
+        },
+        "bookmark": {
+          "componentSetId": "3616:99172",
+          "path": "svg/system/general/line/bookmark.svg"
+        },
+        "brightness": {
+          "componentSetId": "3616:101414",
+          "path": "svg/system/general/line/brightness.svg"
+        },
+        "calendar": {
+          "componentSetId": "3616:98994",
+          "path": "svg/system/general/line/calendar.svg"
+        },
+        "call": {
+          "componentSetId": "3616:100921",
+          "path": "svg/system/general/line/call.svg"
+        },
+        "call-incoming": {
+          "componentSetId": "3616:100897",
+          "path": "svg/system/general/line/call-incoming.svg"
+        },
+        "call-missed": {
+          "componentSetId": "3616:100885",
+          "path": "svg/system/general/line/call-missed.svg"
+        },
+        "call-outgoing": {
+          "componentSetId": "3616:100909",
+          "path": "svg/system/general/line/call-outgoing.svg"
+        },
+        "camera": {
+          "componentSetId": "3616:99552",
+          "path": "svg/system/general/line/camera.svg"
+        },
+        "capture": {
+          "componentSetId": "3616:101294",
+          "path": "svg/system/general/line/capture.svg"
+        },
+        "card-view": {
+          "componentSetId": "4075:68935",
+          "path": "svg/system/general/line/card-view.svg"
+        },
+        "change": {
+          "componentSetId": "3616:99480",
+          "path": "svg/system/general/line/change.svg"
+        },
+        "check": {
+          "componentSetId": "3616:100250",
+          "path": "svg/system/general/line/check.svg"
+        },
+        "check-circle": {
+          "componentSetId": "3616:100166",
+          "path": "svg/system/general/line/check-circle.svg"
+        },
+        "check-tooth": {
+          "componentSetId": "3616:99178",
+          "path": "svg/system/general/line/check-tooth.svg"
+        },
+        "contrast": {
+          "componentSetId": "4066:66811",
+          "path": "svg/system/general/line/contrast.svg"
+        },
+        "copy": {
+          "componentSetId": "3616:100370",
+          "path": "svg/system/general/line/copy.svg"
+        },
+        "cut": {
+          "componentSetId": "3616:100358",
+          "path": "svg/system/general/line/cut.svg"
+        },
+        "delete": {
+          "componentSetId": "3616:100322",
+          "path": "svg/system/general/line/delete.svg"
+        },
+        "delete-circle": {
+          "componentSetId": "3616:100118",
+          "path": "svg/system/general/line/delete-circle.svg"
+        },
+        "disagree": {
+          "componentSetId": "3616:100274",
+          "path": "svg/system/general/line/disagree.svg"
+        },
+        "docs": {
+          "componentSetId": "3616:100034",
+          "path": "svg/system/general/line/docs.svg"
+        },
+        "docs-add": {
+          "componentSetId": "3616:100046",
+          "path": "svg/system/general/line/docs-add.svg"
+        },
+        "docs-check": {
+          "componentSetId": "3616:100094",
+          "path": "svg/system/general/line/docs-check.svg"
+        },
+        "docs-landscape": {
+          "componentSetId": "4038:67217",
+          "path": "svg/system/general/line/docs-landscape.svg"
+        },
+        "docs-off": {
+          "componentSetId": "3616:100082",
+          "path": "svg/system/general/line/docs-off.svg"
+        },
+        "docs-portrait": {
+          "componentSetId": "4038:67480",
+          "path": "svg/system/general/line/docs-portrait.svg"
+        },
+        "docs-search": {
+          "componentSetId": "3616:100058",
+          "path": "svg/system/general/line/docs-search.svg"
+        },
+        "docs-setting": {
+          "componentSetId": "3616:100070",
+          "path": "svg/system/general/line/docs-setting.svg"
+        },
+        "download": {
+          "componentSetId": "3616:99492",
+          "path": "svg/system/general/line/download.svg"
+        },
+        "drag-pan": {
+          "componentSetId": "3616:100015",
+          "path": "svg/system/general/line/drag-pan.svg"
+        },
+        "dual-view": {
+          "componentSetId": "3981:65540",
+          "path": "svg/system/general/line/dual-view.svg"
+        },
+        "e-chart": {
+          "componentSetId": "3616:99612",
+          "path": "svg/system/general/line/e-chart.svg"
+        },
+        "edit": {
+          "componentSetId": "3616:98982",
+          "path": "svg/system/general/line/edit.svg"
+        },
+        "excel": {
+          "componentSetId": "3616:99576",
+          "path": "svg/system/general/line/excel.svg"
+        },
+        "family": {
+          "componentSetId": "3616:101282",
+          "path": "svg/system/general/line/family.svg"
+        },
+        "favorite": {
+          "componentSetId": "3616:98958",
+          "path": "svg/system/general/line/favorite.svg"
+        },
+        "filter": {
+          "componentSetId": "3616:100957",
+          "path": "svg/system/general/line/filter.svg"
+        },
+        "flip-horiz": {
+          "componentSetId": "3616:100430",
+          "path": "svg/system/general/line/flip-horiz.svg"
+        },
+        "flip-vert": {
+          "componentSetId": "3616:100418",
+          "path": "svg/system/general/line/flip-vert.svg"
+        },
+        "folder": {
+          "componentSetId": "3616:99000",
+          "path": "svg/system/general/line/folder.svg"
+        },
+        "grid-view": {
+          "componentSetId": "3616:101234",
+          "path": "svg/system/general/line/grid-view.svg"
+        },
+        "heart": {
+          "componentSetId": "3648:52164",
+          "path": "svg/system/general/line/heart.svg"
+        },
+        "help-circle": {
+          "componentSetId": "3616:100190",
+          "path": "svg/system/general/line/help-circle.svg"
+        },
+        "history": {
+          "componentSetId": "3616:99467",
+          "path": "svg/system/general/line/history.svg"
+        },
+        "home": {
+          "componentSetId": "3616:98970",
+          "path": "svg/system/general/line/home.svg"
+        },
+        "horiz-center": {
+          "componentSetId": "3616:100454",
+          "path": "svg/system/general/line/horiz-center.svg"
+        },
+        "horiz-left": {
+          "componentSetId": "3616:100442",
+          "path": "svg/system/general/line/horiz-left.svg"
+        },
+        "horiz-right": {
+          "componentSetId": "3616:100466",
+          "path": "svg/system/general/line/horiz-right.svg"
+        },
+        "image": {
+          "componentSetId": "3616:100382",
+          "path": "svg/system/general/line/image.svg"
+        },
+        "image-2": {
+          "componentSetId": "unknown",
+          "path": "svg/system/general/line/image-2.svg"
+        },
+        "info-circle": {
+          "componentSetId": "3616:100178",
+          "path": "svg/system/general/line/info-circle.svg"
+        },
+        "invert": {
+          "componentSetId": "3616:101402",
+          "path": "svg/system/general/line/invert.svg"
+        },
+        "keypad": {
+          "componentSetId": "4157:74437",
+          "path": "svg/system/general/line/keypad.svg"
+        },
+        "layout-setting": {
+          "componentSetId": "3616:99979",
+          "path": "svg/system/general/line/layout-setting.svg"
+        },
+        "link": {
+          "componentSetId": "3616:100226",
+          "path": "svg/system/general/line/link.svg"
+        },
+        "list-delete": {
+          "componentSetId": "3616:100286",
+          "path": "svg/system/general/line/list-delete.svg"
+        },
+        "list-view": {
+          "componentSetId": "3616:101246",
+          "path": "svg/system/general/line/list-view.svg"
+        },
+        "lock": {
+          "componentSetId": "3616:99955",
+          "path": "svg/system/general/line/lock.svg"
+        },
+        "logout": {
+          "componentSetId": "3616:101378",
+          "path": "svg/system/general/line/logout.svg"
+        },
+        "mail": {
+          "componentSetId": "3616:99012",
+          "path": "svg/system/general/line/mail.svg"
+        },
+        "mic-etc": {
+          "componentSetId": "3616:99136",
+          "path": "svg/system/general/line/mic-etc.svg"
+        },
+        "mixed-view": {
+          "componentSetId": "3616:101258",
+          "path": "svg/system/general/line/mixed-view.svg"
+        },
+        "monitor-setting": {
+          "componentSetId": "3616:100394",
+          "path": "svg/system/general/line/monitor-setting.svg"
+        },
+        "more-horiz": {
+          "componentSetId": "3616:99528",
+          "path": "svg/system/general/line/more-horiz.svg"
+        },
+        "more-vert": {
+          "componentSetId": "3616:99540",
+          "path": "svg/system/general/line/more-vert.svg"
+        },
+        "new-patient": {
+          "componentSetId": "3906:66353",
+          "path": "svg/system/general/line/new-patient.svg"
+        },
+        "next-reservation": {
+          "componentSetId": "3616:98988",
+          "path": "svg/system/general/line/next-reservation.svg"
+        },
+        "panorama": {
+          "componentSetId": "3616:99648",
+          "path": "svg/system/general/line/panorama.svg"
+        },
+        "pause-circle": {
+          "componentSetId": "3616:100130",
+          "path": "svg/system/general/line/pause-circle.svg"
+        },
+        "pin": {
+          "componentSetId": "3616:99166",
+          "path": "svg/system/general/line/pin.svg"
+        },
+        "plane": {
+          "componentSetId": "4001:66179",
+          "path": "svg/system/general/line/plane.svg"
+        },
+        "play": {
+          "componentSetId": "3616:100003",
+          "path": "svg/system/general/line/play.svg"
+        },
+        "play-circle": {
+          "componentSetId": "3616:100154",
+          "path": "svg/system/general/line/play-circle.svg"
+        },
+        "print": {
+          "componentSetId": "3616:99160",
+          "path": "svg/system/general/line/print.svg"
+        },
+        "profile": {
+          "componentSetId": "3616:100945",
+          "path": "svg/system/general/line/profile.svg"
+        },
+        "recipient": {
+          "componentSetId": "3616:99006",
+          "path": "svg/system/general/line/recipient.svg"
+        },
+        "reference": {
+          "componentSetId": "3616:100238",
+          "path": "svg/system/general/line/reference.svg"
+        },
+        "refresh": {
+          "componentSetId": "3616:99455",
+          "path": "svg/system/general/line/refresh.svg"
+        },
+        "save": {
+          "componentSetId": "3616:99672",
+          "path": "svg/system/general/line/save.svg"
+        },
+        "save-as": {
+          "componentSetId": "3616:99684",
+          "path": "svg/system/general/line/save-as.svg"
+        },
+        "search": {
+          "componentSetId": "3616:99018",
+          "path": "svg/system/general/line/search.svg"
+        },
+        "search-insurance": {
+          "componentSetId": "3616:99184",
+          "path": "svg/system/general/line/search-insurance.svg"
+        },
+        "send": {
+          "componentSetId": "3616:101270",
+          "path": "svg/system/general/line/send.svg"
+        },
+        "setting": {
+          "componentSetId": "3616:98964",
+          "path": "svg/system/general/line/setting.svg"
+        },
+        "shapes": {
+          "componentSetId": "3616:99991",
+          "path": "svg/system/general/line/shapes.svg"
+        },
+        "slash": {
+          "componentSetId": "3794:52300",
+          "path": "svg/system/general/line/slash.svg"
+        },
+        "slice-interval": {
+          "componentSetId": "3616:101390",
+          "path": "svg/system/general/line/slice-interval.svg"
+        },
+        "slice-thickness": {
+          "componentSetId": "3616:101426",
+          "path": "svg/system/general/line/slice-thickness.svg"
+        },
+        "square": {
+          "componentSetId": "3616:101306",
+          "path": "svg/system/general/line/square.svg"
+        },
+        "squarebracket-left": {
+          "componentSetId": "3616:101330",
+          "path": "svg/system/general/line/squarebracket-left.svg"
+        },
+        "squarebracket-right": {
+          "componentSetId": "3616:101342",
+          "path": "svg/system/general/line/squarebracket-right.svg"
+        },
+        "stamp": {
+          "componentSetId": "3616:99154",
+          "path": "svg/system/general/line/stamp.svg"
+        },
+        "stamp-done": {
+          "componentSetId": "3616:99148",
+          "path": "svg/system/general/line/stamp-done.svg"
+        },
+        "statics": {
+          "componentSetId": "3616:100849",
+          "path": "svg/system/general/line/statics.svg"
+        },
+        "stop-circle": {
+          "componentSetId": "3616:100142",
+          "path": "svg/system/general/line/stop-circle.svg"
+        },
+        "substract-circle": {
+          "componentSetId": "3616:100202",
+          "path": "svg/system/general/line/substract-circle.svg"
+        },
+        "subtract": {
+          "componentSetId": "4280:72354",
+          "path": "svg/system/general/line/subtract.svg"
+        },
+        "supervisor-message": {
+          "componentSetId": "3616:99636",
+          "path": "svg/system/general/line/supervisor-message.svg"
+        },
+        "table": {
+          "componentSetId": "3616:100334",
+          "path": "svg/system/general/line/table.svg"
+        },
+        "tag": {
+          "componentSetId": "3616:99696",
+          "path": "svg/system/general/line/tag.svg"
+        },
+        "tag-add": {
+          "componentSetId": "3616:99708",
+          "path": "svg/system/general/line/tag-add.svg"
+        },
+        "talk": {
+          "componentSetId": "3616:100933",
+          "path": "svg/system/general/line/talk.svg"
+        },
+        "text-list": {
+          "componentSetId": "3616:100340",
+          "path": "svg/system/general/line/text-list.svg"
+        },
+        "textarea": {
+          "componentSetId": "3616:99564",
+          "path": "svg/system/general/line/textarea.svg"
+        },
+        "textarea-resize": {
+          "componentSetId": "3961:65333",
+          "path": "svg/system/general/line/textarea-resize.svg"
+        },
+        "thickness": {
+          "componentSetId": "3616:99624",
+          "path": "svg/system/general/line/thickness.svg"
+        },
+        "tooth-mapping": {
+          "componentSetId": "3616:100406",
+          "path": "svg/system/general/line/tooth-mapping.svg"
+        },
+        "tooth-system": {
+          "componentSetId": "3616:99660",
+          "path": "svg/system/general/line/tooth-system.svg"
+        },
+        "triangle": {
+          "componentSetId": "3616:101318",
+          "path": "svg/system/general/line/triangle.svg"
+        },
+        "turnleft": {
+          "componentSetId": "3616:99443",
+          "path": "svg/system/general/line/turnleft.svg"
+        },
+        "turnright": {
+          "componentSetId": "3616:99196",
+          "path": "svg/system/general/line/turnright.svg"
+        },
+        "two-view-close": {
+          "componentSetId": "3616:99600",
+          "path": "svg/system/general/line/two-view-close.svg"
+        },
+        "two-view-open": {
+          "componentSetId": "3616:99588",
+          "path": "svg/system/general/line/two-view-open.svg"
+        },
+        "unlock": {
+          "componentSetId": "3616:99967",
+          "path": "svg/system/general/line/unlock.svg"
+        },
+        "vert-bottom": {
+          "componentSetId": "3616:100502",
+          "path": "svg/system/general/line/vert-bottom.svg"
+        },
+        "vert-center": {
+          "componentSetId": "3616:100490",
+          "path": "svg/system/general/line/vert-center.svg"
+        },
+        "vert-top": {
+          "componentSetId": "3616:100478",
+          "path": "svg/system/general/line/vert-top.svg"
+        },
+        "visibility": {
+          "componentSetId": "3616:99130",
+          "path": "svg/system/general/line/visibility.svg"
+        },
+        "visibility-off": {
+          "componentSetId": "3616:99124",
+          "path": "svg/system/general/line/visibility-off.svg"
+        },
+        "voice": {
+          "componentSetId": "3616:99142",
+          "path": "svg/system/general/line/voice.svg"
+        },
+        "wifi": {
+          "componentSetId": "3616:100873",
+          "path": "svg/system/general/line/wifi.svg"
+        },
+        "wifi-off": {
+          "componentSetId": "3616:100855",
+          "path": "svg/system/general/line/wifi-off.svg"
+        },
+        "zoom-in": {
+          "componentSetId": "3616:99504",
+          "path": "svg/system/general/line/zoom-in.svg"
+        },
+        "zoom-out": {
+          "componentSetId": "3616:99516",
+          "path": "svg/system/general/line/zoom-out.svg"
+        }
+      }
+    },
+    "arrow": {
+      "fill": {
+        "arrow-left": {
+          "componentSetId": "3620:123753",
+          "path": "svg/system/arrow/fill/arrow-left.svg"
+        },
+        "arrow-right": {
+          "componentSetId": "3620:123765",
+          "path": "svg/system/arrow/fill/arrow-right.svg"
+        },
+        "caret-down": {
+          "componentSetId": "3620:123687",
+          "path": "svg/system/arrow/fill/caret-down.svg"
+        },
+        "caret-leftcaret-left": {
+          "componentSetId": "3620:123657",
+          "path": "svg/system/arrow/fill/caret-leftcaret-left.svg"
+        },
+        "caret-leftcaret-left-2": {
+          "componentSetId": "unknown",
+          "path": "svg/system/arrow/fill/caret-leftcaret-left-2.svg"
+        },
+        "caret-right": {
+          "componentSetId": "3620:123675",
+          "path": "svg/system/arrow/fill/caret-right.svg"
+        },
+        "caret-up": {
+          "componentSetId": "3620:123693",
+          "path": "svg/system/arrow/fill/caret-up.svg"
+        },
+        "collapse": {
+          "componentSetId": "3620:123609",
+          "path": "svg/system/arrow/fill/collapse.svg"
+        },
+        "double-down": {
+          "componentSetId": "3620:123573",
+          "path": "svg/system/arrow/fill/double-down.svg"
+        },
+        "double-left": {
+          "componentSetId": "3620:123597",
+          "path": "svg/system/arrow/fill/double-left.svg"
+        },
+        "double-right": {
+          "componentSetId": "3620:123585",
+          "path": "svg/system/arrow/fill/double-right.svg"
+        },
+        "double-up": {
+          "componentSetId": "3620:123561",
+          "path": "svg/system/arrow/fill/double-up.svg"
+        },
+        "down": {
+          "componentSetId": "3620:123525",
+          "path": "svg/system/arrow/fill/down.svg"
+        },
+        "down-circle": {
+          "componentSetId": "3828:53738",
+          "path": "svg/system/arrow/fill/down-circle.svg"
+        },
+        "downward": {
+          "componentSetId": "3620:123717",
+          "path": "svg/system/arrow/fill/downward.svg"
+        },
+        "expand": {
+          "componentSetId": "3620:123621",
+          "path": "svg/system/arrow/fill/expand.svg"
+        },
+        "left": {
+          "componentSetId": "3620:123549",
+          "path": "svg/system/arrow/fill/left.svg"
+        },
+        "left-circle": {
+          "componentSetId": "3828:53997",
+          "path": "svg/system/arrow/fill/left-circle.svg"
+        },
+        "redo": {
+          "componentSetId": "3620:123789",
+          "path": "svg/system/arrow/fill/redo.svg"
+        },
+        "right": {
+          "componentSetId": "3620:123537",
+          "path": "svg/system/arrow/fill/right.svg"
+        },
+        "right-circle": {
+          "componentSetId": "3828:53985",
+          "path": "svg/system/arrow/fill/right-circle.svg"
+        },
+        "south-east": {
+          "componentSetId": "3620:123741",
+          "path": "svg/system/arrow/fill/south-east.svg"
+        },
+        "south-west": {
+          "componentSetId": "3620:123729",
+          "path": "svg/system/arrow/fill/south-west.svg"
+        },
+        "swap-horiz": {
+          "componentSetId": "3620:123639",
+          "path": "svg/system/arrow/fill/swap-horiz.svg"
+        },
+        "swap-vert": {
+          "componentSetId": "3620:123645",
+          "path": "svg/system/arrow/fill/swap-vert.svg"
+        },
+        "undo": {
+          "componentSetId": "3620:123777",
+          "path": "svg/system/arrow/fill/undo.svg"
+        },
+        "up": {
+          "componentSetId": "3620:123512",
+          "path": "svg/system/arrow/fill/up.svg"
+        },
+        "up-circle": {
+          "componentSetId": "3828:53726",
+          "path": "svg/system/arrow/fill/up-circle.svg"
+        },
+        "upward": {
+          "componentSetId": "3620:123705",
+          "path": "svg/system/arrow/fill/upward.svg"
+        }
+      },
+      "line": {
+        "arrow-left": {
+          "componentSetId": "3620:123759",
+          "path": "svg/system/arrow/line/arrow-left.svg"
+        },
+        "arrow-right": {
+          "componentSetId": "3620:123771",
+          "path": "svg/system/arrow/line/arrow-right.svg"
+        },
+        "caret-down": {
+          "componentSetId": "3620:123681",
+          "path": "svg/system/arrow/line/caret-down.svg"
+        },
+        "caret-leftcaret-left": {
+          "componentSetId": "3620:123663",
+          "path": "svg/system/arrow/line/caret-leftcaret-left.svg"
+        },
+        "caret-leftcaret-left-2": {
+          "componentSetId": "unknown",
+          "path": "svg/system/arrow/line/caret-leftcaret-left-2.svg"
+        },
+        "caret-right": {
+          "componentSetId": "3620:123669",
+          "path": "svg/system/arrow/line/caret-right.svg"
+        },
+        "caret-up": {
+          "componentSetId": "3620:123699",
+          "path": "svg/system/arrow/line/caret-up.svg"
+        },
+        "collapse": {
+          "componentSetId": "3620:123615",
+          "path": "svg/system/arrow/line/collapse.svg"
+        },
+        "double-down": {
+          "componentSetId": "3620:123579",
+          "path": "svg/system/arrow/line/double-down.svg"
+        },
+        "double-left": {
+          "componentSetId": "3620:123603",
+          "path": "svg/system/arrow/line/double-left.svg"
+        },
+        "double-right": {
+          "componentSetId": "3620:123591",
+          "path": "svg/system/arrow/line/double-right.svg"
+        },
+        "double-up": {
+          "componentSetId": "3620:123567",
+          "path": "svg/system/arrow/line/double-up.svg"
+        },
+        "down": {
+          "componentSetId": "3620:123531",
+          "path": "svg/system/arrow/line/down.svg"
+        },
+        "down-circle": {
+          "componentSetId": "3828:53979",
+          "path": "svg/system/arrow/line/down-circle.svg"
+        },
+        "downward": {
+          "componentSetId": "3620:123723",
+          "path": "svg/system/arrow/line/downward.svg"
+        },
+        "expand": {
+          "componentSetId": "3620:123627",
+          "path": "svg/system/arrow/line/expand.svg"
+        },
+        "left": {
+          "componentSetId": "3620:123555",
+          "path": "svg/system/arrow/line/left.svg"
+        },
+        "left-circle": {
+          "componentSetId": "3828:54003",
+          "path": "svg/system/arrow/line/left-circle.svg"
+        },
+        "redo": {
+          "componentSetId": "3620:123795",
+          "path": "svg/system/arrow/line/redo.svg"
+        },
+        "right": {
+          "componentSetId": "3620:123543",
+          "path": "svg/system/arrow/line/right.svg"
+        },
+        "right-circle": {
+          "componentSetId": "3828:53991",
+          "path": "svg/system/arrow/line/right-circle.svg"
+        },
+        "south-east": {
+          "componentSetId": "3620:123747",
+          "path": "svg/system/arrow/line/south-east.svg"
+        },
+        "south-west": {
+          "componentSetId": "3620:123735",
+          "path": "svg/system/arrow/line/south-west.svg"
+        },
+        "swap-horiz": {
+          "componentSetId": "3620:123633",
+          "path": "svg/system/arrow/line/swap-horiz.svg"
+        },
+        "swap-vert": {
+          "componentSetId": "3620:123651",
+          "path": "svg/system/arrow/line/swap-vert.svg"
+        },
+        "undo": {
+          "componentSetId": "3620:123783",
+          "path": "svg/system/arrow/line/undo.svg"
+        },
+        "up": {
+          "componentSetId": "3620:123519",
+          "path": "svg/system/arrow/line/up.svg"
+        },
+        "up-circle": {
+          "componentSetId": "3828:53732",
+          "path": "svg/system/arrow/line/up-circle.svg"
+        },
+        "upward": {
+          "componentSetId": "3620:123711",
+          "path": "svg/system/arrow/line/upward.svg"
+        }
+      }
+    },
+    "edit": {
+      "fill": {
+        "bold": {
+          "componentSetId": "3623:54809",
+          "path": "svg/system/edit/fill/bold.svg"
+        },
+        "color-fill": {
+          "componentSetId": "3623:54947",
+          "path": "svg/system/edit/fill/color-fill.svg"
+        },
+        "eraser": {
+          "componentSetId": "3623:55405",
+          "path": "svg/system/edit/fill/eraser.svg"
+        },
+        "eraser-magic": {
+          "componentSetId": "3623:55417",
+          "path": "svg/system/edit/fill/eraser-magic.svg"
+        },
+        "fontcolor": {
+          "componentSetId": "3623:54959",
+          "path": "svg/system/edit/fill/fontcolor.svg"
+        },
+        "fontfamily": {
+          "componentSetId": "3623:55008",
+          "path": "svg/system/edit/fill/fontfamily.svg"
+        },
+        "fontsize-down": {
+          "componentSetId": "3623:55020",
+          "path": "svg/system/edit/fill/fontsize-down.svg"
+        },
+        "fontsize-up": {
+          "componentSetId": "3623:55032",
+          "path": "svg/system/edit/fill/fontsize-up.svg"
+        },
+        "hand": {
+          "componentSetId": "3623:54923",
+          "path": "svg/system/edit/fill/hand.svg"
+        },
+        "hand-draw": {
+          "componentSetId": "3623:54935",
+          "path": "svg/system/edit/fill/hand-draw.svg"
+        },
+        "highlighter": {
+          "componentSetId": "3623:55056",
+          "path": "svg/system/edit/fill/highlighter.svg"
+        },
+        "highlighter-2": {
+          "componentSetId": "unknown",
+          "path": "svg/system/edit/fill/highlighter-2.svg"
+        },
+        "italic": {
+          "componentSetId": "3623:54821",
+          "path": "svg/system/edit/fill/italic.svg"
+        },
+        "lasso": {
+          "componentSetId": "3623:54833",
+          "path": "svg/system/edit/fill/lasso.svg"
+        },
+        "paragraph-center": {
+          "componentSetId": "3623:54760",
+          "path": "svg/system/edit/fill/paragraph-center.svg"
+        },
+        "paragraph-justify": {
+          "componentSetId": "3623:54791",
+          "path": "svg/system/edit/fill/paragraph-justify.svg"
+        },
+        "paragraph-left": {
+          "componentSetId": "3623:54772",
+          "path": "svg/system/edit/fill/paragraph-left.svg"
+        },
+        "paragraph-right": {
+          "componentSetId": "3623:54748",
+          "path": "svg/system/edit/fill/paragraph-right.svg"
+        },
+        "pen": {
+          "componentSetId": "3623:55393",
+          "path": "svg/system/edit/fill/pen.svg"
+        },
+        "pen-2": {
+          "componentSetId": "unknown",
+          "path": "svg/system/edit/fill/pen-2.svg"
+        },
+        "pencil": {
+          "componentSetId": "3623:55080",
+          "path": "svg/system/edit/fill/pencil.svg"
+        },
+        "pencil-2": {
+          "componentSetId": "unknown",
+          "path": "svg/system/edit/fill/pencil-2.svg"
+        },
+        "pencil-thin": {
+          "componentSetId": "3623:55369",
+          "path": "svg/system/edit/fill/pencil-thin.svg"
+        },
+        "pencil-thin-2": {
+          "componentSetId": "unknown",
+          "path": "svg/system/edit/fill/pencil-thin-2.svg"
+        },
+        "select": {
+          "componentSetId": "3623:54797",
+          "path": "svg/system/edit/fill/select.svg"
+        },
+        "select-all": {
+          "componentSetId": "3623:55429",
+          "path": "svg/system/edit/fill/select-all.svg"
+        },
+        "strikethrough": {
+          "componentSetId": "3623:54990",
+          "path": "svg/system/edit/fill/strikethrough.svg"
+        },
+        "underline": {
+          "componentSetId": "3623:55044",
+          "path": "svg/system/edit/fill/underline.svg"
+        }
+      },
+      "line": {
+        "bold": {
+          "componentSetId": "3623:54815",
+          "path": "svg/system/edit/line/bold.svg"
+        },
+        "color-fill": {
+          "componentSetId": "3623:54953",
+          "path": "svg/system/edit/line/color-fill.svg"
+        },
+        "eraser": {
+          "componentSetId": "3623:55411",
+          "path": "svg/system/edit/line/eraser.svg"
+        },
+        "eraser-magic": {
+          "componentSetId": "3623:55423",
+          "path": "svg/system/edit/line/eraser-magic.svg"
+        },
+        "fontcolor": {
+          "componentSetId": "3623:54996",
+          "path": "svg/system/edit/line/fontcolor.svg"
+        },
+        "fontfamily": {
+          "componentSetId": "3623:55014",
+          "path": "svg/system/edit/line/fontfamily.svg"
+        },
+        "fontsize-down": {
+          "componentSetId": "3623:55026",
+          "path": "svg/system/edit/line/fontsize-down.svg"
+        },
+        "fontsize-up": {
+          "componentSetId": "3623:55038",
+          "path": "svg/system/edit/line/fontsize-up.svg"
+        },
+        "hand": {
+          "componentSetId": "3623:54929",
+          "path": "svg/system/edit/line/hand.svg"
+        },
+        "hand-draw": {
+          "componentSetId": "3623:54941",
+          "path": "svg/system/edit/line/hand-draw.svg"
+        },
+        "highlighter": {
+          "componentSetId": "3623:55062",
+          "path": "svg/system/edit/line/highlighter.svg"
+        },
+        "highlighter-2": {
+          "componentSetId": "unknown",
+          "path": "svg/system/edit/line/highlighter-2.svg"
+        },
+        "italic": {
+          "componentSetId": "3623:54827",
+          "path": "svg/system/edit/line/italic.svg"
+        },
+        "lasso": {
+          "componentSetId": "3623:54839",
+          "path": "svg/system/edit/line/lasso.svg"
+        },
+        "paragraph-center": {
+          "componentSetId": "3623:54766",
+          "path": "svg/system/edit/line/paragraph-center.svg"
+        },
+        "paragraph-justify": {
+          "componentSetId": "3623:54784",
+          "path": "svg/system/edit/line/paragraph-justify.svg"
+        },
+        "paragraph-left": {
+          "componentSetId": "3623:54778",
+          "path": "svg/system/edit/line/paragraph-left.svg"
+        },
+        "paragraph-right": {
+          "componentSetId": "3623:54754",
+          "path": "svg/system/edit/line/paragraph-right.svg"
+        },
+        "pen": {
+          "componentSetId": "3623:55399",
+          "path": "svg/system/edit/line/pen.svg"
+        },
+        "pen-2": {
+          "componentSetId": "unknown",
+          "path": "svg/system/edit/line/pen-2.svg"
+        },
+        "pencil": {
+          "componentSetId": "3623:55086",
+          "path": "svg/system/edit/line/pencil.svg"
+        },
+        "pencil-2": {
+          "componentSetId": "unknown",
+          "path": "svg/system/edit/line/pencil-2.svg"
+        },
+        "pencil-thin": {
+          "componentSetId": "3623:55375",
+          "path": "svg/system/edit/line/pencil-thin.svg"
+        },
+        "pencil-thin-2": {
+          "componentSetId": "unknown",
+          "path": "svg/system/edit/line/pencil-thin-2.svg"
+        },
+        "select": {
+          "componentSetId": "3623:54803",
+          "path": "svg/system/edit/line/select.svg"
+        },
+        "select-all": {
+          "componentSetId": "3623:55435",
+          "path": "svg/system/edit/line/select-all.svg"
+        },
+        "strikethrough": {
+          "componentSetId": "3623:55002",
+          "path": "svg/system/edit/line/strikethrough.svg"
+        },
+        "underline": {
+          "componentSetId": "3623:55050",
+          "path": "svg/system/edit/line/underline.svg"
+        }
+      }
+    },
+    "modal": {
+      "fill": {
+        "alert": {
+          "componentSetId": "3809:55003",
+          "path": "svg/system/modal/fill/alert.svg"
+        },
+        "check": {
+          "componentSetId": "3809:54997",
+          "path": "svg/system/modal/fill/check.svg"
+        },
+        "info": {
+          "componentSetId": "3809:55006",
+          "path": "svg/system/modal/fill/info.svg"
+        },
+        "question": {
+          "componentSetId": "3809:55009",
+          "path": "svg/system/modal/fill/question.svg"
+        },
+        "warning": {
+          "componentSetId": "3809:55012",
+          "path": "svg/system/modal/fill/warning.svg"
+        }
+      },
+      "line": {
+        "alert": {
+          "componentSetId": "3809:55024",
+          "path": "svg/system/modal/line/alert.svg"
+        },
+        "check": {
+          "componentSetId": "3809:55000",
+          "path": "svg/system/modal/line/check.svg"
+        },
+        "info": {
+          "componentSetId": "3809:55021",
+          "path": "svg/system/modal/line/info.svg"
+        },
+        "question": {
+          "componentSetId": "3809:55018",
+          "path": "svg/system/modal/line/question.svg"
+        },
+        "warning": {
+          "componentSetId": "3809:55015",
+          "path": "svg/system/modal/line/warning.svg"
+        }
+      }
+    }
+  }
 }

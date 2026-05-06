@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 14 14.0054" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="original">
+<g id="Rectangle 3469466">
+<mask id="path-1-inside-1_0_152" fill="white">
+<rect width="14" height="14" rx="0.714286"/>
+</mask>
+<rect width="14" height="14" rx="0.714286" stroke="var(--stroke-0, #565656)" stroke-width="2" mask="url(#path-1-inside-1_0_152)"/>
+</g>
+<path id="Subtract" d="M6.64258 0.00537109C6.83982 0.00537109 7 0.165548 7 0.362793V3.50537C5.06708 3.50537 3.50013 5.07249 3.5 7.00537C3.5 8.93837 5.067 10.5054 7 10.5054V13.2915C6.99991 13.6858 6.68037 14.0051 6.28613 14.0054H0.357422C0.160329 14.0054 0.000245108 13.846 0 13.6489V0.720215C0 0.325865 0.31957 0.00559712 0.713867 0.00537109H6.64258Z" fill="var(--fill-0, #565656)"/>
+<path id="Rectangle 3469482" d="M10.5 7.00562C10.5 5.07262 8.933 3.50562 7 3.50562V10.5056C8.933 10.5056 10.5 8.93861 10.5 7.00562Z" fill="var(--fill-0, #565656)"/>
+</g>
+</svg>

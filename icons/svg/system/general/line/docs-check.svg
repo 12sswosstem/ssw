@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 14.1112 15.7409" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="flatten">
+<g id="docs">
+<path id="Subtract" d="M12 4V9.27539L11 10.2412V4.41016L7.63379 1H1.5C1.22386 1 1 1.22386 1 1.5V13.5C1 13.7761 1.22386 14 1.5 14H4.71191C4.81042 14.1974 4.94173 14.3827 5.10938 14.5449L5.58008 15H1.5C0.723336 15 0.0846097 14.4097 0.0078125 13.6533L0 13.5V1.5C1.812e-07 0.723337 0.590277 0.0846097 1.34668 0.0078125L1.5 0H8.05176L12 4Z" fill="var(--fill-0, #565656)"/>
+<path id="Vector 851" d="M7.5 1V4.5H11" stroke="var(--stroke-0, #565656)" stroke-linejoin="round"/>
+</g>
+<path id="check" d="M6.5 13.1075L8.70691 15.2409L13.6111 10.5001" stroke="var(--stroke-0, #565656)" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>
