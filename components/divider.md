@@ -2,12 +2,13 @@
 
 > 출처:
 > - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `671:35357` `divider _v0.1`
-> - 컴포넌트 셋: `1028:50778` `✅divider_v0.1` (key `6e10a4d0daf86f8b551838189ecac0c94f2d9e23`, ~47 variants)
-> - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG` / page `1:88828` (가이드 페이지 — 세션 만료로 일부 미회수)
+> - 컴포넌트 셋: `1028:50778` `✅divider_v0.1` (key `6e10a4d0daf86f8b551838189ecac0c94f2d9e23`, 47 variants)
+> - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG` / page `1:88828` (가이드 페이지)
 > - `figma-export.json` (2026-05-04 export)
 >
 > JS 토큰: `tokens/color/component.js#divider`.
 > 토큰 prefix: `divider/*` + 추가 `etc/divider`.
+> 시각 참조: [docs/spec.html#divider](../docs/spec.html#divider)
 
 ## Overview
 - 콘텐츠 구분용 선 (수평/수직)
