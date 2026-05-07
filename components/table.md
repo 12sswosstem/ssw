@@ -1,22 +1,216 @@
 # Table
 
-> 출처:
-> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `2689:91695` `✅table_v0.4`
-> - 컴포넌트 셋: `2413:88136` `table atomic-v0.4` (key `662b51245b7fea452e1c95517d196fe1787059df`, **432 variants**)
-> - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`:
->   - `1:143562` (Table use it 가이드 페이지)
->   - `1:144063` (Table 추가 가이드)
+> 출처 (Figma):
+> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA`
+>   - section `2689:91695` `✅table_v0.4`
+>   - `2413:88136` `table atomic-v0.4` (key `662b51245b7fea452e1c95517d196fe1787059df`, **432 variants**)
+>   - `7108:55832` table atomic 매트릭스 (셀 단위 인스턴스 모음)
+> - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`
+>   - `302:43084` 표(Table) — 가이드 페이지 (H1 / Anatomy / Properties / Guidelines)
+>   - `302:43098` H1 (제목 + 본문 설명)
+>   - `302:43106` Anatomy *(이전 노드 — 현재 invalid 응답)*
+>   - `306:8789` Anatomy figure — PMS 진료내역 sample 10 데이터 행 + 9 numbered callouts (TalkToFigma 채널 `qhr11434` get_selection 기준 verbatim)
+>   - `302:43179` Properties › Size + Style
+>   - `302:43304` Properties › State
+>   - `302:43376` Properties › Variant
+>   - Guidelines (`302:43487` 헤딩 / `302:43499` Do/Don't 비교)
 > - `figma-export.json` (2026-05-04 export)
 >
-> JS 토큰: `tokens/color/component.js#table`, `tokens/number/component.js#table`.
-> 토큰 prefix: `table/*`.
+> JS 토큰: `tokens/color/component.js#table` · `tokens/number/component.js#table` (prefix `table/*`)
+> 시각 참조: [docs/spec.html#table](../docs/spec.html#table)
 
 ## Overview
-- production 컴포넌트 셋: `table atomic-v0.4` (995 width × 2351 height frame)
-- 모드: **light** (production variable_defs 기준; figma-export.json에 dark도 일부 정의)
-- 6축 prop / 432 variants
 
-## Number tokens (Mode 1) — production 검증
+> 출처: `302:43098` (UI-Kit-Guide · verbatim)
+
+표는 데이터를 하나 이상의 행과 열로 조직화하여 표현하는 형식으로 사용자가 빠르게 많은 양의 정보를 확인하고 비교할 수 있도록 도와줍니다.
+
+기본적으로 대화형 요소가 아니기 때문에 열 제목에 데이터를 정렬하기 위한 컨트롤 요소가 포함된 상황 외에 행 전체나 데이터 셀이 대화형으로 작동하지 않습니다.
+
+## 구조 (Anatomy)
+
+> 출처: `302:43106` (UI-Kit-Guide · 9 elements verbatim) / `302:43113` (시각 figure verbatim — PMS 진료내역 sample + 9 numbered callouts)
+
+| # | 한글 (English) | 설명 |
+|---|---|---|
+| 1 | 헤더 (Header) | 각 데이터 셀의 제목 |
+| 2 | 서브헤더 (Subheader) | 데이터 셀의 부제목 |
+| 3 | 합계 (Sum) | 각 셀의 합계가 표시되는 영역 |
+| 4 | 데이터 셀 (Cell) | 행을 구성하는 데이터 요소 |
+| 5 | 셀 지브라 (Cell Zebra) | 행과 행 사이를 시각적으로 구분하는 보조 수단 |
+| 6 | 보더 (Border) | 행과 행 사이를 시각적으로 구분하는 수단 (옵션) |
+| 7 | 디바이더 (Divider) | 열과 열 사이를 시각적으로 구분하는 수단 (옵션) |
+| 8 | 행 (Row) | 서로 다른 항목의 데이터를 보여줌 |
+| 9 | 열 (Column) | 서로 다른 유형의 데이터를 보여줌 |
+
+### Anatomy 시각 보충 (`302:43113` verbatim)
+
+도면의 시각 figure는 실제 PMS 화면 컨텍스트(진료내역 테이블)를 그대로 사용. 9개 항목의 위치를 검정 원형 + 숫자(1~9) + 점선 콜아웃으로 표시.
+
+#### 상단 탭 + 아이콘
+
+- 좌측 탭: **오늘 진료 내역** (selected · 오렌지 `#eb6100` underline 2px) / 수납 내역 (gray)
+- 우측 아이콘 2개 — repo SVG 그대로 사용:
+  - `arrow/fill/expand.svg` (viewBox `14×14`)
+  - `arrow/fill/swap-horiz.svg` (viewBox `13.5×13.5`)
+  - `var(--fill-0,…)` → `currentColor` 치환
+
+#### 테이블 컬럼 구성 (verbatim)
+
+| 컬럼 | 정렬 | 너비 | 비고 |
+|---|---|---|---|
+| 명칭 | left | 270 | badge (보험/비보험) + 진료항목명 |
+| 금액 | right | 110 | 숫자 |
+| 횟수 / 번호 | center | 60 | 메인 헤더=`횟수`, 서브 헤더=`번호` |
+| 진료일 | center | 92 | 날짜 |
+| 개인부담금 | right | 110 | 그룹 헤더 `총 부담금`의 sub-header |
+| 공단부담금 | right | 118 | 그룹 헤더 `총 부담금`의 sub-header |
+
+#### 행 구성 (Figma `306:8789` verbatim)
+
+- 헤더 행 (메인): 명칭 / 금액 / 횟수 / 진료일 / 총 부담금
+- 서브헤더 행: (공란×3) / 번호 / (공란) / 개인부담금 / 공단부담금
+- 합계(Sum) 행: 합계 / 12,500,999원 / (공란) / 2026.04.08 / 12,500,999원 / 12,500,999원
+- **10개 데이터 행** (보험/비보험 badge + 진료항목명 + 금액 + 번호 + 날짜 + 개인부담금 + 공단부담금):
+
+| # | 보험 type | 명칭 | 금액 | 번호 | 진료일 | 개인부담금 | 공단부담금 |
+|---|---|---|---|---|---|---|---|
+| 1 | 보험 | 초진 진찰료 | 15,060 | 1 | 2026.04.08 | 500,999원 | 12,500,999원 |
+| 2 | 보험 | 파노라마 촬영판독 | 15,060 | 2 | 2026.04.08 | 500,999원 | 12,500,999원 |
+| 3 | 보험 | 치석제거 [1/3악당) | 15,060 | 3 | 2026.04.08 | 500,999원 | 12,500,999원 |
+| 4 | 보험 | 구치발치 | 12,500,999 | 4 | 2026.04.08 | 500,999원 | 12,500,999원 |
+| 5 | 보험 | 전달마취(나)-하치조신경블록 | 15,060 | 5 | 2026.04.08 | 500,999원 | 12,500,999원 |
+| 6 | 보험 | 오스텔리도카인 에피네프린주(1:100,000)(1.8ml) | 15,060 | 6 | 2026.04.08 | 12,500,999원 | 12,500,999원 |
+| 7 | 비보험 | 의약품관리료 1일분 (의원) | 15,060 | 7 | 2026.04.08 | 500,999원 | 12,500,999원 |
+| 8 | 보험 | 레진충전(치경부) | 15,060 | 8 | 2026.04.08 | 500,999원 | 12,500,999원 |
+| 9 | 보험 | 치석제거 | 12,500,999 | 9 | 2026.04.08 | 500,999원 | 12,500,999원 |
+| 10 | 비보험 | 구치발치, 치석제거 | text | 10 | 2026.04.08 | text | text |
+
+> **주의 — Figma 원본 verbatim**: row 3의 대괄호 닫힘이 `]`가 아닌 `)`로 표기됨 (`[1/3악당)`). row 6의 약품명 첫 글자가 `오스템`이 아닌 `오스텔` (오스템→오스텔). row 10의 일부 셀은 `text` placeholder.
+> **zebra 미적용** — Figma `306:8789` 도면은 모든 데이터 행이 동일한 흰 배경. zebra(`cell_zebra`)는 컴포넌트 state로는 존재하지만 이 anatomy 도면에는 적용되어 있지 않음. callout 5(셀 지브라)는 개념 표시용으로 특정 행을 가리킬 뿐 실제 zebra 배경을 그리지 않음.
+
+#### 콜아웃 스타일
+
+메뉴 anatomy 패턴을 차용. 각 콜아웃은 3개 요소로 구성:
+- **검정 점** (`7×7px`, `#1d1d1d`) — 가리킬 대상 위에 정확히 위치
+- **점선 라인** (`60px`/`36px` · `1px dashed #1d1d1d`) — 점에서 숫자 칩까지 연결, 점과 라인은 갭 0으로 한 줄처럼 이어짐
+- **숫자 칩** (검정 원형 `22×22px` + 흰색 숫자 11px Bold) — 라인 끝에 위치, 라인과 6px gap
+
+#### 모든 행 배경은 화이트
+
+`tbody td { background: #ffffff }`. 셀 지브라(#5)는 callout 타깃용으로 zebra 클래스만 유지하지만 시각적으로는 모든 행이 동일한 흰색.
+
+#### 콜아웃 위치 (Figma 좌표 기반)
+
+| # | 항목 | chip 위치 | 점이 가리키는 대상 |
+|---|---|---|---|
+| 1 | 헤더 (Header) | 좌측 | 메인 헤더 행의 `명칭` 텍스트 시작점 |
+| 2 | 서브헤더 (Subheader) | 우측 | 서브 헤더 행의 `공단부담금` |
+| 3 | 합계 (Sum) | 좌측 | `합계` 행 |
+| 4 | 데이터 셀 (Cell) | 좌측 | 5번 데이터 행 (`전달마취(나)-하치조신경블록`) |
+| 5 | 셀 지브라 (Cell Zebra) | 좌측 | 8번 데이터 행 (`레진충전(치경부)`) — 개념 표시용 (실제 zebra 배경 미적용) |
+| 6 | 보더 (Border) | 우측 | 행 사이 가로 보더 (4번 행 `구치발치`와 5번 행 사이) |
+| 7 | 디바이더 (Divider) | 표 하단 → 위 | 진료일 ↔ 개인부담금 사이 세로 디바이더 (표 하단에서 위로 향하는 콜아웃) |
+| 8 | 행 (Row) | 우측 | 3번 데이터 행 (`치석제거 [1/3악당)`) 중앙 |
+| 9 | 열 (Column) | 표 상단 → 아래 | `금액` 컬럼 상단 (표 위에서 아래로 향하는 콜아웃) |
+
+## Properties
+
+> 출처: `302:43175` (UI-Kit-Guide · 헤딩 verbatim "Properties")
+
+### Size
+
+> 출처: `302:43180` / `302:43187` (UI-Kit-Guide · verbatim)
+
+테이블의 사이즈는 6가지입니다. 각 플랫폼에 맞는 테이블을 사용하세요. 테이블의 스타일은 보더와 디바이더의 유무를 각각 조절할 수 있습니다. 테이블의 패딩, 텍스트, 아이콘의 규격은 사이즈별 Variable number 로 토큰화 되어 있습니다. 세부 규격을 확인하세요.
+
+| Size | height (px) | padding | gap | text-size |
+|---|---|---|---|---|
+| xs_24 | 24 | 8 | 4 | 14 |
+| sm_28 | 28 | 8 | 4 | 14 |
+| md_32 | 32 | 8 | 8 | 14 |
+| lg_40 | 40 | 8 | 8 | 16 |
+| xl_48 | 48 | 12 | 12 | 16 |
+| 2xl_56 | 56 | 12 | 16 | 18 |
+
+### Style
+
+> 출처: `302:43216` (UI-Kit-Guide · 스타일 4종 verbatim)
+
+테이블의 스타일은 **보더(Border)와 디바이더(Divider)의 유무**를 각각 조절하여 4가지 조합으로 사용합니다.
+
+| Style | 보더 (행 구분) | 디바이더 (열 구분) |
+|---|---|---|
+| lineless | — | — |
+| Border only | ✓ | — |
+| Divider only | — | ✓ |
+| Border & Divider | ✓ | ✓ |
+
+### Variant
+
+> 출처: `302:43376` (UI-Kit-Guide · 4 variant 카드 verbatim)
+
+| Variant | 한글 (English) | 설명 |
+|---|---|---|
+| header | 헤더 (Header) | 데이터의 의미와 분류 기준을 제시하는 테이블의 가이드 역할입니다. Default 타입과 Compact 타입이 있습니다. |
+| subheader | 서브 헤더 (Subheader) | 가이드 역할을 하는 두번째 하위 단계 헤더입니다. Default 타입과 Compact 타입이 있습니다. |
+| cell | 데이터 셀 (Cell) | 실제 데이터가 표시되는 테이블의 핵심 영역입니다. |
+| sum | 합계 (Sum) | 데이터 셀의 총합을 나타낼때 사용합니다. |
+
+### State
+
+> 출처: `302:43304` / `302:43312` (UI-Kit-Guide · verbatim)
+
+테이블의 상태는 아래와 같습니다.
+
+| State | 적용 type | 의미 |
+|---|---|---|
+| header_default | header | 헤더의 기본 상태 |
+| cell_default | cell | 셀의 기본 상태 |
+| cell_zebra | cell | 짝수 행에 적용되는 zebra 배경 (행 구분 보조) |
+| cell_hover | cell | 마우스 오버 상태 |
+| cell_active | cell | 클릭/선택된 상태 |
+
+## Guidelines
+
+> 출처: `302:43487` (UI-Kit-Guide · `do/don't box-02` 비교 카드)
+
+Do/Don't 비교를 통해 표 구성 시 권장 사항과 비권장 사항을 보여줍니다. SSW 표준 `.guide-card` 패턴 사용 (다른 컴포넌트의 Do/Don't와 동일). Do=흰색 카드 + 녹색 ✓ + 녹색 하단 보더, Don't=라이트 핑크 카드 + 빨강 ✕ + 빨강 하단 보더.
+
+## Color tokens
+
+> 출처: 레포지토리 `tokens/color/component.js#table` (prefix `table/*`).
+
+### bg
+| token | light |
+|---|---|
+| `table/bg/bg-header` | `#f4f4f4` |
+| `table/bg/bg-subheader` | `#e9e9e9` |
+| `table/bg/bg-cell-default` | `#fefefe` |
+| `table/bg/bg-cell-zebra` | `#f4f4f4` |
+| `table/bg/bg-cell-hover` | (state) |
+| `table/bg/bg-cell-selected` | (state) |
+| `table/bg/bg-sum` | `#dddddd` |
+
+### text
+| token | light |
+|---|---|
+| `table/text/text-header` | `#1d1d1d` |
+| `table/text/text-cell` | `#1d1d1d` |
+
+### border
+| token | light |
+|---|---|
+| `table/border/border-default` | `#d2d2d2` |
+| `table/border/divider` | `#d2d2d2` |
+| `table/border/border-selected` | `#eb6100` |
+
+### icon
+| token | light |
+|---|---|
+| `table/icon/default` | `#727272` |
+
+## Number tokens
 
 | size | height | padding | gap | text-size |
 |---|---|---|---|---|
@@ -27,141 +221,13 @@
 | xl_48 | 48 | 12 | 12 | 16 |
 | 2xl_56 | 56 | 12 | 16 | 18 |
 
-## Color tokens — production 해석값 (light)
-
-### bg
-| token | light (production) | dark (figma-export) |
-|---|---|---|
-| `table/bg/bg-header` | `#f4f4f4` | `#dddddd` |
-| `table/bg/bg-subheader` | `#e9e9e9` | `#eeeeee` |
-| `table/bg/bg-cell-default` | `#fefefe` | `#f4f4f4` |
-| `table/bg/bg-cell-zebra` | `#f4f4f4` | `#eeeeee` |
-| `table/bg/bg-cell-hover` | (state) | `#dddddd` |
-| `table/bg/bg-cell-selected` | (state) | `#fbdfcc` |
-| `table/bg/bg-sum` | `#dddddd` | `#e9e9e9` |
-
-### text
-| token | light (production) |
-|---|---|
-| `table/text/text-header` | `#1d1d1d` |
-| `table/text/text-cell` | (figma-export 기준 light=`#e9e9e9`, dark=`#393939`) |
-
-### border
-| token | light (production) | dark |
-|---|---|---|
-| `table/border/border-default` | `#d2d2d2` | `#dddddd` |
-| `table/border/divider` | `#d2d2d2` | `#dddddd` |
-| `table/border/border-selected` | `#eb6100` | `#ef8133` |
-
-### icon
-| token | light (production) | dark |
-|---|---|---|
-| `table/icon/default` | `#727272` | `#8f8f8f` |
-
-> **중요**: 이전 표는 dark 모드 값을 light로 표기한 오류 있었음. production 노드(`2689:91695`) variable_defs로 수정.
-
-### 기타 namespace (다른 PMS theme)
-- `Component colors/Components/Table/cell_divider`: `#bdc9da`
-- `Table/Cell/Border/Table_Cell_Border_Default`: `#d2dae6`
-- `Table/Cell/Border/Table_Cell_Border_Hover`: `#3796fe`
-- `Table/Cell/Border/Table_Cell_Border_Selected`: `#ff8000`
-
 ## Typography
 
 | 영역 | textStyle | size · weight |
 |---|---|---|
 | header (xs_24~lg_40) | `body/sm (SB)` | 14·600 |
-| header (xl_48~2xl_56) | `body/md (SB)`/`body/lg (SB)` | 16/18·600 |
+| header (xl_48~2xl_56) | `body/md (SB)` / `body/lg (SB)` | 16/18·600 |
 | cell (xs_24~md_32) | `body/sm` | 14·400 |
 | cell (lg_40~xl_48) | `body/md` | 16·400 |
 | cell (2xl_56) | `body/lg` | 18·400 |
 | sum | 동일 size + (SB) | SemiBold |
-
-## Variants — 6축 (verbatim)
-
-verbatim prop 패턴: `size=<size>, type=<type>, style=<style>, align=<align>, zebra=<bool>, compact=<bool>`
-
-- **size**: `xs_24` / `sm_28` / `md_32` / `lg_40` / `xl_48` / `2xl_56`
-- **type**: `cell` / `header` / `subheader` / `sum`
-- **style**: `body` / `icon` / `button` / `checkbox` / `no` / `slot-h` / **`slot-v`**
-- **align**: `left` / `center` / `right`
-- **zebra**: `false` / `true`
-- **compact**: `false` / `true`
-
-### 호환성 규칙
-| prop | 제약 |
-|---|---|
-| `style=icon, button` | align=**right only** |
-| `style=checkbox, no, slot-h, slot-v` | align=**center only** |
-| `style=body` | align=left/center/right 모두 가능 |
-| `zebra=true` | type=**cell only** (header/subheader/sum 무의미) |
-| `compact=true` | type=**header/subheader/sum only** (cell 무의미) |
-
-## Variant IDs
-
-### type=cell, style=body, align=left, zebra=false, compact=false (size별 base)
-
-| size | variant ID | 크기 |
-|---|---|---|
-| xs_24 | `2458:143521` | 100×24 |
-| sm_28 | `2413:88140` | 100×28 |
-| md_32 | `2458:145257` | 100×32 |
-| lg_40 | `2458:147029` | 100×40 |
-| xl_48 | `2458:148765` | 100×48 |
-| 2xl_56 | `2458:150573` | 100×56 |
-
-### type=cell × style별 (각 style의 default align)
-
-| size | checkbox (center) | no (center) | icon (right) | button (right) | slot-h (center) | slot-v (center) |
-|---|---|---|---|---|---|---|
-| xs_24 | `2458:143742` | `2458:143746` | `2458:143551` | `2458:143557` | `2458:143782` | `3196:135202` |
-| sm_28 | `2413:89995` | `2413:90007` | `2413:88575` | `2413:88595` | `2423:133281` | `3196:135182` |
-| md_32 | `2458:145478` | `2458:145482` | `2458:145287` | `2458:145293` | `2458:145518` | `3196:135186` |
-| lg_40 | `2458:147250` | `2458:147254` | `2458:147059` | `2458:147065` | `2458:147290` | `3196:135190` |
-| xl_48 | `2458:148986` | `2458:148990` | `2458:148795` | `2458:148801` | `2458:149026` | `3196:135194` |
-| 2xl_56 | `2458:150794` | `2458:150798` | `2458:150603` | `2458:150609` | `2458:150834` | `3196:135198` |
-
-### type=header / subheader / sum (style=body, align=left, zebra=false)
-
-| size | header | header compact | subheader | subheader compact | sum | sum compact |
-|---|---|---|---|---|---|---|
-| xs_24 | `2458:143571` | `2458:143576` | `2458:143581` | `2458:143586` | `2458:143591` | `2500:192227` |
-| sm_28 | `2413:88975` | `2458:134727` | `2413:88978` | `2458:141753` | `2458:135738` | `2500:192489` |
-| md_32 | `2458:145307` | `2458:145312` | `2458:145317` | `2458:145322` | `2458:145327` | `2500:192737` |
-| lg_40 | `2458:147079` | `2458:147084` | `2458:147089` | `2458:147094` | `2458:147099` | `2500:192985` |
-| xl_48 | `2458:148815` | `2458:148820` | `2458:148825` | `2458:148830` | `2458:148835` | `2500:193233` |
-| 2xl_56 | `2458:150623` | `2458:150628` | `2458:150633` | `2458:150638` | `2458:150643` | `2885:229900` |
-
-> ID 시퀀스 단서 (변경 이력):
-> - `2413:` = 초기 sm_28 베이스
-> - `2458:` = 다른 size 일괄 추가
-> - `2500:` = sum compact 추가
-> - `3196:` = slot-v 추가
-> - `2885:` = 2xl_56 sum compact 후속 패치
-
-## Row Anatomy (좌→우 순서)
-
-production 섹션 캡션 좌표 기반 verbatim 순서:
-
-```
-[checkbox] → [no.] → [body × N (left/center/right)] → [icon] → [button] → [slot-h] → [slot-v]
-```
-
-- 좌측 고정 컬럼: checkbox (선택), no (행 번호)
-- 중앙: body cells (다중 컬럼)
-- 우측: icon · button (액션) → slot-h · slot-v (커스텀 콘텐츠)
-- `slot-h`/`slot-v`: horizontal/vertical 임의 콘텐츠 컨테이너
-
-## Usage Notes
-
-- production 컴포넌트는 **`table atomic-v0.4`** — 셀 단위로 인스턴스 조립
-- `slot-v` style은 새로 추가된 vertical slot — 메모리/이전 md에 누락 (이번에 보강)
-- variant 매칭 시 verbatim 그대로:
-  - `"size=2xl_56"` (`2xl` 단독 매칭 실패)
-  - `"style=slot-h"` / `"style=slot-v"` 하이픈 포함
-  - `"align=right"` (icon/button) / `"align=center"` (checkbox/no/slot-h/slot-v)
-- zebra row는 짝수 행에 `bg-cell-zebra` 적용 (production light = `#f4f4f4`)
-- selected 시 `border-selected` (`#eb6100` orange) + (state) `bg-cell-selected`
-- compact는 header/subheader/sum 한정 — 행 높이를 한 단계 줄임
-- DS Runner workflow: 섹션을 `get_design_context`로 호출하면 sparse metadata만 반환됨 → padding/font/color 토큰까지 얻으려면 개별 cell symbol id (예: `2413:88140`)로 재호출하거나 `get_variable_defs` 사용
-- 컴포넌트 셋 frame width=995, height=2351 — 인스턴스 layout 기준값

@@ -698,6 +698,265 @@ html, body {
 .divider--vertical { width: 1px; height: 16px; display: inline-block; vertical-align: middle; }
 .divider--vertical-contents { width: 1px; height: 12px; background: #bcbcbc; display: inline-block; vertical-align: middle; }
 
+/* ----- Divider Anatomy figure — black dashed callouts (Figma `1:88869` verbatim) ----- */
+.divider-anatomy .anatomy-callout { color: #1d1d1d; font-weight: 400; font-size: 13px; }
+.divider-anatomy .anatomy-callout-dot { background: #1d1d1d; }
+.divider-anatomy .anatomy-callout-line {
+  background: transparent;
+  border-top: 1px dashed #1d1d1d;
+  height: 0; width: 60px;
+}
+/* vertical (down) callout — dot on top, vertical dashed line, label text below */
+.anatomy-callout--down {
+  flex-direction: column;
+  align-items: center;
+  left: var(--dot-x);
+  transform: translateX(-50%);
+}
+.divider-anatomy .anatomy-callout--down .anatomy-callout-line {
+  width: 0; height: 28px;
+  border-top: 0;
+  border-left: 1px dashed #1d1d1d;
+  margin: 0;
+}
+.divider-anatomy .anatomy-callout--down > :last-child {
+  margin-top: 8px;
+}
+/* override row-direction margins inherited from .anatomy-callout--left/right rules */
+.divider-anatomy .anatomy-callout--left .anatomy-callout-line { margin-left: 8px; }
+.divider-anatomy .anatomy-callout--right .anatomy-callout-line { margin-right: 8px; }
+
+/* ----- Divider Layout figure — frame outline + inset zone highlights (Figma `1:88936` verbatim) ----- */
+.divider-layout-frame {
+  position: relative;
+  width: 240px;
+  height: 24px;
+  display: flex; align-items: center;
+  box-sizing: border-box;
+  border: 1px dashed #d2d2d2;
+}
+.divider-layout-frame > .divider { position: relative; z-index: 1; }
+.divider-layout-frame .inset-zone {
+  position: absolute;
+  top: 0; bottom: 0;
+  background: rgba(235, 97, 0, 0.10);
+  z-index: 0;
+}
+.divider-layout-frame .inset-zone--left { left: 0; }
+.divider-layout-frame .inset-zone--right { right: 0; }
+.divider-layout-frame.is-inset-sm { padding: 0 16px; }
+.divider-layout-frame.is-inset-md { padding: 0 24px; }
+.divider-layout-frame.is-inset-lg { padding: 0 32px; }
+.divider-layout-frame.is-inset-sm .inset-zone { width: 16px; }
+.divider-layout-frame.is-inset-md .inset-zone { width: 24px; }
+.divider-layout-frame.is-inset-lg .inset-zone { width: 32px; }
+
+/* ----- Divider 사용 예시 figure (Figma `1:89022` verbatim — 4개 mock: 1:89032 / 1:89066 / 1:89119 / 1:89242) ----- */
+.divider-usage-figure {
+  background: #f9f9f9; border-radius: 20px; padding: 40px 32px; margin: 8px 0;
+  display: flex; gap: 20px; justify-content: center; align-items: flex-start;
+  flex-wrap: wrap;
+}
+.usage-mock {
+  background: #ffffff; border: 1px solid #d2d2d2; border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  font-family: "Pretendard", sans-serif; color: #1d1d1d;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* ===== Mock 1: 프로필 보기 (1:89032) ===== */
+.um-profile { width: 220px; }
+.um-profile__head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 14px; font-weight: 600; font-size: 13px; color: #1d1d1d;
+}
+.um-profile__head .x { color: #8f8f8f; font-weight: 400; cursor: pointer; }
+.um-profile__row {
+  display: flex; padding: 6px 14px; font-size: 11px; line-height: 1.5;
+}
+.um-profile__row .lab { color: #8f8f8f; width: 60px; flex-shrink: 0; }
+.um-profile__row .val { color: #1d1d1d; font-weight: 600; }
+.um-profile__divider { height: 1px; background: #e9e9e9; margin: 4px 14px; }
+
+/* ===== Mock 2: 환자 로그기록 (1:89066) ===== */
+.um-log { width: 240px; }
+.um-log__head {
+  display: flex; align-items: center; gap: 6px;
+  padding: 10px 12px; background: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 12px; color: #1d1d1d;
+}
+.um-log__head .back { color: #1d1d1d; }
+.um-log__head .title { font-weight: 600; flex: 1; }
+.um-log__head .ic {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #e5f0fe; display: inline-flex; align-items: center; justify-content: center;
+  font-size: 10px; color: #3b63fb;
+}
+.um-log__body { padding: 10px 10px 12px; background: #f4f6f8; }
+.um-log__msg {
+  display: flex; align-items: flex-end; justify-content: flex-end;
+  gap: 4px; margin: 4px 0;
+}
+.um-log__msg .bubble {
+  background: #dff5dc; color: #1d1d1d;
+  padding: 5px 8px; border-radius: 8px;
+  font-size: 10px; line-height: 1.4;
+  max-width: 168px;
+}
+.um-log__msg .time { font-size: 9px; color: #8f8f8f; white-space: nowrap; }
+.um-log__date {
+  display: flex; align-items: center; gap: 6px;
+  margin: 8px 0; font-size: 9px; color: #8f8f8f;
+}
+.um-log__date::before, .um-log__date::after {
+  content: ""; flex: 1; height: 1px; background: #d2d2d2;
+}
+
+/* ===== Mock 3: One Messenger 연락처 (1:89119) ===== */
+.um-msg { width: 240px; }
+.um-msg__head {
+  display: flex; align-items: center; gap: 6px;
+  padding: 10px 12px; font-size: 12px; color: #1d1d1d;
+  border-bottom: 1px solid #e9e9e9;
+}
+.um-msg__head .title { font-weight: 600; flex: 1; }
+.um-msg__head .ico { color: #8f8f8f; font-size: 11px; }
+.um-msg__tabs {
+  display: flex; padding: 0 8px;
+  border-bottom: 1px solid #e9e9e9;
+}
+.um-msg__tab {
+  flex: 1; padding: 8px 0; text-align: center;
+  font-size: 11px; color: #8f8f8f;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.um-msg__tab.is-active { color: #1d1d1d; font-weight: 600; border-bottom-color: #1d1d1d; }
+.um-msg__search {
+  margin: 8px 12px; padding: 6px 10px;
+  background: #f4f6f8; border-radius: 16px;
+  font-size: 10px; color: #8f8f8f;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.um-msg__featured {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; font-size: 11px; color: #1d1d1d;
+  border-bottom: 1px solid #e9e9e9; margin-bottom: 4px;
+}
+.um-msg__avatar-lg {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, #5681ff, #345bf8);
+  color: #ffffff; font-size: 10px; font-weight: 600;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.um-msg__featured .name { flex: 1; font-weight: 600; }
+.um-msg__featured .call {
+  width: 18px; height: 18px; border-radius: 50%; background: #149603;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #ffffff; font-size: 9px;
+}
+.um-msg__count {
+  padding: 4px 12px 6px; font-size: 10px; color: #565656;
+}
+.um-msg__section {
+  display: flex; align-items: center; justify-content: space-between;
+  background: #e5edf9; padding: 5px 12px;
+  font-size: 11px; font-weight: 600; color: #345bf8;
+}
+.um-msg__section .caret { color: #345bf8; font-size: 9px; }
+.um-msg__row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 5px 12px; font-size: 10px;
+}
+.um-msg__row.is-hover { background: #f4f6f8; }
+.um-msg__avatar-sm {
+  width: 18px; height: 18px; border-radius: 50%; background: #d2d2d2;
+  flex-shrink: 0;
+}
+
+/* ===== Mock 4: 채팅 대화 (1:89242) ===== */
+.um-chat { width: 240px; background: #f0f1f7; }
+.um-chat__notch {
+  display: flex; justify-content: center; padding: 8px 0 4px;
+  background: #ffffff;
+}
+.um-chat__notch .bar {
+  width: 24px; height: 3px; border-radius: 2px;
+  border: 1px solid #d2d2d2;
+}
+.um-chat__head {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 12px; background: #ffffff;
+  border-bottom: 1px solid #e9e9e9;
+  font-size: 12px;
+}
+.um-chat__head .title { font-weight: 600; flex: 1; }
+.um-chat__head .ico { color: #8f8f8f; font-size: 11px; }
+.um-chat__body { padding: 10px 10px 6px; }
+.um-chat__msg {
+  display: flex; align-items: flex-end; gap: 4px; margin: 6px 0;
+}
+.um-chat__msg.theirs { justify-content: flex-start; }
+.um-chat__msg.ours { justify-content: flex-end; }
+.um-chat__msg .av {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: linear-gradient(135deg, #5681ff, #345bf8);
+  flex-shrink: 0;
+}
+.um-chat__msg .group { display: flex; flex-direction: column; gap: 2px; max-width: 160px; }
+.um-chat__msg .group .name { font-size: 9px; color: #565656; font-weight: 600; }
+.um-chat__msg .bubble {
+  padding: 5px 8px; border-radius: 8px; font-size: 10px; line-height: 1.4;
+}
+.um-chat__msg.theirs .bubble { background: #ffffff; border: 1px solid #e9e9e9; }
+.um-chat__msg.ours .bubble { background: #c6c8ee; color: #1d1d1d; }
+.um-chat__msg .time { font-size: 8px; color: #8f8f8f; white-space: nowrap; }
+.um-chat__map {
+  background: linear-gradient(135deg, #e5f0fe, #fce7d9);
+  width: 80px; height: 50px; border-radius: 6px;
+}
+.um-chat__date {
+  display: flex; align-items: center; gap: 6px;
+  margin: 12px 0 8px; font-size: 9px; color: #8f8f8f;
+}
+.um-chat__date::before, .um-chat__date::after {
+  content: ""; flex: 1; height: 1px; background: #d2d2d2;
+}
+.um-chat__plain {
+  padding: 8px 12px; font-size: 10px; color: #1d1d1d;
+  background: #ffffff; border-top: 1px solid #e9e9e9;
+}
+.um-chat__input {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; background: #ffffff;
+  font-size: 11px; color: #8f8f8f;
+}
+.um-chat__input .send { color: #345bf8; margin-left: auto; }
+
+/* ----- Divider color sample (표준 .guide-card 안에 들어가는 라인 샘플 영역) ----- */
+.divider-color-sample {
+  position: relative; height: 200px; margin-top: 4px;
+}
+/* 가로 라인: 패널 좌측~중앙에서 끝남 */
+.divider-color-sample .h-line {
+  position: absolute;
+  top: 50%; left: 22%;
+  transform: translateY(-50%);
+  width: 36%; height: 1px;
+}
+/* 세로 라인: 가로 라인의 우측에서 시작 (서로 닿지 않음, 작은 갭) */
+.divider-color-sample .v-line {
+  position: absolute;
+  top: 50%; left: 64%;
+  transform: translateY(-50%);
+  width: 1px; height: 50%;
+}
+.guide-card--do .divider-color-sample .h-line,
+.guide-card--do .divider-color-sample .v-line { background: #d2d2d2; }
+.guide-card--dont .divider-color-sample .h-line { background: #3b63fb; }
+.guide-card--dont .divider-color-sample .v-line { background: #eb6100; }
+
 /* ----- Card (Figma LxBPQF1oFOfiNdX5qzLcik 352:35727 verbatim) ----- */
 .card-slot {
   display: flex; flex-direction: column; align-items: center;
@@ -1185,6 +1444,235 @@ html, body {
 .table-preview th, .table-preview td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #f4f4f4; }
 .table-preview th { background: #f9f9f9; font-weight: 600; color: #565656; }
 .table-preview tr:last-child td { border-bottom: 0; }
+
+/* ----- Table guide visualizations (Figma `302:43084` verbatim — Anatomy / Size / Style / Variant / State / Guidelines) ----- */
+.tbl-figure {
+  background: #f9f9f9; border-radius: 20px;
+  padding: 40px 48px; margin: 8px 0;
+}
+
+/* ===== Anatomy figure (Figma `302:43113` verbatim — PMS 진료내역 sample + 9 numbered callouts) ===== */
+.tbl-anatomy-figure {
+  background: #f9f9f9; border-radius: 20px;
+  padding: 80px 120px;  /* 좌우 콜아웃 공간 확보 */
+  margin: 8px 0;
+  display: flex; justify-content: center;
+}
+.tbl-anatomy-stage {
+  position: relative; width: 760px;
+  font-family: "Pretendard", sans-serif;
+}
+/* Tabs row — 좌측 정렬 + 우측 아이콘 */
+.tbl-anatomy-stage .tabs {
+  display: flex; align-items: center;
+  padding: 0 0 0 0;
+  border-bottom: 1px solid #e9e9e9;
+  position: relative;
+}
+.tbl-anatomy-stage .tab {
+  font-size: 13px; font-weight: 500; color: #8f8f8f;
+  padding: 8px 12px 10px;
+  cursor: pointer;
+}
+.tbl-anatomy-stage .tab.is-active {
+  color: #eb6100; font-weight: 600;
+  border-bottom: 2px solid #eb6100;
+  margin-bottom: -1px;
+}
+.tbl-anatomy-stage .tab-icons {
+  margin-left: auto; display: flex; gap: 4px;
+  padding-right: 4px;
+}
+.tbl-anatomy-stage .tab-icon-btn {
+  width: 24px; height: 24px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #565656;
+  cursor: pointer; border-radius: 4px;
+}
+.tbl-anatomy-stage .tab-icon-btn svg { width: 14px; height: 14px; }
+/* the actual sample table */
+.tbl-pms {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  color: #1d1d1d;
+  table-layout: fixed;
+}
+.tbl-pms col.c-name { width: 270px; }
+.tbl-pms col.c-amt  { width: 110px; }
+.tbl-pms col.c-cnt  { width: 60px; }
+.tbl-pms col.c-date { width: 92px; }
+.tbl-pms col.c-self { width: 110px; }
+.tbl-pms col.c-corp { width: 118px; }
+
+.tbl-pms th, .tbl-pms td {
+  padding: 6px 10px; height: 30px; box-sizing: border-box;
+  white-space: nowrap;
+  font-size: 11px;
+}
+.tbl-pms thead th {
+  background: #ffffff; font-weight: 500; color: #565656;
+  border-bottom: 1px solid #e9e9e9;
+}
+.tbl-pms thead tr.h-sub th {
+  font-weight: 500; color: #565656;
+  border-bottom: 1px solid #d2d2d2;
+  padding-top: 4px;
+}
+.tbl-pms .ta-l { text-align: left; }
+.tbl-pms .ta-r { text-align: right; }
+.tbl-pms .ta-c { text-align: center; }
+
+.tbl-pms tbody td { background: #ffffff; border-bottom: 1px solid #f4f4f4; }
+.tbl-pms tr.sum-row td {
+  background: #ffffff; font-weight: 600; color: #1d1d1d;
+  border-bottom: 1px solid #d2d2d2;
+}
+/* 모든 행은 화이트 배경 — zebra 클래스는 callout 타깃용으로만 유지 (시각적으로 동일) */
+
+.tbl-pms .badge {
+  display: inline-flex; align-items: center;
+  padding: 1px 6px; border-radius: 3px;
+  font-size: 10px; font-weight: 500;
+  background: #e5f0fe; color: #3b63fb;
+  margin-right: 4px;
+}
+.tbl-pms .badge.x { background: #ffebe8; color: #d73220; }
+
+/* 9 numbered callouts — 메뉴 anatomy 패턴 차용 (dot at target → dashed line → numbered chip) */
+.tbl-callout {
+  position: absolute;
+  display: flex; align-items: center; gap: 0;
+  z-index: 3;
+}
+.tbl-callout-num {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #1d1d1d; color: #ffffff;
+  font-size: 11px; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.tbl-callout-line {
+  background: transparent; flex-shrink: 0;
+}
+.tbl-callout-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #1d1d1d; flex-shrink: 0;
+}
+
+/* LEFT callout — chip ← line ← dot (dot lands on dot-x inside stage) */
+.tbl-callout--left {
+  transform: translateY(-50%);
+  right: calc(100% - var(--dot-x) - 3.5px);
+}
+.tbl-callout--left .tbl-callout-line {
+  width: var(--len, 60px); height: 0;
+  border-top: 1px dashed #1d1d1d;
+}
+.tbl-callout--left .tbl-callout-num { margin-right: 6px; }
+
+/* RIGHT callout — dot → line → chip */
+.tbl-callout--right {
+  transform: translateY(-50%);
+  left: calc(var(--dot-x) - 3.5px);
+}
+.tbl-callout--right .tbl-callout-line {
+  width: var(--len, 60px); height: 0;
+  border-top: 1px dashed #1d1d1d;
+}
+.tbl-callout--right .tbl-callout-num { margin-left: 6px; }
+
+/* TOP-DOWN callout — dot at table top, line going UP, chip ABOVE */
+.tbl-callout--above {
+  flex-direction: column-reverse;
+  transform: translateX(-50%);
+  bottom: calc(100% - var(--dot-y) - 3.5px);
+}
+.tbl-callout--above .tbl-callout-line {
+  height: var(--len, 36px); width: 0;
+  border-left: 1px dashed #1d1d1d;
+}
+.tbl-callout--above .tbl-callout-num { margin-bottom: 6px; }
+
+/* BOTTOM-UP callout — chip BELOW table, line going DOWN, dot at table */
+.tbl-callout--below {
+  flex-direction: column;
+  transform: translateX(-50%);
+  top: calc(var(--dot-y) - 3.5px);
+}
+.tbl-callout--below .tbl-callout-line {
+  height: var(--len, 36px); width: 0;
+  border-left: 1px dashed #1d1d1d;
+}
+.tbl-callout--below .tbl-callout-num { margin-top: 6px; }
+
+/* Size figure rows */
+.tbl-size-rows { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.tbl-size-row { display: flex; align-items: center; gap: 12px; }
+.tbl-size-row .label {
+  width: 70px; font-size: 13px; font-weight: 500; color: #565656;
+  font-family: ui-monospace, Menlo, monospace;
+}
+.tbl-size-row .pair { display: flex; }
+
+/* Generic atomic cell (matches Figma table atomic-v0.4) */
+.tac {
+  display: inline-flex; align-items: center;
+  background: #fefefe; border-bottom: 1px solid #d2d2d2; border-right: 1px solid #d2d2d2;
+  font-family: "Pretendard", sans-serif; box-sizing: border-box;
+  font-size: 14px; color: #1d1d1d;
+  width: 144px;
+}
+.tac.is-header { background: #f4f4f4; font-weight: 600; }
+.tac.is-zebra { background: #f4f4f4; }
+.tac.is-sum { background: #dddddd; font-weight: 600; }
+.tac.is-hover { background: #ededed; }
+.tac.is-active { background: #fbdfcc; box-shadow: inset 0 0 0 1px #eb6100; }
+.tac.size-xs_24 { height: 24px; padding: 0 8px; gap: 4px; font-size: 14px; }
+.tac.size-sm_28 { height: 28px; padding: 0 8px; gap: 4px; font-size: 14px; }
+.tac.size-md_32 { height: 32px; padding: 0 8px; gap: 8px; font-size: 14px; }
+.tac.size-lg_40 { height: 40px; padding: 0 8px; gap: 8px; font-size: 16px; }
+.tac.size-xl_48 { height: 48px; padding: 0 12px; gap: 12px; font-size: 16px; }
+.tac.size-2xl_56 { height: 56px; padding: 0 12px; gap: 16px; font-size: 18px; }
+.tac.no-divider { border-right: 0; }
+.tac.no-border { border-bottom: 0; }
+
+/* Style demos: 2x2 grid (header row + cell row, 2 columns) */
+.tbl-style-rows { display: flex; flex-direction: column; gap: 16px; }
+.tbl-style-row { display: flex; align-items: center; gap: 16px; }
+.tbl-style-row .label {
+  width: 130px; font-size: 13px; font-weight: 500; color: #565656;
+}
+.tbl-style-grid { display: flex; flex-direction: column; }
+.tbl-style-grid .row { display: flex; }
+
+/* Variant 4 cards */
+.tbl-variant-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.tbl-variant-card {
+  background: #ffffff; border: 1px solid #e9e9e9; border-radius: 12px;
+  padding: 24px; display: flex; flex-direction: column; gap: 12px;
+}
+.tbl-variant-card h4 {
+  margin: 0; font-size: 16px; font-weight: 600; color: #1d1d1d;
+}
+.tbl-variant-card p {
+  margin: 0; font-size: 13px; color: #565656; line-height: 1.6;
+  flex: 1;
+}
+.tbl-variant-card .demo {
+  border-radius: 6px; overflow: hidden; align-self: center;
+}
+
+/* State rows */
+.tbl-state-rows { display: flex; flex-direction: column; gap: 4px; }
+.tbl-state-row { display: flex; align-items: center; gap: 16px; }
+.tbl-state-row .label {
+  width: 110px; font-size: 12px; color: #565656;
+  font-family: ui-monospace, Menlo, monospace;
+}
+.tbl-state-row .strip { display: flex; }
 
 /* ----- Calendar ----- */
 .calendar-preview {
@@ -5205,10 +5693,300 @@ html, body {
 </section>
 <section id="divider" class="component-page">
   <header class="page-header">
-    <h1>구분선 (Divider)</h1>
-    <div class="meta">5 size × 5 style × 2 Dashed × 2 Title × 4 Orientation × 2 Type = 47 variants · `✅divider_v0.1` (`1028:50778`)</div>
-    <p class="description">콘텐츠 그룹 시각적 분리용 선. 4 두께(xs/sm/md/lg) · 5 inset style(full/inset-sm/inset-md/inset_lg/contents_divider) · Dashed · Title 라벨(left/center/right) · horizontal/vertical Type 조합. 기본 frame 너비 300px.</p>
+    <h1>디바이더 (Divider)</h1>
+    <div class="meta">UI-Kit-Guide `1:88828` · H1 `1:88831` · Anatomy `1:88869` · Size `1:88898/1:88907` · Layout `1:88936` · Variant `1:88979` · 디바이더의 사용 `1:89022` · Guidelines `1:89326` · 컴포넌트 `1028:50778` (47 variants)</div>
+    <p class="description">디바이더(Divider)는 디자인 요소와 정보를 구분하는 데 사용합니다. 이를 통해 각 요소의 디자인 가독성이 향상됩니다.</p>
   </header>
+
+  <!-- ========== 구조 (Anatomy) — verbatim from 1:88869 ========== -->
+  <div class="spec-section">
+    <div class="section-label">구조 (Anatomy) <span style="color: #8f8f8f; font-weight: normal;">— 출처 `1:88869` (UI-Kit-Guide verbatim)</span></div>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">디바이더는 영역을 구분하는 선과 부가적으로 내용을 구분해주는 라벨 텍스트로 구성되어 있습니다. 라벨은 옵션 항목입니다.</p>
+    <div class="anatomy-figure divider-anatomy">
+      <div class="anatomy-stage" style="width: 300px; height: 110px;">
+        <!-- 위쪽 샘플: 단순 라인 (line만) -->
+        <div class="divider divider--sm" style="width: 100%; position: absolute; top: 12px; left: 0;"></div>
+        <!-- 아래쪽 샘플: title=center / line variant (line + Label) -->
+        <div class="divider-title" style="width: 100%; position: absolute; top: 56px; left: 0;">
+          <div class="divider divider--sm"></div>
+          <span class="divider-title__text">Center Text</span>
+          <div class="divider divider--sm"></div>
+        </div>
+
+        <!-- LEFT callouts: 두 라인 모두 좌측 끝에서 가리킴 -->
+        <span class="anatomy-callout anatomy-callout--left" style="top: 12px; --dot-x: 4px;">
+          <span>line</span>
+          <span class="anatomy-callout-line"></span>
+          <span class="anatomy-callout-dot"></span>
+        </span>
+        <span class="anatomy-callout anatomy-callout--left" style="top: 56px; --dot-x: 4px;">
+          <span>line</span>
+          <span class="anatomy-callout-line"></span>
+          <span class="anatomy-callout-dot"></span>
+        </span>
+        <!-- DOWN callout: Center Text 아래 수직 라인 + Label 텍스트 -->
+        <span class="anatomy-callout anatomy-callout--down" style="top: 56px; --dot-x: 150px;">
+          <span class="anatomy-callout-dot"></span>
+          <span class="anatomy-callout-line"></span>
+          <span>Label</span>
+        </span>
+      </div>
+    </div>
+    <table class="spec-table" style="font-size: 13px;">
+      <tr><th style="width: 240px;">한글 (English)</th><th>설명</th></tr>
+      <tr><td>디바이더 라인 (Divider line)</td><td>셀이나 모듈을 구분하는 선</td></tr>
+      <tr><td>라벨 (Label)</td><td>디바이더의 내용</td></tr>
+    </table>
+  </div>
+
+  <!-- ========== Size — verbatim from 1:88898/1:88907 ========== -->
+  <div class="spec-section">
+    <div class="section-label">Size <span style="color: #8f8f8f; font-weight: normal;">— 출처 `1:88898` / `1:88907` (UI-Kit-Guide › Properties › Size verbatim)</span></div>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">디바이더는 xsmall, small, medium, large의 총 4가지 사이즈로 제공합니다.<br>xsmall은 툴바 아이콘 버튼 등의 구분에 사용되며, small은 셀 단위의 구분, medium, large는 모듈 단위의 구분에 사용됩니다.</p>
+    <div class="layout-figure">
+      <div class="layout-rows">
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Size</span><span class="layout-row__tag">xsmall</span></div>
+          <div class="divider divider--xs" style="width: 240px;"></div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Size</span><span class="layout-row__tag">small</span></div>
+          <div class="divider divider--sm" style="width: 240px;"></div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Size</span><span class="layout-row__tag">medium</span></div>
+          <div class="divider divider--md" style="width: 240px;"></div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Size</span><span class="layout-row__tag">large</span></div>
+          <div class="divider divider--lg" style="width: 240px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Layout — verbatim from 1:88936 ========== -->
+  <div class="spec-section">
+    <div class="section-label">Layout <span style="color: #8f8f8f; font-weight: normal;">— 출처 `1:88936` (UI-Kit-Guide › Properties › Layout verbatim)</span></div>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">디바이더는 여백 사이즈에 따라 총 4가지의 유형을 가지고 있습니다.</p>
+    <div class="layout-figure">
+      <div class="layout-rows">
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Layout</span><span class="layout-row__tag">full-width</span></div>
+          <div class="divider-layout-frame"><div class="divider divider--sm"></div></div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Layout</span><span class="layout-row__tag">inset-sm</span></div>
+          <div class="divider-layout-frame is-inset-sm">
+            <div class="inset-zone inset-zone--left"></div>
+            <div class="divider divider--sm"></div>
+            <div class="inset-zone inset-zone--right"></div>
+          </div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Layout</span><span class="layout-row__tag">inset-md</span></div>
+          <div class="divider-layout-frame is-inset-md">
+            <div class="inset-zone inset-zone--left"></div>
+            <div class="divider divider--sm"></div>
+            <div class="inset-zone inset-zone--right"></div>
+          </div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Layout</span><span class="layout-row__tag">inset-lg</span></div>
+          <div class="divider-layout-frame is-inset-lg">
+            <div class="inset-zone inset-zone--left"></div>
+            <div class="divider divider--sm"></div>
+            <div class="inset-zone inset-zone--right"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Variant — verbatim from 1:88979 (Figma 원본 헤딩 오타: "Varient") ========== -->
+  <div class="spec-section">
+    <div class="section-label">Variant <span style="color: #8f8f8f; font-weight: normal;">— 출처 `1:88979` (UI-Kit-Guide › Properties › Variant verbatim · Figma 원본 헤딩 오타 "Varient")</span></div>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">디바이더는 dash, line (default) 의 두 가지 타입이 있으며, 타이틀이 옵션으로 들어갈수 있습니다. 타이틀의 위치는 left, center, right 의 3가지로 구분됩니다.</p>
+    <div class="layout-figure">
+      <div class="layout-rows">
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Variant</span><span class="layout-row__tag">dash</span></div>
+          <div class="divider divider--sm divider--dashed" style="width: 240px;"></div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Variant</span><span class="layout-row__tag">line</span></div>
+          <div class="divider divider--md" style="width: 240px;"></div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Variant</span><span class="layout-row__tag">title-left</span></div>
+          <div class="divider-title" style="width: 240px;">
+            <span class="divider-title__text">Left Text</span>
+            <div class="divider divider--sm"></div>
+          </div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Variant</span><span class="layout-row__tag">title-center</span></div>
+          <div class="divider-title" style="width: 240px;">
+            <div class="divider divider--sm"></div>
+            <span class="divider-title__text">Center Text</span>
+            <div class="divider divider--sm"></div>
+          </div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Variant</span><span class="layout-row__tag">title-right</span></div>
+          <div class="divider-title" style="width: 240px;">
+            <div class="divider divider--sm"></div>
+            <span class="divider-title__text">Right Text</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 디바이더의 사용 — verbatim from 1:89022 ========== -->
+  <div class="spec-section">
+    <div class="section-label">디바이더의 사용 <span style="color: #8f8f8f; font-weight: normal;">— 출처 `1:89022` (UI-Kit-Guide verbatim)</span></div>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">디바이더는 콘텐츠 사이에만 나타나야 하므로 페이지의 마지막 셀이나 섹션에는 사용하지 마세요.</p>
+
+    <div class="divider-usage-figure">
+      <!-- ========== Mock 1: 프로필 보기 (Figma `1:89032`) ========== -->
+      <!-- 7행 중 5번째(직급)와 6번째(생일) 사이에만 divider — 인사정보/연락처 그룹 분리 -->
+      <div class="usage-mock um-profile">
+        <div class="um-profile__head"><span>프로필 보기</span><span class="x">×</span></div>
+        <div class="um-profile__row"><span class="lab">이름</span><span class="val">김직원</span></div>
+        <div class="um-profile__row"><span class="lab">계정</span><span class="val">administrator</span></div>
+        <div class="um-profile__row"><span class="lab">진료과</span><span class="val">치주과</span></div>
+        <div class="um-profile__row"><span class="lab">소속부서</span><span class="val">제1진료실</span></div>
+        <div class="um-profile__row"><span class="lab">직급</span><span class="val">치위생사</span></div>
+        <div class="um-profile__divider"></div>
+        <div class="um-profile__row"><span class="lab">생일</span><span class="val">11월 03일(양)</span></div>
+        <div class="um-profile__row"><span class="lab">휴대번호</span><span class="val">010-1111-2222</span></div>
+      </div>
+
+      <!-- ========== Mock 2: 환자 로그기록 (Figma `1:89066`) ========== -->
+      <!-- 첫 메시지와 나머지 메시지 사이에 날짜 divider (`2024년 2월 23일 (월)`) — 일자별 그룹 -->
+      <div class="usage-mock um-log">
+        <div class="um-log__head"><span class="back">&lt;</span><span class="title">환자 로그기록</span><span class="ic">💬</span><span class="ic">🔍</span></div>
+        <div class="um-log__body">
+          <div class="um-log__msg"><span class="time">오후 2:41</span><span class="bubble">진료 완료를 선택하였습니다.</span></div>
+          <div class="um-log__date">2024년 2월 23일 (월)</div>
+          <div class="um-log__msg"><span class="time">오후 2:41</span><span class="bubble">홍길동 환자를 선택하여 진료를 시작하였습니다.</span></div>
+          <div class="um-log__msg"><span class="time">오후 2:41</span><span class="bubble">C.C를 입력하였습니다.</span></div>
+          <div class="um-log__msg"><span class="time">오후 2:41</span><span class="bubble">당일메모를 입력하였습니다.</span></div>
+          <div class="um-log__msg"><span class="time">오후 2:41</span><span class="bubble">위염 히포버튼을 선택하였습니다.</span></div>
+          <div class="um-log__msg"><span class="time">오후 2:41</span><span class="bubble">진찰소견을 입력하였습니다.</span></div>
+          <div class="um-log__msg"><span class="time">오후 2:41</span><span class="bubble">진료완료를 선택하였습니다.</span></div>
+          <div class="um-log__msg"><span class="time">오후 2:41</span><span class="bubble">홍길동 환자를 선택하여 진료를 시작하였습니다.</span></div>
+          <div class="um-log__msg"><span class="time">오후 2:41</span><span class="bubble">C.C를 입력하였습니다.</span></div>
+        </div>
+      </div>
+
+      <!-- ========== Mock 3: One Messenger 연락처 (Figma `1:89119`) ========== -->
+      <!-- featured(윤의사) 카드와 list 사이 divider · 섹션 라벨이 그룹 구분(즐겨찾기/Doctor/Administrator/FrontDesk/Chairs) -->
+      <div class="usage-mock um-msg">
+        <div class="um-msg__head"><span class="title">One Messenger</span><span class="ico">—</span><span class="ico">⚙</span><span class="ico">×</span></div>
+        <div class="um-msg__tabs">
+          <div class="um-msg__tab is-active">👥 대화 상대</div>
+          <div class="um-msg__tab">💬 대화 목록</div>
+        </div>
+        <div class="um-msg__search"><span>🔍 검색할 이름을 입력해주세요</span><span style="color: #345bf8;">+</span></div>
+        <div class="um-msg__featured">
+          <span class="um-msg__avatar-lg">윤</span>
+          <span class="name">윤의사</span>
+          <span class="call">📞</span>
+        </div>
+        <div class="um-msg__count">전체 11</div>
+        <div class="um-msg__section"><span>즐겨찾기 1</span><span class="caret">▲</span></div>
+        <div class="um-msg__row"><span class="um-msg__avatar-sm"></span><span>김의사</span></div>
+        <div class="um-msg__section"><span>Doctor 3</span><span class="caret">▲</span></div>
+        <div class="um-msg__row is-hover"><span class="um-msg__avatar-sm"></span><span>김의사</span></div>
+        <div class="um-msg__row"><span class="um-msg__avatar-sm"></span><span>이의사</span></div>
+        <div class="um-msg__row"><span class="um-msg__avatar-sm"></span><span>최의사</span></div>
+        <div class="um-msg__section"><span>Administrator 2</span><span class="caret">▼</span></div>
+        <div class="um-msg__section"><span>FrontDesk 2</span><span class="caret">▲</span></div>
+        <div class="um-msg__row"><span class="um-msg__avatar-sm"></span><span>김직원</span></div>
+        <div class="um-msg__row"><span class="um-msg__avatar-sm"></span><span>나직원</span></div>
+        <div class="um-msg__section"><span>Chairs 3</span><span class="caret">▲</span></div>
+        <div class="um-msg__row"><span class="um-msg__avatar-sm"></span><span>도직원</span></div>
+      </div>
+
+      <!-- ========== Mock 4: 채팅 대화 (Figma `1:89242`) ========== -->
+      <!-- 메시지 묶음과 다음 묶음 사이에 날짜 divider (`2024년 2월 23일`) -->
+      <div class="usage-mock um-chat">
+        <div class="um-chat__notch"><span class="bar"></span></div>
+        <div class="um-chat__head"><span class="um-msg__avatar-lg" style="width:20px;height:20px;font-size:9px;">나</span><span class="title">나직원</span><span class="ico">🔍</span><span class="ico">👤</span></div>
+        <div class="um-chat__body">
+          <div class="um-chat__msg theirs">
+            <span class="av"></span>
+            <div class="group">
+              <span class="name">나직원</span>
+              <span class="bubble">안녕하세요.</span>
+            </div>
+            <span class="time">오후 16:29</span>
+          </div>
+          <div class="um-chat__msg theirs">
+            <span class="av" style="visibility: hidden;"></span>
+            <div class="group"><span class="bubble">오늘 원장님 언제 나오시나요?</span></div>
+            <span class="time">오후 16:29</span>
+          </div>
+          <div class="um-chat__msg ours">
+            <span class="time">오후 16:29</span>
+            <span class="bubble">안녕하세요. 반갑습니다.</span>
+          </div>
+          <div class="um-chat__msg ours">
+            <span class="time">오후 16:29</span>
+            <span class="bubble">원장님 지금 거의 도착하셨습니다.</span>
+          </div>
+          <div class="um-chat__msg ours">
+            <span class="time">오후 16:29</span>
+            <div class="um-chat__map"></div>
+          </div>
+          <div class="um-chat__date">2024년 2월 23일</div>
+          <div class="um-chat__msg theirs">
+            <span class="av"></span>
+            <div class="group">
+              <span class="name">나직원</span>
+              <span class="bubble">오늘 저녁에 세미나 있습니다. 5시 반까지 준비 부탁드립니다.</span>
+            </div>
+            <span class="time">오후 16:29</span>
+          </div>
+          <div class="um-chat__msg ours">
+            <span class="time">오후 16:29</span>
+            <span class="bubble">네.</span>
+          </div>
+        </div>
+        <div class="um-chat__plain">알겠습니다. 혹시 세미나 몇시까지 진행하는지 알 수 있을까요?</div>
+        <div class="um-chat__input"><span>📎</span><span style="flex:1;">　</span><span class="send">➤</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Guidelines — verbatim from 1:89326 ========== -->
+  <div class="spec-section">
+    <div class="section-label">Guidelines <span style="color: #8f8f8f; font-weight: normal;">— 출처 `1:89326` (UI-Kit-Guide verbatim)</span></div>
+    <h3 style="margin: 0 0 12px; font-size: 16px; font-weight: 600; color: #1d1d1d;">색상 적용</h3>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">디바이더에는 별도의 색조 변형을 적용하지 않습니다. 디바이더는 시각적 강조보다는 정보 간 구획을 명확히 하는 역할을 하므로, 주변 요소와의 대비를 고려한 최소한의 컬러 위계만을 적용하여 구분 기능에 집중합니다.</p>
+
+    <div class="row" style="gap: 16px; align-items: stretch;">
+      <!-- Do — neutral gray dividers -->
+      <div class="guide-card guide-card--do">
+        <div class="guide-card-head"><span class="guide-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 7"></polyline></svg></span>Do</div>
+        <div class="divider-color-sample">
+          <span class="h-line"></span>
+          <span class="v-line"></span>
+        </div>
+      </div>
+
+      <!-- Don't — colored dividers (blue h + orange v) -->
+      <div class="guide-card guide-card--dont">
+        <div class="guide-card-head"><span class="guide-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></span>Don't</div>
+        <div class="divider-color-sample">
+          <span class="h-line"></span>
+          <span class="v-line"></span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Color tokens -->
   <div class="spec-section">
@@ -5247,182 +6025,6 @@ html, body {
     </table>
   </div>
 
-  <!-- Matrix: size × style (Title=false, Dashed=false, horizontal) -->
-  <div class="spec-section">
-    <div class="variant-name">size × style — Title=false / Dashed=false / horizontal (16 variants)</div>
-    <div class="matrix" style="grid-template-columns: 100px repeat(4, 320px); gap: 12px 16px;">
-      <div></div>
-      <div class="col-header">full</div>
-      <div class="col-header">inset-sm (16)</div>
-      <div class="col-header">inset-md (24)</div>
-      <div class="col-header">inset_lg (32)</div>
-
-      <div class="row-label">xs (0.5)</div>
-      <div class="cell"><div class="divider-frame"><div class="divider divider--xs"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-sm"><div class="divider divider--xs"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-md"><div class="divider divider--xs"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-lg"><div class="divider divider--xs"></div></div></div>
-
-      <div class="row-label">sm (1)</div>
-      <div class="cell"><div class="divider-frame"><div class="divider divider--sm"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-sm"><div class="divider divider--sm"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-md"><div class="divider divider--sm"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-lg"><div class="divider divider--sm"></div></div></div>
-
-      <div class="row-label">md (2)</div>
-      <div class="cell"><div class="divider-frame"><div class="divider divider--md"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-sm"><div class="divider divider--md"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-md"><div class="divider divider--md"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-lg"><div class="divider divider--md"></div></div></div>
-
-      <div class="row-label">lg (4)</div>
-      <div class="cell"><div class="divider-frame"><div class="divider divider--lg"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-sm"><div class="divider divider--lg"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-md"><div class="divider divider--lg"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-lg"><div class="divider divider--lg"></div></div></div>
-    </div>
-  </div>
-
-  <!-- Dashed (sm only) -->
-  <div class="spec-section">
-    <div class="variant-name">Dashed=true — sm_Default 전용 (4 style)</div>
-    <div class="matrix" style="grid-template-columns: 100px repeat(4, 320px); gap: 12px 16px;">
-      <div></div>
-      <div class="col-header">full</div>
-      <div class="col-header">inset-sm</div>
-      <div class="col-header">inset-md</div>
-      <div class="col-header">inset_lg</div>
-
-      <div class="row-label">sm dashed</div>
-      <div class="cell"><div class="divider-frame"><div class="divider divider--sm divider--dashed"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-sm"><div class="divider divider--sm divider--dashed"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-md"><div class="divider divider--sm divider--dashed"></div></div></div>
-      <div class="cell"><div class="divider-frame divider-frame--inset-lg"><div class="divider divider--sm divider--dashed"></div></div></div>
-    </div>
-  </div>
-
-  <!-- Title with Orientation (sm only) -->
-  <div class="spec-section">
-    <div class="variant-name">Title=true × Orientation — sm_Default × Dashed=false (12 variants)</div>
-    <div class="matrix" style="grid-template-columns: 100px repeat(4, 320px); gap: 12px 16px;">
-      <div></div>
-      <div class="col-header">full</div>
-      <div class="col-header">inset-sm</div>
-      <div class="col-header">inset-md</div>
-      <div class="col-header">inset_lg</div>
-
-      <div class="row-label">left</div>
-      <div class="cell"><div class="divider-title"><span class="divider-title__text">제목</span><div class="divider divider--sm"></div></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 16px;"><span class="divider-title__text">제목</span><div class="divider divider--sm"></div></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 24px;"><span class="divider-title__text">제목</span><div class="divider divider--sm"></div></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 32px;"><span class="divider-title__text">제목</span><div class="divider divider--sm"></div></div></div>
-
-      <div class="row-label">center</div>
-      <div class="cell"><div class="divider-title"><div class="divider divider--sm"></div><span class="divider-title__text">제목</span><div class="divider divider--sm"></div></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 16px;"><div class="divider divider--sm"></div><span class="divider-title__text">제목</span><div class="divider divider--sm"></div></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 24px;"><div class="divider divider--sm"></div><span class="divider-title__text">제목</span><div class="divider divider--sm"></div></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 32px;"><div class="divider divider--sm"></div><span class="divider-title__text">제목</span><div class="divider divider--sm"></div></div></div>
-
-      <div class="row-label">right</div>
-      <div class="cell"><div class="divider-title"><div class="divider divider--sm"></div><span class="divider-title__text">제목</span></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 16px;"><div class="divider divider--sm"></div><span class="divider-title__text">제목</span></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 24px;"><div class="divider divider--sm"></div><span class="divider-title__text">제목</span></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 32px;"><div class="divider divider--sm"></div><span class="divider-title__text">제목</span></div></div>
-    </div>
-  </div>
-
-  <!-- Title × Dashed=true -->
-  <div class="spec-section">
-    <div class="variant-name">Title=true × Orientation × Dashed=true (12 variants)</div>
-    <div class="matrix" style="grid-template-columns: 100px repeat(4, 320px); gap: 12px 16px;">
-      <div></div>
-      <div class="col-header">full</div>
-      <div class="col-header">inset-sm</div>
-      <div class="col-header">inset-md</div>
-      <div class="col-header">inset_lg</div>
-
-      <div class="row-label">left</div>
-      <div class="cell"><div class="divider-title"><span class="divider-title__text">제목</span><div class="divider divider--sm divider--dashed"></div></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 16px;"><span class="divider-title__text">제목</span><div class="divider divider--sm divider--dashed"></div></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 24px;"><span class="divider-title__text">제목</span><div class="divider divider--sm divider--dashed"></div></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 32px;"><span class="divider-title__text">제목</span><div class="divider divider--sm divider--dashed"></div></div></div>
-
-      <div class="row-label">center</div>
-      <div class="cell"><div class="divider-title"><div class="divider divider--sm divider--dashed"></div><span class="divider-title__text">제목</span><div class="divider divider--sm divider--dashed"></div></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 16px;"><div class="divider divider--sm divider--dashed"></div><span class="divider-title__text">제목</span><div class="divider divider--sm divider--dashed"></div></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 24px;"><div class="divider divider--sm divider--dashed"></div><span class="divider-title__text">제목</span><div class="divider divider--sm divider--dashed"></div></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 32px;"><div class="divider divider--sm divider--dashed"></div><span class="divider-title__text">제목</span><div class="divider divider--sm divider--dashed"></div></div></div>
-
-      <div class="row-label">right</div>
-      <div class="cell"><div class="divider-title"><div class="divider divider--sm divider--dashed"></div><span class="divider-title__text">제목</span></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 16px;"><div class="divider divider--sm divider--dashed"></div><span class="divider-title__text">제목</span></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 24px;"><div class="divider divider--sm divider--dashed"></div><span class="divider-title__text">제목</span></div></div>
-      <div class="cell"><div class="divider-title" style="padding: 0 32px;"><div class="divider divider--sm divider--dashed"></div><span class="divider-title__text">제목</span></div></div>
-    </div>
-  </div>
-
-  <!-- Vertical type -->
-  <div class="spec-section">
-    <div class="variant-name">Type=vertical (3 variants)</div>
-    <div class="row" style="gap: 32px; align-items: center; height: 40px;">
-      <div class="row" style="gap: 0; align-items: center;">
-        <span style="font-size: 12px; color: #565656; padding: 0 8px;">왼쪽</span>
-        <span class="divider divider--vertical"></span>
-        <span style="font-size: 12px; color: #565656; padding: 0 8px;">중간</span>
-        <span class="divider divider--vertical"></span>
-        <span style="font-size: 12px; color: #565656; padding: 0 8px;">오른쪽</span>
-        <span class="muted" style="margin-left: 8px;">sm full (1×16)</span>
-      </div>
-      <div class="row" style="gap: 0; align-items: center;">
-        <span style="font-size: 12px; color: #565656; padding: 0 8px;">A</span>
-        <span class="divider divider--vertical divider--dashed" style="border-left: 1px dashed #e9e9e9; border-top: 0; height: 16px;"></span>
-        <span style="font-size: 12px; color: #565656; padding: 0 8px;">B</span>
-        <span class="muted" style="margin-left: 8px;">sm dashed</span>
-      </div>
-      <div class="row" style="gap: 0; align-items: center;">
-        <span style="font-size: 12px; color: #565656; padding: 0 6px;">·</span>
-        <span class="divider--vertical-contents"></span>
-        <span style="font-size: 12px; color: #565656; padding: 0 6px;">·</span>
-        <span class="muted" style="margin-left: 8px;">xs contents_divider (1×12, #bcbcbc)</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Color usage examples -->
-  <div class="spec-section">
-    <div class="variant-name">color usage — line vs line_contents vs etc/divider</div>
-    <div class="col" style="gap: 12px;">
-      <div><div class="muted">divider/line (#e9e9e9) — 일반</div><div class="divider-frame"><div class="divider divider--sm"></div></div></div>
-      <div><div class="muted">divider/line_contents (#bcbcbc) — 그룹 내부</div><div class="divider-frame"><div class="divider divider--sm divider--contents"></div></div></div>
-      <div><div class="muted">etc/divider (#d2d2d2) — 셀/테이블 약한 구분</div><div class="divider-frame"><div class="divider divider--sm divider--strong"></div></div></div>
-    </div>
-  </div>
-
-  <!-- Variant ID reference -->
-  <div class="spec-section">
-    <div class="section-label">대표 variant ID (size × style, Title=false / Dashed=false / horizontal)</div>
-    <table class="spec-table">
-      <tr><th>size \\ style</th><th>full</th><th>inset-sm</th><th>inset-md</th><th>inset_lg</th></tr>
-      <tr><td><code>xs</code></td><td><code>1490:178526</code></td><td><code>1490:178530</code></td><td><code>1490:178528</code></td><td><code>1490:178532</code></td></tr>
-      <tr><td><code>sm_Default</code></td><td><code>1028:50887</code></td><td><code>1028:50891</code></td><td><code>1028:50889</code></td><td><code>1028:50893</code></td></tr>
-      <tr><td><code>md</code></td><td><code>1028:50897</code></td><td><code>1028:50905</code></td><td><code>1028:50901</code></td><td><code>1028:50909</code></td></tr>
-      <tr><td><code>lg</code></td><td><code>1028:50895</code></td><td><code>1028:50903</code></td><td><code>1028:50899</code></td><td><code>1028:50907</code></td></tr>
-      <tr><td colspan="5" style="font-size: 11px; color: #8f8f8f;">vertical · Title=true · Dashed × Orientation 매트릭스 ID는 components/divider.md 참고</td></tr>
-    </table>
-  </div>
-
-  <!-- Usage notes -->
-  <div class="spec-section">
-    <div class="section-label">usage notes</div>
-    <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #565656; line-height: 1.7;">
-      <li>일반 구분선: <code>divider/line</code> · 콘텐츠 그룹 내부: <code>divider/line_contents</code> · 셀 약한 구분: <code>etc/divider</code></li>
-      <li>Dashed/Title/Orientation은 <code>sm_Default</code>에만 정의 — md/lg/xs는 단순 선만</li>
-      <li><code>contents_divider</code> style은 xs + vertical 전용 (1px short dot, <code>#bcbcbc</code>)</li>
-      <li><code>inset_lg</code> 언더스코어, <code>sm_Default</code> 첫글자 대문자 — Figma 원본 verbatim 표기</li>
-      <li><code>⬑Orientation</code> prop의 <code>⬑</code> 화살표 문자는 정렬용 메타 마커 — variant 매칭 시 그대로 포함</li>
-      <li>vertical은 height를 부모에 맞춰 STRETCH (default 16~12)</li>
-    </ul>
-  </div>
 </section>
 <section id="dropdown" class="component-page">
   <header class="page-header">
@@ -8268,29 +8870,368 @@ html, body {
 </section>
 <section id="table" class="component-page">
   <header class="page-header">
-    <h1>테이블 (Table)</h1>
-    <div class="meta">data table · sortable / selectable</div>
-    <p class="description">구조화된 데이터 표시. 정렬·선택·필터링 가능.</p>
+    <h1>표 (Table)</h1>
+    <div class="meta">UI-Kit-Guide `302:43084` · H1 `302:43098` · Anatomy `302:43106` · Properties `302:43175` (Size `302:43180` / Style `302:43216` / Variant `302:43376` / State `302:43304`) · Guidelines `302:43487` · 컴포넌트 `2413:88136` (table atomic-v0.4 · 432 variants)</div>
+    <p class="description">표는 데이터를 하나 이상의 행과 열로 조직화하여 표현하는 형식으로 사용자가 빠르게 많은 양의 정보를 확인하고 비교할 수 있도록 도와줍니다.</p>
+    <p class="description">기본적으로 대화형 요소가 아니기 때문에 열 제목에 데이터를 정렬하기 위한 컨트롤 요소가 포함된 상황 외에 행 전체나 데이터 셀이 대화형으로 작동하지 않습니다.</p>
   </header>
-  <div class="spec-section"><div class="variant-name">basic</div>
-    <div class="table-preview"><table>
-      <thead><tr><th>이름</th><th>예약 시간</th><th>상태</th><th>의사</th></tr></thead>
-      <tbody>
-        <tr><td>홍길동</td><td>2026-05-05 14:30</td><td><span class="tag tag--green">확정</span></td><td>김의사</td></tr>
-        <tr><td>김민지</td><td>2026-05-05 15:00</td><td><span class="tag tag--orange">대기</span></td><td>박의사</td></tr>
-        <tr><td>이수정</td><td>2026-05-05 15:30</td><td><span class="tag tag--gray">취소</span></td><td>김의사</td></tr>
-        <tr><td>박지훈</td><td>2026-05-05 16:00</td><td><span class="tag tag--green">확정</span></td><td>이의사</td></tr>
-      </tbody>
-    </table></div></div>
-  <div class="spec-section"><div class="variant-name">with selection</div>
-    <div class="table-preview"><table>
-      <thead><tr><th style="width: 32px;"><span class="checkbox checkbox--sm checkbox--indeterminate"></span></th><th>이름</th><th>역할</th></tr></thead>
-      <tbody>
-        <tr><td><span class="checkbox checkbox--sm checkbox--checked"></span></td><td>홍길동</td><td>관리자</td></tr>
-        <tr><td><span class="checkbox checkbox--sm checkbox--checked"></span></td><td>김민지</td><td>의사</td></tr>
-        <tr><td><span class="checkbox checkbox--sm"></span></td><td>이수정</td><td>접수</td></tr>
-      </tbody>
-    </table></div></div>
+
+  <!-- ========== 구조 (Anatomy) — Figma `302:43113` verbatim (PMS 진료내역 sample + 9 numbered callouts) ========== -->
+  <div class="spec-section">
+    <div class="section-label">구조 (Anatomy) <span style="color: #8f8f8f; font-weight: normal;">— 출처 `302:43106` / `302:43113` (UI-Kit-Guide verbatim)</span></div>
+    <div class="tbl-anatomy-figure">
+      <div class="tbl-anatomy-stage">
+        <!-- Tabs row + right icons (icons from /icons/svg/system/arrow/fill/) -->
+        <div class="tabs">
+          <span class="tab is-active">오늘 진료 내역</span>
+          <span class="tab">수납 내역</span>
+          <span class="tab-icons">
+            <span class="tab-icon-btn" title="expand">
+              <svg viewBox="0 0 14.0004 14" fill="none"><path d="M12.5004 5.46289V1.5H8.53455C8.12033 1.5 7.78455 1.16421 7.78455 0.75C7.78455 0.335786 8.12033 0 8.53455 0H13.2504C13.6644 0.000217416 14.0004 0.335921 14.0004 0.75V5.46289C14.0003 5.87693 13.6644 6.21267 13.2504 6.21289C12.8362 6.21289 12.5004 5.87707 12.5004 5.46289Z" fill="currentColor"/><path d="M0 8.53711C0 8.1229 0.335786 7.78711 0.75 7.78711C1.16421 7.78711 1.5 8.1229 1.5 8.53711V12.5H5.46582C5.87985 12.5002 6.21582 12.8359 6.21582 13.25C6.21578 13.664 5.87982 13.9998 5.46582 14H0.75C0.335812 14 4.14869e-05 13.6642 0 13.25V8.53711Z" fill="currentColor"/><path d="M12.7201 0.219727C13.0131 -0.073031 13.4878 -0.0732293 13.7806 0.219727C14.0734 0.512705 14.0726 0.987479 13.7797 1.28027L9.06482 5.99316C8.77191 6.28591 8.2971 6.28595 8.00427 5.99316C7.71152 5.70025 7.71148 5.22544 8.00427 4.93262L12.7201 0.219727Z" fill="currentColor"/><path d="M4.93555 8.00684C5.22853 7.71408 5.7033 7.71388 5.99609 8.00684C6.28885 8.29981 6.28807 8.77459 5.99512 9.06738L1.28027 13.7803C0.987361 14.073 0.512554 14.0731 0.219727 13.7803C-0.0730241 13.4874 -0.0730625 13.0126 0.219727 12.7197L4.93555 8.00684Z" fill="currentColor"/></svg>
+            </span>
+            <span class="tab-icon-btn" title="swap-horiz">
+              <svg viewBox="0 0 13.5 13.4997" fill="none"><path d="M12.75 2.57153C13.1642 2.57153 13.5 2.90732 13.5 3.32153C13.5 3.73575 13.1642 4.07153 12.75 4.07153L0.75 4.07153C0.335786 4.07153 -3.52056e-08 3.73575 0 3.32153C3.5206e-08 2.90732 0.335786 2.57153 0.75 2.57153L12.75 2.57153Z" fill="currentColor"/><path d="M0.75 9.42847C0.335786 9.42847 2.86042e-08 9.76425 5.87806e-08 10.1785C8.89571e-08 10.5927 0.335786 10.9285 0.75 10.9285L12.75 10.9285C13.1642 10.9285 13.5 10.5927 13.5 10.1785C13.5 9.76425 13.1642 9.42847 12.75 9.42847L0.75 9.42847Z" fill="currentColor"/><path d="M9.64832 0.219727C9.94121 -0.0731667 10.416 -0.0731667 10.7089 0.219727L13.2802 2.79102C13.573 3.08391 13.573 3.55867 13.2802 3.85156L10.7089 6.42285C10.416 6.71574 9.94121 6.71574 9.64832 6.42285C9.35556 6.12995 9.35547 5.65515 9.64832 5.3623L11.6893 3.32129L9.64832 1.28027C9.35542 0.98738 9.35542 0.51262 9.64832 0.219727Z" fill="currentColor"/><path d="M3.85168 7.0769C3.55879 6.78401 3.08403 6.78401 2.79114 7.0769L0.219849 9.64819C-0.0730445 9.94109 -0.0730445 10.4158 0.219849 10.7087L2.79114 13.28C3.08403 13.5729 3.55879 13.5729 3.85168 13.28C4.14444 12.9871 4.14453 12.5123 3.85168 12.2195L1.81067 10.1785L3.85168 8.13745C4.14458 7.84456 4.14458 7.3698 3.85168 7.0769Z" fill="currentColor"/></svg>
+            </span>
+          </span>
+        </div>
+
+        <!-- Sample PMS table — column alignment per Figma -->
+        <table class="tbl-pms">
+          <colgroup>
+            <col class="c-name"><col class="c-amt"><col class="c-cnt"><col class="c-date"><col class="c-self"><col class="c-corp">
+          </colgroup>
+          <thead>
+            <!-- 1행: 메인 헤더 -->
+            <tr class="h-main">
+              <th class="ta-l">명칭</th>
+              <th class="ta-r">금액</th>
+              <th class="ta-c">횟수</th>
+              <th class="ta-c">진료일</th>
+              <th class="ta-r" colspan="2">총 부담금</th>
+            </tr>
+            <!-- 2행: 서브 헤더 -->
+            <tr class="h-sub">
+              <th></th>
+              <th></th>
+              <th class="ta-c">번호</th>
+              <th></th>
+              <th class="ta-r">개인부담금</th>
+              <th class="ta-r">공단부담금</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 합계 행 (Sum) -->
+            <tr class="sum-row">
+              <td class="ta-l">합계</td>
+              <td class="ta-r">12,500,999원</td>
+              <td class="ta-c"></td>
+              <td class="ta-c">2026.04.08</td>
+              <td class="ta-r">12,500,999원</td>
+              <td class="ta-r">12,500,999원</td>
+            </tr>
+            <!-- 데이터 행 1~10 (Figma `306:8789` verbatim, zebra 미적용) -->
+            <tr>
+              <td class="ta-l"><span class="badge">보험</span>초진 진찰료</td>
+              <td class="ta-r">15,060</td><td class="ta-c">1</td><td class="ta-c">2026.04.08</td>
+              <td class="ta-r">500,999원</td><td class="ta-r">12,500,999원</td>
+            </tr>
+            <tr>
+              <td class="ta-l"><span class="badge">보험</span>파노라마 촬영판독</td>
+              <td class="ta-r">15,060</td><td class="ta-c">2</td><td class="ta-c">2026.04.08</td>
+              <td class="ta-r">500,999원</td><td class="ta-r">12,500,999원</td>
+            </tr>
+            <tr>
+              <td class="ta-l"><span class="badge">보험</span>치석제거 [1/3악당)</td>
+              <td class="ta-r">15,060</td><td class="ta-c">3</td><td class="ta-c">2026.04.08</td>
+              <td class="ta-r">500,999원</td><td class="ta-r">12,500,999원</td>
+            </tr>
+            <tr>
+              <td class="ta-l"><span class="badge">보험</span>구치발치</td>
+              <td class="ta-r">12,500,999</td><td class="ta-c">4</td><td class="ta-c">2026.04.08</td>
+              <td class="ta-r">500,999원</td><td class="ta-r">12,500,999원</td>
+            </tr>
+            <tr>
+              <td class="ta-l"><span class="badge">보험</span>전달마취(나)-하치조신경블록</td>
+              <td class="ta-r">15,060</td><td class="ta-c">5</td><td class="ta-c">2026.04.08</td>
+              <td class="ta-r">500,999원</td><td class="ta-r">12,500,999원</td>
+            </tr>
+            <tr>
+              <td class="ta-l"><span class="badge">보험</span>오스텔리도카인 에피네프린주(1:100,000)(1.8ml)</td>
+              <td class="ta-r">15,060</td><td class="ta-c">6</td><td class="ta-c">2026.04.08</td>
+              <td class="ta-r">12,500,999원</td><td class="ta-r">12,500,999원</td>
+            </tr>
+            <tr>
+              <td class="ta-l"><span class="badge x">비보험</span>의약품관리료 1일분 (의원)</td>
+              <td class="ta-r">15,060</td><td class="ta-c">7</td><td class="ta-c">2026.04.08</td>
+              <td class="ta-r">500,999원</td><td class="ta-r">12,500,999원</td>
+            </tr>
+            <tr>
+              <td class="ta-l"><span class="badge">보험</span>레진충전(치경부)</td>
+              <td class="ta-r">15,060</td><td class="ta-c">8</td><td class="ta-c">2026.04.08</td>
+              <td class="ta-r">500,999원</td><td class="ta-r">12,500,999원</td>
+            </tr>
+            <tr>
+              <td class="ta-l"><span class="badge">보험</span>치석제거</td>
+              <td class="ta-r">12,500,999</td><td class="ta-c">9</td><td class="ta-c">2026.04.08</td>
+              <td class="ta-r">500,999원</td><td class="ta-r">12,500,999원</td>
+            </tr>
+            <tr>
+              <td class="ta-l"><span class="badge x">비보험</span>구치발치, 치석제거</td>
+              <td class="ta-r">text</td><td class="ta-c">10</td><td class="ta-c">2026.04.08</td>
+              <td class="ta-r">text</td><td class="ta-r">text</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 9 numbered callouts (Figma `306:8789` verbatim, 10 데이터 행 layout) -->
+        <!-- ① 헤더 (Header) → 메인 헤더 행 "명칭" 좌측 시작점 (y=50) -->
+        <span class="tbl-callout tbl-callout--left" style="top: 47px; --dot-x: 24px; --len: 60px;">
+          <span class="tbl-callout-num">1</span>
+          <span class="tbl-callout-line"></span>
+          <span class="tbl-callout-dot"></span>
+        </span>
+        <!-- ② 서브헤더 (Subheader) → 서브 헤더 행 "공단부담금" 우측 (y=82) -->
+        <span class="tbl-callout tbl-callout--right" style="top: 78px; --dot-x: 736px; --len: 60px;">
+          <span class="tbl-callout-dot"></span>
+          <span class="tbl-callout-line"></span>
+          <span class="tbl-callout-num">2</span>
+        </span>
+        <!-- ③ 합계 (Sum) → 합계 행 좌측 (y=114) -->
+        <span class="tbl-callout tbl-callout--left" style="top: 109px; --dot-x: 24px; --len: 60px;">
+          <span class="tbl-callout-num">3</span>
+          <span class="tbl-callout-line"></span>
+          <span class="tbl-callout-dot"></span>
+        </span>
+        <!-- ④ 데이터 셀 (Cell) → 5번 데이터 행 (전달마취) 좌측 (y=290) -->
+        <span class="tbl-callout tbl-callout--left" style="top: 264px; --dot-x: 24px; --len: 60px;">
+          <span class="tbl-callout-num">4</span>
+          <span class="tbl-callout-line"></span>
+          <span class="tbl-callout-dot"></span>
+        </span>
+        <!-- ⑤ 셀 지브라 (Cell Zebra) → 8번 데이터 행 (레진충전) 좌측 — 개념 표시용 (y=386) -->
+        <span class="tbl-callout tbl-callout--left" style="top: 357px; --dot-x: 24px; --len: 60px;">
+          <span class="tbl-callout-num">5</span>
+          <span class="tbl-callout-line"></span>
+          <span class="tbl-callout-dot"></span>
+        </span>
+        <!-- ⑥ 보더 (Border) → 4행 ↔ 5행 사이 가로 보더 우측 (y=274) -->
+        <span class="tbl-callout tbl-callout--right" style="top: 249px; --dot-x: 736px; --len: 60px;">
+          <span class="tbl-callout-dot"></span>
+          <span class="tbl-callout-line"></span>
+          <span class="tbl-callout-num">6</span>
+        </span>
+        <!-- ⑦ 디바이더 (Divider) → 진료일 ↔ 개인부담금 사이 세로 디바이더 (표 하단 → 위) -->
+        <span class="tbl-callout tbl-callout--below" style="--dot-x: 440px; --dot-y: 435px; left: 440px; --len: 36px;">
+          <span class="tbl-callout-dot"></span>
+          <span class="tbl-callout-line"></span>
+          <span class="tbl-callout-num">7</span>
+        </span>
+        <!-- ⑧ 행 (Row) → 3번 데이터 행 (치석제거 [1/3악당)) 우측 (y=226) -->
+        <span class="tbl-callout tbl-callout--right" style="top: 202px; --dot-x: 736px; --len: 60px;">
+          <span class="tbl-callout-dot"></span>
+          <span class="tbl-callout-line"></span>
+          <span class="tbl-callout-num">8</span>
+        </span>
+        <!-- ⑨ 열 (Column) → 금액 컬럼 상단 (표 상단 → 아래) -->
+        <span class="tbl-callout tbl-callout--above" style="--dot-x: 320px; --dot-y: 32px; left: 320px; --len: 36px;">
+          <span class="tbl-callout-num">9</span>
+          <span class="tbl-callout-line"></span>
+          <span class="tbl-callout-dot"></span>
+        </span>
+      </div>
+    </div>
+
+    <!-- 9 anatomy items description table -->
+    <table class="spec-table" style="font-size: 13px;">
+      <tr><th style="width: 60px;">#</th><th style="width: 220px;">한글 (English)</th><th>설명</th></tr>
+      <tr><td>1</td><td>헤더 (Header)</td><td>각 데이터 셀의 제목</td></tr>
+      <tr><td>2</td><td>서브헤더 (Subheader)</td><td>데이터 셀의 부제목</td></tr>
+      <tr><td>3</td><td>합계 (Sum)</td><td>각 셀의 합계가 표시되는 영역</td></tr>
+      <tr><td>4</td><td>데이터 셀 (Cell)</td><td>행을 구성하는 데이터 요소</td></tr>
+      <tr><td>5</td><td>셀 지브라 (Cell Zebra)</td><td>행과 행 사이를 시각적으로 구분하는 보조 수단</td></tr>
+      <tr><td>6</td><td>보더 (Border)</td><td>행과 행 사이를 시각적으로 구분하는 수단 (옵션)</td></tr>
+      <tr><td>7</td><td>디바이더 (Divider)</td><td>열과 열 사이를 시각적으로 구분하는 수단 (옵션)</td></tr>
+      <tr><td>8</td><td>행 (Row)</td><td>서로 다른 항목의 데이터를 보여줌</td></tr>
+      <tr><td>9</td><td>열 (Column)</td><td>서로 다른 유형의 데이터를 보여줌</td></tr>
+    </table>
+  </div>
+
+  <!-- ========== Properties › Size — verbatim from 302:43180 / 302:43187 ========== -->
+  <div class="spec-section">
+    <div class="section-label">Properties › Size <span style="color: #8f8f8f; font-weight: normal;">— 출처 `302:43180` (UI-Kit-Guide verbatim)</span></div>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">테이블의 사이즈는 6가지입니다. 각 플랫폼에 맞는 테이블을 사용하세요. 테이블의 스타일은 보더와 디바이더의 유무를 각각 조절할 수 있습니다. 테이블의 패딩, 텍스트, 아이콘의 규격은 사이즈별 Variable number 로 토큰화 되어 있습니다. 세부 규격을 확인하세요.</p>
+    <div class="tbl-figure">
+      <div class="tbl-size-rows">
+        <div class="tbl-size-row"><span class="label">xs_24</span><div class="pair"><span class="tac size-xs_24 is-header">공단부담금</span><span class="tac size-xs_24">65,160</span></div></div>
+        <div class="tbl-size-row"><span class="label">sm_28</span><div class="pair"><span class="tac size-sm_28 is-header">공단부담금</span><span class="tac size-sm_28">65,160</span></div></div>
+        <div class="tbl-size-row"><span class="label">md_32</span><div class="pair"><span class="tac size-md_32 is-header">공단부담금</span><span class="tac size-md_32">65,160</span></div></div>
+        <div class="tbl-size-row"><span class="label">lg_40</span><div class="pair"><span class="tac size-lg_40 is-header">공단부담금</span><span class="tac size-lg_40">65,160</span></div></div>
+        <div class="tbl-size-row"><span class="label">xl_48</span><div class="pair"><span class="tac size-xl_48 is-header">공단부담금</span><span class="tac size-xl_48">65,160</span></div></div>
+        <div class="tbl-size-row"><span class="label">2xl_56</span><div class="pair"><span class="tac size-2xl_56 is-header">공단부담금</span><span class="tac size-2xl_56">65,160</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Properties › Style — verbatim from 302:43216 ========== -->
+  <div class="spec-section">
+    <div class="section-label">Properties › Style <span style="color: #8f8f8f; font-weight: normal;">— 출처 `302:43216` (UI-Kit-Guide verbatim · 4 styles)</span></div>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">테이블의 스타일은 보더(Border)와 디바이더(Divider)의 유무를 각각 조절하여 4가지 조합으로 사용합니다.</p>
+    <div class="tbl-figure">
+      <div class="tbl-style-rows">
+        <div class="tbl-style-row">
+          <span class="label">lineless</span>
+          <div class="tbl-style-grid">
+            <div class="row"><span class="tac size-lg_40 is-header no-divider no-border">Header</span><span class="tac size-lg_40 is-header no-divider no-border">Header</span></div>
+            <div class="row"><span class="tac size-lg_40 no-divider no-border">Cell</span><span class="tac size-lg_40 no-divider no-border">Cell</span></div>
+          </div>
+        </div>
+        <div class="tbl-style-row">
+          <span class="label">Border only</span>
+          <div class="tbl-style-grid">
+            <div class="row"><span class="tac size-lg_40 is-header no-divider">Header</span><span class="tac size-lg_40 is-header no-divider">Header</span></div>
+            <div class="row"><span class="tac size-lg_40 no-divider">Cell</span><span class="tac size-lg_40 no-divider">Cell</span></div>
+          </div>
+        </div>
+        <div class="tbl-style-row">
+          <span class="label">Divider only</span>
+          <div class="tbl-style-grid">
+            <div class="row"><span class="tac size-lg_40 is-header no-border">Header</span><span class="tac size-lg_40 is-header no-border">Header</span></div>
+            <div class="row"><span class="tac size-lg_40 no-border">Cell</span><span class="tac size-lg_40 no-border">Cell</span></div>
+          </div>
+        </div>
+        <div class="tbl-style-row">
+          <span class="label">Border &amp; Divider</span>
+          <div class="tbl-style-grid">
+            <div class="row"><span class="tac size-lg_40 is-header">Header</span><span class="tac size-lg_40 is-header">Header</span></div>
+            <div class="row"><span class="tac size-lg_40">Cell</span><span class="tac size-lg_40">Cell</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Properties › Variant — verbatim from 302:43376 ========== -->
+  <div class="spec-section">
+    <div class="section-label">Properties › Variant <span style="color: #8f8f8f; font-weight: normal;">— 출처 `302:43376` (UI-Kit-Guide verbatim · 4 variants)</span></div>
+    <div class="tbl-variant-grid">
+      <div class="tbl-variant-card">
+        <h4>헤더 (Header)</h4>
+        <p>데이터의 의미와 분류 기준을 제시하는 테이블의 가이드 역할입니다. Default 타입과 Compact 타입이 있습니다.</p>
+        <div class="demo"><span class="tac size-md_32 is-header">Header</span></div>
+      </div>
+      <div class="tbl-variant-card">
+        <h4>서브 헤더 (Subheader)</h4>
+        <p>가이드 역할을 하는 두번째 하위 단계 헤더입니다. Default 타입과 Compact 타입이 있습니다.</p>
+        <div class="demo"><span class="tac size-md_32" style="background: #e9e9e9; font-weight: 600;">Subheader</span></div>
+      </div>
+      <div class="tbl-variant-card">
+        <h4>데이터 셀 (Cell)</h4>
+        <p>실제 데이터가 표시되는 테이블의 핵심 영역입니다.</p>
+        <div class="demo"><span class="tac size-md_32">Cell</span></div>
+      </div>
+      <div class="tbl-variant-card">
+        <h4>합계 (Sum)</h4>
+        <p>데이터 셀의 총합을 나타낼때 사용합니다.</p>
+        <div class="demo"><span class="tac size-md_32 is-sum">180</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Properties › State — verbatim from 302:43304 / 302:43312 ========== -->
+  <div class="spec-section">
+    <div class="section-label">Properties › State <span style="color: #8f8f8f; font-weight: normal;">— 출처 `302:43304` (UI-Kit-Guide verbatim · 5 states)</span></div>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">테이블의 상태는 아래와 같습니다.</p>
+    <div class="tbl-figure">
+      <div class="tbl-state-rows">
+        <div class="tbl-state-row"><span class="label">header_default</span><div class="strip"><span class="tac size-xs_24 is-header">Header</span><span class="tac size-xs_24 is-header">Header</span><span class="tac size-xs_24 is-header">Header</span></div></div>
+        <div class="tbl-state-row"><span class="label">cell_default</span><div class="strip"><span class="tac size-xs_24">Cell</span><span class="tac size-xs_24">Cell</span><span class="tac size-xs_24">Cell</span></div></div>
+        <div class="tbl-state-row"><span class="label">cell_zebra</span><div class="strip"><span class="tac size-xs_24 is-zebra">Cell</span><span class="tac size-xs_24 is-zebra">Cell</span><span class="tac size-xs_24 is-zebra">Cell</span></div></div>
+        <div class="tbl-state-row"><span class="label">cell_hover</span><div class="strip"><span class="tac size-xs_24 is-hover">Cell</span><span class="tac size-xs_24 is-hover">Cell</span><span class="tac size-xs_24 is-hover">Cell</span></div></div>
+        <div class="tbl-state-row"><span class="label">cell_active</span><div class="strip"><span class="tac size-xs_24 is-active">Cell</span><span class="tac size-xs_24 is-active">Cell</span><span class="tac size-xs_24 is-active">Cell</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Guidelines — Do/Don't (Figma `302:43487` / `302:43499`) ========== -->
+  <div class="spec-section">
+    <div class="section-label">Guidelines <span style="color: #8f8f8f; font-weight: normal;">— 출처 `302:43487` / `302:43499` (UI-Kit-Guide · do/don't box-02)</span></div>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">표 구성 시 권장(Do)과 비권장(Don't) 사항을 시각적으로 비교합니다.</p>
+    <div class="row" style="gap: 16px; align-items: stretch;">
+      <div class="guide-card guide-card--do">
+        <div class="guide-card-head"><span class="guide-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 7"></polyline></svg></span>Do</div>
+        <div style="display: flex; justify-content: center;">
+          <table class="tbl-sample" style="font-size: 11px;">
+            <thead><tr>
+              <th class="tbl-header">No</th>
+              <th class="tbl-header">차트번호</th>
+              <th class="tbl-header">환자명</th>
+              <th class="tbl-header">진료비</th>
+              <th class="tbl-header">상태</th>
+            </tr></thead>
+            <tbody>
+              <tr><td>1</td><td>OST-0001</td><td>김민준</td><td style="text-align: right;">120,000</td><td>완료</td></tr>
+              <tr class="zebra"><td>2</td><td>OST-0002</td><td>이서연</td><td style="text-align: right;">80,000</td><td>예정</td></tr>
+              <tr><td>3</td><td>OST-0003</td><td>박지호</td><td style="text-align: right;">240,000</td><td>대기</td></tr>
+              <tr class="zebra"><td>4</td><td>OST-0004</td><td>최유나</td><td style="text-align: right;">—</td><td>취소</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="guide-card guide-card--dont">
+        <div class="guide-card-head"><span class="guide-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></span>Don't</div>
+        <div style="display: flex; justify-content: center;">
+          <table class="tbl-sample" style="font-size: 11px;">
+            <thead><tr>
+              <th class="tbl-header" style="background: #3b63fb; color: #ffffff;">No</th>
+              <th class="tbl-header" style="background: #3b63fb; color: #ffffff;">차트번호</th>
+              <th class="tbl-header" style="background: #3b63fb; color: #ffffff;">환자명</th>
+              <th class="tbl-header" style="background: #3b63fb; color: #ffffff;">진료비</th>
+              <th class="tbl-header" style="background: #3b63fb; color: #ffffff;">상태</th>
+            </tr></thead>
+            <tbody>
+              <tr style="background: #ffeb3b;"><td>1</td><td>OST-0001</td><td>김민준</td><td style="text-align: right;">120,000</td><td>완료</td></tr>
+              <tr style="background: #ff9800; color: #ffffff;"><td>2</td><td>OST-0002</td><td>이서연</td><td style="text-align: right;">80,000</td><td>예정</td></tr>
+              <tr style="background: #4caf50; color: #ffffff;"><td>3</td><td>OST-0003</td><td>박지호</td><td style="text-align: right;">240,000</td><td>대기</td></tr>
+              <tr style="background: #f44336; color: #ffffff;"><td>4</td><td>OST-0004</td><td>최유나</td><td style="text-align: right;">—</td><td>취소</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Color tokens ========== -->
+  <div class="spec-section">
+    <div class="section-label">Color tokens <span style="color: #8f8f8f; font-weight: normal;">— 레포지토리 `tokens/color/component.js#table` (prefix `table/*`)</span></div>
+    <table class="spec-table">
+      <tr><th>token</th><th>light</th><th>의미</th></tr>
+      <tr><td><code>table/bg/bg-header</code></td><td><code>#f4f4f4</code></td><td>헤더 행 배경</td></tr>
+      <tr><td><code>table/bg/bg-subheader</code></td><td><code>#e9e9e9</code></td><td>서브헤더 행 배경</td></tr>
+      <tr><td><code>table/bg/bg-cell-default</code></td><td><code>#fefefe</code></td><td>셀 기본 배경</td></tr>
+      <tr><td><code>table/bg/bg-cell-zebra</code></td><td><code>#f4f4f4</code></td><td>zebra 짝수 행 배경</td></tr>
+      <tr><td><code>table/bg/bg-sum</code></td><td><code>#dddddd</code></td><td>합계 행 배경</td></tr>
+      <tr><td><code>table/text/text-header</code></td><td><code>#1d1d1d</code></td><td>헤더 텍스트</td></tr>
+      <tr><td><code>table/text/text-cell</code></td><td><code>#1d1d1d</code></td><td>셀 텍스트</td></tr>
+      <tr><td><code>table/border/border-default</code></td><td><code>#d2d2d2</code></td><td>행 구분 보더</td></tr>
+      <tr><td><code>table/border/divider</code></td><td><code>#d2d2d2</code></td><td>열 구분 디바이더</td></tr>
+      <tr><td><code>table/border/border-selected</code></td><td><code>#eb6100</code></td><td>선택 행 보더 (orange)</td></tr>
+      <tr><td><code>table/icon/default</code></td><td><code>#727272</code></td><td>아이콘 색</td></tr>
+    </table>
+  </div>
+
+  <!-- ========== Number tokens ========== -->
+  <div class="spec-section">
+    <div class="section-label">Number tokens <span style="color: #8f8f8f; font-weight: normal;">— 6 sizes × (height / padding / gap / text-size)</span></div>
+    <table class="spec-table">
+      <tr><th>size</th><th>height</th><th>padding</th><th>gap</th><th>text-size</th></tr>
+      <tr><td><code>xs_24</code></td><td>24</td><td>8</td><td>4</td><td>14</td></tr>
+      <tr><td><code>sm_28</code></td><td>28</td><td>8</td><td>4</td><td>14</td></tr>
+      <tr><td><code>md_32</code></td><td>32</td><td>8</td><td>8</td><td>14</td></tr>
+      <tr><td><code>lg_40</code></td><td>40</td><td>8</td><td>8</td><td>16</td></tr>
+      <tr><td><code>xl_48</code></td><td>48</td><td>12</td><td>12</td><td>16</td></tr>
+      <tr><td><code>2xl_56</code></td><td>56</td><td>12</td><td>16</td><td>18</td></tr>
+    </table>
+  </div>
 </section>
 <section id="tag" class="component-page">
   <header class="page-header"><h1>태그 (Tag)</h1>
