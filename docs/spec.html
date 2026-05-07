@@ -1102,6 +1102,65 @@ html, body {
 }
 .menu-item-sub--divider { height: 1px; background: #bcbcbc; margin: 4px 0; }
 
+/* ----- Menu Anatomy figure (centered + dot/line callouts) ----- */
+.anatomy-figure {
+  background: #f9f9f9; border-radius: 20px;
+  padding: 80px 200px;
+  display: flex; justify-content: center;
+  margin: 8px 0;
+}
+.anatomy-stage { position: relative; width: 240px; }
+.anatomy-callout {
+  position: absolute;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: #393939; line-height: 1;
+  white-space: nowrap;
+}
+.anatomy-callout-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #1d1d1d; flex-shrink: 0;
+}
+.anatomy-callout-line {
+  height: 1px; background: #1d1d1d;
+  flex-shrink: 0; width: 60px;
+}
+.anatomy-callout--left { right: calc(100% + 6px); }
+.anatomy-callout--right { left: calc(100% + 6px); }
+
+/* ----- Menu Layout row ----- */
+.layout-figure {
+  background: #f9f9f9; border-radius: 20px;
+  padding: 60px 48px; margin: 8px 0;
+  display: flex; justify-content: center;
+}
+.layout-rows { display: flex; flex-direction: column; gap: 24px; }
+.layout-row {
+  display: grid; grid-template-columns: 240px 240px; gap: 64px;
+  align-items: center;
+}
+.layout-row__label { display: flex; align-items: center; gap: 12px; justify-content: flex-end; }
+.layout-row__title { font-size: 14px; font-weight: 600; color: #131313; }
+.layout-row__tag {
+  display: inline-flex; align-items: center;
+  font-size: 12px; font-weight: 500;
+  color: #eb6100; background: #fef7f2;
+  padding: 2px 8px; border-radius: 4px; white-space: nowrap;
+}
+
+/* ----- Menu State row ----- */
+.state-figure {
+  background: #f9f9f9; border-radius: 20px;
+  padding: 48px 48px; margin: 8px 0;
+}
+.state-rows { display: flex; flex-direction: column; gap: 20px; }
+.state-row {
+  display: grid; grid-template-columns: 84px 320px 1fr; gap: 48px;
+  align-items: center;
+}
+.state-row__name { font-size: 14px; font-weight: 600; color: #131313; }
+.state-row__sample { display: flex; }
+.state-row__desc { font-size: 14px; color: #505050; line-height: 1.6; }
+
 /* ----- Table ----- */
 .table-preview { border: 1px solid #e9e9e9; border-radius: 6px; overflow: hidden; min-width: 360px; }
 .table-preview table { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -4859,37 +4918,84 @@ html, body {
 <section id="menu" class="component-page">
   <header class="page-header">
     <h1>메뉴 (Menu)</h1>
-    <div class="meta">UI-Kit-Guide `1:230731` · 구성 `284:12879` · Type `284:18380` · 컴포넌트 `1160:177493` (`lIIen1jmIhT0vuyXCMQDQA`)</div>
+    <div class="meta">UI-Kit-Guide `1:230731` · 구성 `284:12879` · Type `284:18380` · Layout `1:230825` · State `1:230908` · 컴포넌트 `1160:177493`</div>
     <p class="description">아래 내용은 UI-Kit-Guide Figma 노드의 텍스트를 verbatim으로 옮긴 것입니다.</p>
   </header>
 
-  <!-- ========== 구성 (verbatim from 284:12879) ========== -->
+  <!-- ========== 구성 (Anatomy with dot+line callouts) ========== -->
   <div class="spec-section">
     <div class="section-label">구성 <span style="color: #8f8f8f; font-weight: normal;">— 출처 `284:12879` (UI-Kit-Guide)</span></div>
-    <div class="row" style="gap: 32px; align-items: flex-start; flex-wrap: wrap;">
-      <div class="menu" style="margin-top: 4px;">
-        <div class="menu-item-sub--header">Section Label 1</div>
-        <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-        <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-        <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-        <div class="menu-item-sub--divider"></div>
-        <div class="menu-item-sub--header">Section Label 2</div>
-        <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-        <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-        <div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+    <div class="anatomy-figure">
+      <div class="anatomy-stage">
+        <div class="menu" style="margin: 0;">
+          <div class="menu-item-sub--header">Section Label 1</div>
+          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+          <div class="menu-item-sub--divider"></div>
+          <div class="menu-item-sub--header">Section Label 2</div>
+          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+          <div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+        </div>
+
+        <!-- LEFT callouts -->
+        <span class="anatomy-callout anatomy-callout--left" style="top: 4px;">
+          <span>컨테이너 (Container)</span>
+          <span class="anatomy-callout-line"></span>
+          <span class="anatomy-callout-dot"></span>
+        </span>
+        <span class="anatomy-callout anatomy-callout--left" style="top: 24px;">
+          <span>섹션 라벨 (Section Label)</span>
+          <span class="anatomy-callout-line"></span>
+          <span class="anatomy-callout-dot"></span>
+        </span>
+        <span class="anatomy-callout anatomy-callout--left" style="top: 60px;">
+          <span>아이콘 (Prefix Icon)</span>
+          <span class="anatomy-callout-line"></span>
+          <span class="anatomy-callout-dot"></span>
+        </span>
+        <span class="anatomy-callout anatomy-callout--left" style="top: 96px;">
+          <span>메뉴 아이템 라벨 (Label)</span>
+          <span class="anatomy-callout-line"></span>
+          <span class="anatomy-callout-dot"></span>
+        </span>
+        <span class="anatomy-callout anatomy-callout--left" style="top: 154px;">
+          <span>디바이더 (Divider)</span>
+          <span class="anatomy-callout-line"></span>
+          <span class="anatomy-callout-dot"></span>
+        </span>
+        <span class="anatomy-callout anatomy-callout--left" style="top: 284px;">
+          <span>체크 아이콘 (Check icon)</span>
+          <span class="anatomy-callout-line"></span>
+          <span class="anatomy-callout-dot"></span>
+        </span>
+
+        <!-- RIGHT callouts -->
+        <span class="anatomy-callout anatomy-callout--right" style="top: 60px;">
+          <span class="anatomy-callout-dot"></span>
+          <span class="anatomy-callout-line"></span>
+          <span>보조 텍스트 (Sub text)</span>
+        </span>
+        <span class="anatomy-callout anatomy-callout--right" style="top: 130px;">
+          <span class="anatomy-callout-dot"></span>
+          <span class="anatomy-callout-line"></span>
+          <span>화살표 (Chevron)</span>
+        </span>
       </div>
-      <table class="spec-table" style="font-size: 13px; min-width: 540px;">
-        <tr><th style="width: 240px;">한글 (English)</th><th>설명</th></tr>
-        <tr><td>섹션 라벨 (Section Label)</td><td>메뉴 아이템을 그룹화하는 레이블</td></tr>
-        <tr><td>컨테이너 (Container)</td><td>메뉴 전체를 감싸는 영역. 그림자와 테두리로 배경과 구분</td></tr>
-        <tr><td>아이콘 (Prefix Icon)</td><td>아이템의 의미를 시각적으로 보조하는 아이콘. 그룹 내 일관되게 사용</td></tr>
-        <tr><td>메뉴 아이템 라벨 (Label)</td><td>메뉴 아이템의 내용을 나타내는 텍스트. 필수 요소</td></tr>
-        <tr><td>보조 텍스트 (Sub text)</td><td>항목에 대한 부연 설명, 상태, 조건 등을 12px로 표시</td></tr>
-        <tr><td>화살표 (Chevron)</td><td>선택 불가한 읽기 전용의 그룹 소제목. 14px 로 표시.</td></tr>
-        <tr><td>디바이더 (Divider)</td><td>항목 그룹 간을 시각적으로 구분하는 가로 구분선. 상하 여백 4px</td></tr>
-        <tr><td>체크 아이콘 (Check icon)</td><td>필요시 Selected 상태에서만 표시. 체크 타입 사용시 미선택 항목은 동일 너비 빈 공간으로 정렬 유지</td></tr>
-      </table>
     </div>
+
+    <table class="spec-table" style="font-size: 13px;">
+      <tr><th style="width: 240px;">한글 (English)</th><th>설명</th></tr>
+      <tr><td>섹션 라벨 (Section Label)</td><td>메뉴 아이템을 그룹화하는 레이블</td></tr>
+      <tr><td>컨테이너 (Container)</td><td>메뉴 전체를 감싸는 영역. 그림자와 테두리로 배경과 구분</td></tr>
+      <tr><td>아이콘 (Prefix Icon)</td><td>아이템의 의미를 시각적으로 보조하는 아이콘. 그룹 내 일관되게 사용</td></tr>
+      <tr><td>메뉴 아이템 라벨 (Label)</td><td>메뉴 아이템의 내용을 나타내는 텍스트. 필수 요소</td></tr>
+      <tr><td>보조 텍스트 (Sub text)</td><td>항목에 대한 부연 설명, 상태, 조건 등을 12px로 표시</td></tr>
+      <tr><td>화살표 (Chevron)</td><td>선택 불가한 읽기 전용의 그룹 소제목. 14px 로 표시.</td></tr>
+      <tr><td>디바이더 (Divider)</td><td>항목 그룹 간을 시각적으로 구분하는 가로 구분선. 상하 여백 4px</td></tr>
+      <tr><td>체크 아이콘 (Check icon)</td><td>필요시 Selected 상태에서만 표시. 체크 타입 사용시 미선택 항목은 동일 너비 빈 공간으로 정렬 유지</td></tr>
+    </table>
   </div>
 
   <!-- ========== Type (verbatim from 284:18380) ========== -->
@@ -4914,7 +5020,100 @@ html, body {
     </div>
   </div>
 
-  <!-- ========== State / Variant IDs (from atom metadata `1160:177493`) ========== -->
+  <!-- ========== Layout (verbatim from 1:230825) ========== -->
+  <div class="spec-section">
+    <div class="section-label">Layout <span style="color: #8f8f8f; font-weight: normal;">— 출처 `1:230825` (UI-Kit-Guide)</span></div>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">메뉴 아이템은 아이콘, 텍스트, 배지, 단축키, 화살표를 조합하여 구성할 수 있습니다. 같은 그룹 내에서는 레이아웃을 통일합니다.</p>
+    <div class="layout-figure">
+      <div class="layout-rows">
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Layout</span><span class="layout-row__tag">Text Only</span></div>
+          <div class="menu" style="margin: 0;">
+            <div class="menu-item menu-item--selected"><span class="menu-item__label">Lable</span></div>
+            <div class="menu-item"><span class="menu-item__label">Lable</span></div>
+            <div class="menu-item"><span class="menu-item__label">Lable</span></div>
+          </div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Layout</span><span class="layout-row__tag">Icon + Text</span></div>
+          <div class="menu" style="margin: 0;">
+            <div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Lable</span></div>
+            <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Lable</span></div>
+            <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Lable</span></div>
+          </div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Layout</span><span class="layout-row__tag">Check + Text</span></div>
+          <div class="menu" style="margin: 0;">
+            <div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">Lable</span></div>
+            <div class="menu-item"><span class="menu-item__icon" style="opacity: 0;"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">Lable</span></div>
+            <div class="menu-item"><span class="menu-item__icon" style="opacity: 0;"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">Lable</span></div>
+          </div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Layout</span><span class="layout-row__tag">Text + Chevron</span></div>
+          <div class="menu" style="margin: 0;">
+            <div class="menu-item menu-item--selected"><span class="menu-item__label">Lable</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+            <div class="menu-item"><span class="menu-item__label">Lable</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+            <div class="menu-item"><span class="menu-item__label">Lable</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+          </div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Layout</span><span class="layout-row__tag">Text + Sub text</span></div>
+          <div class="menu" style="margin: 0;">
+            <div class="menu-item menu-item--selected"><span class="menu-item__label">Lable</span><span class="menu-item__sub">sub text</span></div>
+            <div class="menu-item"><span class="menu-item__label">Lable</span><span class="menu-item__sub">sub text</span></div>
+            <div class="menu-item"><span class="menu-item__label">Lable</span><span class="menu-item__sub">sub text</span></div>
+          </div>
+        </div>
+        <div class="layout-row">
+          <div class="layout-row__label"><span class="layout-row__title">Layout</span><span class="layout-row__tag">Icon + Text + Subtext + Chevron</span></div>
+          <div class="menu" style="margin: 0;">
+            <div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+            <div class="menu-item"><span class="menu-item__icon" style="opacity: 0;"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+            <div class="menu-item"><span class="menu-item__icon" style="opacity: 0;"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== State (verbatim from 1:230908) ========== -->
+  <div class="spec-section">
+    <div class="section-label">State <span style="color: #8f8f8f; font-weight: normal;">— 출처 `1:230908` (UI-Kit-Guide)</span></div>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">메뉴(Menu)는 Default, Hover Pressed, Selected, Disabled, Focused 상태로 분류됩니다.  각 상태는 배경색과 텍스트 색상으로 구분되며, 사용자가 현재 어떤 항목과 상호작용 중인지 명확하게 전달해야 합니다. Selected 상태는 선택형 항목(서브메뉴 포함)에서만 사용하며, Active 상태는 클릭(mousedown) 순간에만 짧게 유지됩니다.</p>
+    <div class="state-figure">
+      <div class="state-rows">
+        <div class="state-row">
+          <div class="state-row__name">Default</div>
+          <div class="state-row__sample"><div class="menu-item" style="width: 320px;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div>
+          <div class="state-row__desc">메뉴 아이템의 기본 상태로, 사용자의 행동을 유도하는 액션 목록을 제공합니다.</div>
+        </div>
+        <div class="state-row">
+          <div class="state-row__name">Hover</div>
+          <div class="state-row__sample"><div class="menu-item menu-item--hover" style="width: 320px;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div>
+          <div class="state-row__desc">마우스가 올라간 상태로, 상호작용 가능함을 시각적으로 안내합니다.</div>
+        </div>
+        <div class="state-row">
+          <div class="state-row__name">Selected</div>
+          <div class="state-row__sample"><div class="menu-item menu-item--selected" style="width: 320px; border: 1.5px solid #f3a066;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div>
+          <div class="state-row__desc">현재 활성화되어 선택된 상태로, 선택형 항목에서 적용 중인 값을 나타냅니다.</div>
+        </div>
+        <div class="state-row">
+          <div class="state-row__name">Focused</div>
+          <div class="state-row__sample"><div class="menu-item menu-item--selected" style="width: 320px; border: 3px solid #1d1d1d;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div>
+          <div class="state-row__desc">키보드 탐색 등으로 포커스가 위치한 상태로, 접근성을 위한 시각적 표시입니다.</div>
+        </div>
+        <div class="state-row">
+          <div class="state-row__name">Disabled</div>
+          <div class="state-row__sample"><div class="menu-item menu-item--disabled" style="width: 320px; background: transparent;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div>
+          <div class="state-row__desc">사용자가 메뉴 아이템에 동작을 요구하지 못하는 비활성화 상태입니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== menu_item Variant IDs (atom metadata) ========== -->
   <div class="spec-section">
     <div class="section-label">menu_item Variant IDs <span style="color: #8f8f8f; font-weight: normal;">— 출처 `1160:177493` 메타데이터 (각 282×32, 13 variants)</span></div>
     <table class="spec-table">

@@ -7,9 +7,11 @@
 >   - `2533:20420` `menu` (wrapper)
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`
 >   - `1:230731` 메뉴(Menu) — spec 페이지
->   - `1:231278` Menu use it
 >   - `284:12879` 구성 (Anatomy)
 >   - `284:18380` Type
+>   - `1:230751` 메뉴 샘플 (centered)
+>   - `1:230825` Layout
+>   - `1:230908` State
 >
 > JS 토큰: `tokens/color/component.js#menu` (prefix `menu/*`)
 > 시각 참조: [docs/spec.html#menu](../docs/spec.html#menu)
@@ -51,11 +53,38 @@
 
 메뉴 항목에 화살표(>)가 표시된 경우, 해당 항목에 호버하거나 선택하면 연결된 2차 메뉴(서브메뉴)가 우측에 펼쳐지는 형태입니다. 하나의 액션 범주 안에 선택 가능한 세부 옵션이 여러 개 존재할 때 사용하며, 메인 메뉴의 항목 수를 줄이고 관련 옵션을 그룹화하는 데 효과적입니다.
 
-## State — `menu_item` variants
+## Layout
 
-> 출처: `1160:177493` 메타데이터 (Figma 컴포넌트 정의 verbatim)
+> 출처: `1:230825` (verbatim)
 
-13 variants = state × checked. 각 variant 282×32.
+메뉴 아이템은 아이콘, 텍스트, 배지, 단축키, 화살표를 조합하여 구성할 수 있습니다. 같은 그룹 내에서는 레이아웃을 통일합니다.
+
+| Layout | 구성 |
+|---|---|
+| Text Only | 텍스트만 |
+| Icon + Text | 아이콘 + 텍스트 |
+| Check + Text | 체크 + 텍스트 |
+| Text + Chevron | 텍스트 + 화살표 |
+| Text + Sub text | 텍스트 + 보조 텍스트 |
+| Icon + Text + Subtext + Chevron | 아이콘 + 텍스트 + 보조 텍스트 + 화살표 |
+
+## State
+
+> 출처: `1:230908` (verbatim)
+
+메뉴(Menu)는 Default, Hover Pressed, Selected, Disabled, Focused 상태로 분류됩니다.  각 상태는 배경색과 텍스트 색상으로 구분되며, 사용자가 현재 어떤 항목과 상호작용 중인지 명확하게 전달해야 합니다. Selected 상태는 선택형 항목(서브메뉴 포함)에서만 사용하며, Active 상태는 클릭(mousedown) 순간에만 짧게 유지됩니다.
+
+| State | 설명 |
+|---|---|
+| Default | 메뉴 아이템의 기본 상태로, 사용자의 행동을 유도하는 액션 목록을 제공합니다. |
+| Hover | 마우스가 올라간 상태로, 상호작용 가능함을 시각적으로 안내합니다. |
+| Selected | 현재 활성화되어 선택된 상태로, 선택형 항목에서 적용 중인 값을 나타냅니다. |
+| Focused | 키보드 탐색 등으로 포커스가 위치한 상태로, 접근성을 위한 시각적 표시입니다. |
+| Disabled | 사용자가 메뉴 아이템에 동작을 요구하지 못하는 비활성화 상태입니다. |
+
+## menu_item Variant IDs
+
+> 출처: `1160:177493` 메타데이터 (Figma 컴포넌트 정의 verbatim). 13 variants = state × checked. 각 variant 282×32.
 
 | state \\ checked | true | false |
 |---|---|---|
@@ -69,7 +98,7 @@
 
 ## `menu_item_sub` variants
 
-> 출처: `1711:32775` (frame 정보)
+> 출처: `1711:32775`
 
 | type | variant ID | 크기 |
 |---|---|---|
