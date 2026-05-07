@@ -7,6 +7,7 @@
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`:
 >   - `1:357168`, `1:357020` (가이드 페이지)
 > - `figma-export.json` (2026-05-04 export)
+> - **사용자 작업 파일 `↪️ Text input`** (page id `1161:30083`) — TalkToFigma MCP로 variant 전수 추출 (2026-05-07)
 >
 > JS 토큰: `tokens/color/component.js#input`, `tokens/number/component.js#input`.
 > 토큰 prefix: `text input/*`, `input common/*`, `textinput/*`, `input_(dropdown)/*`.
@@ -89,15 +90,22 @@
 
 ## Wrapper Variants — `✅Textinput/Text Field` (2축, 6 variants)
 
-### prop verbatim
-- **label position**: `top` / `side`
-- **validation**: `default` / `success` / `error`
+### prop verbatim (TalkToFigma 추출)
+- **`label position`**: `top` / `side` (lowercase, 공백 포함 — `label position`이 prop 키 그대로)
+- **`validation`**: `default` / `success` / `error`
 
-### Variant IDs
-| label position \\ validation | default | success | error |
+### Variant IDs (실제 prop value verbatim)
+
+| variant ID | label position | validation | 비고 |
 |---|---|---|---|
-| top | `2420:29886` | `2420:29902` | `2420:29918` |
-| side | `2420:29934` | `2420:29948` | `2420:29962` |
+| `2420:29886` | `✅Textinput` | `Text Field` | **default variant fallback** — prop value가 `top/default`가 아니라 컴포넌트 base 명칭. instance에서 `top/default`로 매칭 시 이 variant가 반환됨 |
+| `2420:29902` | `top` | `success` | |
+| `2420:29918` | `top` | `error` | |
+| `2420:29934` | `side` | `default` | |
+| `2420:29948` | `side` | `success` | |
+| `2420:29962` | `side` | `error` | |
+
+> **이전 메모리 정정**: 이전 표에서 `top/default = 2420:29886`라 했지만, 실제 그 variant의 prop value는 `label position=✅Textinput, validation=Text Field`이며 default fallback 역할. `top/default` 별도 variant는 존재하지 않음 (default variant가 그 자리를 대신).
 
 > 6 variants — `validation`은 시각적 피드백 (default 회색, success 녹색, error 빨강).
 
