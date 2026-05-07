@@ -16,17 +16,49 @@ Figma DS Runner에 붙여넣어 디자인시스템 매트릭스를 캔버스에 
 
 각 runner는 단일 자체완결 JS 파일이며 **외부 fetch 없이 실행**된다 (DS Runner sandbox 제약).
 
-토큰은 `tokens/*.js` + `components/*.md` source 의 light-mode hex 값을 인라인. 하지만 **로컬 Figma 변수 컬렉션에 같은 이름의 변수가 있으면 자동 바인딩**되어, 변수 값을 바꾸면 매트릭스가 그대로 반영된다 (= 라이브 연동).
+토큰은 `tokens/*.js` + `components/*.md` source 의 light-mode hex / 숫자 값을 인라인. 하지만 **로컬 Figma 변수 / textStyle에 같은 이름이 있으면 자동 바인딩**되어, 디자인 토큰을 바꾸면 매트릭스가 그대로 반영된다 (= 라이브 연동).
+
+연동되는 3가지:
+
+| 종류 | 매칭 키 | 적용 방식 |
+|---|---|---|
+| **Color Variable** | `❤️button/bg/brand-primary` 등 | `fill.boundVariables.color` |
+| **Number Variable** | `❤️button/corner-radius/md` 등 | `node.setBoundVariable('cornerRadius', v)` 등 |
+| **TextStyle** | `❤️button/md (SB)` 등 | `text.setTextStyleIdAsync()` |
 
 ```
-GitHub                          Figma
-  tokens/*.js  ───── 빌드 인라인 ──→  runner 안 STYLE 객체 (hex fallback)
-  components/*.md                          │
-                                           ▼
-                                    Variable lookup (이름 매칭)
-                                           │
-                  Figma local variables  ──┘   ← 매칭되면 바인딩, 안 되면 hex
+GitHub repo                           Figma local
+  tokens/*.js   ─── 빌드 인라인 ───→   runner의 STYLE/SIZE 객체 (hex/숫자 fallback)
+  components/*.md                              │
+                                               ▼
+                            (1) Color Variable name 매칭
+                            (2) Float Variable name 매칭
+                            (3) TextStyle name 매칭
+                                               │
+                              매칭 성공 → bind / 실패 → fallback
 ```
+
+## 진단 모드
+
+runner를 실행하면 **콘솔에 매칭 결과**가 출력된다.
+
+```
+╔═══ Variable / TextStyle 매칭 결과 ═══════════════════╗
+║ Color Variable:  18/29
+║ Number Variable: 0/54
+║ TextStyle:       0/9
+╚═════════════════════════════════════════════════════╝
+
+❌ 미매칭 Color (11):
+  · ❤️button/bg/brand-tertiary  (시도한 후보: 3개)
+  ...
+
+💡 로컬 Color 변수 중 button-like (max 30):
+  · ❤️button/bg/brand-primary
+  · ...
+```
+
+**미매칭이 있으면**: 콘솔의 `💡 로컬 Color/Float 변수 / TextStyle` 섹션에 실제 사용 가능한 이름 목록이 나옴 → 해당 이름을 issue로 알려주면 candidate 배열에 추가하여 매칭률 높일 수 있음.
 
 ## 출처 / source of truth
 

@@ -1,30 +1,32 @@
 // =============================================================================
-// SSW Button — Figma DS Runner (PoC v1)
+// SSW Button — Figma DS Runner (PoC v2)
 // =============================================================================
 // 출처:
 //   - components/button.md (size · style · state · focus ring 토큰 verbatim)
 //   - tokens/color/component.js#button (light mode hex)
 //   - docs/spec.html#button (매트릭스 레이아웃 1:1 대응)
+//   - ssw-login-runner.js (이모지 prefix VAR_CANDIDATES 패턴)
+//
+// v2 변경:
+//   - Color variable candidate 확장 (`❤️` 이모지 prefix 포함)
+//   - Number variable 바인딩 추가 (radius/padding/border/fontSize/lineHeight/height)
+//   - Local textStyle 매칭 (button/* (SB) 시리즈)
+//   - 진단 출력: 매칭 안 된 토큰 이름을 console에 표시 → 후속 candidate 보강 가능
 //
 // 실행:
 //   1) Figma DS Runner를 연다
 //   2) 이 파일 전체를 복사해 코드 입력란에 붙여넣고 실행
 //   3) 캔버스에 매트릭스 페이지가 그려진다
-//
-// Variable 바인딩:
-//   - 로컬 Figma 변수 컬렉션에 같은 이름의 토큰이 있으면 자동 바인딩 (fill 우선순위 1)
-//   - 없으면 hex fallback (이 파일의 STYLE 객체에 인라인된 값)
-//   - 즉 Figma 토큰 변경 → 매트릭스 자동 반영
+//   4) 콘솔에서 매칭 카운트와 미매칭 토큰 확인
 // =============================================================================
 
-console.log("[SSW Button Runner] start");
+console.log("[SSW Button Runner v2] start");
 figma.notify("SSW Button 매트릭스 시작");
 
 // =============================================================================
-// 1. 토큰 (button.md verbatim — Source of Truth와 동기)
+// 1. Token 데이터 (button.md verbatim)
 // =============================================================================
 
-// size 토큰: components/button.md `Number tokens (Mode 1)` 표 verbatim
 const SIZE = {
   xxs:   { h: 20,  hPad: 4,  radius: 4,  border: 1,   fontSize: 12, lineHeight: 16 },
   xs:    { h: 24,  hPad: 6,  radius: 4,  border: 1,   fontSize: 14, lineHeight: 20 },
@@ -40,8 +42,6 @@ const SIZE = {
 const SIZES = ["xxs", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl"];
 const STATES = ["default", "hover", "pressed", "focused", "inactive", "disabled"];
 
-// focus ring spec: button.md `Focus ring 구조` 표 verbatim
-// 갭 폭 = |inset| - weight = 모든 사이즈 일정 2px (button.md 명시)
 const FOCUS = {
   xxs:   { weight: 1,   radius: 6  },
   xs:    { weight: 1,   radius: 6  },
@@ -55,124 +55,230 @@ const FOCUS = {
 };
 const FOCUS_GAP = 2;
 
-// 9 style × (bg, fg, border) — light mode hex (button.md `Color tokens` light 컬럼 verbatim)
-// `null` = transparent (fills/strokes 적용 안 함)
-// Figma 변수명은 button.md prefix(`button/*`) 그대로 사용
+// 9 style × (bg, fg, border) — light mode hex + variable name candidates
+// candidates는 첫 매칭 사용. login-runner와 같은 prefix 패턴 (`❤️` 이모지 우선).
 const STYLE = {
   "brand-primary": {
     isDark: true,
-    bg:     { token: "button/bg/brand-primary",     hex: "#eb6100" },
-    fg:     { token: "button/fg/brand-primary",     hex: "#f9f9f9" },
-    border: { token: "button/border/brand-primary", hex: "#eb6100" },
+    bg:     { hex: "#eb6100", names: ["❤️button/bg/brand-primary", "button/bg/brand-primary", "common/brand-A_default"] },
+    fg:     { hex: "#f9f9f9", names: ["❤️button/fg/brand-primary", "button/fg/brand-primary", "Color(New)/White/50", "Color/Neutral/White/50"] },
+    border: { hex: "#eb6100", names: ["❤️button/border/brand-primary", "button/border/brand-primary"] },
   },
   "brand-secondary": {
     isDark: false,
-    bg:     { token: "button/bg/brand-secondary",     hex: "#ffffff" },
-    fg:     { token: "button/fg/brand-secondary",     hex: "#eb6100" },
-    border: { token: "button/border/brand-secondary", hex: "#727272" },
+    bg:     { hex: "#ffffff", names: ["❤️button/bg/brand-secondary", "button/bg/brand-secondary", "Color(New)/White/50"] },
+    fg:     { hex: "#eb6100", names: ["❤️button/fg/brand-secondary", "button/fg/brand-secondary"] },
+    border: { hex: "#727272", names: ["❤️button/border/brand-secondary", "button/border/brand-secondary"] },
   },
   "brand-tertiary": {
     isDark: false,
-    bg:     { token: "button/bg/brand-tertiary", hex: "#fbdfcc" },
-    fg:     { token: "button/fg/brand-tertiary", hex: "#eb6100" },
+    bg:     { hex: "#fbdfcc", names: ["❤️button/bg/brand-tertiary", "button/bg/brand-tertiary", "common/brand-A_morelighter"] },
+    fg:     { hex: "#eb6100", names: ["❤️button/fg/brand-tertiary", "button/fg/brand-tertiary"] },
     border: null,
   },
   "neutral-primary": {
     isDark: true,
-    bg:     { token: "button/bg/neutral-primary",     hex: "#2b2b2b" },
-    fg:     { token: "button/fg/neutral-primary",     hex: "#f9f9f9" },
-    border: { token: "button/border/neutral-primary", hex: "#2b2b2b" },
+    bg:     { hex: "#2b2b2b", names: ["❤️button/bg/neutral-primary", "button/bg/neutral-primary"] },
+    fg:     { hex: "#f9f9f9", names: ["❤️button/fg/neutral-primary", "button/fg/neutral-primary"] },
+    border: { hex: "#2b2b2b", names: ["❤️button/border/neutral-primary", "button/border/neutral-primary"] },
   },
   "neutral-secondary": {
     isDark: false,
-    bg:     { token: "button/bg/neutral-secondary",     hex: "#ffffff" },
-    fg:     { token: "button/fg/neutral-secondary",     hex: "#565656" },
-    border: { token: "button/border/neutral-secondary", hex: "#a5a5a5" },
+    bg:     { hex: "#ffffff", names: ["❤️button/bg/neutral-secondary", "button/bg/neutral-secondary", "Color(New)/White/50"] },
+    fg:     { hex: "#565656", names: ["❤️button/fg/neutral-secondary", "button/fg/neutral-secondary", "etc/text-secondary"] },
+    border: { hex: "#a5a5a5", names: ["❤️button/border/neutral-secondary", "button/border/neutral-secondary"] },
   },
   "neutral-tertiary": {
     isDark: false,
-    bg:     { token: "button/bg/neutral-tertiary",     hex: "#e9e9e9" },
-    fg:     { token: "button/fg/neutral-tertiary",     hex: "#565656" },
-    border: { token: "button/border/neutral-tertiary", hex: "#a5a5a5" },
+    bg:     { hex: "#e9e9e9", names: ["❤️button/bg/neutral-tertiary", "button/bg/neutral-tertiary"] },
+    fg:     { hex: "#565656", names: ["❤️button/fg/neutral-tertiary", "button/fg/neutral-tertiary"] },
+    border: { hex: "#a5a5a5", names: ["❤️button/border/neutral-tertiary", "button/border/neutral-tertiary"] },
   },
   "text": {
     isDark: false,
     bg:     null,
-    fg:     { token: "button/fg/text", hex: "#606881" },
+    fg:     { hex: "#606881", names: ["❤️button/fg/text", "button/fg/text"] },
     border: null,
   },
-  // ⚠️ Figma 원본 오타 보존: distructive (destructive 아님)
   "distructive-primary": {
     isDark: true,
-    bg:     { token: "button/bg/distructive-primary",     hex: "#f03823" },
-    fg:     { token: "button/fg/distructive-primary",     hex: "#f9f9f9" },
-    border: { token: "button/border/distructive-primary", hex: "#f03823" },
+    bg:     { hex: "#f03823", names: ["❤️button/bg/distructive-primary", "button/bg/distructive-primary", "Color(New)/Red/500"] },
+    fg:     { hex: "#f9f9f9", names: ["❤️button/fg/distructive-primary", "button/fg/distructive-primary"] },
+    border: { hex: "#f03823", names: ["❤️button/border/distructive-primary", "button/border/distructive-primary"] },
   },
   "distructive-secondary": {
     isDark: false,
     bg:     null,
-    fg:     { token: "button/fg/distructive-secondary",     hex: "#f03823" },
-    border: { token: "button/border/distructive-secondary", hex: "#f03823" },
+    fg:     { hex: "#f03823", names: ["❤️button/fg/distructive-secondary", "button/fg/distructive-secondary"] },
+    border: { hex: "#f03823", names: ["❤️button/border/distructive-secondary", "button/border/distructive-secondary"] },
   },
 };
-
 const STYLES = Object.keys(STYLE);
 
-// disabled 토큰 풀 교체 (button.md `disabled` row)
 const DISABLED = {
-  bg:     { token: "button/bg/disabled",     hex: "#dadada" },
-  fg:     { token: "button/fg/disabled",     hex: "#a5a5a5" },
-  border: { token: "button/border/disabled", hex: "#dadada" },
+  bg:     { hex: "#dadada", names: ["❤️button/bg/disabled", "button/bg/disabled"] },
+  fg:     { hex: "#a5a5a5", names: ["❤️button/fg/disabled", "button/fg/disabled"] },
+  border: { hex: "#dadada", names: ["❤️button/border/disabled", "button/border/disabled"] },
 };
 
-// state overlay (button.md `State overlay 분기`)
-//   어두운 base: white 15% / 25%
-//   밝은 base:   black 5%  / 10%
 const OVERLAY = {
   hover:   { dark: { color: "#ffffff", opacity: 0.15 }, light: { color: "#000000", opacity: 0.05 } },
   pressed: { dark: { color: "#ffffff", opacity: 0.25 }, light: { color: "#000000", opacity: 0.10 } },
 };
 
-const FOCUS_RING_COLOR = { token: "button/common/focus-ring", hex: "#000000" };
+const FOCUS_RING_COLOR = { hex: "#000000", names: ["❤️button/common/focus-ring", "button/common/focus-ring", "common/focus-ring"] };
+
+// Number variable candidates — 사이즈별 토큰 이름 후보
+function numVarsForSize(sz) {
+  return {
+    height:    [`❤️button/size/${sz}`,         `button/size/${sz}`,         `Size/height/button_${sz}`],
+    hPad:      [`❤️button/h-padding/${sz}`,    `button/h-padding/${sz}`],
+    radius:    [`❤️button/corner-radius/${sz}`,`button/corner-radius/${sz}`],
+    border:    [`❤️button/border/${sz}`,       `button/border/${sz}`],
+    fontSize:  [`❤️button/font-size/${sz}`,    `button/font-size/${sz}`,    `Typography/font size/button_${sz}`],
+    lineHeight:[`❤️button/line-height/${sz}`,  `button/line-height/${sz}`,  `Size/height/button_lh_${sz}`],
+  };
+}
+
+// TextStyle name candidates — button.md Typography 표 이름
+function textStyleNamesForSize(sz) {
+  return [
+    `❤️button/${sz} (SB)`,
+    `button/${sz} (SB)`,
+    `❤️v0.4/button/${sz}`,
+    `v0.4/button/${sz}`,
+  ];
+}
+
 const PAGE_BG = "#ffffff";
 const SUBTLE_TEXT = "#8f8f8f";
 const SECTION_TEXT = "#1d1d1d";
 
 // =============================================================================
-// 2. Variable 매핑 (find-by-name) + fill 헬퍼
+// 2. Resolve maps (Variable + textStyle 매칭)
 // =============================================================================
 
-let VAR_MAP = {}; // tokenName -> variableId
+const COLOR_VAR_MAP = {};   // tokenObj.names의 첫 매칭 → variable 객체
+const NUM_VAR_MAP = {};     // `${sz}/${field}` → variable 객체
+const TEXT_STYLE_MAP = {};  // size → textStyle id
 
-async function loadVariables() {
-  try {
-    const all = await figma.variables.getLocalVariablesAsync();
-    const byName = {};
-    for (const v of all) byName[v.name] = v.id;
-    let hits = 0;
-    const tokens = collectAllTokens();
-    for (const name of tokens) {
-      if (byName[name]) { VAR_MAP[name] = byName[name]; hits++; }
+let allColorVarNames = [];  // 디버깅용
+let allFloatVarNames = [];
+let allTextStyleNames = [];
+
+async function loadAll() {
+  // 1. Variables
+  const vars = await figma.variables.getLocalVariablesAsync();
+  const colorByName = {};
+  const floatByName = {};
+  for (const v of vars) {
+    if (v.resolvedType === "COLOR") {
+      colorByName[v.name] = v;
+      allColorVarNames.push(v.name);
+    } else if (v.resolvedType === "FLOAT") {
+      floatByName[v.name] = v;
+      allFloatVarNames.push(v.name);
     }
-    console.log(`✓ Variable 매핑: ${hits}/${tokens.length}`);
-  } catch (e) {
-    console.warn("loadVariables 실패:", e.message);
   }
+
+  // 2. Color matching: 모든 STYLE.{bg,fg,border} + DISABLED + FOCUS_RING_COLOR
+  const colorTokens = collectColorTokens();
+  for (const t of colorTokens) {
+    for (const name of t.names) {
+      if (colorByName[name]) {
+        COLOR_VAR_MAP[t.names[0]] = colorByName[name]; // primary key = first name
+        break;
+      }
+    }
+  }
+
+  // 3. Number matching: per-size 토큰
+  for (const sz of SIZES) {
+    const cands = numVarsForSize(sz);
+    for (const [field, names] of Object.entries(cands)) {
+      for (const name of names) {
+        if (floatByName[name]) {
+          NUM_VAR_MAP[`${sz}/${field}`] = floatByName[name];
+          break;
+        }
+      }
+    }
+  }
+
+  // 4. TextStyles
+  const styles = await figma.getLocalTextStylesAsync();
+  const styleByName = {};
+  for (const s of styles) {
+    styleByName[s.name] = s.id;
+    allTextStyleNames.push(s.name);
+  }
+  for (const sz of SIZES) {
+    for (const name of textStyleNamesForSize(sz)) {
+      if (styleByName[name]) { TEXT_STYLE_MAP[sz] = styleByName[name]; break; }
+    }
+  }
+
+  // 5. 진단 출력
+  printDiagnostics(colorTokens);
 }
 
-function collectAllTokens() {
-  const set = new Set();
+function collectColorTokens() {
+  const list = [];
   for (const s of Object.values(STYLE)) {
-    if (s.bg) set.add(s.bg.token);
-    if (s.fg) set.add(s.fg.token);
-    if (s.border) set.add(s.border.token);
+    if (s.bg) list.push(s.bg);
+    if (s.fg) list.push(s.fg);
+    if (s.border) list.push(s.border);
   }
-  set.add(DISABLED.bg.token);
-  set.add(DISABLED.fg.token);
-  set.add(DISABLED.border.token);
-  set.add(FOCUS_RING_COLOR.token);
-  return [...set];
+  list.push(DISABLED.bg, DISABLED.fg, DISABLED.border, FOCUS_RING_COLOR);
+  return list;
 }
+
+function printDiagnostics(colorTokens) {
+  const colorTotal = colorTokens.length;
+  const colorHits = colorTokens.filter(t => COLOR_VAR_MAP[t.names[0]]).length;
+  const numTotal = SIZES.length * 6;
+  const numHits = Object.keys(NUM_VAR_MAP).length;
+  const styleTotal = SIZES.length;
+  const styleHits = Object.keys(TEXT_STYLE_MAP).length;
+
+  console.log(`╔═══ Variable / TextStyle 매칭 결과 ═══════════════════╗`);
+  console.log(`║ Color Variable:  ${colorHits}/${colorTotal}`);
+  console.log(`║ Number Variable: ${numHits}/${numTotal}`);
+  console.log(`║ TextStyle:       ${styleHits}/${styleTotal}`);
+  console.log(`╚═════════════════════════════════════════════════════╝`);
+
+  // 미매칭 색상 토큰 출력
+  const missingColors = colorTokens.filter(t => !COLOR_VAR_MAP[t.names[0]]);
+  if (missingColors.length) {
+    console.log(`\n❌ 미매칭 Color (${missingColors.length}):`);
+    for (const t of missingColors) {
+      console.log(`  · ${t.names[0]}  (시도한 후보: ${t.names.length}개)`);
+    }
+  }
+
+  // 사용 가능한 'button' 또는 'btn' 들어간 변수 이름 노출 (사용자가 추가 candidate 보강 가능)
+  const buttonish = (name) => /button|btn|fg|bg|border/i.test(name);
+  const colorHints = allColorVarNames.filter(buttonish).slice(0, 30);
+  if (colorHints.length) {
+    console.log(`\n💡 로컬 Color 변수 중 button-like (max 30):`);
+    for (const n of colorHints) console.log(`  · ${n}`);
+  }
+  const floatHints = allFloatVarNames.filter(n => /button|size|padding|radius|border|font/i.test(n)).slice(0, 30);
+  if (floatHints.length) {
+    console.log(`\n💡 로컬 Float 변수 중 size-like (max 30):`);
+    for (const n of floatHints) console.log(`  · ${n}`);
+  }
+  const styleHints = allTextStyleNames.filter(n => /button/i.test(n)).slice(0, 30);
+  if (styleHints.length) {
+    console.log(`\n💡 로컬 TextStyle 중 button 포함 (max 30):`);
+    for (const n of styleHints) console.log(`  · ${n}`);
+  }
+  console.log("");
+}
+
+// =============================================================================
+// 3. fill / bind 헬퍼
+// =============================================================================
 
 function hexToRgb(hex) {
   const h = hex.replace("#", "");
@@ -183,12 +289,13 @@ function hexToRgb(hex) {
   };
 }
 
-// SOLID fill — Variable 바인딩 시도, 실패 시 hex fallback
 function solidFromToken(tokenObj, opacity = 1) {
   if (!tokenObj) return null;
   const f = { type: "SOLID", color: hexToRgb(tokenObj.hex), opacity };
-  const id = VAR_MAP[tokenObj.token];
-  if (id) f.boundVariables = { color: { type: "VARIABLE_ALIAS", id } };
+  const v = COLOR_VAR_MAP[tokenObj.names[0]];
+  if (v) {
+    f.boundVariables = { color: { type: "VARIABLE_ALIAS", id: v.id } };
+  }
   return f;
 }
 
@@ -196,8 +303,15 @@ function solidFromHex(hex, opacity = 1) {
   return { type: "SOLID", color: hexToRgb(hex), opacity };
 }
 
+function bindNum(node, field, sz, varKey) {
+  const v = NUM_VAR_MAP[`${sz}/${varKey}`];
+  if (v) {
+    try { node.setBoundVariable(field, v); } catch (_) {}
+  }
+}
+
 // =============================================================================
-// 3. 빌더 헬퍼
+// 4. 빌더 헬퍼
 // =============================================================================
 
 function af(name, opts = {}) {
@@ -232,14 +346,13 @@ async function tx(content, opts = {}) {
 }
 
 // =============================================================================
-// 4. Button 빌더 (style + size + state)
+// 5. Button 빌더
 // =============================================================================
 
 async function buildButton(styleKey, sizeKey, stateKey, label = "Button") {
   const style = STYLE[styleKey];
   const size = SIZE[sizeKey];
 
-  // disabled state는 STYLE 무시하고 토큰 풀 교체
   const useDisabled = stateKey === "disabled";
   const bg     = useDisabled ? DISABLED.bg     : style.bg;
   const fg     = useDisabled ? DISABLED.fg     : style.fg;
@@ -257,8 +370,9 @@ async function buildButton(styleKey, sizeKey, stateKey, label = "Button") {
   btn.paddingRight = size.hPad;
   btn.itemSpacing = 4;
   btn.cornerRadius = size.radius;
+  btn.resize(100, size.h);
 
-  // bg fill stack: base + (hover/pressed overlay)
+  // bg fill stack
   const fills = [];
   if (bg) fills.push(solidFromToken(bg));
   if (stateKey === "hover" || stateKey === "pressed") {
@@ -276,9 +390,15 @@ async function buildButton(styleKey, sizeKey, stateKey, label = "Button") {
     btn.strokes = [];
   }
 
-  // height fixed, width auto-hug from text
-  btn.resize(100, size.h); // width는 layoutMode AUTO로 후보정
-  btn.primaryAxisSizingMode = "AUTO"; // hug
+  // 🔗 Number variable 바인딩 (있을 때만)
+  bindNum(btn, "height", sizeKey, "height");
+  bindNum(btn, "paddingLeft", sizeKey, "hPad");
+  bindNum(btn, "paddingRight", sizeKey, "hPad");
+  bindNum(btn, "topLeftRadius", sizeKey, "radius");
+  bindNum(btn, "topRightRadius", sizeKey, "radius");
+  bindNum(btn, "bottomLeftRadius", sizeKey, "radius");
+  bindNum(btn, "bottomRightRadius", sizeKey, "radius");
+  if (border) bindNum(btn, "strokeWeight", sizeKey, "border");
 
   // label
   const t = await tx(label, {
@@ -288,12 +408,18 @@ async function buildButton(styleKey, sizeKey, stateKey, label = "Button") {
     lineHeight: size.lineHeight,
     fills: fg ? [solidFromToken(fg)] : [solidFromHex(SUBTLE_TEXT)],
   });
+  // 🔗 Text font size / lineHeight variable 바인딩
+  bindNum(t, "fontSize", sizeKey, "fontSize");
+  bindNum(t, "lineHeight", sizeKey, "lineHeight");
+  // 🔗 TextStyle 매칭 시 우선 적용 (font/size/lineHeight 묶음 교체)
+  if (TEXT_STYLE_MAP[sizeKey]) {
+    try { await t.setTextStyleIdAsync(TEXT_STYLE_MAP[sizeKey]); } catch (_) {}
+  }
   btn.appendChild(t);
 
-  // inactive: opacity 0.4
   if (stateKey === "inactive") btn.opacity = 0.4;
 
-  // focused: 외부 ring을 별도 wrapper로 감싸 반환
+  // focused → 외부 ring wrapper
   if (stateKey === "focused") {
     const ring = FOCUS[sizeKey];
     const wrap = figma.createFrame();
@@ -321,32 +447,22 @@ async function buildButton(styleKey, sizeKey, stateKey, label = "Button") {
 }
 
 // =============================================================================
-// 5. 매트릭스 빌더
+// 6. 매트릭스 빌더
 // =============================================================================
 
-const COL_HEADER_W = 70;
 const ROW_LABEL_W = 70;
 const CELL_PAD = 8;
-// 4xl 기준 셀 너비 — 4xl 'Button' 라벨 자연 너비 + h-pad*2 + 여유
-// 4xl: fontSize 32 × ~0.55 × 6char = 106 + hPad 24*2 = 154 → 여유 두고 200
 const CELL_W = 220;
 
 async function buildMatrix(styleKey) {
-  const style = STYLE[styleKey];
+  const section = af(`Matrix · ${styleKey}`, { dir: "VERTICAL", gap: 12, p: 0, fills: [] });
 
-  const section = af(`Matrix · ${styleKey}`, {
-    dir: "VERTICAL", gap: 12, p: 0,
-    fills: [],
-  });
-
-  // section title
-  const title = await tx(styleKey, {
+  section.appendChild(await tx(styleKey, {
     weight: "SemiBold", fontSize: 16, lineHeight: 24,
     fills: [solidFromHex(SECTION_TEXT)],
-  });
-  section.appendChild(title);
+  }));
 
-  // col header row: ['', xxs, xs, ..., 4xl]
+  // col header
   const colHeader = af("Col Header", { dir: "HORIZONTAL", gap: 0, align: "CENTER", fills: [] });
   const spacer = af("spacer", { dir: "HORIZONTAL", fills: [], primary: "FIXED", counter: "FIXED" });
   spacer.resize(ROW_LABEL_W, 24);
@@ -365,11 +481,10 @@ async function buildMatrix(styleKey) {
   }
   section.appendChild(colHeader);
 
-  // 각 state row
+  // state rows
   for (const st of STATES) {
     const row = af(`row-${st}`, { dir: "HORIZONTAL", gap: 0, align: "CENTER", fills: [] });
 
-    // row label
     const labelCell = af(`rl-${st}`, {
       dir: "HORIZONTAL", align: "CENTER", justify: "MIN",
       primary: "FIXED", counter: "FIXED", fills: [],
@@ -381,7 +496,6 @@ async function buildMatrix(styleKey) {
     }));
     row.appendChild(labelCell);
 
-    // 9 size 셀
     for (const sz of SIZES) {
       const cell = af(`cell-${st}-${sz}`, {
         dir: "HORIZONTAL", justify: "CENTER", align: "CENTER",
@@ -401,27 +515,27 @@ async function buildMatrix(styleKey) {
 }
 
 // =============================================================================
-// 6. 메인
+// 7. 메인
 // =============================================================================
 
 async function build() {
-  // 폰트 사전 로드
   await Promise.all([
     figma.loadFontAsync({ family: "Pretendard", style: "Regular" }),
     figma.loadFontAsync({ family: "Pretendard", style: "Medium" }),
     figma.loadFontAsync({ family: "Pretendard", style: "SemiBold" }),
   ]);
 
-  await loadVariables();
-  figma.notify(`Variable 매핑: ${Object.keys(VAR_MAP).length}/${collectAllTokens().length} 토큰`);
+  await loadAll();
+  const colorHits = Object.keys(COLOR_VAR_MAP).length;
+  const numHits = Object.keys(NUM_VAR_MAP).length;
+  const styleHits = Object.keys(TEXT_STYLE_MAP).length;
+  figma.notify(`바인딩: Color ${colorHits} · Number ${numHits} · TextStyle ${styleHits}`);
 
-  // page root
   const page = af("SSW Button Matrix", {
     dir: "VERTICAL", gap: 32, p: 40,
     fills: [solidFromHex(PAGE_BG)],
   });
 
-  // page title
   const head = af("Page Header", { dir: "VERTICAL", gap: 4, fills: [] });
   head.appendChild(await tx("버튼 (Button)", {
     weight: "SemiBold", fontSize: 24, lineHeight: 32,
@@ -433,24 +547,22 @@ async function build() {
   }));
   page.appendChild(head);
 
-  // 9 style 매트릭스
   for (const styleKey of STYLES) {
     page.appendChild(await buildMatrix(styleKey));
   }
 
-  // 캔버스 배치
   page.x = figma.viewport.center.x - 800;
   page.y = figma.viewport.center.y - 400;
   figma.currentPage.appendChild(page);
   figma.currentPage.selection = [page];
   figma.viewport.scrollAndZoomIntoView([page]);
 
-  figma.notify("✅ SSW Button 매트릭스 완료 (9×9×6 = 486 buttons)");
-  console.log("[SSW Button Runner] done");
+  figma.notify("✅ 매트릭스 완료. 콘솔 진단 출력 확인");
+  console.log("[SSW Button Runner v2] done");
 }
 
 try { await build(); }
 catch (e) {
-  console.error("[SSW Button Runner] 실패:", e);
+  console.error("[SSW Button Runner v2] 실패:", e);
   figma.notify(`❌ 실패: ${e.message}`);
 }
