@@ -1609,18 +1609,19 @@ html, body {
 }
 .tbl-callout--below .tbl-callout-num { margin-top: 6px; }
 
-/* Size figure rows */
-.tbl-size-rows { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
-.tbl-size-row { display: flex; align-items: center; gap: 12px; }
+/* Size figure rows — group centered, label right-aligned */
+.tbl-size-rows { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.tbl-size-row { display: flex; align-items: center; gap: 16px; }
 .tbl-size-row .label {
   width: 70px; font-size: 13px; font-weight: 500; color: #565656;
   font-family: ui-monospace, Menlo, monospace;
+  text-align: right;
 }
 .tbl-size-row .pair { display: flex; }
 
-/* Generic atomic cell (matches Figma table atomic-v0.4) */
+/* Generic atomic cell (matches Figma table atomic-v0.4) — content right-aligned */
 .tac {
-  display: inline-flex; align-items: center;
+  display: inline-flex; align-items: center; justify-content: flex-end;
   background: #fefefe; border-bottom: 1px solid #d2d2d2; border-right: 1px solid #d2d2d2;
   font-family: "Pretendard", sans-serif; box-sizing: border-box;
   font-size: 14px; color: #1d1d1d;
@@ -1640,14 +1641,61 @@ html, body {
 .tac.no-divider { border-right: 0; }
 .tac.no-border { border-bottom: 0; }
 
-/* Style demos: 2x2 grid (header row + cell row, 2 columns) */
-.tbl-style-rows { display: flex; flex-direction: column; gap: 16px; }
+/* Style demos: 2x2 grid — group centered, label right-aligned */
+.tbl-style-rows { display: flex; flex-direction: column; gap: 16px; align-items: center; }
 .tbl-style-row { display: flex; align-items: center; gap: 16px; }
 .tbl-style-row .label {
   width: 130px; font-size: 13px; font-weight: 500; color: #565656;
+  text-align: right;
 }
 .tbl-style-grid { display: flex; flex-direction: column; }
 .tbl-style-grid .row { display: flex; }
+
+/* 세부 규격 (Detailed spec) figure — Figma `306:8891` verbatim */
+.tbl-spec-figure {
+  background: #f9f9f9; border-radius: 20px; padding: 60px 48px; margin: 8px 0;
+  display: flex; justify-content: center; align-items: center; gap: 80px;
+}
+.tbl-spec-cell-wrap { position: relative; padding: 32px 0; }
+.tbl-spec-cell {
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  height: 32px; padding: 0 12px; min-width: 144px;
+  background: #fefefe; border-bottom: 1px solid #d2d2d2;
+  position: relative;
+}
+.tbl-spec-cell .text-content { font-size: 14px; color: #1d1d1d; }
+.tbl-spec-cell .icon-content {
+  width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;
+  color: #565656;
+}
+.tbl-spec-cell .icon-content svg { width: 16px; height: 16px; fill: currentColor; }
+/* Red dashed annotations (Figma red #d73220) */
+.tbl-spec-cell-wrap .anno {
+  position: absolute; font-size: 11px; font-weight: 500; color: #d73220;
+  white-space: nowrap; line-height: 1;
+}
+.tbl-spec-cell-wrap .anno-line-v {
+  position: absolute; width: 0; border-left: 1px dashed #d73220;
+}
+.tbl-spec-cell-wrap .anno-line-h {
+  position: absolute; height: 0; border-top: 1px dashed #d73220;
+}
+/* Horizontal Padding markers — vertical dashed line at edges */
+.tbl-spec-cell-wrap .pad-line { top: -8px; bottom: -8px; }
+/* Height marker — vertical bracket on right */
+.tbl-spec-cell-wrap .height-bracket {
+  position: absolute; right: -16px; top: 50%; transform: translateY(-50%);
+  width: 6px; height: 32px;
+  border-top: 2px solid #d73220; border-bottom: 2px solid #d73220;
+  border-left: 0; border-right: 0;
+}
+.tbl-spec-cell-wrap .height-bracket::before {
+  content: ""; position: absolute; left: 2px; top: 0; bottom: 0; width: 2px; background: #d73220;
+}
+.tbl-spec-cell-wrap .height-label {
+  position: absolute; right: -54px; top: 50%; transform: translateY(-50%);
+  font-size: 11px; font-weight: 500; color: #d73220;
+}
 
 /* Variant 4 cards */
 .tbl-variant-grid {
@@ -9084,33 +9132,80 @@ html, body {
         <div class="tbl-style-row">
           <span class="label">lineless</span>
           <div class="tbl-style-grid">
-            <div class="row"><span class="tac size-lg_40 is-header no-divider no-border">Header</span><span class="tac size-lg_40 is-header no-divider no-border">Header</span></div>
-            <div class="row"><span class="tac size-lg_40 no-divider no-border">Cell</span><span class="tac size-lg_40 no-divider no-border">Cell</span></div>
+            <div class="row"><span class="tac size-lg_40 is-header no-divider no-border">공단부담금</span><span class="tac size-lg_40 is-header no-divider no-border">본인부담금</span></div>
+            <div class="row"><span class="tac size-lg_40 no-divider no-border">100,160</span><span class="tac size-lg_40 no-divider no-border">65,160</span></div>
           </div>
         </div>
         <div class="tbl-style-row">
           <span class="label">Border only</span>
           <div class="tbl-style-grid">
-            <div class="row"><span class="tac size-lg_40 is-header no-divider">Header</span><span class="tac size-lg_40 is-header no-divider">Header</span></div>
-            <div class="row"><span class="tac size-lg_40 no-divider">Cell</span><span class="tac size-lg_40 no-divider">Cell</span></div>
+            <div class="row"><span class="tac size-lg_40 is-header no-divider">공단부담금</span><span class="tac size-lg_40 is-header no-divider">본인부담금</span></div>
+            <div class="row"><span class="tac size-lg_40 no-divider">100,160</span><span class="tac size-lg_40 no-divider">65,160</span></div>
           </div>
         </div>
         <div class="tbl-style-row">
           <span class="label">Divider only</span>
           <div class="tbl-style-grid">
-            <div class="row"><span class="tac size-lg_40 is-header no-border">Header</span><span class="tac size-lg_40 is-header no-border">Header</span></div>
-            <div class="row"><span class="tac size-lg_40 no-border">Cell</span><span class="tac size-lg_40 no-border">Cell</span></div>
+            <div class="row"><span class="tac size-lg_40 is-header no-border">공단부담금</span><span class="tac size-lg_40 is-header no-border">본인부담금</span></div>
+            <div class="row"><span class="tac size-lg_40 no-border">100,160</span><span class="tac size-lg_40 no-border">65,160</span></div>
           </div>
         </div>
         <div class="tbl-style-row">
           <span class="label">Border &amp; Divider</span>
           <div class="tbl-style-grid">
-            <div class="row"><span class="tac size-lg_40 is-header">Header</span><span class="tac size-lg_40 is-header">Header</span></div>
-            <div class="row"><span class="tac size-lg_40">Cell</span><span class="tac size-lg_40">Cell</span></div>
+            <div class="row"><span class="tac size-lg_40 is-header">공단부담금</span><span class="tac size-lg_40 is-header">본인부담금</span></div>
+            <div class="row"><span class="tac size-lg_40">100,160</span><span class="tac size-lg_40">65,160</span></div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- ========== 세부 규격 — verbatim from 306:8891 ========== -->
+  <div class="spec-section">
+    <div class="section-label">세부 규격 <span style="color: #8f8f8f; font-weight: normal;">— 출처 `306:8891` (UI-Kit-Guide verbatim · Padding / Height / Text size / Icon size)</span></div>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">테이블의 패딩, 텍스트, 아이콘의 규격은 사이즈별 Variable number 로 토큰화 되어 있습니다.</p>
+    <div class="tbl-spec-figure">
+      <!-- Cell A: text + icon -->
+      <div class="tbl-spec-cell-wrap">
+        <span class="anno-line-v pad-line" style="left: 0;"></span>
+        <span class="anno-line-v pad-line" style="left: 38px;"></span>
+        <span class="anno" style="top: -2px; left: 0;">Padding</span>
+        <span class="anno" style="top: -2px; left: 38px;">Padding</span>
+        <div class="tbl-spec-cell">
+          <span class="text-content">text</span>
+          <span class="icon-content"><svg viewBox="0 0 16 16" fill="currentColor"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></span>
+        </div>
+        <span class="anno" style="bottom: -2px; left: 12px;">Text size</span>
+        <span class="anno" style="bottom: -2px; left: 50px;">Icon size</span>
+        <span class="height-bracket"></span>
+        <span class="height-label">Height</span>
+      </div>
+      <!-- Cell B: 2 icons -->
+      <div class="tbl-spec-cell-wrap">
+        <span class="anno-line-v pad-line" style="left: 0;"></span>
+        <span class="anno-line-v pad-line" style="left: 38px;"></span>
+        <span class="anno" style="top: -2px; left: 0;">Padding</span>
+        <span class="anno" style="top: -2px; left: 38px;">Padding</span>
+        <div class="tbl-spec-cell">
+          <span class="icon-content"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 6h6v7a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6zm1-3h4l1 1h2v1H3V4h2l1-1z"/></svg></span>
+          <span class="icon-content"><svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="3" r="1.5"/><circle cx="8" cy="8" r="1.5"/><circle cx="8" cy="13" r="1.5"/></svg></span>
+        </div>
+        <span class="anno" style="bottom: -2px; left: 12px;">Icon size</span>
+        <span class="anno" style="bottom: -2px; left: 50px;">Icon size</span>
+        <span class="height-bracket"></span>
+        <span class="height-label">Height</span>
+      </div>
+    </div>
+    <table class="spec-table" style="margin-top: 16px;">
+      <tr><th>size</th><th>height</th><th>padding</th><th>gap</th><th>text-size</th></tr>
+      <tr><td><code>xs_24</code></td><td>24</td><td>8</td><td>4</td><td>14</td></tr>
+      <tr><td><code>sm_28</code></td><td>28</td><td>8</td><td>4</td><td>14</td></tr>
+      <tr><td><code>md_32</code></td><td>32</td><td>8</td><td>8</td><td>14</td></tr>
+      <tr><td><code>lg_40</code></td><td>40</td><td>8</td><td>8</td><td>16</td></tr>
+      <tr><td><code>xl_48</code></td><td>48</td><td>12</td><td>12</td><td>16</td></tr>
+      <tr><td><code>2xl_56</code></td><td>56</td><td>12</td><td>16</td><td>18</td></tr>
+    </table>
   </div>
 
   <!-- ========== Properties › Variant — verbatim from 302:43376 ========== -->

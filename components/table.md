@@ -10,6 +10,9 @@
 >   - `302:43098` H1 (제목 + 본문 설명)
 >   - `302:43106` Anatomy *(이전 노드 — 현재 invalid 응답)*
 >   - `306:8789` Anatomy figure — PMS 진료내역 sample 10 데이터 행 + 9 numbered callouts (TalkToFigma 채널 `qhr11434` get_selection 기준 verbatim)
+>   - `306:8864` Properties › Size 시각 (6 size 행, 셀 우측정렬, 그룹 가운데정렬)
+>   - `306:8891` 세부 규격 — Padding / Height / Text size / Icon size 라벨링 도면
+>   - `306:8933` Properties › Style 시각 (4 변형 가운데정렬)
 >   - `302:43179` Properties › Size + Style
 >   - `302:43304` Properties › State
 >   - `302:43376` Properties › Variant
@@ -137,7 +140,7 @@
 
 ### Style
 
-> 출처: `302:43216` (UI-Kit-Guide · 스타일 4종 verbatim)
+> 출처: `302:43216` / `306:8933` (UI-Kit-Guide · 스타일 4종 verbatim)
 
 테이블의 스타일은 **보더(Border)와 디바이더(Divider)의 유무**를 각각 조절하여 4가지 조합으로 사용합니다.
 
@@ -147,6 +150,8 @@
 | Border only | ✓ | — |
 | Divider only | — | ✓ |
 | Border & Divider | ✓ | ✓ |
+
+> Figma `306:8933` 시각: 4 변형이 가운데정렬된 그룹으로 배치. 각 변형은 2×2 mini-table — 헤더 행(`공단부담금` / `본인부담금`, gray bg) + 데이터 행(`100,160` / `65,160`, white bg). 셀 내용은 모두 우측정렬.
 
 ### Variant
 
@@ -158,6 +163,31 @@
 | subheader | 서브 헤더 (Subheader) | 가이드 역할을 하는 두번째 하위 단계 헤더입니다. Default 타입과 Compact 타입이 있습니다. |
 | cell | 데이터 셀 (Cell) | 실제 데이터가 표시되는 테이블의 핵심 영역입니다. |
 | sum | 합계 (Sum) | 데이터 셀의 총합을 나타낼때 사용합니다. |
+
+### 세부 규격
+
+> 출처: `306:8891` (UI-Kit-Guide · verbatim)
+
+테이블의 패딩, 텍스트, 아이콘의 규격은 사이즈별 Variable number 로 토큰화 되어 있습니다.
+
+Figma `306:8891` 도면은 셀 내부 구조 라벨링:
+- **Padding** (좌우): 셀 좌/우 안쪽 여백 — 양쪽에 빨강 점선 라인으로 표시
+- **Height**: 셀 전체 높이 — 우측 빨강 bracket으로 표시
+- **Text size**: 라벨 텍스트 크기 — 텍스트 아래 빨강 화살표
+- **Icon size**: 아이콘 크기 — 아이콘 아래 빨강 화살표
+
+도면은 2개 셀 예시:
+1. text + icon 셀
+2. icon + icon 셀 (예: trash 아이콘 + dotted 아이콘)
+
+| size | height | padding | gap | text-size |
+|---|---|---|---|---|
+| xs_24 | 24 | 8 | 4 | 14 |
+| sm_28 | 28 | 8 | 4 | 14 |
+| md_32 | 32 | 8 | 8 | 14 |
+| lg_40 | 40 | 8 | 8 | 16 |
+| xl_48 | 48 | 12 | 12 | 16 |
+| 2xl_56 | 56 | 12 | 16 | 18 |
 
 ### State
 
