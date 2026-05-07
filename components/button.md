@@ -7,14 +7,37 @@
 >   - node `1:273388` — `Button use it` 가이드 페이지 (sparse metadata)
 >   - node `1:274092` — `Icon button use it` 가이드 페이지 (sparse metadata)
 > - `figma-export.json` (2026-05-04 export) — light/dark 양쪽 모드 참조용
+> - **사용자 작업 파일 `↪️ Button (TEST⚠️)`** — variant set `✅button` (id `7046:148536`, 972 variants, 2026-05-07 TalkToFigma MCP 추출)
 >
 > JS 토큰: `tokens/color/component.js#button`, `tokens/number/component.js#button`.
 
 ## Overview
 - 토큰 prefix: `button/*`
 - 모드: **light · dark** (light 값은 production 노드 변수 해석값 기준)
-- 가이드 페이지의 인스턴스 이름은 `button_beta_v0.22_test` (현재 릴리즈에서 평가/테스트 중인 베타)
+- 컴포넌트 set 이름: **`✅button`** (이전 가이드의 `button_beta_v0.22_test`는 베타 단계 명칭, 현재 production은 `✅button`)
 - 사이즈: 9단계 — xxs(20) / xs(24) / sm(28) / md(32) / lg(40) / xl(48) / 2xl(64) / 3xl(80) / 4xl(96)
+  - **Figma variant prop 값은 height 접미사 포함**: `xxs_20`, `xs_24`, `sm_28`, `md_32`, `lg_40`, `xl_48`, `2xl_64`, `3xl_80`, `4xl_96`
+
+## Variant Properties (Figma `✅button` verbatim)
+
+> TalkToFigma MCP로 972 variants 전체 추출 (2026-05-07).
+> 모든 prop 키는 **lowercase**.
+
+| prop | 종 | 값 |
+|---|---|---|
+| `style` | 9 | `brand-primary` · `brand-secondary` · `brand-tertiary` · `neutral-primary` · `neutral-secondary` · `neutral-tertiary` · `subtle` · `destructive-primary` · `destructive-secondary` |
+| `state` | 6 | `default` · `hover` · `pressed` · `focused` · `inactive` · `disabled-gray` |
+| `size` | 9 | `xxs_20` · `xs_24` · `sm_28` · `md_32` · `lg_40` · `xl_48` · `2xl_64` · `3xl_80` · `4xl_96` |
+| `layout` | 2 | `icon labeled` · `icon only` |
+| `type` | 1 | `hug` |
+
+**총 variants = 9 × 6 × 9 × 2 × 1 = 972** (이전 메모리의 9×6×9=486은 layout 차원 누락)
+
+> 이전 메모 정정:
+> - 7번째 style: `text` → **`subtle`** (이전 가이드 페이지에서는 `text`로 표기되었으나, production variant set은 `subtle`)
+> - `distructive-*` 오타 → **`destructive-*`** (variant prop에서 정정됨. 변수 토큰 이름은 별도 검증 필요)
+> - state `disabled` → **`disabled-gray`** (variant 값 verbatim)
+> - layout은 가이드 표기 3종(`icon labeled` / `icon only` / `text only`)이 아니라 **2종**. `text only`는 `icon labeled` + 빈 아이콘 슬롯으로 구현 추정.
 
 ## Number tokens (Mode 1)
 
@@ -177,7 +200,7 @@ CSS 구현 가이드:
 
 > 가이드 페이지에서 추가 발견: `v0.3 (test)/button/4xl`(line-height=1, 비표준), `v0.4/button/*` 시리즈(현행).
 
-## Style 9가지 (가이드 컬럼 verbatim)
+## Style 9가지 (Figma `✅button` verbatim)
 
 | # | style | 비고 |
 |---|---|---|
@@ -187,32 +210,35 @@ CSS 구현 가이드:
 | 4 | `neutral-primary` | 기본 강조 (dark bg + white text) |
 | 5 | `neutral-secondary` | 기본 보조 (white bg + gray border) |
 | 6 | `neutral-tertiary` | 기본 약함 (light gray bg) |
-| 7 | **`text`** | 텍스트 전용 (transparent bg/border, gray text · `#606881`) — 이전 메모리의 *ghost*와 동일 영역 |
-| 8 | **`distructive-primary`** | ⚠️ Figma 원본 오타 (`destructive` 아님) — 빨강 강조 |
-| 9 | **`distructive-secondary`** | ⚠️ Figma 원본 오타 — 빨강 보조 (transparent bg) |
+| 7 | **`subtle`** | 텍스트 전용 (transparent bg/border, gray text · `#606881`) — 이전 가이드의 `text` 명칭이 production에서 `subtle`로 변경됨 |
+| 8 | `destructive-primary` | 빨강 강조 — 이전 가이드의 `distructive-primary` 오타가 production에서 정정됨 |
+| 9 | `destructive-secondary` | 빨강 보조 (transparent bg) — 마찬가지로 정정 |
 
-> **오타 보존 주의**: variant prop 매칭/instance override 시 `distructive`로 호출해야 매칭된다 (Tab의 `indicatior_position`, Reservation Card의 `stae`/`defalut`와 동일 패턴).
+> **명칭 변경 history**: 이전 베타(`button_beta_v0.22_test`)에서는 `text` / `distructive-*`였으나, production `✅button` set에서 `subtle` / `destructive-*`로 표준화됨. variant prop 매칭/instance override는 production 명칭 사용.
 
-## State 6단계 (가이드 행 라벨 verbatim)
+## State 6단계 (Figma `✅button` verbatim)
 
 | # | state | 트리거 | 시각 |
 |---|---|---|---|
-| 1 | `Default` | 평상시 | base 색 |
-| 2 | `Hover` | 마우스 위에 | base 색 위에 white 15% (밝은 base는 black 5% — `common/hover` token) 알파 합성 |
-| 3 | `Pressed` | 클릭 중 | base 색 위에 white 25% (밝은 base는 black 10% — `common/pressed` token) 알파 합성 |
-| 4 | `Focused` | 키보드 focus | `common/focus-ring` (black) 외부 단일 링 + 버튼 외곽선과 ring 사이 투명 갭 (위 Focus ring 구조 표 참조) |
-| 5 | `Inactive` | 1차 비활성 (브랜드 톤 유지, 약하게 보임) | **원본 스타일 색 그대로 + `opacity: 0.4`** 전체 적용 (별도 색 토큰 교체 없음) |
-| 6 | `Disabled` | 2차 완전 비활성 (회색 톤 교체) | bg `bg/disabled` (#dadada) · border `border/disabled` (#dadada) · text `fg/disabled` (#a5a5a5) — 토큰 풀 교체 |
+| 1 | `default` | 평상시 | base 색 |
+| 2 | `hover` | 마우스 위에 | base 색 위에 white 15% (밝은 base는 black 5% — `common/hover` token) 알파 합성 |
+| 3 | `pressed` | 클릭 중 | base 색 위에 white 25% (밝은 base는 black 10% — `common/pressed` token) 알파 합성 |
+| 4 | `focused` | 키보드 focus | `common/focus-ring` (black) 외부 단일 링 + 버튼 외곽선과 ring 사이 투명 갭 (위 Focus ring 구조 표 참조) |
+| 5 | `inactive` | 1차 비활성 (브랜드 톤 유지, 약하게 보임) | **원본 스타일 색 그대로 + `opacity: 0.4`** 전체 적용 (별도 색 토큰 교체 없음) |
+| 6 | `disabled-gray` | 2차 완전 비활성 (회색 톤 교체) | bg `bg/disabled` (#dadada) · border `border/disabled` (#dadada) · text `fg/disabled` (#a5a5a5) — 토큰 풀 교체 |
 
-> **명칭 정정**: 이전 `Disabled-1`(faded) / `Disabled-2`(gray) → 신규 `Inactive` / `Disabled`로 통일. variant prop 매칭 시도 신규 명칭 사용.
+> **명칭 history**: 이전 가이드의 `Disabled` 단일 표기 → production은 `disabled-gray` (variant prop에 다른 disabled 분기가 없는데 `-gray` 접미사가 붙어있음. 이전의 `disabled-inactive` / `disabled-1` 같은 분기는 production에서 제거된 것으로 추정).
+> Loading state는 별도 `state=Loading` variant로 처리 (가이드 6열에는 미포함, production 6 state에도 없음).
 
 > Loading state는 별도 `state=Loading` variant로 처리 (가이드 6열에는 미포함).
 
 ## Variants / Layout
 
-- **layout**: `icon labeled` / `icon only` / `text only` (+ Icon First / Icon Last)
-- **type**: `hug` (기본)
-- **selected**: `common/selected` 알파(브랜드 블루 20%)로 활성 표시 가능
+- **`layout`** (production verbatim, 2종):
+  - `icon labeled` — 아이콘 + 라벨 (icon-start 슬롯 + 라벨 + icon-end 슬롯). `text only`는 별도 variant 없이 이 layout에서 아이콘 슬롯을 visible: false로 처리하는 것으로 추정.
+  - `icon only` — 정사각 (라벨 없음)
+- **`type`** (1종): `hug` (기본 — 콘텐츠 크기에 맞춰 hug)
+- **selected**: `common/selected` 알파(브랜드 블루 20%)로 활성 표시 가능 (별도 prop 없음, instance override로 표현)
 
 ## Icon Button (별도 가이드)
 
@@ -450,5 +476,9 @@ Destructive 버튼은 데이터를 영구적으로 삭제하는 것과 같이 **
   - `disabled-gray` (완전 비활성)
   - `disabled-inactive` (읽기 전용 느낌)
   → 호환성을 위해 모두 정의되어 있고, 신규 화면은 `disabled-gray` 권장
-- variant/instance API 호출 시 `distructive-*` 오타를 그대로 사용
+- variant/instance API 호출 시 production `✅button`의 명칭 사용:
+  - style: `subtle` (이전 `text` 아님), `destructive-*` (이전 `distructive-*` 오타 정정)
+  - state: `disabled-gray` (이전 `Disabled` 아님)
+  - size: `_숫자` 접미사 포함 (`md_32` 등)
+  - prop 키는 모두 lowercase (`style`, `state`, `size`, `layout`, `type`)
 - 라벨은 Sentence case (한국어/영문 모두 첫글자만 대문자)
