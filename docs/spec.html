@@ -1112,17 +1112,17 @@ html, body {
 .anatomy-stage { position: relative; width: 240px; }
 .anatomy-callout {
   position: absolute;
-  display: flex; align-items: center; gap: 6px;
-  font-size: 12px; color: #393939; line-height: 1;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; color: #eb6100; line-height: 1;
   white-space: nowrap;
 }
 .anatomy-callout-dot {
   width: 6px; height: 6px; border-radius: 50%;
-  background: #1d1d1d; flex-shrink: 0;
+  background: #eb6100; flex-shrink: 0;
 }
 .anatomy-callout-line {
-  height: 1px; background: #1d1d1d;
-  flex-shrink: 0; width: 60px;
+  height: 1px; background: #eb6100;
+  flex-shrink: 0; width: 80px;
 }
 .anatomy-callout--left { right: calc(100% + 6px); }
 .anatomy-callout--right { left: calc(100% + 6px); }
@@ -4918,69 +4918,69 @@ html, body {
 <section id="menu" class="component-page">
   <header class="page-header">
     <h1>메뉴 (Menu)</h1>
-    <div class="meta">UI-Kit-Guide `1:230731` · 구성 `284:12879` · Type `284:18380` · Layout `1:230825` · State `1:230908` · 컴포넌트 `1160:177493`</div>
-    <p class="description">아래 내용은 UI-Kit-Guide Figma 노드의 텍스트를 verbatim으로 옮긴 것입니다.</p>
+    <div class="meta">UI-Kit-Guide `1:230731` · 구성 `284:12879` · Anatomy callout `286:19690` · Type `284:18380` · Layout `1:230825` · State `1:230908` · `1:230923` · 컴포넌트 `1160:177493`</div>
+    <p class="description">아래 내용은 UI-Kit-Guide Figma 노드의 텍스트와 시각 가이드를 verbatim으로 옮긴 것입니다. 아이콘은 레포지토리 `/icons/svg/system/` 폴더의 실제 SVG 사용.</p>
   </header>
 
-  <!-- ========== 구성 (Anatomy with dot+line callouts) ========== -->
+  <!-- ========== 구성 (Anatomy) — 286:19690 verbatim callout 위치/색상 ========== -->
   <div class="spec-section">
-    <div class="section-label">구성 <span style="color: #8f8f8f; font-weight: normal;">— 출처 `284:12879` (UI-Kit-Guide)</span></div>
+    <div class="section-label">구성 <span style="color: #8f8f8f; font-weight: normal;">— 출처 `284:12879` (텍스트) · `286:19690` (callout 시각)</span></div>
     <div class="anatomy-figure">
       <div class="anatomy-stage">
         <div class="menu" style="margin: 0;">
           <div class="menu-item-sub--header">Section Label 1</div>
-          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div>
+          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div>
+          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div>
           <div class="menu-item-sub--divider"></div>
           <div class="menu-item-sub--header">Section Label 2</div>
-          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-          <div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div>
+          <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div>
+          <div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 13.4999 9.49973" fill="currentColor"><path d="M12.2285 0.210853C12.5263 -0.076969 13.0012 -0.0691847 13.2891 0.228432C13.5769 0.526179 13.5691 1.00107 13.2715 1.28898L4.99513 9.28898C4.70444 9.56992 4.24382 9.56993 3.95314 9.28898L0.228526 5.68937C-0.069282 5.40148 -0.0769375 4.92663 0.210948 4.62882C0.498806 4.33104 0.973674 4.32247 1.27149 4.61027L4.47364 7.70695L12.2285 0.210853Z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div>
         </div>
 
-        <!-- LEFT callouts -->
-        <span class="anatomy-callout anatomy-callout--left" style="top: 4px;">
-          <span>컨테이너 (Container)</span>
-          <span class="anatomy-callout-line"></span>
-          <span class="anatomy-callout-dot"></span>
-        </span>
+        <!-- LEFT callouts (286:19690 verbatim) -->
         <span class="anatomy-callout anatomy-callout--left" style="top: 24px;">
-          <span>섹션 라벨 (Section Label)</span>
-          <span class="anatomy-callout-line"></span>
-          <span class="anatomy-callout-dot"></span>
-        </span>
-        <span class="anatomy-callout anatomy-callout--left" style="top: 60px;">
-          <span>아이콘 (Prefix Icon)</span>
+          <span>Section Label</span>
           <span class="anatomy-callout-line"></span>
           <span class="anatomy-callout-dot"></span>
         </span>
         <span class="anatomy-callout anatomy-callout--left" style="top: 96px;">
-          <span>메뉴 아이템 라벨 (Label)</span>
+          <span>Prefix icon</span>
           <span class="anatomy-callout-line"></span>
           <span class="anatomy-callout-dot"></span>
         </span>
-        <span class="anatomy-callout anatomy-callout--left" style="top: 154px;">
-          <span>디바이더 (Divider)</span>
+        <span class="anatomy-callout anatomy-callout--left" style="top: 130px;">
+          <span>Label</span>
           <span class="anatomy-callout-line"></span>
           <span class="anatomy-callout-dot"></span>
         </span>
         <span class="anatomy-callout anatomy-callout--left" style="top: 284px;">
-          <span>체크 아이콘 (Check icon)</span>
+          <span>Check icon</span>
           <span class="anatomy-callout-line"></span>
           <span class="anatomy-callout-dot"></span>
         </span>
 
-        <!-- RIGHT callouts -->
+        <!-- RIGHT callouts (286:19690 verbatim) -->
+        <span class="anatomy-callout anatomy-callout--right" style="top: 4px;">
+          <span class="anatomy-callout-dot"></span>
+          <span class="anatomy-callout-line"></span>
+          <span>Container</span>
+        </span>
         <span class="anatomy-callout anatomy-callout--right" style="top: 60px;">
           <span class="anatomy-callout-dot"></span>
           <span class="anatomy-callout-line"></span>
-          <span>보조 텍스트 (Sub text)</span>
+          <span>Sub text</span>
         </span>
-        <span class="anatomy-callout anatomy-callout--right" style="top: 130px;">
+        <span class="anatomy-callout anatomy-callout--right" style="top: 96px;">
           <span class="anatomy-callout-dot"></span>
           <span class="anatomy-callout-line"></span>
-          <span>화살표 (Chevron)</span>
+          <span>Chevron</span>
+        </span>
+        <span class="anatomy-callout anatomy-callout--right" style="top: 154px;">
+          <span class="anatomy-callout-dot"></span>
+          <span class="anatomy-callout-line"></span>
+          <span>Divider</span>
         </span>
       </div>
     </div>
@@ -5037,25 +5037,25 @@ html, body {
         <div class="layout-row">
           <div class="layout-row__label"><span class="layout-row__title">Layout</span><span class="layout-row__tag">Icon + Text</span></div>
           <div class="menu" style="margin: 0;">
-            <div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Lable</span></div>
-            <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Lable</span></div>
-            <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Lable</span></div>
+            <div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">Lable</span></div>
+            <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">Lable</span></div>
+            <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">Lable</span></div>
           </div>
         </div>
         <div class="layout-row">
           <div class="layout-row__label"><span class="layout-row__title">Layout</span><span class="layout-row__tag">Check + Text</span></div>
           <div class="menu" style="margin: 0;">
-            <div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">Lable</span></div>
-            <div class="menu-item"><span class="menu-item__icon" style="opacity: 0;"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">Lable</span></div>
-            <div class="menu-item"><span class="menu-item__icon" style="opacity: 0;"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">Lable</span></div>
+            <div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 13.4999 9.49973" fill="currentColor"><path d="M12.2285 0.210853C12.5263 -0.076969 13.0012 -0.0691847 13.2891 0.228432C13.5769 0.526179 13.5691 1.00107 13.2715 1.28898L4.99513 9.28898C4.70444 9.56992 4.24382 9.56993 3.95314 9.28898L0.228526 5.68937C-0.069282 5.40148 -0.0769375 4.92663 0.210948 4.62882C0.498806 4.33104 0.973674 4.32247 1.27149 4.61027L4.47364 7.70695L12.2285 0.210853Z"/></svg></span><span class="menu-item__label">Lable</span></div>
+            <div class="menu-item"><span class="menu-item__icon" style="opacity: 0;"><svg viewBox="0 0 13.4999 9.49973" fill="currentColor"><path d="M12.2285 0.210853C12.5263 -0.076969 13.0012 -0.0691847 13.2891 0.228432C13.5769 0.526179 13.5691 1.00107 13.2715 1.28898L4.99513 9.28898C4.70444 9.56992 4.24382 9.56993 3.95314 9.28898L0.228526 5.68937C-0.069282 5.40148 -0.0769375 4.92663 0.210948 4.62882C0.498806 4.33104 0.973674 4.32247 1.27149 4.61027L4.47364 7.70695L12.2285 0.210853Z"/></svg></span><span class="menu-item__label">Lable</span></div>
+            <div class="menu-item"><span class="menu-item__icon" style="opacity: 0;"><svg viewBox="0 0 13.4999 9.49973" fill="currentColor"><path d="M12.2285 0.210853C12.5263 -0.076969 13.0012 -0.0691847 13.2891 0.228432C13.5769 0.526179 13.5691 1.00107 13.2715 1.28898L4.99513 9.28898C4.70444 9.56992 4.24382 9.56993 3.95314 9.28898L0.228526 5.68937C-0.069282 5.40148 -0.0769375 4.92663 0.210948 4.62882C0.498806 4.33104 0.973674 4.32247 1.27149 4.61027L4.47364 7.70695L12.2285 0.210853Z"/></svg></span><span class="menu-item__label">Lable</span></div>
           </div>
         </div>
         <div class="layout-row">
           <div class="layout-row__label"><span class="layout-row__title">Layout</span><span class="layout-row__tag">Text + Chevron</span></div>
           <div class="menu" style="margin: 0;">
-            <div class="menu-item menu-item--selected"><span class="menu-item__label">Lable</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-            <div class="menu-item"><span class="menu-item__label">Lable</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-            <div class="menu-item"><span class="menu-item__label">Lable</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+            <div class="menu-item menu-item--selected"><span class="menu-item__label">Lable</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div>
+            <div class="menu-item"><span class="menu-item__label">Lable</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div>
+            <div class="menu-item"><span class="menu-item__label">Lable</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div>
           </div>
         </div>
         <div class="layout-row">
@@ -5069,44 +5069,44 @@ html, body {
         <div class="layout-row">
           <div class="layout-row__label"><span class="layout-row__title">Layout</span><span class="layout-row__tag">Icon + Text + Subtext + Chevron</span></div>
           <div class="menu" style="margin: 0;">
-            <div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-            <div class="menu-item"><span class="menu-item__icon" style="opacity: 0;"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-            <div class="menu-item"><span class="menu-item__icon" style="opacity: 0;"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+            <div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 13.4999 9.49973" fill="currentColor"><path d="M12.2285 0.210853C12.5263 -0.076969 13.0012 -0.0691847 13.2891 0.228432C13.5769 0.526179 13.5691 1.00107 13.2715 1.28898L4.99513 9.28898C4.70444 9.56992 4.24382 9.56993 3.95314 9.28898L0.228526 5.68937C-0.069282 5.40148 -0.0769375 4.92663 0.210948 4.62882C0.498806 4.33104 0.973674 4.32247 1.27149 4.61027L4.47364 7.70695L12.2285 0.210853Z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div>
+            <div class="menu-item"><span class="menu-item__icon" style="opacity: 0;"><svg viewBox="0 0 13.4999 9.49973" fill="currentColor"><path d="M12.2285 0.210853C12.5263 -0.076969 13.0012 -0.0691847 13.2891 0.228432C13.5769 0.526179 13.5691 1.00107 13.2715 1.28898L4.99513 9.28898C4.70444 9.56992 4.24382 9.56993 3.95314 9.28898L0.228526 5.68937C-0.069282 5.40148 -0.0769375 4.92663 0.210948 4.62882C0.498806 4.33104 0.973674 4.32247 1.27149 4.61027L4.47364 7.70695L12.2285 0.210853Z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div>
+            <div class="menu-item"><span class="menu-item__icon" style="opacity: 0;"><svg viewBox="0 0 13.4999 9.49973" fill="currentColor"><path d="M12.2285 0.210853C12.5263 -0.076969 13.0012 -0.0691847 13.2891 0.228432C13.5769 0.526179 13.5691 1.00107 13.2715 1.28898L4.99513 9.28898C4.70444 9.56992 4.24382 9.56993 3.95314 9.28898L0.228526 5.68937C-0.069282 5.40148 -0.0769375 4.92663 0.210948 4.62882C0.498806 4.33104 0.973674 4.32247 1.27149 4.61027L4.47364 7.70695L12.2285 0.210853Z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ========== State (verbatim from 1:230908) ========== -->
+  <!-- ========== State (verbatim from 1:230908 / 1:230923) ========== -->
   <div class="spec-section">
-    <div class="section-label">State <span style="color: #8f8f8f; font-weight: normal;">— 출처 `1:230908` (UI-Kit-Guide)</span></div>
+    <div class="section-label">State <span style="color: #8f8f8f; font-weight: normal;">— 출처 `1:230908` · `1:230923` (UI-Kit-Guide)</span></div>
     <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">메뉴(Menu)는 Default, Hover Pressed, Selected, Disabled, Focused 상태로 분류됩니다.  각 상태는 배경색과 텍스트 색상으로 구분되며, 사용자가 현재 어떤 항목과 상호작용 중인지 명확하게 전달해야 합니다. Selected 상태는 선택형 항목(서브메뉴 포함)에서만 사용하며, Active 상태는 클릭(mousedown) 순간에만 짧게 유지됩니다.</p>
     <div class="state-figure">
       <div class="state-rows">
         <div class="state-row">
           <div class="state-row__name">Default</div>
-          <div class="state-row__sample"><div class="menu-item" style="width: 320px;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div>
+          <div class="state-row__sample"><div class="menu-item" style="width: 320px;"><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div></div>
           <div class="state-row__desc">메뉴 아이템의 기본 상태로, 사용자의 행동을 유도하는 액션 목록을 제공합니다.</div>
         </div>
         <div class="state-row">
           <div class="state-row__name">Hover</div>
-          <div class="state-row__sample"><div class="menu-item menu-item--hover" style="width: 320px;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div>
+          <div class="state-row__sample"><div class="menu-item menu-item--hover" style="width: 320px;"><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div></div>
           <div class="state-row__desc">마우스가 올라간 상태로, 상호작용 가능함을 시각적으로 안내합니다.</div>
         </div>
         <div class="state-row">
           <div class="state-row__name">Selected</div>
-          <div class="state-row__sample"><div class="menu-item menu-item--selected" style="width: 320px; border: 1.5px solid #f3a066;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div>
+          <div class="state-row__sample"><div class="menu-item menu-item--selected" style="width: 320px; border: 1.5px solid #f3a066;"><span class="menu-item__icon"><svg viewBox="0 0 13.4999 9.49973" fill="currentColor"><path d="M12.2285 0.210853C12.5263 -0.076969 13.0012 -0.0691847 13.2891 0.228432C13.5769 0.526179 13.5691 1.00107 13.2715 1.28898L4.99513 9.28898C4.70444 9.56992 4.24382 9.56993 3.95314 9.28898L0.228526 5.68937C-0.069282 5.40148 -0.0769375 4.92663 0.210948 4.62882C0.498806 4.33104 0.973674 4.32247 1.27149 4.61027L4.47364 7.70695L12.2285 0.210853Z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div></div>
           <div class="state-row__desc">현재 활성화되어 선택된 상태로, 선택형 항목에서 적용 중인 값을 나타냅니다.</div>
         </div>
         <div class="state-row">
           <div class="state-row__name">Focused</div>
-          <div class="state-row__sample"><div class="menu-item menu-item--selected" style="width: 320px; border: 3px solid #1d1d1d;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div>
+          <div class="state-row__sample"><div class="menu-item menu-item--selected" style="width: 320px; border: 3px solid #1d1d1d;"><span class="menu-item__icon"><svg viewBox="0 0 13.4999 9.49973" fill="currentColor"><path d="M12.2285 0.210853C12.5263 -0.076969 13.0012 -0.0691847 13.2891 0.228432C13.5769 0.526179 13.5691 1.00107 13.2715 1.28898L4.99513 9.28898C4.70444 9.56992 4.24382 9.56993 3.95314 9.28898L0.228526 5.68937C-0.069282 5.40148 -0.0769375 4.92663 0.210948 4.62882C0.498806 4.33104 0.973674 4.32247 1.27149 4.61027L4.47364 7.70695L12.2285 0.210853Z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div></div>
           <div class="state-row__desc">키보드 탐색 등으로 포커스가 위치한 상태로, 접근성을 위한 시각적 표시입니다.</div>
         </div>
         <div class="state-row">
           <div class="state-row__name">Disabled</div>
-          <div class="state-row__sample"><div class="menu-item menu-item--disabled" style="width: 320px; background: transparent;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div>
+          <div class="state-row__sample"><div class="menu-item menu-item--disabled" style="width: 320px; background: transparent;"><span class="menu-item__icon"><svg viewBox="0 0 19.6324 19.6324" fill="currentColor"><path d="M12.3166 16.7189C12.3165 16.9841 12.2102 17.2385 12.0227 17.4259L10.5227 18.925C10.1321 19.3153 9.49906 19.3153 9.10859 18.925L7.60957 17.4259C7.42206 17.2385 7.31668 16.9841 7.3166 16.7189L7.3166 5.70817H12.3166L12.3166 16.7189Z"/><path d="M10.3166 1.32829C11.4209 1.32854 12.3165 2.22394 12.3166 3.32829L12.3166 4.20817L7.3166 4.20817L7.3166 3.32829C7.31668 2.22379 8.21208 1.32829 9.3166 1.32829L10.3166 1.32829Z"/></svg></span><span class="menu-item__label">title</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 6.49958 11.4998" fill="currentColor"><path d="M0.229319 0.219727C0.522336 -0.0729965 0.997114 -0.0732429 1.28987 0.219727L6.2801 5.21582C6.57265 5.50866 6.57265 5.98256 6.2801 6.27539L1.2801 11.2803C0.987317 11.5731 0.512498 11.573 0.219554 11.2803C-0.0732353 10.9875 -0.0731339 10.5127 0.219554 10.2197L4.68928 5.74512L0.228343 1.28027C-0.0643528 0.987255 -0.063641 0.51247 0.229319 0.219727Z"/></svg></span></div></div>
           <div class="state-row__desc">사용자가 메뉴 아이템에 동작을 요구하지 못하는 비활성화 상태입니다.</div>
         </div>
       </div>
