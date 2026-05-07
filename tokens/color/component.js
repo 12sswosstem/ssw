@@ -47,7 +47,6 @@ export const popover = {};
 export const popup = {};
 export const modal = {};
 export const notification = {};
-export const coachmark = {};
 export const progress = {};         // progress circle & bar + progress bar + stepper
 export const spinner = {};          // 무한 로딩 (brand orange + progress 공유)
 export const slider = {};

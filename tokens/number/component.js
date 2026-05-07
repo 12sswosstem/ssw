@@ -32,5 +32,4 @@ export const popover = {};           // padding/radius/gap
 export const popup = {};             // section_contents_gap
 export const modal = {};             // padding, gap, gap-text, gap-icon
 export const notification = {};      // padding, radius, gap, text-padding per md/lg
-export const coachmark = {};         // radius, padding, gap, gap-text
 export const progress = {};          // bar height per xs~lg, corner-radius pill/square

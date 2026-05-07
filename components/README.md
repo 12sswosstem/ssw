@@ -7,6 +7,8 @@ Osstem Implant 디자인시스템 컴포넌트 학습 문서.
 
 ## 목록 (35개)
 
+> 2026-05-07 업데이트: `coachmark` 항목 제거 (실제 Figma 디자인시스템 미존재 — placeholder였음). `Context Menu`는 base `Menu` 컴포넌트의 사용 패턴으로 분리.
+
 ### Form / Input
 | 컴포넌트 | 토큰 키 |
 |---|---|
@@ -28,7 +30,8 @@ Osstem Implant 디자인시스템 컴포넌트 학습 문서.
 |---|---|
 | [Tab](./tab.md) | `tab` (line_tab + contained_tab) |
 | [Segmented Control](./segmented-control.md) | `segmentedControl` |
-| [Context Menu](./context-menu.md) | `contextMenu` (menu/*) |
+| [Menu](./menu.md) | `contextMenu` (prefix `menu/*`) — base 컴포넌트 |
+| [Context Menu](./context-menu.md) | (Menu의 사용 패턴 — 우클릭/overflow) |
 | [Breadcrumb](./breadcrumb.md) | `breadcrumb` |
 | [GNB](./gnb.md) | `gnb` |
 | [Toolbar](./toolbar.md) | `toolbar` |
@@ -61,7 +64,6 @@ Osstem Implant 디자인시스템 컴포넌트 학습 문서.
 | [Popup](./popup.md) | `popup` |
 | [Modal](./modal.md) | `modal` |
 | [Notification](./notification.md) | `notification` |
-| [Coachmark](./coachmark.md) | `coachmark` |
 | [Progress](./progress.md) | `progress` (circle & bar) |
 | [Progress Stepper](./progress-stepper.md) | `progress` (단계별) |
 | [Spinner](./spinner.md) | `spinner` (무한 로딩) |

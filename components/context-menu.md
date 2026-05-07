@@ -1,228 +1,72 @@
-# Context Menu (Menu)
+# Context Menu
 
-> **컴포넌트 이름**: Figma 원본은 `menu` / `menu_item` / `menu_item_sub`. **"Context Menu"는 사용 패턴**(우클릭, 더보기 버튼 등으로 띄우는 메뉴)이며, 기본 컴포넌트는 동일.
+> **Usage pattern** — 별도 컴포넌트가 아닌, [Menu](./menu.md) 컴포넌트의 사용 패턴.
 >
-> 출처:
-> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA`:
->   - `1160:177493` `menu_item` (atom — **13 variants**, 2축)
->   - `1711:32775` `menu_item_sub` (header/divider — 2 variants)
->   - `2533:20420` `menu` (wrapper — 단일)
-> - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`:
->   - `1:230731`, `1:231278`, `1:230235`, `1:230092` (가이드 페이지)
+> Figma 원본 컴포넌트는 `menu` / `menu_item` / `menu_item_sub` (→ [menu.md](./menu.md) 참조).
+> "Context Menu"는 **우클릭/overflow 트리거로 띄우는 floating 메뉴 패턴**을 가리키는 이름이며,
+> 시각·구조·variant·토큰은 모두 menu와 동일.
 >
-> JS 토큰: `tokens/color/component.js#contextMenu`.
-> 토큰 prefix: `menu/*`.
+> 시각 참조: [docs/spec.html#context-menu](../docs/spec.html#context-menu)
 
 ## Overview
-- 우클릭 / 더보기 버튼 / 액션 트리거로 띄우는 floating 메뉴
-- 모드: **light** (production variable_defs 기준)
-- 컴포넌트 계층:
-  - **menu** (wrapper): 메뉴 컨테이너 (298 frame width / 282 inner)
-  - **menu_item_sub**: 헤더("Section Label") 또는 divider
-  - **menu_item**: 개별 행 (icon + label + sub_text + chevron)
 
-## Wrapper — `menu` (`2533:20420`)
+Context Menu는 다음 트리거로 띄우는 floating 옵션 메뉴 패턴입니다:
 
-### 크기 · 스타일
-- frame width: 298 (282 inner + 16 padding)
-- min-width: 128
-- bg: `#ffffff` (`Static/Neutral Gray/0`)
-- padding: **8** (`Size/padding/md`)
-- gap: **4** (`Size/gap/sm`)
-- radius: **4** (`radius`)
-- shadow: **`v0.1/elevation-20`** = `(0, 1) blur 2` + `(0, 2) blur 6 spread 2`
+| 패턴 | trigger | 위치 기준 | 예 |
+|---|---|---|---|
+| **Context menu** | 우클릭 (`oncontextmenu`) | 커서 좌표 | 파일 우클릭 → 복사/잘라내기/삭제 |
+| **Overflow menu** | ⋯ 더보기 버튼 클릭 | 버튼 anchor | 리스트 row 끝 ⋯ → 편집/공유/삭제 |
+| **Action menu** | 액션 버튼 클릭 | 버튼 anchor | "Actions ▾" → 다중 액션 |
 
-```
-menu (white bg, 8 pad, 4 gap, 4 radius, elevation-20)
-└─ Slot
-   ├─ menu_item_sub (header/divider) × N
-   ├─ menu_item × N
-   └─ ...
-```
+> 입력형 선택은 [dropdown.md](./dropdown.md) 참조 — 같은 menu 컴포넌트 위 다른 패턴.
 
-## Atom — `menu_item` (2축, 13 variants)
+## 사용 시 결정 요소
 
-### prop verbatim
-- **state**: `default` / `hover` / `disabled` / `selected` / `focused` / `danger` / `alert` (7가지)
-- **checked**: `true` / `false`
+이 doc은 **트리거 방식 + 위치 결정 + 닫힘 동작**만 다룹니다. 메뉴 자체의 variant/토큰/anatomy는 [menu.md](./menu.md)에서 확인하세요.
 
-> `alert` state는 `checked=true`만 정의됨 → 7×2-1 = **13 variants** (alert/false 미존재).
+### 트리거 · 위치
+- **우클릭 컨텍스트**: `oncontextmenu` 이벤트로 좌표 받아 메뉴 띄움 (`{ left: e.clientX, top: e.clientY }`)
+- **Overflow 버튼**: ⋯ 버튼 anchor 기준 popper 배치 (보통 우측·하단 정렬)
+- **모바일/터치**: long press(0.5s 이상)로 우클릭 대체
 
-### Variant IDs
+### 닫힘 트리거
+- ESC
+- 외부 클릭 (mousedown outside)
+- 메뉴 항목 클릭 (액션 실행 후 즉시 닫힘)
+- 스크롤·리사이즈 (선택적)
 
-| state \\ checked | true | false |
-|---|---|---|
-| default | `2527:21068` | `1160:178648` |
-| hover | `1160:177508` | `1160:178661` |
-| disabled | `1160:177522` | `1160:178674` |
-| selected | `1160:177536` | `1160:178687` |
-| focused | `2480:18586` | `2480:18599` |
-| danger | `2595:59849` | `2527:28611` |
-| alert | `1160:177494` | — |
+### 위치 충돌 처리
+- 화면 모서리 근처면 자동 flip (오른쪽 → 왼쪽 정렬, 아래 → 위 정렬)
+- popper.js / floating-ui 류 라이브러리 활용 권장
 
-### Item 크기 · 구조
-- 282 × 32 (전체 row)
-- 좌측 padding 8, 세로 padding 6
-- gap 4 (item 내부 요소 간)
-- radius 4
+## 시각
+
+[menu.md](./menu.md)의 wrapper · item variant 그대로 사용. 추가 스타일 없음.
 
 ```
-[front (246 width)]                                [split_btn (32)]
-├─ check icon (20×20, checked=true 시)
-├─ edit icon (20×20, optional)
-├─ label (text_container, 14/20 Regular)
-└─ sub_text (12, 우측 정렬)
+[ 우클릭 ] →  [ menu wrapper (298 width, elevation-20) ]
+              ├─ menu_item  복사            ⌘C
+              ├─ menu_item  잘라내기        ⌘X
+              ├─ menu_item  붙여넣기        ⌘V
+              ├─ menu_item_sub divider
+              ├─ menu_item  이름 변경       F2
+              └─ menu_item (danger) 삭제    ⌘⌫
 ```
-
-## Sub-component — `menu_item_sub` (2 variants)
-
-### prop verbatim
-- **type**: `header` / `divider`
-
-### Variant IDs
-| type | variant ID | 크기 |
-|---|---|---|
-| header | `1711:32774` | 282 × 32 (padding 8/10, "Section Label" SB 14) |
-| divider | `1711:32780` | 282 × 4 (1px 선) |
-
-## Color tokens — production (light)
-
-### bg
-| token | light |
-|---|---|
-| `menu/bg-default` | `#ffffff` |
-| `menu/bg-hover` | `#e9e9e9` |
-| `menu/bg-selected` | `#fef7f2` (light orange tint) |
-| `menu/bg-disabled` | `#e9e9e9` |
-
-### text
-| token | light |
-|---|---|
-| `menu/text-primary` | `#1d1d1d` (label) |
-| `menu/text-secondary` | `#393939` (sub_text, section header) |
-| `menu/text-selected` | `#eb6100` |
-| `menu/text-disabled` | `#a5a5a5` |
-| `menu/text-danger` | `#d73220` (alert/danger 항목) |
-
-### icon
-| token | light |
-|---|---|
-| `menu/icon-default` | `#393939` |
-| `menu/icon-hover` | `#393939` |
-| `menu/icon-selected` | `#eb6100` |
-| `menu/icon-disabled` | `#a5a5a5` |
-| `menu/icon-danger` | `#d73220` |
-
-### border
-| token | light |
-|---|---|
-| `menu/border-active` | `#1d1d1d` |
-| `menu/border-selected` | `#f3a066` |
-
-### divider
-| token | light |
-|---|---|
-| `menu/divider` | `#bcbcbc` (item 사이) |
-| `menu/divider-selected` | `#f7c099` |
-| `menu/divider-disabled` | `#bcbcbc` |
-| `menu/divider-danger` | `#d73220` |
-| `menu/section-divider` | `#bcbcbc` (menu_item_sub divider) |
-
-> **중요 정정**: 이전 문서는 dark 모드 값으로 표기됨 (예: bg-default `#000000` → production `#ffffff`).
-
-## Number tokens (Mode 1)
-
-| token | px |
-|---|---|
-| `menu/height/sm` | 32 |
-| `menu/padding/sm` | 6 (item 세로) |
-| `menu/padding/md` | 8 (item 가로) |
-| `menu/gap/sm` | 4 (item 사이 / item 내부 요소) |
-| `menu/radius/sm` | 4 (item radius) |
-| `menu/border/xs` | 1 |
-| `menu/border/sm` | 2 |
-
-## Anatomy
-
-### menu wrapper (298 width)
-```
-┌──────────────────────────────────────┐  ← elevation-20 shadow
-│  ┌────────────────────────────────┐  │
-│  │ Section Label 1 (sub: header)  │  │  ← 282×32, SB 14, #393939
-│  ├────────────────────────────────┤  │
-│  │ ✓ 🖉 Label              sub  ▶ │  │  ← menu_item: check + edit icon + label + sub_text + split_btn
-│  │ ✓ 🖉 Label              sub  ▶ │  │
-│  ├──────────────────── divider ───┤  │  ← sub: divider 282×4 line
-│  │ Section Label 2                │  │
-│  │ ✓ 🖉 Label              sub  ▶ │  │
-│  └────────────────────────────────┘  │
-└──────────────────────────────────────┘
-```
-
-### menu_item 내부 (282×32)
-```
-┌─front (246, pad 8/6, gap 24)──────────────┐  ┌─split_btn (32×32)─┐
-│ [check 20] [edit 20] [Label] [sub_text]   │  │  ▶ chevron 20     │
-└────────────────────────────────────────────┘  └────────────────────┘
-```
-
-- `front`: title 영역 (check + edit + Label + sub_text 우측 정렬)
-- `split_btn`: 서브메뉴 진입 chevron 20×20 (rotate 90° vertical divider 1px 후)
-- gap 24: title ↔ sub_text 사이
-
-## Typography
-
-| 영역 | textStyle | font · size · line-height |
-|---|---|---|
-| Label (menu_item) | `body/sm` | Pretendard 400 / 14 / 20 |
-| sub_text | (number/7=12px) | Pretendard 400 / 12 / 14.4 |
-| Section Label (menu_item_sub header) | `body/sm (SB)` | Pretendard 600 / 14 / 20 |
-
-## State별 시각
-
-| state | bg | text/label | icon | sub_text |
-|---|---|---|---|---|
-| default | `#ffffff` | `#1d1d1d` | `#393939` | `#393939` |
-| hover | `#e9e9e9` | `#1d1d1d` | `#393939` | `#393939` |
-| selected | `#fef7f2` | `#eb6100` | `#eb6100` | secondary |
-| focused | `#ffffff` | `#1d1d1d` | `#393939` | `#393939` (+ border 2px black ring) |
-| disabled | `#e9e9e9` | `#a5a5a5` | `#a5a5a5` | `#a5a5a5` |
-| danger | `#ffffff` | `#d73220` | `#d73220` | red 톤 |
-| alert | `#fef7f2` | `#1d1d1d` | `#393939` | (특수 용도) |
 
 ## Usage Notes
 
-- variant 매칭 verbatim:
-  - `state=default` / `hover` / `disabled` / `selected` / `focused` / `danger` / `alert`
-  - `checked=true` / `false`
-  - alert state는 `checked=true`만 정의됨
-- `menu`는 underlying 컴포넌트 — **context menu**, **dropdown menu**, **action menu** 모두 동일 컴포넌트로 구현
-- 컨테이너 width 298 (frame) / inner 282 — **고정 너비** (가변 시 직접 조정)
-- danger state는 삭제/위험 액션용 (`text-danger` red)
-- selected는 **light orange 배경** (`#fef7f2`) + brand orange 텍스트
-- focused는 키보드 포커스 (border 2px `#1d1d1d`)
-- disabled는 옅은 회색 + 클릭 불가
-- alert는 특수 강조 (예: 새 알림, 권장 항목)
-- check icon (20×20)은 `checked=true` 시 표시 — 다중 선택/토글 패턴
-- edit icon (20×20)은 항목별 빠른 액션 (옵션)
-- sub_text (12px, gray)는 단축키, 카운트, 부가정보 등
-- split_btn chevron은 서브메뉴 진입 표시 (`▶`) — 클릭 시 nested 메뉴
-- Section Label (header)은 그룹 구분 — 14 SB
-- divider는 그룹 사이 1px 선
-- 시각적 grouping 패턴:
-  ```
-  [Section A]
-    item, item, item
-  [divider]
-  [Section B]
-    item, item
-  ```
+- 컨텍스트 메뉴는 **상태 보존 안 함** — 매번 새로 mount
+- 위험 액션은 `menu_item state=danger`로 분리, 그룹 사이는 `menu_item_sub divider`로 구분
+- 권한 없는 항목은 `state=disabled` (사라지게 하는 것보다 표시하는 게 학습성에 좋음 — 단, 항상 disabled면 제거 고려)
+- 단축키 표기는 `sub_text` 슬롯 활용 (우측 정렬, 12px gray)
+- 서브메뉴는 `split_btn chevron` 슬롯 + nested menu wrapper
 - 접근성:
-  - `<menu>` 또는 `<ul role="menu">`
-  - 각 item: `<li role="menuitem">` (또는 `menuitemcheckbox` for checked)
-  - 키보드: ↑↓ 탐색, Enter 선택, ESC 닫기
-- 트리거 방식:
-  - **Context menu**: 우클릭 (`oncontextmenu`)
-  - **Dropdown**: 트리거 버튼 클릭
-  - **More menu**: ··· 더보기 버튼 클릭
-- shadow elevation-20은 비교적 가벼운 그림자 (popover보다 강함, modal보다 약함)
+  - 컨텍스트 메뉴 열림 시 첫 menuitem에 focus 이동
+  - ↑↓로 항목 탐색, Enter로 실행
+  - 우클릭 트리거 외에 키보드 단축키(예: Shift+F10) 지원 권장
+- 모바일: 가능하면 sheet/dialog로 대체 (작은 화면에서 floating 메뉴는 부정확)
+
+## 관련 문서
+
+- [menu.md](./menu.md) — 기반 컴포넌트 (variant · 토큰 · anatomy 전체)
+- [dropdown.md](./dropdown.md) — 입력형 선택 패턴
