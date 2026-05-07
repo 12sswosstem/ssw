@@ -4859,151 +4859,64 @@ html, body {
 <section id="menu" class="component-page">
   <header class="page-header">
     <h1>메뉴 (Menu)</h1>
-    <div class="meta">spec `1:230731` · use-it `1:231278` (UI-Kit-Guide) / atom `1160:177493` 13 variants · sub `1711:32775` 2 variants / wrapper `2533:20420`</div>
-    <p class="description">floating 옵션 리스트 base 컴포넌트. <strong>Wrapper</strong>(<code>menu</code>) + <strong>Section</strong>(<code>menu_item_sub</code> header/divider) + <strong>Atom</strong>(<code>menu_item</code>) 3계층. 우클릭 컨텍스트 / overflow / 액션 / dropdown 등 모든 메뉴형 패턴이 이 컴포넌트를 공유합니다.</p>
+    <div class="meta">UI-Kit-Guide `1:230731` · 구성 `284:12879` · Type `284:18380` · 컴포넌트 `1160:177493` (`lIIen1jmIhT0vuyXCMQDQA`)</div>
+    <p class="description">아래 내용은 UI-Kit-Guide Figma 노드의 텍스트를 verbatim으로 옮긴 것입니다.</p>
   </header>
 
-  <!-- ========== Anatomy ========== -->
+  <!-- ========== 구성 (verbatim from 284:12879) ========== -->
   <div class="spec-section">
-    <div class="section-label">Anatomy — wrapper · section · atom</div>
-    <div class="row" style="gap: 24px; align-items: flex-start;">
-      <div class="menu">
-        <div class="menu-item-sub--header">Section A</div>
-        <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">menu_item</span><span class="menu-item__sub">sub</span></div>
-        <div class="menu-item"><span class="menu-item__label">menu_item</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+    <div class="section-label">구성 <span style="color: #8f8f8f; font-weight: normal;">— 출처 `284:12879` (UI-Kit-Guide)</span></div>
+    <div class="row" style="gap: 32px; align-items: flex-start; flex-wrap: wrap;">
+      <div class="menu" style="margin-top: 4px;">
+        <div class="menu-item-sub--header">Section Label 1</div>
+        <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+        <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+        <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
         <div class="menu-item-sub--divider"></div>
-        <div class="menu-item-sub--header">Section B</div>
-        <div class="menu-item"><span class="menu-item__label">menu_item</span></div>
+        <div class="menu-item-sub--header">Section Label 2</div>
+        <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+        <div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
+        <div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><span class="menu-item__label">Label</span><span class="menu-item__sub">sub text</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
       </div>
-      <table class="spec-table" style="font-size: 12px;">
-        <tr><th>요소</th><th>크기 / 토큰</th></tr>
-        <tr><td>wrapper (<code>menu</code>)</td><td>240 wide · padding 8 · gap 4 · radius 4 · elevation-20</td></tr>
-        <tr><td>inner content</td><td>224 wide (= 240 − 8×2)</td></tr>
-        <tr><td><code>menu_item_sub</code> header</td><td>282 × 32 (SB 14, <code>#393939</code>)</td></tr>
-        <tr><td><code>menu_item_sub</code> divider</td><td>282 × 4 (1px line, <code>#bcbcbc</code>)</td></tr>
-        <tr><td><code>menu_item</code></td><td>282 × 32 (atom canonical)</td></tr>
-        <tr><td>shadow elevation-20</td><td>(0,1) blur 2 + (0,2) blur 6 spread 2</td></tr>
+      <table class="spec-table" style="font-size: 13px; min-width: 540px;">
+        <tr><th style="width: 240px;">한글 (English)</th><th>설명</th></tr>
+        <tr><td>섹션 라벨 (Section Label)</td><td>메뉴 아이템을 그룹화하는 레이블</td></tr>
+        <tr><td>컨테이너 (Container)</td><td>메뉴 전체를 감싸는 영역. 그림자와 테두리로 배경과 구분</td></tr>
+        <tr><td>아이콘 (Prefix Icon)</td><td>아이템의 의미를 시각적으로 보조하는 아이콘. 그룹 내 일관되게 사용</td></tr>
+        <tr><td>메뉴 아이템 라벨 (Label)</td><td>메뉴 아이템의 내용을 나타내는 텍스트. 필수 요소</td></tr>
+        <tr><td>보조 텍스트 (Sub text)</td><td>항목에 대한 부연 설명, 상태, 조건 등을 12px로 표시</td></tr>
+        <tr><td>화살표 (Chevron)</td><td>선택 불가한 읽기 전용의 그룹 소제목. 14px 로 표시.</td></tr>
+        <tr><td>디바이더 (Divider)</td><td>항목 그룹 간을 시각적으로 구분하는 가로 구분선. 상하 여백 4px</td></tr>
+        <tr><td>체크 아이콘 (Check icon)</td><td>필요시 Selected 상태에서만 표시. 체크 타입 사용시 미선택 항목은 동일 너비 빈 공간으로 정렬 유지</td></tr>
       </table>
     </div>
   </div>
 
-  <!-- ========== Properties ========== -->
-  <div class="variant-badge">Properties — Type · Layout · State (가이드 `1:230731` verbatim)</div>
-
-  <!-- Type — 6 compositions -->
+  <!-- ========== Type (verbatim from 284:18380) ========== -->
   <div class="spec-section">
-    <div class="variant-name">Type — 6 composition (use-it 가이드 verbatim)</div>
-    <div class="muted" style="margin-bottom: 8px;">menu_item 슬롯 활성화 패턴. icon / label / sub_text / chevron / check 슬롯 조합.</div>
-    <div class="matrix" style="grid-template-columns: 100px repeat(3, 1fr); gap: 10px 16px;">
-      <div></div>
-      <div class="col-header">composition</div>
-      <div class="col-header">샘플 (in 240 wrapper)</div>
-      <div class="col-header">슬롯</div>
-
-      <div class="row-label">Standard</div>
-      <div class="cell" style="font-size: 12px;">label만</div>
-      <div class="cell"><div class="menu" style="width: 224px;"><div class="menu-item-sub--header">옵션 그룹</div><div class="menu-item"><span class="menu-item__label">옵션 라벨</span></div><div class="menu-item"><span class="menu-item__label">옵션 라벨</span></div></div></div>
-      <div class="cell" style="font-size: 12px; color: #565656;">label</div>
-
-      <div class="row-label">Icon</div>
-      <div class="cell" style="font-size: 12px;">icon prefix + label</div>
-      <div class="cell"><div class="menu" style="width: 224px;"><div class="menu-item-sub--header">옵션 그룹</div><div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z"/></svg></span><span class="menu-item__label">옵션 라벨</span></div><div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z"/></svg></span><span class="menu-item__label">옵션 라벨</span></div></div></div>
-      <div class="cell" style="font-size: 12px; color: #565656;">icon · label</div>
-
-      <div class="row-label">Sub text</div>
-      <div class="cell" style="font-size: 12px;">label + 우측 부가정보</div>
-      <div class="cell"><div class="menu" style="width: 224px;"><div class="menu-item-sub--header">옵션 그룹</div><div class="menu-item"><span class="menu-item__label">옵션 라벨</span><span class="menu-item__sub">⌘N</span></div><div class="menu-item"><span class="menu-item__label">옵션 라벨</span><span class="menu-item__sub">⌘O</span></div></div></div>
-      <div class="cell" style="font-size: 12px; color: #565656;">label · sub_text</div>
-
-      <div class="row-label">Chevron</div>
-      <div class="cell" style="font-size: 12px;">label + 서브메뉴 화살표</div>
-      <div class="cell"><div class="menu" style="width: 224px;"><div class="menu-item-sub--header">옵션 그룹</div><div class="menu-item"><span class="menu-item__label">옵션 라벨</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div><div class="menu-item"><span class="menu-item__label">옵션 라벨</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div></div>
-      <div class="cell" style="font-size: 12px; color: #565656;">label · chevron</div>
-
-      <div class="row-label">Check</div>
-      <div class="cell" style="font-size: 12px;">check + label (toggle)</div>
-      <div class="cell"><div class="menu" style="width: 224px;"><div class="menu-item-sub--header">옵션 그룹</div><div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">옵션 라벨</span></div><div class="menu-item"><span class="menu-item__icon" style="opacity:0;"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">옵션 라벨</span></div></div></div>
-      <div class="cell" style="font-size: 12px; color: #565656;">check · label</div>
-
-      <div class="row-label">Integrated</div>
-      <div class="cell" style="font-size: 12px;">모든 슬롯 활성</div>
-      <div class="cell"><div class="menu" style="width: 224px;"><div class="menu-item-sub--header">옵션 그룹</div><div class="menu-item menu-item--selected"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">옵션 라벨</span><span class="menu-item__sub">⌘N</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div><div class="menu-item"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z"/></svg></span><span class="menu-item__label">옵션 라벨</span><span class="menu-item__sub">⌘O</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div></div>
-      <div class="cell" style="font-size: 12px; color: #565656;">check · icon · label · sub_text · chevron</div>
-    </div>
-  </div>
-
-  <!-- Layout — single / multi section -->
-  <div class="spec-section">
-    <div class="variant-name">Layout — single section vs multi section</div>
-    <div class="row" style="gap: 32px; align-items: flex-start;">
-      <div class="col" style="gap: 6px;">
-        <div class="muted">single section — header + items</div>
-        <div class="menu">
-          <div class="menu-item-sub--header">파일 작업</div>
-          <div class="menu-item"><span class="menu-item__label">새로 만들기</span><span class="menu-item__sub">⌘N</span></div>
-          <div class="menu-item"><span class="menu-item__label">열기</span><span class="menu-item__sub">⌘O</span></div>
-          <div class="menu-item"><span class="menu-item__label">저장</span><span class="menu-item__sub">⌘S</span></div>
-        </div>
+    <div class="section-label">Type <span style="color: #8f8f8f; font-weight: normal;">— 출처 `284:18380` (UI-Kit-Guide)</span></div>
+    <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">메뉴는 사용 맥락에 따라 세 가지 유형으로 구분됩니다. 상황에 맞는 유형을 선택하여 사용합니다.</p>
+    <div class="row" style="gap: 24px; align-items: stretch;">
+      <div style="flex: 1; background: #f9f9f9; border-radius: 20px; padding: 32px;">
+        <h3 style="margin: 0 0 12px; font-size: 18px; font-weight: 600; color: #131313;">컨텍스트 메뉴 (Context menu)</h3>
+        <p style="margin: 0 0 12px; font-size: 14px; color: #505050; line-height: 1.7;">우클릭 또는 특정 영역의 길게 누르기(모바일) 동작으로, 커서가 위치한 지점에 나타나는 메뉴입니다.</p>
+        <p style="margin: 0 0 12px; font-size: 14px; color: #505050; line-height: 1.7;">별도의 트리거 버튼 없이 노출되며, 현재 포커스된 오브젝트나 영역에서 수행 가능한 액션만 표시합니다. 사용자가 예측 가능한 위치에 나타나야 하며, 뷰포트 경계를 벗어나지 않도록 위치를 자동 조정합니다.</p>
+        <p style="margin: 0; font-size: 14px; color: #505050; line-height: 1.7;">일반적으로 편집 영역, 파일 탐색기, 데이터 테이블 셀 등 오브젝트에 직접 종속된 액션을 제공할 때 사용합니다.</p>
       </div>
-      <div class="col" style="gap: 6px;">
-        <div class="muted">multi section — section 사이 menu_item_sub divider</div>
-        <div class="menu">
-          <div class="menu-item-sub--header">파일 작업</div>
-          <div class="menu-item"><span class="menu-item__label">새로 만들기</span><span class="menu-item__sub">⌘N</span></div>
-          <div class="menu-item"><span class="menu-item__label">열기</span><span class="menu-item__sub">⌘O</span></div>
-          <div class="menu-item-sub--divider"></div>
-          <div class="menu-item-sub--header">공유</div>
-          <div class="menu-item"><span class="menu-item__label">링크 복사</span></div>
-          <div class="menu-item"><span class="menu-item__label">초대</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-          <div class="menu-item-sub--divider"></div>
-          <div class="menu-item menu-item--danger"><span class="menu-item__label">삭제</span><span class="menu-item__sub">⌘⌫</span></div>
-        </div>
+      <div style="flex: 1; background: #f9f9f9; border-radius: 20px; padding: 32px;">
+        <h3 style="margin: 0 0 12px; font-size: 18px; font-weight: 600; color: #131313;">액션 메뉴 (Action menu)</h3>
+        <p style="margin: 0; font-size: 14px; color: #505050; line-height: 1.7;">버튼, 아이콘 트리거(⋯ , ⋮)를 클릭하거나 탭해서 여는 메뉴입니다. 특정 UI 오브젝트(카드, 테이블 행, 툴바 항목 등)에 종속된 액션들을 제공하며, 트리거 바로 아래 또는 인접한 위치에 노출됩니다. 오브젝트별로 수행 가능한 액션이 많아 UI 표면에 모두 노출하기 어려울 때 사용합니다. 텍스트 레이블 트리거는 액션의 범주를 명시적으로 알리는 경우에, 아이콘 트리거는 공간이 제한적인 경우에 사용합니다.</p>
+      </div>
+      <div style="flex: 1; background: #f9f9f9; border-radius: 20px; padding: 32px;">
+        <h3 style="margin: 0 0 12px; font-size: 18px; font-weight: 600; color: #131313;">다이나믹 메뉴 (Dynamic menu)</h3>
+        <p style="margin: 0; font-size: 14px; color: #505050; line-height: 1.7;">메뉴 항목에 화살표(&gt;)가 표시된 경우, 해당 항목에 호버하거나 선택하면 연결된 2차 메뉴(서브메뉴)가 우측에 펼쳐지는 형태입니다. 하나의 액션 범주 안에 선택 가능한 세부 옵션이 여러 개 존재할 때 사용하며, 메인 메뉴의 항목 수를 줄이고 관련 옵션을 그룹화하는 데 효과적입니다.</p>
       </div>
     </div>
   </div>
 
-  <!-- State — 6 (gulde 매트릭스) × 2 + alert 별도 -->
+  <!-- ========== State / Variant IDs (from atom metadata `1160:177493`) ========== -->
   <div class="spec-section">
-    <div class="variant-name">State — 가이드 매트릭스 (6 states × 2 checked = 12) + alert (특수 강조, checked=true만)</div>
-    <div class="muted" style="margin-bottom: 8px;">컴포넌트 정의 자체는 7 states × 2 = 13 variants. <code>alert</code>는 use-it 가이드의 6×2 매트릭스에 미포함 — 권장 옵션·신규 항목 등 특수 강조용.</div>
-    <div class="matrix" style="grid-template-columns: 100px repeat(2, 1fr); gap: 10px 16px;">
-      <div></div>
-      <div class="col-header">checked = true</div>
-      <div class="col-header">checked = false</div>
-
-      <div class="row-label">Default</div>
-      <div class="cell"><div class="menu-item" style="width: 282px;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">옵션 라벨</span><span class="menu-item__sub">⌘K</span></div></div>
-      <div class="cell"><div class="menu-item" style="width: 282px;"><span class="menu-item__label">옵션 라벨</span><span class="menu-item__sub">⌘K</span></div></div>
-
-      <div class="row-label">Hover</div>
-      <div class="cell"><div class="menu-item menu-item--hover" style="width: 282px;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">옵션 라벨</span><span class="menu-item__sub">⌘K</span></div></div>
-      <div class="cell"><div class="menu-item menu-item--hover" style="width: 282px;"><span class="menu-item__label">옵션 라벨</span><span class="menu-item__sub">⌘K</span></div></div>
-
-      <div class="row-label">Selected</div>
-      <div class="cell"><div class="menu-item menu-item--selected" style="width: 282px;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">옵션 라벨</span><span class="menu-item__sub">⌘K</span></div></div>
-      <div class="cell"><div class="menu-item menu-item--selected" style="width: 282px;"><span class="menu-item__label">옵션 라벨</span><span class="menu-item__sub">⌘K</span></div></div>
-
-      <div class="row-label">Disabled</div>
-      <div class="cell"><div class="menu-item menu-item--disabled" style="width: 282px;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">옵션 라벨</span><span class="menu-item__sub">⌘K</span></div></div>
-      <div class="cell"><div class="menu-item menu-item--disabled" style="width: 282px;"><span class="menu-item__label">옵션 라벨</span><span class="menu-item__sub">⌘K</span></div></div>
-
-      <div class="row-label">Focused</div>
-      <div class="cell"><div class="menu-item menu-item--focused" style="width: 282px;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">옵션 라벨</span><span class="menu-item__sub">⌘K</span></div></div>
-      <div class="cell"><div class="menu-item menu-item--focused" style="width: 282px;"><span class="menu-item__label">옵션 라벨</span><span class="menu-item__sub">⌘K</span></div></div>
-
-      <div class="row-label">Danger</div>
-      <div class="cell"><div class="menu-item menu-item--danger" style="width: 282px;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg></span><span class="menu-item__label">삭제</span><span class="menu-item__sub">⌘⌫</span></div></div>
-      <div class="cell"><div class="menu-item menu-item--danger" style="width: 282px;"><span class="menu-item__label">삭제</span><span class="menu-item__sub">⌘⌫</span></div></div>
-
-      <div class="row-label" style="color: #8f8f8f;">Alert <span style="font-size: 10px;">(특수)</span></div>
-      <div class="cell"><div class="menu-item menu-item--alert" style="width: 282px;"><span class="menu-item__icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span class="menu-item__label">권장 옵션</span><span class="menu-item__sub">NEW</span></div></div>
-      <div class="cell" style="color: #a5a5a5; font-size: 12px;">— 컴포넌트 미정의 (alert/false 없음)</div>
-    </div>
-  </div>
-
-  <!-- Variant ID reference -->
-  <div class="spec-section">
-    <div class="section-label">menu_item Variant IDs (atom `1160:177493`, 282×32)</div>
+    <div class="section-label">menu_item Variant IDs <span style="color: #8f8f8f; font-weight: normal;">— 출처 `1160:177493` 메타데이터 (각 282×32, 13 variants)</span></div>
     <table class="spec-table">
       <tr><th>state \\ checked</th><th>true</th><th>false</th></tr>
       <tr><td><code>default</code></td><td><code>2527:21068</code></td><td><code>1160:178648</code></td></tr>
@@ -5016,82 +4929,52 @@ html, body {
     </table>
   </div>
 
-  <!-- Color tokens -->
   <div class="spec-section">
-    <div class="section-label">Color tokens — production light</div>
+    <div class="section-label">menu_item_sub variants <span style="color: #8f8f8f; font-weight: normal;">— 출처 `1711:32775`</span></div>
     <table class="spec-table">
-      <tr><th>token</th><th>hex</th><th>의미</th></tr>
-      <tr><td><code>menu/bg-default</code></td><td><code>#ffffff</code></td><td>menu 컨테이너 · item default</td></tr>
-      <tr><td><code>menu/bg-hover</code></td><td><code>#e9e9e9</code></td><td>item hover</td></tr>
-      <tr><td><code>menu/bg-selected</code></td><td><code>#fef7f2</code></td><td>item selected (light orange)</td></tr>
-      <tr><td><code>menu/bg-disabled</code></td><td><code>#e9e9e9</code></td><td>item disabled</td></tr>
-      <tr><td><code>menu/text-primary</code></td><td><code>#1d1d1d</code></td><td>label</td></tr>
-      <tr><td><code>menu/text-secondary</code></td><td><code>#393939</code></td><td>sub_text · section header · icon</td></tr>
-      <tr><td><code>menu/text-selected</code></td><td><code>#eb6100</code></td><td>selected label/icon</td></tr>
-      <tr><td><code>menu/text-disabled</code></td><td><code>#a5a5a5</code></td><td>disabled</td></tr>
-      <tr><td><code>menu/text-danger</code></td><td><code>#d73220</code></td><td>danger · alert</td></tr>
-      <tr><td><code>menu/section-divider</code></td><td><code>#bcbcbc</code></td><td>menu_item_sub divider</td></tr>
-      <tr><td><code>menu/border-active</code></td><td><code>#1d1d1d</code></td><td>focused 2px inset ring</td></tr>
+      <tr><th>type</th><th>variant ID</th><th>크기</th></tr>
+      <tr><td><code>header</code></td><td><code>1711:32774</code></td><td>282 × 32</td></tr>
+      <tr><td><code>divider</code></td><td><code>1711:32780</code></td><td>282 × 4</td></tr>
     </table>
   </div>
 
-  <!-- Number tokens -->
+  <!-- ========== Tokens (from repo) ========== -->
   <div class="spec-section">
-    <div class="section-label">Number tokens (Mode 1)</div>
+    <div class="section-label">Color tokens <span style="color: #8f8f8f; font-weight: normal;">— 출처 레포지토리 `tokens/color/component.js` (prefix `menu/*`)</span></div>
     <table class="spec-table">
-      <tr><th>token</th><th>px</th><th>위치</th></tr>
-      <tr><td>wrapper width</td><td>240</td><td>use-it 가이드 기준 (224 inner)</td></tr>
-      <tr><td><code>menu/height/sm</code></td><td>32</td><td>item · section header</td></tr>
-      <tr><td><code>menu/padding/md</code></td><td>8</td><td>wrapper · item 가로</td></tr>
-      <tr><td><code>menu/padding/sm</code></td><td>6</td><td>item 세로</td></tr>
-      <tr><td><code>menu/gap/sm</code></td><td>4</td><td>item 사이 / 내부 요소</td></tr>
-      <tr><td><code>menu/radius/sm</code></td><td>4</td><td>wrapper · item</td></tr>
-      <tr><td><code>menu/border/xs</code></td><td>1</td><td>menu_item_sub divider</td></tr>
-      <tr><td><code>menu/border/sm</code></td><td>2</td><td>focused 2px ring</td></tr>
+      <tr><th>token</th><th>light</th></tr>
+      <tr><td><code>menu/bg-default</code></td><td><code>#ffffff</code></td></tr>
+      <tr><td><code>menu/bg-hover</code></td><td><code>#e9e9e9</code></td></tr>
+      <tr><td><code>menu/bg-selected</code></td><td><code>#fef7f2</code></td></tr>
+      <tr><td><code>menu/bg-disabled</code></td><td><code>#e9e9e9</code></td></tr>
+      <tr><td><code>menu/text-primary</code></td><td><code>#1d1d1d</code></td></tr>
+      <tr><td><code>menu/text-secondary</code></td><td><code>#393939</code></td></tr>
+      <tr><td><code>menu/text-selected</code></td><td><code>#eb6100</code></td></tr>
+      <tr><td><code>menu/text-disabled</code></td><td><code>#a5a5a5</code></td></tr>
+      <tr><td><code>menu/text-danger</code></td><td><code>#d73220</code></td></tr>
+      <tr><td><code>menu/icon-default</code></td><td><code>#393939</code></td></tr>
+      <tr><td><code>menu/icon-selected</code></td><td><code>#eb6100</code></td></tr>
+      <tr><td><code>menu/icon-disabled</code></td><td><code>#a5a5a5</code></td></tr>
+      <tr><td><code>menu/icon-danger</code></td><td><code>#d73220</code></td></tr>
+      <tr><td><code>menu/border-active</code></td><td><code>#1d1d1d</code></td></tr>
+      <tr><td><code>menu/border-selected</code></td><td><code>#f3a066</code></td></tr>
+      <tr><td><code>menu/divider</code></td><td><code>#bcbcbc</code></td></tr>
+      <tr><td><code>menu/section-divider</code></td><td><code>#bcbcbc</code></td></tr>
     </table>
   </div>
 
-  <!-- Guidelines (Do/Don't) -->
   <div class="spec-section">
-    <div class="section-label">Guidelines (Do / Don't)</div>
-    <div class="col" style="gap: 16px;">
-      <div>
-        <div class="muted" style="margin-bottom: 6px;"><strong style="color: #0ba45d;">✓ Do</strong> — 한 메뉴 안 항목 수 7±2 권장. 더 많아질 경우 검색·카테고리·서브메뉴로 분할.</div>
-        <div class="muted" style="margin-bottom: 6px;"><strong style="color: #f03823;">✗ Don't</strong> — 20+ 항목을 한 메뉴에 나열. 사용자가 끝까지 읽지 않음.</div>
-      </div>
-      <div>
-        <div class="muted" style="margin-bottom: 6px;"><strong style="color: #0ba45d;">✓ Do</strong> — 한 메뉴 안 슬롯(icon/sub_text/chevron 등) 정렬을 일관되게.</div>
-        <div class="muted" style="margin-bottom: 6px;"><strong style="color: #f03823;">✗ Don't</strong> — 같은 메뉴 안에서 일부만 icon 있고 일부만 sub_text 있는 식으로 슬롯 혼재 (시각 위계가 깨짐).</div>
-      </div>
-      <div>
-        <div class="muted" style="margin-bottom: 6px;"><strong style="color: #0ba45d;">✓ Do</strong> — 위험 액션은 <code>state=danger</code>로 색 분리, 그룹 사이는 <code>menu_item_sub divider</code>로 시각 분리.</div>
-        <div class="muted" style="margin-bottom: 6px;"><strong style="color: #f03823;">✗ Don't</strong> — 삭제·취소를 일반 액션과 같은 그룹·같은 색으로 배치.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 상호작용 가이드라인 -->
-  <div class="spec-section">
-    <div class="section-label">상호작용 가이드라인</div>
-    <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #565656; line-height: 1.7;">
-      <li>트리거: 우클릭(<code>oncontextmenu</code>) / overflow ⋯ / 액션 버튼 / <a href="#dropdown">dropdown</a> 인풋 — 모두 동일 menu 컴포넌트, 위치 결정만 다름</li>
-      <li>위치: 트리거 anchor 또는 커서 좌표 기준. 화면 모서리 충돌 시 자동 flip (popper.js / floating-ui 활용 권장)</li>
-      <li>닫힘: ESC · 외부 클릭 (mousedown outside) · 항목 선택 후 즉시 · 스크롤·리사이즈 (선택적)</li>
-      <li>키보드: ↑↓ 탐색 / Enter 선택 / ESC 닫기 / 닫힘 시 트리거에 focus 복귀</li>
-      <li>모바일·터치: 우클릭 → long press(0.5s+) 대체. 작은 화면에선 sheet/dialog로 대체 권장</li>
-    </ul>
-  </div>
-
-  <!-- 접근성 -->
-  <div class="spec-section">
-    <div class="section-label">접근성 (WCAG 2.2)</div>
-    <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #565656; line-height: 1.7;">
-      <li>시맨틱: <code>&lt;ul role="menu"&gt;</code> + <code>&lt;li role="menuitem"&gt;</code> (또는 <code>menuitemcheckbox</code> for checked state)</li>
-      <li>포커스 관리: 메뉴 열림 시 첫 menuitem에 focus, ESC 닫힘 시 트리거에 focus 복귀</li>
-      <li>명도 대비: text-primary <code>#1d1d1d</code> on bg <code>#ffffff</code> = 16.99:1 ✓ AAA</li>
-      <li>명도 대비: text-disabled <code>#a5a5a5</code> on <code>#e9e9e9</code> = 2.34:1 — disabled는 WCAG 1.4.3 예외</li>
-      <li>키보드 트랩: 메뉴 안에서 Tab은 다음 menuitem 또는 메뉴 외부로 이동 (구현 선택)</li>
-    </ul>
+    <div class="section-label">Number tokens <span style="color: #8f8f8f; font-weight: normal;">— 출처 레포지토리 `tokens/number/component.js`</span></div>
+    <table class="spec-table">
+      <tr><th>token</th><th>px</th></tr>
+      <tr><td><code>menu/height/sm</code></td><td>32</td></tr>
+      <tr><td><code>menu/padding/sm</code></td><td>6</td></tr>
+      <tr><td><code>menu/padding/md</code></td><td>8</td></tr>
+      <tr><td><code>menu/gap/sm</code></td><td>4</td></tr>
+      <tr><td><code>menu/radius/sm</code></td><td>4</td></tr>
+      <tr><td><code>menu/border/xs</code></td><td>1</td></tr>
+      <tr><td><code>menu/border/sm</code></td><td>2</td></tr>
+    </table>
   </div>
 </section>
 <section id="divider" class="component-page">
