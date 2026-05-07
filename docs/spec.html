@@ -1253,8 +1253,7 @@ html, body {
 <div class="layout">
   <aside class="sidebar">
     <h1>SSW Components</h1>
-    <div class="subtitle">Spec sheets · 38 components</div>
-    <!-- 38 = base 38 - coachmark + menu (split from context-menu) -->
+    <div class="subtitle">Spec sheets · 37 components</div>
     <input type="search" id="filter" placeholder="필터링 (컴포넌트명)">
     <ul id="component-list">
       <li><a href="#button" data-name="button">Button</a></li>
@@ -1266,7 +1265,6 @@ html, body {
       <li><a href="#card" data-name="card">Card</a></li>
       <li><a href="#checkbox" data-name="checkbox">Checkbox</a></li>
       <li><a href="#chip" data-name="chip">Chip</a></li>
-      <li><a href="#context-menu" data-name="context-menu">Context Menu</a></li>
       <li><a href="#divider" data-name="divider">Divider</a></li>
       <li><a href="#dropdown" data-name="dropdown">Dropdown</a></li>
       <li><a href="#expandable-list" data-name="expandable-list">Expandable List</a></li>
@@ -4981,7 +4979,7 @@ html, body {
   <div class="spec-section">
     <div class="section-label">usage notes</div>
     <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #565656; line-height: 1.7;">
-      <li>모든 메뉴형 패턴(<a href="#context-menu">context menu</a>, <a href="#dropdown">dropdown</a>, action overflow 등)은 동일한 <code>menu</code>/<code>menu_item</code> 컴포넌트를 사용</li>
+      <li>모든 메뉴형 패턴(우클릭 컨텍스트 메뉴, <a href="#dropdown">dropdown</a>, action overflow 등)은 동일한 <code>menu</code>/<code>menu_item</code> 컴포넌트를 사용</li>
       <li>frame width 298 / inner 282 — 고정 너비 (가변 시 직접 조정)</li>
       <li><code>alert</code>는 <code>checked=true</code>만 정의 (특수 강조용)</li>
       <li><code>focused</code>는 키보드 포커스 — 2px <code>#1d1d1d</code> inset ring</li>
@@ -4990,62 +4988,6 @@ html, body {
       <li><code>menu_item_sub</code>는 <code>header</code>(섹션 라벨, SB 14, <code>#393939</code>) 또는 <code>divider</code>(282×4 line, <code>#bcbcbc</code>)</li>
       <li>shadow elevation-20: <code>(0,1) blur 2 + (0,2) blur 6 spread 2</code> — popover보다 강함, modal보다 약함</li>
       <li>접근성: <code>&lt;ul role="menu"&gt;</code> + <code>&lt;li role="menuitem"&gt;</code> (또는 <code>menuitemcheckbox</code>) · ↑↓ Enter ESC</li>
-    </ul>
-  </div>
-</section>
-<section id="context-menu" class="component-page">
-  <header class="page-header">
-    <h1>컨텍스트 메뉴 (Context Menu)</h1>
-    <div class="meta">usage pattern — built on <a href="#menu">Menu</a></div>
-    <p class="description">우클릭(<code>oncontextmenu</code>) 또는 ⋯ overflow 버튼 트리거로 띄우는 floating 옵션 메뉴. <strong>별도 컴포넌트가 아닌, <a href="#menu">Menu</a>의 사용 패턴</strong>입니다. trigger 방식과 위치 결정 로직만 다르고 시각/구조는 menu 컴포넌트와 동일.</p>
-  </header>
-
-  <div class="spec-section">
-    <div class="section-label">trigger 방식</div>
-    <table class="spec-table">
-      <tr><th>패턴</th><th>trigger</th><th>위치 기준</th><th>예</th></tr>
-      <tr><td><strong>Context menu</strong></td><td>우클릭 (<code>oncontextmenu</code>)</td><td>커서 좌표</td><td>파일 우클릭 → 복사/잘라내기/삭제</td></tr>
-      <tr><td><strong>Overflow menu</strong></td><td>⋯ 더보기 버튼 클릭</td><td>버튼 anchor</td><td>리스트 row 끝 ⋯ → 편집/공유/삭제</td></tr>
-      <tr><td><strong>Action menu</strong></td><td>액션 버튼 클릭</td><td>버튼 anchor</td><td>"Actions ▾" → 다중 액션</td></tr>
-      <tr><td><a href="#dropdown">Dropdown</a></td><td>인풋 클릭</td><td>인풋 anchor</td><td>옵션 선택 (별도 섹션 참조)</td></tr>
-    </table>
-  </div>
-
-  <div class="spec-section">
-    <div class="variant-name">사용 예 — 우클릭 / overflow 시나리오</div>
-    <div class="row" style="gap: 32px; align-items: flex-start;">
-      <div class="col" style="gap: 6px;">
-        <div class="muted">우클릭 컨텍스트 메뉴</div>
-        <div class="menu">
-          <div class="menu-item"><span class="menu-item__label">📋 복사</span><span class="menu-item__sub">⌘C</span></div>
-          <div class="menu-item"><span class="menu-item__label">✂️ 잘라내기</span><span class="menu-item__sub">⌘X</span></div>
-          <div class="menu-item"><span class="menu-item__label">📎 붙여넣기</span><span class="menu-item__sub">⌘V</span></div>
-          <div class="menu-item-sub--divider"></div>
-          <div class="menu-item"><span class="menu-item__label">✏️ 이름 변경</span><span class="menu-item__sub">F2</span></div>
-          <div class="menu-item menu-item--danger"><span class="menu-item__label">🗑 삭제</span><span class="menu-item__sub">⌘⌫</span></div>
-        </div>
-      </div>
-      <div class="col" style="gap: 6px;">
-        <div class="muted">⋯ overflow 메뉴 (권한·액션 분리)</div>
-        <div class="menu">
-          <div class="menu-item"><span class="menu-item__label">상세 보기</span></div>
-          <div class="menu-item"><span class="menu-item__label">편집</span></div>
-          <div class="menu-item menu-item--disabled"><span class="menu-item__label">잠금 (권한 없음)</span></div>
-          <div class="menu-item-sub--divider"></div>
-          <div class="menu-item"><span class="menu-item__label">공유</span><span class="menu-item__chevron"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
-          <div class="menu-item menu-item--danger"><span class="menu-item__label">삭제</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="spec-section">
-    <div class="section-label">notes</div>
-    <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #565656; line-height: 1.7;">
-      <li>구조·variant·토큰은 모두 <a href="#menu">Menu</a> 컴포넌트 참조 (별도 spec 없음)</li>
-      <li>컨텍스트 메뉴는 ESC·외부 클릭 시 닫힘. 우클릭이라면 좌표 기준 anchor</li>
-      <li>모바일/터치: 길게 누르기(long press)로 우클릭 대체 가능</li>
-      <li>위험 액션은 <code>menu-item--danger</code>로 분리, 그룹 사이는 <code>menu_item_sub divider</code>로 구분</li>
     </ul>
   </div>
 </section>

@@ -5,9 +5,11 @@ Osstem Implant 디자인시스템 컴포넌트 학습 문서.
 
 > **범위**: `tokens/color/component.js`와 `tokens/number/component.js`에 선언된 모든 컴포넌트 namespace를 1:1 매핑.
 
-## 목록 (35개)
+## 목록 (36개)
 
-> 2026-05-07 업데이트: `coachmark` 항목 제거 (실제 Figma 디자인시스템 미존재 — placeholder였음). `Context Menu`는 base `Menu` 컴포넌트의 사용 패턴으로 분리.
+> 2026-05-07 업데이트:
+> - `coachmark` 제거 (실제 Figma 디자인시스템 미존재 — placeholder였음)
+> - `Context Menu` 제거 — base [Menu](./menu.md) 컴포넌트의 trigger 패턴일 뿐, 별도 spec 불필요. 우클릭/⋯ overflow/액션 메뉴 등 모든 메뉴형 사용은 menu doc 참조.
 
 ### Form / Input
 | 컴포넌트 | 토큰 키 |
@@ -30,8 +32,7 @@ Osstem Implant 디자인시스템 컴포넌트 학습 문서.
 |---|---|
 | [Tab](./tab.md) | `tab` (line_tab + contained_tab) |
 | [Segmented Control](./segmented-control.md) | `segmentedControl` |
-| [Menu](./menu.md) | `contextMenu` (prefix `menu/*`) — base 컴포넌트 |
-| [Context Menu](./context-menu.md) | (Menu의 사용 패턴 — 우클릭/overflow) |
+| [Menu](./menu.md) | `menu` (prefix `menu/*`, 우클릭/overflow/action 모두 공유) |
 | [Breadcrumb](./breadcrumb.md) | `breadcrumb` |
 | [GNB](./gnb.md) | `gnb` |
 | [Toolbar](./toolbar.md) | `toolbar` |

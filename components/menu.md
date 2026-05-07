@@ -1,6 +1,6 @@
 # Menu
 
-> **Base 컴포넌트** — 모든 메뉴형 패턴(컨텍스트 메뉴, 드롭다운, 액션 오버플로우 등)이 공유하는 기반.
+> **Base 컴포넌트** — 모든 메뉴형 패턴(우클릭 컨텍스트, 드롭다운, 액션 오버플로우 등)이 공유하는 기반.
 >
 > 출처:
 > - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA`:
@@ -10,7 +10,7 @@
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`:
 >   - `1:230731`, `1:231278`, `1:230235`, `1:230092` (가이드 페이지)
 >
-> JS 토큰: `tokens/color/component.js#contextMenu` (prefix `menu/*`).
+> JS 토큰: `tokens/color/component.js#menu` (prefix `menu/*`).
 > 시각 참조: [docs/spec.html#menu](../docs/spec.html#menu)
 
 ## Overview
@@ -20,7 +20,6 @@
   - **menu_item_sub**: 헤더("Section Label") 또는 divider
   - **menu_item**: 개별 행 (icon + label + sub_text + chevron)
 - 모드: **light** (production variable_defs 기준)
-- 사용 패턴은 별도 doc 참조: [context-menu.md](./context-menu.md)
 
 ## Wrapper — `menu` (`2533:20420`)
 
@@ -223,5 +222,5 @@ menu (white bg, 8 pad, 4 gap, 4 radius, elevation-20)
 
 ## 관련 사용 패턴
 
-- [context-menu.md](./context-menu.md) — 우클릭 / overflow 메뉴
 - [dropdown.md](./dropdown.md) — 입력형 옵션 선택
+- 우클릭 컨텍스트 메뉴 / ⋯ overflow / 액션 오버플로우 — 모두 동일 menu 컴포넌트 사용 (별도 spec 없음, trigger·위치만 다름)

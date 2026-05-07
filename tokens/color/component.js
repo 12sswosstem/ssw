@@ -20,7 +20,7 @@ export const control = {};          // checkbox/radio/switch 공통 토큰
 // Navigation
 export const tab = {};
 export const segmentedControl = {};
-export const contextMenu = {};      // menu/*
+export const menu = {};             // menu/* (context-menu·dropdown·action menu 모두 공유)
 export const breadcrumb = {};
 export const gnb = {};
 export const toolbar = {};
