@@ -1510,12 +1510,12 @@ html, body {
   white-space: nowrap;
   font-size: 11px;
 }
-.tbl-pms thead th {
-  background: #ffffff; font-weight: 500; color: #565656;
+.tbl-pms thead tr.h-main th {
+  background: #f4f4f4; font-weight: 600; color: #1d1d1d;  /* table/bg/bg-header */
   border-bottom: 1px solid #e9e9e9;
 }
 .tbl-pms thead tr.h-sub th {
-  font-weight: 500; color: #565656;
+  background: #e9e9e9; font-weight: 500; color: #565656;  /* table/bg/bg-subheader */
   border-bottom: 1px solid #d2d2d2;
   padding-top: 4px;
 }
@@ -1523,12 +1523,15 @@ html, body {
 .tbl-pms .ta-r { text-align: right; }
 .tbl-pms .ta-c { text-align: center; }
 
-.tbl-pms tbody td { background: #ffffff; border-bottom: 1px solid #f4f4f4; }
+/* 합계 행 (Sum) — gray bg */
 .tbl-pms tr.sum-row td {
-  background: #ffffff; font-weight: 600; color: #1d1d1d;
+  background: #dddddd; font-weight: 600; color: #1d1d1d;  /* table/bg/bg-sum */
   border-bottom: 1px solid #d2d2d2;
 }
-/* 모든 행은 화이트 배경 — zebra 클래스는 callout 타깃용으로만 유지 (시각적으로 동일) */
+
+/* 데이터 행 zebra 패턴 — 짝수 행에 light gray */
+.tbl-pms tbody tr:not(.sum-row) td { background: #fefefe; border-bottom: 1px solid #f4f4f4; }
+.tbl-pms tbody tr:not(.sum-row):nth-of-type(even) td { background: #f4f4f4; }  /* table/bg/bg-cell-zebra */
 
 .tbl-pms .badge {
   display: inline-flex; align-items: center;
@@ -1584,7 +1587,7 @@ html, body {
 
 /* TOP-DOWN callout — dot at table top, line going UP, chip ABOVE */
 .tbl-callout--above {
-  flex-direction: column-reverse;
+  flex-direction: column;  /* num(top) → line → dot(bottom on target) */
   transform: translateX(-50%);
   bottom: calc(100% - var(--dot-y) - 3.5px);
 }
