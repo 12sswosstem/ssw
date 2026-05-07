@@ -11,8 +11,8 @@
 >   - `302:43106` Anatomy *(이전 노드 — 현재 invalid 응답)*
 >   - `306:8789` Anatomy figure — PMS 진료내역 sample 10 데이터 행 + 9 numbered callouts (TalkToFigma 채널 `qhr11434` get_selection 기준 verbatim)
 >   - `306:8864` Properties › Size 시각 (6 size 행, 셀 우측정렬, 그룹 가운데정렬)
->   - `306:8891` 세부 규격 — Padding / Height / Text size / Icon size 라벨링 도면
->   - `306:8933` Properties › Style 시각 (4 변형 가운데정렬)
+>   - `306:8933` 세부 규격 — Padding / Height / Text size / Icon size 라벨링 도면 (`306:8937` Cell A Tag+text+bookmark / `306:8960` Cell B trash+edit+more-vert)
+>   - `306:8891` Properties › Style 시각 (4 변형 가운데정렬) — *추정 위치, 별도 검증 필요*
 >   - `302:43179` Properties › Size + Style
 >   - `302:43304` Properties › State
 >   - `302:43376` Properties › Variant
@@ -166,19 +166,25 @@
 
 ### 세부 규격
 
-> 출처: `306:8891` (UI-Kit-Guide · verbatim)
+> 출처: `306:8933` (UI-Kit-Guide · verbatim — 노드 이름 `2box-01`, 1800×375)
 
 테이블의 패딩, 텍스트, 아이콘의 규격은 사이즈별 Variable number 로 토큰화 되어 있습니다.
 
-Figma `306:8891` 도면은 셀 내부 구조 라벨링:
-- **Padding** (좌우): 셀 좌/우 안쪽 여백 — 양쪽에 빨강 점선 라인으로 표시
-- **Height**: 셀 전체 높이 — 우측 빨강 bracket으로 표시
-- **Text size**: 라벨 텍스트 크기 — 텍스트 아래 빨강 화살표
-- **Icon size**: 아이콘 크기 — 아이콘 아래 빨강 화살표
+Figma `306:8933` 도면 — 셀 내부 구조 라벨링 (red `#d90101` solid Padding 박스 + red bracket Height + 라벨 `#aa0101` Pretendard SemiBold 18px):
 
-도면은 2개 셀 예시:
-1. text + icon 셀
-2. icon + icon 셀 (예: trash 아이콘 + dotted 아이콘)
+- **Padding** (좌·우): 셀 좌/우 안쪽 여백 — 8px solid red rectangle (`#ff1111` 10% opacity + `#d90101` stroke), Figma `Rectangle 3468230`
+- **Height**: 셀 전체 높이 — 우측 빨강 bracket (좌우 2px line + 양 끝 가로 cap)
+- **Text size**: 라벨 텍스트 크기
+- **Icon size**: 아이콘 크기
+
+도면은 2개 table atomic-v0.4 인스턴스 (각 172×40):
+
+| Cell | 인스턴스 ID | 구성 (Figma JSON verbatim) |
+|---|---|---|
+| Cell A | `306:8937` | **Tag**(`2689:117762`, 42×18 blue `#e5f0fe`, cornerRadius 2, 빈 children) + **Text** "text" (Pretendard Regular 16) + **icon** `system/general/line/bookmark` (`2885:190555`, 20×20) |
+| Cell B | `306:8960` | **icon** `system/general/fill/delete` (`2885:189939`, 20×20, trash) + **icon** `system/general/fill/edit` (`1:99323`, 20×20, **visible: false** 빈 슬롯) + **icon** `system/general/fill/more-vert` (`2885:195043`, 20×20, 3 dots) |
+
+> Cell A의 Tag와 Text는 동일 x=587 위치(같은 시작점)에 있어 시각적으로 Tag가 Text 뒤에 배경처럼 깔린 상태. Cell B의 edit 아이콘은 fills `visible: false` 처리되어 시각적으로 빈 슬롯 (trash와 more-vert 사이 갭).
 
 | size | height | padding | gap | text-size |
 |---|---|---|---|---|

@@ -1651,50 +1651,77 @@ html, body {
 .tbl-style-grid { display: flex; flex-direction: column; }
 .tbl-style-grid .row { display: flex; }
 
-/* 세부 규격 (Detailed spec) figure — Figma `306:8891` verbatim */
+/* 세부 규격 (Detailed spec) figure — Figma `306:8933` verbatim
+   Cell A (306:8937): Tag(empty blue badge 42×18) + text + bookmark icon
+   Cell B (306:8960): delete + edit(empty) + more-vert (3 icons right-aligned)
+   Cell size: 172×40, padding 8 left/right, 1px border-bottom #d2d2d2 */
 .tbl-spec-figure {
-  background: #f9f9f9; border-radius: 20px; padding: 60px 48px; margin: 8px 0;
-  display: flex; justify-content: center; align-items: center; gap: 80px;
+  background: #f9f9f9; border-radius: 20px; padding: 80px 48px 80px; margin: 8px 0;
+  display: flex; justify-content: center; align-items: center; gap: 100px;
 }
-.tbl-spec-cell-wrap { position: relative; padding: 32px 0; }
+.tbl-spec-cell-wrap { position: relative; }
 .tbl-spec-cell {
-  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-  height: 32px; padding: 0 12px; min-width: 144px;
-  background: #fefefe; border-bottom: 1px solid #d2d2d2;
+  display: inline-flex; align-items: center; gap: 4px;
+  width: 172px; height: 40px; padding: 0 8px; box-sizing: border-box;
+  background: #fefefe; border: 1px solid #d2d2d2;
   position: relative;
 }
-.tbl-spec-cell .text-content { font-size: 14px; color: #1d1d1d; }
-.tbl-spec-cell .icon-content {
-  width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;
-  color: #565656;
+.tbl-spec-cell .cell-tag {
+  width: 42px; height: 18px; background: #e5f0fe; border-radius: 2px;
+  flex-shrink: 0;
 }
-.tbl-spec-cell .icon-content svg { width: 16px; height: 16px; fill: currentColor; }
-/* Red dashed annotations (Figma red #d73220) */
+.tbl-spec-cell .text-content {
+  font-size: 16px; line-height: 16px; color: #1d1d1d;
+  margin-left: -42px; padding-left: 8px;  /* overlay text on top of tag, left-aligned per Figma */
+  z-index: 1; position: relative;
+}
+.tbl-spec-cell .cell-spacer { flex: 1; }
+.tbl-spec-cell .icon-content {
+  width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;
+  color: #565656; flex-shrink: 0;
+}
+.tbl-spec-cell .icon-content svg { width: 20px; height: 20px; }
+.tbl-spec-cell .icon-bookmark svg { width: 12px; height: 14.5px; }
+.tbl-spec-cell .icon-delete svg { width: 13.5px; height: 16px; }
+.tbl-spec-cell .icon-more-vert svg { width: 3px; height: 14px; }
+.tbl-spec-cell .icon-empty { opacity: 0; }
+.tbl-spec-cell--icons-right { justify-content: flex-end; }
+
+/* Red dashed/solid annotations (Figma red #d90101 / label #aa0101) */
 .tbl-spec-cell-wrap .anno {
-  position: absolute; font-size: 11px; font-weight: 500; color: #d73220;
+  position: absolute; font-size: 11px; font-weight: 600; color: #aa0101;
   white-space: nowrap; line-height: 1;
 }
-.tbl-spec-cell-wrap .anno-line-v {
-  position: absolute; width: 0; border-left: 1px dashed #d73220;
+/* Padding markers — solid red vertical bar inside cell at left/right edges
+   Figma `306:8948` Rectangle 3468230: 8×40, fill #ff1111 with 0.10 opacity, stroke #d90101 */
+.tbl-spec-cell-wrap .anno-line-v.pad-line {
+  position: absolute; top: 0; height: 40px; width: 8px;
+  background: rgba(217, 1, 1, 0.10);
+  border-left: 1px solid #d90101;
+  border-right: 1px solid #d90101;
 }
-.tbl-spec-cell-wrap .anno-line-h {
-  position: absolute; height: 0; border-top: 1px dashed #d73220;
+.tbl-spec-cell-wrap .anno-line-v.pad-line[style*="right"] {
+  /* right padding marker positioned at cell's right edge minus 8px */
+  right: 0;
 }
-/* Horizontal Padding markers — vertical dashed line at edges */
-.tbl-spec-cell-wrap .pad-line { top: -8px; bottom: -8px; }
-/* Height marker — vertical bracket on right */
+/* Height marker — vertical red bracket on right of cell (Figma `306:8938` Measurement) */
 .tbl-spec-cell-wrap .height-bracket {
-  position: absolute; right: -16px; top: 50%; transform: translateY(-50%);
-  width: 6px; height: 32px;
-  border-top: 2px solid #d73220; border-bottom: 2px solid #d73220;
-  border-left: 0; border-right: 0;
+  position: absolute; right: -32px; top: 0;
+  width: 20px; height: 40px;
+  pointer-events: none;
 }
 .tbl-spec-cell-wrap .height-bracket::before {
-  content: ""; position: absolute; left: 2px; top: 0; bottom: 0; width: 2px; background: #d73220;
+  content: ""; position: absolute; left: 9px; top: 0; bottom: 0; width: 2px; background: #d90101;
+}
+.tbl-spec-cell-wrap .height-bracket::after {
+  content: "";
+  position: absolute; right: 0; left: 0;
+  height: 2px; background: #d90101;
+  top: 0; box-shadow: 0 38px 0 #d90101;
 }
 .tbl-spec-cell-wrap .height-label {
-  position: absolute; right: -54px; top: 50%; transform: translateY(-50%);
-  font-size: 11px; font-weight: 500; color: #d73220;
+  position: absolute; left: calc(100% + 28px); top: 50%; transform: translateY(-50%);
+  font-size: 13px; font-weight: 600; color: #aa0101;
 }
 
 /* Variant 4 cards */
@@ -9166,33 +9193,37 @@ html, body {
     <div class="section-label">세부 규격 <span style="color: #8f8f8f; font-weight: normal;">— 출처 `306:8891` (UI-Kit-Guide verbatim · Padding / Height / Text size / Icon size)</span></div>
     <p style="margin: 0 0 16px; font-size: 14px; color: #1d1d1d; line-height: 1.7;">테이블의 패딩, 텍스트, 아이콘의 규격은 사이즈별 Variable number 로 토큰화 되어 있습니다.</p>
     <div class="tbl-spec-figure">
-      <!-- Cell A: text + icon -->
+      <!-- Cell A (Figma `306:8937` table atomic-v0.4 instance, 172×40): Tag empty + text + bookmark icon -->
       <div class="tbl-spec-cell-wrap">
         <span class="anno-line-v pad-line" style="left: 0;"></span>
-        <span class="anno-line-v pad-line" style="left: 38px;"></span>
-        <span class="anno" style="top: -2px; left: 0;">Padding</span>
-        <span class="anno" style="top: -2px; left: 38px;">Padding</span>
+        <span class="anno-line-v pad-line" style="right: 0;"></span>
+        <span class="anno" style="top: -2px; left: -22px;">Padding</span>
+        <span class="anno" style="top: -2px; right: -22px;">Padding</span>
         <div class="tbl-spec-cell">
+          <span class="cell-tag"></span>
           <span class="text-content">text</span>
-          <span class="icon-content"><svg viewBox="0 0 16 16" fill="currentColor"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></span>
+          <span class="cell-spacer"></span>
+          <span class="icon-content icon-bookmark"><svg viewBox="0 0 12 14.5" fill="none" stroke="currentColor" stroke-width="1"><path d="M1.5 0.5H10.5C11.0523 0.5 11.5 0.947715 11.5 1.5V12.8633C11.5 13.2372 11.1042 13.4792 10.7715 13.3086L6.22852 10.9795L6 10.8623L5.77148 10.9795L1.22852 13.3086C0.895797 13.4792 0.5 13.2372 0.5 12.8633V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5Z"/></svg></span>
         </div>
-        <span class="anno" style="bottom: -2px; left: 12px;">Text size</span>
-        <span class="anno" style="bottom: -2px; left: 50px;">Icon size</span>
+        <span class="anno" style="bottom: -2px; left: 14px;">Text size</span>
+        <span class="anno" style="bottom: -2px; right: 14px;">Icon size</span>
         <span class="height-bracket"></span>
         <span class="height-label">Height</span>
       </div>
-      <!-- Cell B: 2 icons -->
+      <!-- Cell B (Figma `306:8960` table atomic-v0.4 instance, 172×40): delete + (empty edit) + more-vert -->
       <div class="tbl-spec-cell-wrap">
         <span class="anno-line-v pad-line" style="left: 0;"></span>
-        <span class="anno-line-v pad-line" style="left: 38px;"></span>
-        <span class="anno" style="top: -2px; left: 0;">Padding</span>
-        <span class="anno" style="top: -2px; left: 38px;">Padding</span>
-        <div class="tbl-spec-cell">
-          <span class="icon-content"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 6h6v7a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6zm1-3h4l1 1h2v1H3V4h2l1-1z"/></svg></span>
-          <span class="icon-content"><svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="3" r="1.5"/><circle cx="8" cy="8" r="1.5"/><circle cx="8" cy="13" r="1.5"/></svg></span>
+        <span class="anno-line-v pad-line" style="right: 0;"></span>
+        <span class="anno" style="top: -2px; left: -22px;">Padding</span>
+        <span class="anno" style="top: -2px; right: -22px;">Padding</span>
+        <div class="tbl-spec-cell tbl-spec-cell--icons-right">
+          <span class="cell-spacer"></span>
+          <span class="icon-content icon-delete"><svg viewBox="0 0 13.5 16" fill="currentColor"><path d="M3.75 1.5C3.75 0.947715 4.19772 0.5 4.75 0.5H8.75C9.30228 0.5 9.75 0.947715 9.75 1.5V3.5H3.75V1.5Z" stroke="currentColor" fill="none"/><path d="M12.7502 13.9999C12.7502 15.1044 11.8547 15.9997 10.7502 15.9999H2.7502C1.64563 15.9999 0.7502 15.1044 0.7502 13.9999V2.99987H12.7502V13.9999ZM5.20333 6.99987C4.92722 6.99987 4.70339 7.22379 4.70333 7.49987V11.4999C4.70333 11.776 4.92718 11.9999 5.20333 11.9999C5.4793 11.9997 5.70333 11.7759 5.70333 11.4999V7.49987C5.70326 7.22391 5.47926 7.00007 5.20333 6.99987ZM8.29708 6.99987C8.02105 6.99996 7.79714 7.22384 7.79708 7.49987V11.4999C7.79708 11.776 8.02101 11.9998 8.29708 11.9999C8.57322 11.9999 8.79708 11.776 8.79708 11.4999V7.49987C8.79701 7.22379 8.57318 6.99987 8.29708 6.99987Z"/><path d="M0.5 3.5H13" stroke="currentColor" stroke-linecap="round" fill="none"/></svg></span>
+          <span class="icon-content icon-empty"></span>
+          <span class="icon-content icon-more-vert"><svg viewBox="0 0 3 14" fill="currentColor"><circle cx="1.5" cy="12.5" r="1.5"/><circle cx="1.5" cy="6.99976" r="1.5"/><circle cx="1.5" cy="1.5" r="1.5"/></svg></span>
         </div>
-        <span class="anno" style="bottom: -2px; left: 12px;">Icon size</span>
-        <span class="anno" style="bottom: -2px; left: 50px;">Icon size</span>
+        <span class="anno" style="bottom: -2px; left: 90px;">Icon size</span>
+        <span class="anno" style="bottom: -2px; right: 14px;">Icon size</span>
         <span class="height-bracket"></span>
         <span class="height-label">Height</span>
       </div>
