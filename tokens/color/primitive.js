@@ -1,117 +1,114 @@
 // Color · Primitive Tokens
-// Source: Figma Variable Collection  Color_primitive (642:26063)
-// Modes: light · dark
+// Source: Figma file lIIen1jmIhT0vuyXCMQDQA (공통 컴포넌트-test)
+// Last sync: 2026-05-07 via Figma MCP get_variable_defs
 //
-// 추출 출처:
-// - neutral: docs/spec.html `:root` (완전 추출)
-// - 그 외 팔레트: components/*.md 에서 관측된 hex 모음
-//   (스케일 번호 매핑은 figma-export.json 또는 Figma 직접 추출 필요 — 일부 추정)
+// 출처 표기:
+//   ✓ = Figma Variable 직접 확인 (get_variable_defs 결과)
+//   ⚠ = Color 가이드 페이지 라벨에서 hex 추출 (변수 정의 아님 — 시각 가이드)
+//   △ = 컴포넌트 토큰 hex에서 역추적 (단계 번호는 미확인)
 
+// ---------------------------------------------------------------------------
+// Static/Neutral Gray — 17단계 (tint/shade % 기반 네이밍)
+// 0=흰색, 999=거의 검정 (#020202)
+// ---------------------------------------------------------------------------
 export const neutral = {
-  0: "#ffffff",
-  50: "#f9f9f9",
-  100: "#f4f4f4",
-  200: "#e9e9e9",
-  300: "#dddddd",
-  400: "#c6c6c6",
-  500: "#a5a5a5",
-  600: "#8f8f8f",
-  700: "#565656",
-  800: "#393939",
-  850: "#2b2b2b",
-  900: "#1d1d1d",
-  950: "#0e0e0e",
+  0:   "#ffffff", // ✓
+  1:   "#fefefe", // ✓
+  25:  "#f9f9f9", // ✓
+  50:  "#f4f4f4", // ✓
+  75:  "#eeeeee", // ✓
+  100: "#e9e9e9", // ✓
+  150: "#dddddd", // ✓
+  200: "#d2d2d2", // ⚠
+  300: "#bcbcbc", // ⚠
+  400: "#a5a5a5", // ⚠
+  500: "#8f8f8f", // ⚠
+  600: "#727272", // ⚠
+  700: "#565656", // ⚠
+  800: "#393939", // ✓
+  850: "#2b2b2b", // ✓
+  900: "#1d1d1d", // ✓
+  950: "#0e0e0e", // ✓
+  999: "#020202", // ✓
 };
 
-// brand orange (`#eb6100` 중심). 스케일 번호는 추정.
-export const newOrange = {
-  50: "#fef7f2",   // brand-pale
-  100: "#fef0ee",
-  200: "#fbdfcc",  // brand-light
-  300: "#f7c099",
-  400: "#f9cfb2",
-  500: "#eb6100",  // brand
-  600: "#bc4e00",
-  700: "#8d3a00",
-  800: "#6b4300",
-  900: "#533400",
-  950: "#251700",
+// ---------------------------------------------------------------------------
+// Static/Gray — Neutral Gray와 별개 컬렉션 (컴포넌트에서 부분만 노출)
+// ---------------------------------------------------------------------------
+export const gray = {
+  300: "#dadada", // ✓
+  800: "#292929", // ✓
 };
 
-// 보조 orange 팔레트 — newOrange와 별개로 존재 (legacy or alt). 값 미확인.
-// TODO: Figma Color_primitive (642:26063)에서 직접 확인 필요
-export const orange = {};
+// ---------------------------------------------------------------------------
+// Static/Orange — 변수 600만 직접 확인.
+// Color 페이지의 17단계 swatch는 변수 미바인딩이라 나머지 단계 hex 미추출.
+// TODO: 디자이너가 Orange swatch에 변수 바인딩 또는 hex 라벨 추가 시 재추출
+// ---------------------------------------------------------------------------
+export const orange = {
+  600: "#fc7d00", // ✓ Static/Orange/600
+  // 컴포넌트에서 직접 hex로 관측된 것 (단계 매핑 미확정):
+  // △ "#eb6100" — base/brand (button bg/brand-primary, tag/accent/orange)
+  // △ "#fbdfcc" — light tertiary (button bg/brand-tertiary)
+  // △ "#fdefe5" — extra-light tag bg (tag/bg/orange)
+};
 
-// blue: 컴포넌트 MD 관측 hex (스케일 번호 추정)
+// ---------------------------------------------------------------------------
+// 이하 컬러는 컴포넌트 토큰에서 관측된 hex만 모음.
+// Figma Color primitive collection 자체에 동일 단계가 정의돼있는지는 미확인.
+// 키는 의미 기반(primary/dark/bg_light)으로 부여.
+// ---------------------------------------------------------------------------
+
+// blue (info)
 export const blue = {
-  50: "#ebeeff",
-  100: "#e5f0fe",
-  200: "#d5e7fe",
-  300: "#accffd",
-  400: "#5d89ff",
-  500: "#3b63fb",
-  600: "#2549e5",
-  700: "#122d9a",
-  800: "#0c2175",
-  900: "#0c1f69",
-  950: "#0f1c52",
+  primary:  "#3b63fb", // △ notification/info-primary
+  bg_light: "#e5f0fe", // △ notification/info-primary 2 (light bg)
+  accent:   "#4b75ff", // △ system accent/blue
 };
 
-// red (destructive 포함)
+// red (destructive / critical)
 export const red = {
-  50: "#ffebe8",
-  100: "#fbd1cb",
-  200: "#fef0ee",
-  400: "#ff513d",
-  500: "#f03823",
-  600: "#d73220",
-  700: "#b12617",
-  800: "#73180b",
-  900: "#501006",
-  950: "#440d05",
+  primary:  "#f03823", // △ notification/critical-primary, button destructive
+  bg_light: "#ffebe8", // △ notification/critical-primary 2, tag/bg/red
+  dark:     "#d73220", // △ tag/accent/red
 };
 
+// green (success)
 export const green = {
-  50: "#d7f7e1",
-  300: "#40bf80",
-  400: "#0ba45d",
-  500: "#05834e",
-  600: "#047c4b",
-  700: "#046959",
-  800: "#03545c",
-  900: "#002e28",
-  950: "#002e22",
+  primary:  "#0ba45d", // △ notification/success-primary
+  bg_light: "#d7f7e1", // △ notification/success-primary 2, tag/bg/green
+  dark:     "#05834e", // △ tag/accent/green, text-input success
+  accent:   "#079355", // △ system accent/green
 };
 
+// yellow (warning)
 export const yellow = {
-  50: "#fff8cc",
-  100: "#faec88",
-  200: "#fff197",
-  500: "#f5c700",
-  600: "#e6af00",
-  700: "#d29500",
-  800: "#825200",
-  900: "#4b2f00",
+  primary:  "#e6af00", // △ notification/warning-primary
+  bg_light: "#fff8cc", // △ notification/warning-primary 2, tag/bg/yellow
+  dark:     "#d29500", // △ tag/accent/yellow_dark, system accent/yellow
+  base:     "#f5c700", // △ tag/accent/yellow
 };
 
+// purple (question)
 export const purple = {
-  50: "#eee0fa",
-  300: "#ad69e9",
-  400: "#9d4ee4",
-  500: "#9a47e2",
-  600: "#7155fa",
-  700: "#53009f",
-  800: "#320060",
-  900: "#2a0081",
+  primary:   "#9a47e2", // △ notification/question-primary, system accent/purple
+  bg_light:  "#f4ebfc", // △ notification/question-primary 2
 };
 
+// indigo
+export const indigo = {
+  primary:  "#7155fa", // △ tag/accent/indigo
+  bg_light: "#ebeeff", // △ tag/bg/indigo
+};
+
+// magenta
 export const magenta = {
-  50: "#ffe8f0",
-  100: "#ffa3c2",
-  300: "#ff709f",
-  500: "#d92361",
-  600: "#cf1f5c",
-  800: "#98073c",
-  900: "#880033",
-  950: "#7b002d",
+  primary:  "#d92361", // △ tag/accent/magenta
+  bg_light: "#ffe8f0", // △ tag/bg/magenta
+};
+
+// turquoise
+export const turquoise = {
+  primary:  "#087e89", // △ tag/accent/turquoise
+  bg_light: "#d1f5f5", // △ tag/bg/turquoise
 };

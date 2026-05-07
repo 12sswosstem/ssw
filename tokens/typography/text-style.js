@@ -1,45 +1,92 @@
 // Typography · Text Style IDs
-// Figma textStyleId 매핑 — DS Runner / use_figma 코드에서 직접 사용
+// Source: Figma file lIIen1jmIhT0vuyXCMQDQA (공통 컴포넌트-test)
+// Last sync: 2026-05-07 via Figma MCP get_variable_defs
 //
-// 출처: Figma get_variable_defs (LxBPQF1oFOfiNdX5qzLcik / 14:4156)
-// ⚠️ 부분 추출 — Figma 세션 만료 후 재연결 필요.
+// 출처 표기: ✓ = Figma Variable 직접 확인
 
-// 신규 v0.4 시스템 (variable 참조 기반)
-// `❤️v0.4/<category>/<size>` 형식
+// ---------------------------------------------------------------------------
+// v0.4 시스템 — ❤️v0.4/<category>/<size> (variable 참조 기반)
+// 모든 항목 family = "Pretendard", letterSpacing = 0
+// ---------------------------------------------------------------------------
+const FAMILY = "Pretendard";
+const W = { regular: 400, medium: 500, semibold: 600 };
+
 export const v04 = {
-  display: {
-    sm: {
-      family:        "Pretendard",
-      weight:        400,         // Typography/weight/Regular(400)
-      size:          32,          // Typography/font size/display_sm
-      lineHeight:    52,          // Size/height/display_sm(52)
-      letterSpacing: 0,
+  // ---- button (모두 SemiBold 600) ----
+  button: {
+    "xxs": { family: FAMILY, weight: W.semibold, size: 12, lineHeight: 16, letterSpacing: 0 }, // ✓
+    "xs":  { family: FAMILY, weight: W.semibold, size: 14, lineHeight: 20, letterSpacing: 0 }, // ✓
+    "sm":  { family: FAMILY, weight: W.semibold, size: 14, lineHeight: 20, letterSpacing: 0 }, // ✓
+    "md":  { family: FAMILY, weight: W.semibold, size: 16, lineHeight: 24, letterSpacing: 0 }, // ✓
+    "lg":  { family: FAMILY, weight: W.semibold, size: 16, lineHeight: 24, letterSpacing: 0 }, // ✓
+    "xl":  { family: FAMILY, weight: W.semibold, size: 18, lineHeight: 24, letterSpacing: 0 }, // ✓
+    "2xl": { family: FAMILY, weight: W.semibold, size: 24, lineHeight: 30, letterSpacing: 0 }, // ✓
+    "3xl": { family: FAMILY, weight: W.semibold, size: 28, lineHeight: 36, letterSpacing: 0 }, // ✓
+    "4xl": { family: FAMILY, weight: W.semibold, size: 32, lineHeight: 40, letterSpacing: 0 }, // ✓
+  },
+  // ---- body (R/M/SB 모두 동일 사이즈, weight만 다름) ----
+  body: {
+    "xxs": {
+      M: { family: FAMILY, weight: W.medium, size: 12, lineHeight: 14, letterSpacing: 0 }, // ✓ (font_size body_xs=12, lh body_xxs=14)
     },
-    // TODO: 나머지 display 사이즈 (3xl/2xl/xl/lg/md/xs) — 다른 페이지에서 추출 필요
+    "sm": {
+      R:  { family: FAMILY, weight: W.regular,  size: 14, lineHeight: 20, letterSpacing: 0 }, // ✓
+      M:  { family: FAMILY, weight: W.medium,   size: 14, lineHeight: 20, letterSpacing: 0 }, // ✓
+      SB: { family: FAMILY, weight: W.semibold, size: 14, lineHeight: 20, letterSpacing: 0 }, // ✓
+    },
+    "md": {
+      R:  { family: FAMILY, weight: W.regular,  size: 16, lineHeight: 24, letterSpacing: 0 }, // ✓
+      M:  { family: FAMILY, weight: W.medium,   size: 16, lineHeight: 24, letterSpacing: 0 }, // ✓
+      SB: { family: FAMILY, weight: W.semibold, size: 16, lineHeight: 24, letterSpacing: 0 }, // ✓
+    },
+    "lg": {
+      R:  { family: FAMILY, weight: W.regular,  size: 18, lineHeight: 26, letterSpacing: 0 }, // ✓
+      SB: { family: FAMILY, weight: W.semibold, size: 18, lineHeight: 26, letterSpacing: 0 }, // ✓
+    },
+    "xl": {
+      R:  { family: FAMILY, weight: W.regular,  size: 20, lineHeight: 28, letterSpacing: 0 }, // ✓
+      SB: { family: FAMILY, weight: W.semibold, size: 20, lineHeight: 28, letterSpacing: 0 }, // ✓
+    },
+  },
+  // ---- display (sm만 추출됨) ----
+  display: {
+    "sm": { family: FAMILY, weight: W.regular, size: 32, lineHeight: 52, letterSpacing: 0 },
+    // TODO: 3xl/2xl/xl/lg/md/xs 단계 — Display 사용 컴포넌트 추가 추출 필요
   },
 };
 
-// Legacy textStyle — H1~H4 / P3~P5
+// ---------------------------------------------------------------------------
+// v0.1 (legacy) — Body/sm(M) 만 변수에서 확인됨
+// ---------------------------------------------------------------------------
+export const v01 = {
+  body: {
+    "sm-M": { family: FAMILY, weight: W.medium, size: 14, lineHeight: 1.4, letterSpacing: 0 }, // ✓ v0.1/Body/sm(M)
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Legacy textStyle — H1~H4 / P3~P5 (기존 추정값, 검증 미완료)
+// ---------------------------------------------------------------------------
 export const heading = {
-  H2: { family: "Pretendard", weight: 700, size: 60, lineHeight: 1.5, letterSpacing: 0 },
-  H3: { family: "Pretendard", weight: 700, size: 40, lineHeight: 1.5, letterSpacing: 0 },
-  H4: { family: "Pretendard", weight: 700, size: 32, lineHeight: 1.5, letterSpacing: 0 },
-  // TODO: H1, H5 — 다른 페이지에서 추출
+  H2: { family: FAMILY, weight: 700, size: 60, lineHeight: 1.5, letterSpacing: 0 },
+  H3: { family: FAMILY, weight: 700, size: 40, lineHeight: 1.5, letterSpacing: 0 },
+  H4: { family: FAMILY, weight: 700, size: 32, lineHeight: 1.5, letterSpacing: 0 },
+  // TODO: H1, H5
 };
 
 export const paragraph = {
-  "P3-1": { family: "Pretendard", weight: 700, size: 40, lineHeight: 1.5, letterSpacing: 0 },
-  "P4-2": { family: "Pretendard", weight: 400, size: 32, lineHeight: 1.5, letterSpacing: 0 },
-  "P5-1": { family: "Pretendard", weight: 700, size: 24, lineHeight: 1.5, letterSpacing: 0 },
-  "P5-2": { family: "Pretendard", weight: 400, size: 24, lineHeight: 1.5, letterSpacing: 0 },
-  // TODO: P1, P2, P3-2, P4-1 — 다른 페이지에서 추출
+  "P3-1": { family: FAMILY, weight: 700, size: 40, lineHeight: 1.5, letterSpacing: 0 },
+  "P4-2": { family: FAMILY, weight: 400, size: 32, lineHeight: 1.5, letterSpacing: 0 },
+  "P5-1": { family: FAMILY, weight: 700, size: 24, lineHeight: 1.5, letterSpacing: 0 },
+  "P5-2": { family: FAMILY, weight: 400, size: 24, lineHeight: 1.5, letterSpacing: 0 },
+  // TODO: P1, P2, P3-2, P4-1
 };
 
-// 디자인시스템 신규 textStyle (figma의 ❤️ prefix가 현행)
-// 아래 namespace는 components/*.md 관측을 통해 일관된 명명 패턴 추정.
-// 실제 textStyleId는 Figma 추출 필요.
-export const display = {};   // ❤️v0.4/display/{3xl, 2xl, xl, lg, md, sm, xs}
-export const title = {};     // ❤️v0.4/title/{sm}
-export const body = {};      // ❤️v0.4/body/{xl, lg, md, sm, xs}
-export const caption = {};   // ❤️v0.4/caption/{md, sm}
-export const button = {};    // ❤️v0.4/button/{4xl, 3xl, 2xl, xl, lg, md, sm, xs, xxs}
+// ---------------------------------------------------------------------------
+// 카테고리별 빈 placeholder (v04에서 분기) — 기존 호환
+// ---------------------------------------------------------------------------
+export const display = v04.display;
+export const body    = v04.body;
+export const button  = v04.button;
+export const title   = {};   // TODO: ❤️v0.4/title/{sm}
+export const caption = {};   // TODO: ❤️v0.4/caption/{md, sm}
