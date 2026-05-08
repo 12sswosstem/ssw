@@ -67,6 +67,40 @@ async function getCompSet(ids) {
   return null;
 }
 
+// instance 자식 중 패턴 매칭되는 노드를 visible=false 처리 (override).
+// 단어 경계 매칭으로 wrapper("icon labeled") 자체는 보존.
+function hideChildrenByPattern(inst, patterns) {
+  const hidden = [];
+  try {
+    const lower = patterns.map(p => p.toLowerCase());
+    const nodes = inst.findAll(() => true);
+    for (const node of nodes) {
+      if (node === inst) continue;
+      if (node.type === "COMPONENT_SET" || node.type === "COMPONENT") continue;
+      const name = (node.name || "").toLowerCase();
+      // match: name === pattern, OR name starts with pattern, OR contains "/pattern"
+      const hit = lower.some(p =>
+        name === p ||
+        name.startsWith(p + " ") ||
+        name.startsWith(p + "/") ||
+        name.includes("/" + p) ||
+        name.includes(" " + p) ||
+        // 정확한 부분 단어
+        (name.includes(p) && !name.includes(p + "ed") && !name.includes(p + "s"))
+      );
+      if (hit) {
+        try {
+          if ("visible" in node && node.visible !== false) {
+            node.visible = false;
+            hidden.push(node.name);
+          }
+        } catch (_) {}
+      }
+    }
+  } catch (_) {}
+  return hidden;
+}
+
 // ===== 디자인시스템 로드 =====
 async function loadDesignSystem() {
   // ===== Color variables =====
@@ -200,7 +234,7 @@ function createAutoFrame(name, dir, gap) {
 
 function createDivider() {
   const r = figma.createRectangle();
-  r.resize(1, 12);
+  r.resize(1, 10);
   r.fills = fill(T.border);
   r.name = "divider";
   return r;
@@ -229,9 +263,13 @@ async function tryButtonInstance(label) {
   } catch (e) {
     console.log(`  [button] setProperties 실패: ${e.message}`);
   }
+  // 아이콘 슬롯 hide (text-only 효과)
+  const hiddenBtn = hideChildrenByPattern(inst, ["icon", "leading", "trailing"]);
+  if (hiddenBtn.length) console.log(`  [button] hidden: ${hiddenBtn.join(", ")}`);
+
   // 라벨 텍스트 override (instance subtree만 — 작고 안전)
   try {
-    const txtNodes = inst.findAll(n => n.type === "TEXT");
+    const txtNodes = inst.findAll(n => n.type === "TEXT" && n.visible !== false);
     if (txtNodes.length > 0) {
       const font = txtNodes[0].fontName;
       if (font && typeof font === "object") {
@@ -254,9 +292,17 @@ async function tryInputInstance(labelText, placeholderText) {
     console.log(`  [input] createInstance 실패: ${e.message}`);
     return null;
   }
-  // 텍스트 override (subtree만)
+  // 불필요 영역 hide (stepper, footer, helper, 필수마크 등)
+  const hiddenInput = hideChildrenByPattern(inst, [
+    "stepper", "increment", "decrement", "trailing", "suffix", "prefix",
+    "footer", "help text", "helper", "character count", "count",
+    "required", "asterisk", "*",
+  ]);
+  if (hiddenInput.length) console.log(`  [input] hidden: ${hiddenInput.join(", ")}`);
+
+  // 텍스트 override (visible 한정)
   try {
-    const txtNodes = inst.findAll(n => n.type === "TEXT");
+    const txtNodes = inst.findAll(n => n.type === "TEXT" && n.visible !== false);
     // 폰트 미리 로드
     const fonts = new Set();
     for (const t of txtNodes) {
@@ -336,16 +382,20 @@ async function main() {
   ]).catch(e => console.log(`  [font] 실패: ${e.message}`));
 
   console.log("[3/8] Screen frame");
+  // 시각 계층:
+  // - 상단 여백 크게 (96) → 헤더가 호흡 공간 가짐
+  // - 섹션 간격 40 → 헤더 / 폼 / 버튼 영역 명확히 분리
+  // - 좌우 24 padding 유지 (모바일 표준)
   const screen = figma.createFrame();
   screen.name = "Login / Mobile";
   screen.resize(360, 720);
   screen.fills = fill(T.bg);
   screen.layoutMode = "VERTICAL";
-  screen.paddingTop = 80;
-  screen.paddingBottom = 32;
+  screen.paddingTop = 96;
+  screen.paddingBottom = 40;
   screen.paddingLeft = 24;
   screen.paddingRight = 24;
-  screen.itemSpacing = 32;
+  screen.itemSpacing = 40;
   screen.primaryAxisSizingMode = "FIXED";
   screen.counterAxisSizingMode = "FIXED";
   screen.primaryAxisAlignItems = "MIN";
@@ -354,7 +404,8 @@ async function main() {
   screen.y = figma.viewport.center.y - 360;
 
   console.log("[4/8] Header");
-  const header = createAutoFrame("Header", "VERTICAL", 16);
+  // 헤더: 로고 → 타이틀 → 서브타이틀 강약 (Logo 56 + 큰 갭 + Title 28 Bold + Subtitle 13 muted)
+  const header = createAutoFrame("Header", "VERTICAL", 20);
   header.counterAxisAlignItems = "CENTER";
   screen.appendChild(header);
   header.layoutSizingHorizontal = "FILL";
@@ -362,31 +413,35 @@ async function main() {
 
   const logo = figma.createFrame();
   logo.name = "Logo";
-  logo.resize(64, 64);
-  logo.cornerRadius = 16;
+  logo.resize(56, 56);
+  logo.cornerRadius = 14;
   logo.fills = fill(T.brand);
   logo.layoutMode = "HORIZONTAL";
   logo.primaryAxisAlignItems = "CENTER";
   logo.counterAxisAlignItems = "CENTER";
   header.appendChild(logo);
-  logo.appendChild(createText("S", 32, "Bold", T.btnFg));
+  logo.appendChild(createText("S", 26, "Bold", T.btnFg));
 
-  const titleWrap = createAutoFrame("TitleWrap", "VERTICAL", 8);
+  // Title-Subtitle 묶음: 6 갭으로 타이트하게 (강약을 size로만)
+  const titleWrap = createAutoFrame("TitleWrap", "VERTICAL", 6);
   titleWrap.counterAxisAlignItems = "CENTER";
   header.appendChild(titleWrap);
   titleWrap.layoutSizingHorizontal = "FILL";
   titleWrap.layoutSizingVertical = "HUG";
 
-  const title = createText("로그인", 24, "Bold", T.textHi, "title");
+  // 강조: 28 Bold
+  const title = createText("로그인", 28, "Bold", T.textHi, "title");
   title.textAlignHorizontal = "CENTER";
   titleWrap.appendChild(title);
 
-  const subtitle = createText("계정 정보를 입력하세요", 14, "Regular", T.textMid, "subtitle");
+  // 약화: 13 Regular textMid
+  const subtitle = createText("계정 정보를 입력하세요", 13, "Regular", T.textMid, "subtitle");
   subtitle.textAlignHorizontal = "CENTER";
   titleWrap.appendChild(subtitle);
 
   console.log("[5/8] Form (input 컴포넌트 instance 시도)");
-  const form = createAutoFrame("Form", "VERTICAL", 16);
+  // 입력 필드 간격: 14 (form-internal은 타이트)
+  const form = createAutoFrame("Form", "VERTICAL", 14);
   screen.appendChild(form);
   form.layoutSizingHorizontal = "FILL";
   form.layoutSizingVertical = "HUG";
@@ -407,7 +462,8 @@ async function main() {
   }
 
   console.log("[6/8] Login Button (instance 시도)");
-  const btnWrap = createAutoFrame("ButtonWrap", "VERTICAL", 12);
+  // 버튼-링크 갭: 20 (버튼 강조 후 링크는 약화하여 분리)
+  const btnWrap = createAutoFrame("ButtonWrap", "VERTICAL", 20);
   screen.appendChild(btnWrap);
   btnWrap.layoutSizingHorizontal = "FILL";
   btnWrap.layoutSizingVertical = "HUG";
@@ -425,18 +481,20 @@ async function main() {
   }
 
   console.log("[7/8] Link Row");
-  const links = createAutoFrame("Links", "HORIZONTAL", 16);
+  // 링크: 13 Regular textLow (약화) — '회원가입'만 13 Medium brand로 강조
+  const links = createAutoFrame("Links", "HORIZONTAL", 14);
   links.primaryAxisAlignItems = "CENTER";
   links.counterAxisAlignItems = "CENTER";
   btnWrap.appendChild(links);
   links.layoutSizingHorizontal = "FILL";
   links.layoutSizingVertical = "HUG";
 
-  links.appendChild(createText("아이디 찾기", 14, "Regular", T.textMid, "link"));
+  links.appendChild(createText("아이디 찾기", 13, "Regular", T.textLow, "link"));
   links.appendChild(createDivider());
-  links.appendChild(createText("비밀번호 찾기", 14, "Regular", T.textMid, "link"));
+  links.appendChild(createText("비밀번호 찾기", 13, "Regular", T.textLow, "link"));
   links.appendChild(createDivider());
-  links.appendChild(createText("회원가입", 14, "Medium", T.brand, "link"));
+  // 회원가입은 CTA — Medium + brand로 강조
+  links.appendChild(createText("회원가입", 13, "Medium", T.brand, "link"));
 
   // ===== 진단 =====
   console.log("[8/8] 진단");
