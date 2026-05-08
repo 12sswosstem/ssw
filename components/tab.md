@@ -1,12 +1,12 @@
 # Tab
 
 > 출처:
-> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `1647:39181` `✅Tabs Item v2.0` (**350 variants**)
+> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `1647:39181` `Tabs Item v2.0` (**350 variants**)
 > - 4 컴포넌트 셋:
->   - `1647:39182` `✅line_horizontal tab_items` (125 variants, 4축)
->   - `1647:48299` `✅line_vertical tab_items` (125 variants, 4축)
->   - `1647:40443` `✅Icon Tabs items` (50 variants, 3축)
->   - `1647:43445` `✅contained_tab_items` (50 variants, 3축)
+>   - `1647:39182` `line_horizontal tab_items` (125 variants, 4축)
+>   - `1647:48299` `line_vertical tab_items` (125 variants, 4축)
+>   - `1647:40443` `Icon Tabs items` (50 variants, 3축)
+>   - `1647:43445` `contained_tab_items` (50 variants, 3축)
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`:
 >   - `96:15788`, `100:49975` (가이드 페이지)
 >

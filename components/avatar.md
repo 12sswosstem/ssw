@@ -1,7 +1,7 @@
 # Avatar
 
 > 출처:
-> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `1871:77161` `✅Avatar_v0.3` (54 variants)
+> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `1871:77161` `Avatar_v0.3` (54 variants)
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG` / page `1:69280` (가이드 페이지)
 > - `figma-export.json` (2026-05-04 export) Number_component
 >
@@ -13,8 +13,8 @@
 가이드 verbatim:
 > "아바타는 컨테이너 안에 아이콘, 이미지 또는 이니셜을 사용하여 사람, 회사 또는 단체를 나타냅니다. 사용자 프로필, 연락처 목록, 메시징 인터페이스 등 이미지나 아이콘이 필요한 곳에서 흔히 사용됩니다. 아바타는 사용자가 개인이나 그룹을 쉽게 식별할수 있도록 시각적 단서를 제공합니다."
 
-- atom 컴포넌트 셋: `1866:71484` `✅avatar_atom` (54 variants = 3 type × 3 style × 6 size)
-- group 컴포넌트 셋: `1871:77789` `✅avatar_group` (4 variants — Property 1: 1 single / 2 group / 3 group / 4 group)
+- atom 컴포넌트 셋: `1866:71484` `avatar_atom` (54 variants = 3 type × 3 style × 6 size)
+- group 컴포넌트 셋: `1871:77789` `avatar_group` (4 variants — Property 1: 1 single / 2 group / 3 group / 4 group)
 - array 컴포넌트 셋: `4270:111923` `avatar array` (12 variants — type spread/stack × size 6단계)
 
 ## Number tokens (Mode 1)
@@ -142,7 +142,7 @@ prop 형식: `type={default|image|initial}, style={circle|rounded|square}, size=
 
 이니셜 폴백(initials)이나 photo 가 우선이고, 둘 다 없을 때만 default 아이콘 노출.
 
-## Group — `✅avatar_group`
+## Group — `avatar_group`
 
 set ID: `1871:77789`. Property 1 단일 prop:
 

@@ -7,18 +7,18 @@
 >   - node `1:273388` — `Button use it` 가이드 페이지 (sparse metadata)
 >   - node `1:274092` — `Icon button use it` 가이드 페이지 (sparse metadata)
 > - `figma-export.json` (2026-05-04 export) — light/dark 양쪽 모드 참조용
-> - **사용자 작업 파일 `↪️ Button (TEST⚠️)`** — variant set `✅button` (id `7046:148536`, 972 variants, 2026-05-07 TalkToFigma MCP 추출)
+> - **사용자 작업 파일 `↪️ Button (TEST⚠️)`** — variant set `button` (id `7046:148536`, 972 variants, 2026-05-07 TalkToFigma MCP 추출)
 >
 > JS 토큰: `tokens/color/component.js#button`, `tokens/number/component.js#button`.
 
 ## Overview
 - 토큰 prefix: `button/*`
 - 모드: **light · dark** (light 값은 production 노드 변수 해석값 기준)
-- 컴포넌트 set 이름: **`✅button`** (이전 가이드의 `button_beta_v0.22_test`는 베타 단계 명칭, 현재 production은 `✅button`)
+- 컴포넌트 set 이름: **`button`** (이전 가이드의 `button_beta_v0.22_test`는 베타 단계 명칭, 현재 production은 `button`)
 - 사이즈: 9단계 — xxs(20) / xs(24) / sm(28) / md(32) / lg(40) / xl(48) / 2xl(64) / 3xl(80) / 4xl(96)
   - **Figma variant prop 값은 height 접미사 포함**: `xxs_20`, `xs_24`, `sm_28`, `md_32`, `lg_40`, `xl_48`, `2xl_64`, `3xl_80`, `4xl_96`
 
-## Variant Properties (Figma `✅button` verbatim)
+## Variant Properties (Figma `button` verbatim)
 
 > TalkToFigma MCP로 972 variants 전체 추출 (2026-05-07).
 > 모든 prop 키는 **lowercase**.
@@ -38,6 +38,41 @@
 > - `distructive-*` 오타 → **`destructive-*`** (variant prop에서 정정됨. 변수 토큰 이름은 별도 검증 필요)
 > - state `disabled` → **`disabled-gray`** (variant 값 verbatim)
 > - layout은 가이드 표기 3종(`icon labeled` / `icon only` / `text only`)이 아니라 **2종**. `text only`는 `icon labeled` + 빈 아이콘 슬롯으로 구현 추정.
+
+## Figma Variable Name Lookup (이모지 제거 후)
+
+> 사용자 file에서 variable / textStyle / component name의 ❤️/✅/💟 이모지 prefix 일괄 제거 (2026-05-08).
+> Figma library publish 완료. variable ID는 그대로 유지되어 binding/instance 영향 없음.
+> DS Runner / TalkToFigma 호출 시 아래 새 이름 사용.
+
+### Color
+9 style 슬롯 (`brand-{primary,secondary,tertiary}` · `neutral-{primary,secondary,tertiary}` · `subtle` · `destructive-{primary,secondary}`) + `disabled-gray`
+- `button/bg/{slot}` (10개)
+- `button/fg/{slot}` (10개)
+- `button/border/{slot}` (10개)
+
+### Number
+- `button/size/{xxs, xs, sm, md, lg, xl, 2xl, 3xl, 4xl}` → 20 / 24 / 28 / 32 / 40 / 48 / 64 / 80 / 96
+- `button/h-padding/{xxs..4xl}` → 4 / 6 / (sm 미정의) / 8 / 12 / 12 / 16 / 24 / 24
+- `button/text-padding/{xxs, xs, md, lg, 2xl, 3xl, 4xl}` → 4 / 4 / 4 / 4 / 8 / 8 / 8 (sm 미정의)
+- `button/conrner radius/{xxs, xs, sm, md, lg, xl, 2xl, 3xl, 4xl}` → 4 / 4 / 4 / 6 / 6 / 8 / 8 / 12 / 14
+  - ⚠️ Figma 변수명에 **오타: `conrner`** (corner 아님). variant 매칭 시 verbatim 사용 필수.
+  - 별도 변형: `button/conrner radius/2xl 2` = 10 (2xl의 둥글기 약화)
+- `button/border/{xxs..4xl}` → 1 / 1 / 1 / 1 / 1 / 1.5 / 2 / 2.5 / 3
+
+### Typography (textStyle)
+- `v0.4/button/{xxs..4xl} (SB)` — SemiBold 600, 9 size
+- `v0.4/button/{xxs..4xl}` — SB 접미사 없는 변형 (variable 참조 기반, 폰트 정의 동일)
+- `tokens/typography/text-style.js#button` 에 verbatim 등록됨 (font family / weight / size / lineHeight)
+
+### Common (overlay · focus)
+- `button/common/default` = `#00000000` (transparent)
+- `button/common/hover` = `#0000000d` (black 5%, light base용)
+- `button/common/pressed` = `#0000001a` (black 10%, light base용)
+- `button/common/hover-neutral` = `#ffffff0d` (white ~5%, dark base용)
+- `button/common/pressed-neutral` = `#ffffff1a` (white ~10%, dark base용)
+- `button/common/focus-ring` = `#000000`
+- `button/common/focus-ring 2` = `#fefefe` (legacy, 미사용)
 
 ## Variant ID 매트릭스 — `state=default, layout=icon labeled, type=hug` (81 cells)
 
@@ -218,7 +253,7 @@ CSS 구현 가이드:
 
 > 가이드 페이지에서 추가 발견: `v0.3 (test)/button/4xl`(line-height=1, 비표준), `v0.4/button/*` 시리즈(현행).
 
-## Style 9가지 (Figma `✅button` verbatim)
+## Style 9가지 (Figma `button` verbatim)
 
 | # | style | 비고 |
 |---|---|---|
@@ -232,9 +267,9 @@ CSS 구현 가이드:
 | 8 | `destructive-primary` | 빨강 강조 — 이전 가이드의 `distructive-primary` 오타가 production에서 정정됨 |
 | 9 | `destructive-secondary` | 빨강 보조 (transparent bg) — 마찬가지로 정정 |
 
-> **명칭 변경 history**: 이전 베타(`button_beta_v0.22_test`)에서는 `text` / `distructive-*`였으나, production `✅button` set에서 `subtle` / `destructive-*`로 표준화됨. variant prop 매칭/instance override는 production 명칭 사용.
+> **명칭 변경 history**: 이전 베타(`button_beta_v0.22_test`)에서는 `text` / `distructive-*`였으나, production `button` set에서 `subtle` / `destructive-*`로 표준화됨. variant prop 매칭/instance override는 production 명칭 사용.
 
-## State 6단계 (Figma `✅button` verbatim)
+## State 6단계 (Figma `button` verbatim)
 
 | # | state | 트리거 | 시각 |
 |---|---|---|---|
@@ -288,7 +323,7 @@ CSS 구현 가이드:
 - 6 state도 Button과 동일 (default/hover/pressed/focused/disabled-1/disabled-2)
 - overlay·focus ring·disabled 동작도 Button과 동일 (위 표 그대로 적용)
 
-### `❤️button/common/*` 변수 verbatim (`1:274092` variable_defs)
+### `button/common/*` 변수 verbatim (`1:274092` variable_defs)
 
 > 이 페이지에서 추출한 production 변수값 — 이전 `#0000000d` (5% black) 메모리는 별도 `*-neutral` 변형이거나 구버전. 현 v0.22 production은 white 알파 일원화.
 
@@ -494,7 +529,7 @@ Destructive 버튼은 데이터를 영구적으로 삭제하는 것과 같이 **
   - `disabled-gray` (완전 비활성)
   - `disabled-inactive` (읽기 전용 느낌)
   → 호환성을 위해 모두 정의되어 있고, 신규 화면은 `disabled-gray` 권장
-- variant/instance API 호출 시 production `✅button`의 명칭 사용:
+- variant/instance API 호출 시 production `button`의 명칭 사용:
   - style: `subtle` (이전 `text` 아님), `destructive-*` (이전 `distructive-*` 오타 정정)
   - state: `disabled-gray` (이전 `Disabled` 아님)
   - size: `_숫자` 접미사 포함 (`md_32` 등)

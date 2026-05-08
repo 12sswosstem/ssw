@@ -1,8 +1,8 @@
 # Input (TextInput)
 
 > 출처:
-> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `2448:19421` `✅text input_v1.0`
->   - `2420:29885` `✅Textinput/Text Field` (wrapper — 6 variants, 2축)
+> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `2448:19421` `text input_v1.0`
+>   - `2420:29885` `Textinput/Text Field` (wrapper — 6 variants, 2축)
 >   - `2420:63610` `Textinput/Resource/label` (label sub — 3 variants)
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`:
 >   - `1:357168`, `1:357020` (가이드 페이지)
@@ -15,7 +15,7 @@
 ## Overview
 - 텍스트 입력 필드
 - 모드: **light** (production variable_defs 기준)
-- 컴포넌트: `✅Textinput/Text Field` (wrapper) — text input + label + footer 통합
+- 컴포넌트: `Textinput/Text Field` (wrapper) — text input + label + footer 통합
 - 사이즈: xs_24 → sm_28 → md_32 → lg_40 → xl_48 → 2xl_64
 
 ## Number tokens (Mode 1)
@@ -88,7 +88,7 @@
 > - 신규: `input common/border/hover` `#eb6100`, `border/focused` `#000000`
 > - 신규: `text input/etc/error` `#f03823`, `etc/success` `#05834e`
 
-## Wrapper Variants — `✅Textinput/Text Field` (2축, 6 variants)
+## Wrapper Variants — `Textinput/Text Field` (2축, 6 variants)
 
 ### prop verbatim (TalkToFigma 추출)
 - **`label position`**: `top` / `side` (lowercase, 공백 포함 — `label position`이 prop 키 그대로)
@@ -98,7 +98,7 @@
 
 | variant ID | label position | validation | 비고 |
 |---|---|---|---|
-| `2420:29886` | `✅Textinput` | `Text Field` | **default variant fallback** — prop value가 `top/default`가 아니라 컴포넌트 base 명칭. instance에서 `top/default`로 매칭 시 이 variant가 반환됨 |
+| `2420:29886` | `Textinput` | `Text Field` | **default variant fallback** — prop value가 `top/default`가 아니라 컴포넌트 base 명칭. instance에서 `top/default`로 매칭 시 이 variant가 반환됨 |
 | `2420:29902` | `top` | `success` | |
 | `2420:29918` | `top` | `error` | |
 | `2420:29934` | `side` | `default` | |
@@ -125,7 +125,7 @@ set ID: `2420:63610`. 라벨 컴포넌트.
 
 > Label과 wrapper는 **별도 axis** — wrapper의 size 변경 시 label size도 인스턴스로 함께 조정.
 
-## Inner Input — `✅input_v0.2`
+## Inner Input — `input_v0.2`
 
 text 영역 자체 (wrapper 내부에 포함):
 - size: xs_24 / sm_28 / md_32 (default) / lg_40 / xl_48 / 2xl_64
@@ -206,4 +206,4 @@ text 영역 자체 (wrapper 내부에 포함):
 - placeholder와 disabled text는 같은 `#8f8f8f` (구분은 disabled bg `#bcbcbc`로)
 - size별 border 굵기 다름: xs~md=1, xl=1.5, 2xl=2
 - Character Count: footer 우측, `body/xxs (M)` 12px
-- 6 wrapper variants는 validation 상태 변형 — 인터랙션 state(hover/focus/disabled)는 inner `✅input_v0.2`에서 처리
+- 6 wrapper variants는 validation 상태 변형 — 인터랙션 state(hover/focus/disabled)는 inner `input_v0.2`에서 처리

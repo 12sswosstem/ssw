@@ -2,7 +2,7 @@
 
 > 출처 (Figma):
 > - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA`
->   - section `2689:91695` `✅table_v0.4`
+>   - section `2689:91695` `table_v0.4`
 >   - `2413:88136` `table atomic-v0.4` (key `662b51245b7fea452e1c95517d196fe1787059df`, **432 variants**)
 >   - `7108:55832` table atomic 매트릭스 (셀 단위 인스턴스 모음)
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`
