@@ -3,7 +3,7 @@
 > 출처 (Figma):
 > - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA`
 >   - section `671:35357` `divider _v0.1`
->   - `1028:50778` `✅divider_v0.1` (key `6e10a4d0daf86f8b551838189ecac0c94f2d9e23`, 47 variants)
+>   - `1028:50778` `divider_v0.1` (key `6e10a4d0daf86f8b551838189ecac0c94f2d9e23`, 47 variants)
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`
 >   - `1:88828` 디바이더(Divider) — 가이드 페이지 (H1 / Anatomy / Properties / 디바이더의 사용 / Guidelines)
 >   - `1:88831` H1 (제목 + 본문 설명)

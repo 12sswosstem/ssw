@@ -103,7 +103,7 @@
 | `collapsed-2` | `Default` | `3629:68283` | 44 × 847 |
 | `expanded` | `Default` | `3629:65811` | 118 × 908 |
 
-## Cloud X — `✅gnb_variation_cloudx` (`3648:71681`, 4 variants)
+## Cloud X — `gnb_variation_cloudx` (`3648:71681`, 4 variants)
 
 | Property 1 | variant ID | 크기 | 비고 |
 |---|---|---|---|

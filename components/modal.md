@@ -78,7 +78,7 @@
 
 ## Variant IDs
 
-### Wrapper (`✅modal_atomic` outer container)
+### Wrapper (`modal_atomic` outer container)
 
 | style \\ type | horizontal | vertical |
 |---|---|---|

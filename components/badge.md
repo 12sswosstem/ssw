@@ -1,8 +1,8 @@
 # Badge
 
 > 출처:
-> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `671:30059` `✅badge_v0.22` (production component)
-> - atom set: `671:29566` `✅badges_v0.22_atom` (~70 variants)
+> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `671:30059` `badge_v0.22` (production component)
+> - atom set: `671:29566` `badges_v0.22_atom` (~70 variants)
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG` / page `1:83679` (가이드 페이지 — 세션 만료로 일부 미회수)
 > - `figma-export.json` (2026-05-04 export)
 >
@@ -12,7 +12,7 @@
 ## Overview
 - 아이콘/카운트/상태 표시용 작은 라벨 (요소 우상단 overlay 또는 inline)
 - 모드: **light** (production 노드 기준; figma-export.json에 dark도 일부 정의)
-- 컴포넌트 셋: `✅badges_v0.22_atom` (key `3664bb6eb310be08681f5876b31f582729a096d9`)
+- 컴포넌트 셋: `badges_v0.22_atom` (key `3664bb6eb310be08681f5876b31f582729a096d9`)
 
 ## Number tokens (Mode 1)
 

@@ -1,8 +1,8 @@
 # Dropdown
 
 > 출처:
-> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `3294:332337` `✅ Dropdown`
->   - 컴포넌트 셋: `3661:108106` `✅Dropdown_v1.1` (12 variants 가시 — Size × Label Position)
+> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `3294:332337` ` Dropdown`
+>   - 컴포넌트 셋: `3661:108106` `Dropdown_v1.1` (12 variants 가시 — Size × Label Position)
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`:
 >   - `1:311147`, `1:310994` (가이드 페이지)
 > - `figma-export.json` (2026-05-04 export) — `Dropdown_v1.0` (`3294:183091`, 192 variants — 이전 버전)
@@ -13,7 +13,7 @@
 ## Overview
 - 단일 선택 또는 다중 선택 드롭다운
 - 모드: **light** (production variable_defs 기준)
-- 현재 production 컴포넌트: **`✅Dropdown_v1.1`** (`3661:108106`)
+- 현재 production 컴포넌트: **`Dropdown_v1.1`** (`3661:108106`)
   - 2축 prop: Size × Label Position (12 variants)
 - 이전 버전 `Dropdown_v1.0` (`3294:183091`, 192 variants) — figma-export.json 기준 (state/type/MPR 풀 매트릭스)
 
@@ -97,7 +97,7 @@
 > - bg/selected: `#fbdfcc`(dark) → **`#fef7f2`** (light orange)
 > - 신규: `border/hover` `#eb6100`, `border/focused` `#000000`
 
-## Variants — `✅Dropdown_v1.1` (2축, 12 variants)
+## Variants — `Dropdown_v1.1` (2축, 12 variants)
 
 ### prop verbatim
 - **Size**: `xs_24` / `sm_28` / `md_32` / `lg_40` / `xl_48` / `2xl_64`
