@@ -242,7 +242,131 @@ async function tx(content, opts = {}) {
 }
 
 // =============================================================================
-// 6. 컴포넌트 빌더 — Input / Button / Logo / Header
+// 6. Component Instance 헬퍼 (옵션 B 패턴)
+// =============================================================================
+// 작업 파일에 button / textinput variant set이 있으면 instance를 직접 호출.
+// 없으면 native frame fallback. ssw-button-instance-runner.js 패턴.
+
+const COMP_CACHE = {};
+
+async function findComponentSet(namePattern, label) {
+  if (COMP_CACHE[label] !== undefined) return COMP_CACHE[label];
+
+  // 1. 같은 파일 전체에서 이름 매칭
+  const all = figma.root.findAll(n => n.type === "COMPONENT_SET" && namePattern.test(n.name));
+  if (!all.length) {
+    console.log(`[${label}] ❌ COMPONENT_SET 미발견 → native fallback`);
+    COMP_CACHE[label] = null;
+    return null;
+  }
+  // 정확도 높은 후보 선호 (✅, beta, v0 prefix)
+  const preferred = all.find(c => /✅|beta|v0/i.test(c.name)) || all[0];
+  console.log(`[${label}] ✅ COMPONENT_SET '${preferred.name}' (variants: ${preferred.children.length})`);
+  COMP_CACHE[label] = preferred;
+  return preferred;
+}
+
+function detectPropKeys(variants) {
+  if (!variants.length || !variants[0].variantProperties) return null;
+  const keys = Object.keys(variants[0].variantProperties);
+  const valuesByKey = {};
+  for (const v of variants) {
+    if (!v.variantProperties) continue;
+    for (const [k, val] of Object.entries(v.variantProperties)) {
+      valuesByKey[k] = valuesByKey[k] || new Set();
+      valuesByKey[k].add(val);
+    }
+  }
+  const findKey = re => keys.find(k => re.test(k));
+  return {
+    style: findKey(/style|type|variant(?!t)/i),
+    size:  findKey(/size/i),
+    state: findKey(/state|status/i),
+    layout: findKey(/layout|kind/i),
+    keys, valuesByKey,
+  };
+}
+
+function findVariant(variants, propKeys, target) {
+  return variants.find(v => {
+    const p = v.variantProperties;
+    if (!p) return false;
+    for (const [k, val] of Object.entries(target)) {
+      const propKey = propKeys[k];
+      if (propKey && p[propKey] !== val) return false;
+    }
+    return true;
+  });
+}
+
+// instance 안의 첫 TEXT node에 텍스트 주입
+function setInstanceText(instance, text) {
+  // 1. componentProperties (TEXT 타입 prop) 우선
+  if (instance.componentProperties) {
+    for (const [k, v] of Object.entries(instance.componentProperties)) {
+      if (v.type === "TEXT") {
+        try { instance.setProperties({ [k]: text }); return true; } catch (_) {}
+      }
+    }
+  }
+  // 2. nested TEXT 노드 직접 변경
+  const textNode = instance.findOne(n => n.type === "TEXT");
+  if (textNode) {
+    figma.loadFontAsync(textNode.fontName).then(() => {
+      try { textNode.characters = text; } catch (_) {}
+    });
+    return true;
+  }
+  return false;
+}
+
+async function tryButtonInstance(parent, labelText) {
+  const compSet = await findComponentSet(/button/i, "button");
+  if (!compSet) return null;
+  const variants = compSet.children.filter(c => c.type === "COMPONENT");
+  const propKeys = detectPropKeys(variants);
+  if (!propKeys) return null;
+
+  // brand-primary / xl / default 우선, 매칭 실패 시 첫 variant
+  const target = {
+    style: "brand-primary",
+    size: "xl",
+    state: "default",
+  };
+  const v = findVariant(variants, propKeys, target) || variants[0];
+  console.log(`[button] variant: ${v.name}`);
+  const inst = v.createInstance();
+  parent.appendChild(inst);
+  inst.layoutSizingHorizontal = "FILL";
+  setInstanceText(inst, labelText);
+  return inst;
+}
+
+async function tryInputInstance(parent, placeholderText) {
+  const compSet = await findComponentSet(/textinput|text input|^input$/i, "input");
+  if (!compSet) return null;
+  const variants = compSet.children.filter(c => c.type === "COMPONENT");
+  const propKeys = detectPropKeys(variants);
+  if (!propKeys) return null;
+
+  // xl_48 또는 lg_40 / default 우선
+  const target = { size: "xl_48", state: "default" };
+  let v = findVariant(variants, propKeys, target);
+  if (!v) {
+    target.size = "lg_40";
+    v = findVariant(variants, propKeys, target);
+  }
+  if (!v) v = variants[0];
+  console.log(`[input] variant: ${v.name}`);
+  const inst = v.createInstance();
+  parent.appendChild(inst);
+  inst.layoutSizingHorizontal = "FILL";
+  setInstanceText(inst, placeholderText);
+  return inst;
+}
+
+// =============================================================================
+// 7. 컴포넌트 빌더 — Input / Button / Logo / Header (instance-first, fallback to native)
 // =============================================================================
 
 async function buildLogo(parent) {
@@ -312,7 +436,7 @@ async function buildField(parent, labelText, placeholderText) {
   field.layoutSizingHorizontal = "FILL";
   field.layoutSizingVertical = "HUG";
 
-  // Label
+  // Label (native — input 컴포넌트 외부)
   const label = await tx(labelText, {
     weight: "Medium",
     fontSize: 14,
@@ -322,7 +446,11 @@ async function buildField(parent, labelText, placeholderText) {
   });
   field.appendChild(label);
 
-  // Input (textinput xl_48)
+  // Input — instance 우선, 없으면 native frame
+  const inst = await tryInputInstance(field, placeholderText);
+  if (inst) return field;
+
+  // Fallback: native textinput xl_48
   const input = af(`Input/${labelText}`, {
     dir: "HORIZONTAL", justify: "MIN", align: "CENTER",
     px: INPUT.padding, py: 0,
@@ -337,7 +465,6 @@ async function buildField(parent, labelText, placeholderText) {
   input.primaryAxisSizingMode = "FIXED";
   input.counterAxisSizingMode = "FIXED";
 
-  // Placeholder
   const ph = await tx(placeholderText, {
     weight: "Regular",
     fontSize: INPUT.fontSize,
@@ -352,6 +479,11 @@ async function buildField(parent, labelText, placeholderText) {
 }
 
 async function buildLoginButton(parent, labelText) {
+  // Instance 우선
+  const inst = await tryButtonInstance(parent, labelText);
+  if (inst) return inst;
+
+  // Fallback: native button xl
   const btn = af("Button/Login", {
     dir: "HORIZONTAL", justify: "CENTER", align: "CENTER",
     px: BUTTON.hPad, py: 0, gap: 4,
@@ -483,6 +615,15 @@ async function main() {
 
   // Spacer flex grow to push content
   // (autolayout justify=MIN이므로 위쪽 정렬 유지)
+
+  // 컴포넌트 인스턴스 매칭 결과 요약
+  console.log(`\n╔═══ Component Instance 매칭 결과 ═══════════════════╗`);
+  console.log(`║ button: ${COMP_CACHE.button ? "✅ instance 사용" : "❌ native fallback"}`);
+  console.log(`║ input:  ${COMP_CACHE.input  ? "✅ instance 사용" : "❌ native fallback"}`);
+  console.log(`╚═══════════════════════════════════════════════════╝`);
+  if (!COMP_CACHE.button || !COMP_CACHE.input) {
+    console.log(`\n💡 instance 매칭 실패 시:\n  1) UI-Kit 파일 또는 button/textinput variant set이 있는 작업 파일에서 실행\n  2) variant set 이름에 'button' / 'textinput' / 'text input' 포함 필요`);
+  }
 
   figma.viewport.scrollAndZoomIntoView([screen]);
   figma.notify("✅ 모바일 로그인 화면 생성 완료");
