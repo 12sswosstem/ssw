@@ -18,6 +18,41 @@
 - 컴포넌트: `Textinput/Text Field` (wrapper) — text input + label + footer 통합
 - 사이즈: xs_24 → sm_28 → md_32 → lg_40 → xl_48 → 2xl_64
 
+## Figma Variable Name Lookup (이모지 제거 후)
+
+> 사용자 file에서 variable / textStyle / component name의 이모지 prefix 일괄 제거 (2026-05-08).
+> Figma library publish 완료. variable ID는 그대로 유지되어 binding/instance 영향 없음.
+> DS Runner / TalkToFigma 호출 시 아래 새 이름 사용.
+
+### Color
+input은 4개 prefix로 분리되어 있음:
+
+#### `text input/*` — wrapper-level (label · required mark · validation 표시)
+- `text input/bg/default` = `#ffffff`
+- `text input/text/default` = `#2b2b2b`
+- `text input/text/label` = `#565656`
+- `text input/text/read only-pms` = `#2b2b2b`
+- `text input/border/default` = `#a5a5a5`
+- `text input/icon/default` = `#8f8f8f`
+- `text input/etc/required mark` = `#f03823` (필수 `*`)
+- `text input/etc/error` = `#f03823` (validation=error)
+- `text input/etc/success` = `#05834e` (validation=success)
+
+#### `input common/*` — inner input field (모든 input 공유)
+- `input common/bg/{default, disabled}` = `#ffffff` / `#bcbcbc`
+- `input common/text/{default, placeholder, disabled, read only-pms}` = `#2b2b2b` / `#8f8f8f` / `#8f8f8f` / `#2b2b2b`
+- `input common/border/{default, hover, focused, disabled}` = `#bcbcbc` / `#eb6100` (orange) / `#000000` / `#a5a5a5`
+
+### Number
+- `input_(dropdown)/height/{xs_24, sm_28, md_32, lg_40, xl_48, 2xl_64}` → 24 / 28 / 32 / 40 / 48 / 64
+- `textinput/border/{xs_24..2xl_64}` → 1 / 1 / 1 / 1 / 1.5 / 2 (size별 굵기)
+
+### Typography (textStyle)
+- 라벨 size별: `body/sm (M)` (m_14, default) · `body/md (M)` (l_16) · 12pt Medium 직접 지정 (s_12)
+- 본문: `body/sm` / `body/md` / `body/xl` (size별)
+- help text · count: `body/xxs (M)` (12 / 14)
+- `tokens/typography/text-style.js#body` 에 verbatim 등록됨
+
 ## Number tokens (Mode 1)
 
 ### height (px) — `input_(dropdown)/height/{size}`
