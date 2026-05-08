@@ -276,12 +276,28 @@ function collectSelectionVariantSets() {
     else if (s.type === "COMPONENT" && s.parent && s.parent.type === "COMPONENT_SET") sets.push(s.parent);
   }
   SELECTION_SETS = sets;
-  if (!sets.length) {
-    console.log(`[selection] variant set 없음 — instance 모드 비활성, native fallback 사용`);
-    console.log(`            💡 instance 매칭 원할 시: button + textinput variant set을 selection으로 두고 실행`);
-  } else {
+  if (sets.length) {
     console.log(`[selection] variant set ${sets.length}개:`);
-    for (const s of sets) console.log(`            · ${s.name} (variants: ${s.children.length})`);
+    for (const s of sets) console.log(`            · ${s.name}`);
+  }
+}
+
+// 같은 파일의 모든 페이지에서 COMPONENT_SET 수집 (선택 사항).
+// findAllWithCriteria는 인덱스 기반 — findAll보다 안전하지만 매우 큰 파일에선 느림.
+async function collectAllVariantSets() {
+  try {
+    if (typeof figma.loadAllPagesAsync === "function") {
+      console.log("[search] loadAllPagesAsync...");
+      await figma.loadAllPagesAsync();
+    }
+    console.log("[search] findAllWithCriteria(COMPONENT_SET)...");
+    const all = (typeof figma.root.findAllWithCriteria === "function")
+      ? figma.root.findAllWithCriteria({ types: ["COMPONENT_SET"] })
+      : figma.root.findAll(n => n.type === "COMPONENT_SET");
+    console.log(`[search] 전체 파일 COMPONENT_SET ${all.length}개 발견`);
+    SELECTION_SETS = SELECTION_SETS.concat(all);
+  } catch (e) {
+    console.log(`[search] 전체 검색 실패: ${e.message} — selection만 사용`);
   }
 }
 
@@ -587,8 +603,12 @@ async function buildLinkRow(parent) {
 // =============================================================================
 
 async function main() {
-  console.log("[1/8] selection 수집");
+  console.log("[1/8] selection 수집 + 전체 파일 검색");
   collectSelectionVariantSets();
+  if (SELECTION_SETS.length === 0) {
+    // selection 없을 때만 전체 파일 검색 (test 페이지 같은 빈 페이지에서 사용)
+    await collectAllVariantSets();
+  }
 
   console.log("[2/8] design system (variables · text styles) 로드");
   await loadDesignSystem();
