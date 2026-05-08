@@ -249,37 +249,40 @@ async function tx(content, opts = {}) {
 
 const COMP_CACHE = {};
 
-async function findComponentSet(namePattern, label) {
-  if (COMP_CACHE[label] !== undefined) return COMP_CACHE[label];
+// selection-only 매칭 (hang 회피)
+// findAll/findAllWithCriteria는 큰 라이브러리 파일에서 hang 가능 → selection만 사용.
+// 전역 SELECTION_SETS는 main 시작 시 한 번 collect.
+let SELECTION_SETS = [];
 
-  // 1. selection 우선 (가장 빠름, hang 위험 없음)
-  const sel = figma.currentPage.selection;
-  for (const s of sel) {
-    if (s.type === "COMPONENT_SET" && namePattern.test(s.name)) {
-      console.log(`[${label}] ✅ selection: '${s.name}' (variants: ${s.children.length})`);
+function findComponentSet(namePattern, label) {
+  if (COMP_CACHE[label] !== undefined) return COMP_CACHE[label];
+  for (const s of SELECTION_SETS) {
+    if (namePattern.test(s.name)) {
+      console.log(`[${label}] ✅ '${s.name}' (variants: ${s.children.length})`);
       COMP_CACHE[label] = s;
       return s;
     }
-    if (s.type === "COMPONENT" && s.parent && s.parent.type === "COMPONENT_SET" && namePattern.test(s.parent.name)) {
-      console.log(`[${label}] ✅ selection (variant): '${s.parent.name}'`);
-      COMP_CACHE[label] = s.parent;
-      return s.parent;
-    }
   }
+  console.log(`[${label}] ❌ selection에 매칭 variant set 없음 → native fallback`);
+  COMP_CACHE[label] = null;
+  return null;
+}
 
-  // 2. 현재 페이지만 검색 (root 전체 트래버스 회피 — hang 방지)
-  const all = figma.currentPage.findAll(n => n.type === "COMPONENT_SET" && namePattern.test(n.name));
-  if (!all.length) {
-    console.log(`[${label}] ❌ COMPONENT_SET 미발견 → native fallback`);
-    console.log(`         💡 hang 회피: 현재 페이지만 검색합니다. button/textinput variant set이 같은 페이지에 있어야 매칭됩니다.`);
-    COMP_CACHE[label] = null;
-    return null;
+function collectSelectionVariantSets() {
+  const sel = figma.currentPage.selection;
+  const sets = [];
+  for (const s of sel) {
+    if (s.type === "COMPONENT_SET") sets.push(s);
+    else if (s.type === "COMPONENT" && s.parent && s.parent.type === "COMPONENT_SET") sets.push(s.parent);
   }
-  // 정확도 높은 후보 선호 (✅, beta, v0 prefix)
-  const preferred = all.find(c => /✅|beta|v0/i.test(c.name)) || all[0];
-  console.log(`[${label}] ✅ COMPONENT_SET '${preferred.name}' (variants: ${preferred.children.length})`);
-  COMP_CACHE[label] = preferred;
-  return preferred;
+  SELECTION_SETS = sets;
+  if (!sets.length) {
+    console.log(`[selection] variant set 없음 — instance 모드 비활성, native fallback 사용`);
+    console.log(`            💡 instance 매칭 원할 시: button + textinput variant set을 selection으로 두고 실행`);
+  } else {
+    console.log(`[selection] variant set ${sets.length}개:`);
+    for (const s of sets) console.log(`            · ${s.name} (variants: ${s.children.length})`);
+  }
 }
 
 function detectPropKeys(variants) {
@@ -340,7 +343,7 @@ async function setInstanceText(instance, text) {
 }
 
 async function tryButtonInstance(parent, labelText) {
-  const compSet = await findComponentSet(/button/i, "button");
+  const compSet = findComponentSet(/button/i, "button");
   if (!compSet) return null;
   const variants = compSet.children.filter(c => c.type === "COMPONENT");
   const propKeys = detectPropKeys(variants);
@@ -362,7 +365,7 @@ async function tryButtonInstance(parent, labelText) {
 }
 
 async function tryInputInstance(parent, placeholderText) {
-  const compSet = await findComponentSet(/textinput|text input|^input$/i, "input");
+  const compSet = findComponentSet(/textinput|text input|^input$/i, "input");
   if (!compSet) return null;
   const variants = compSet.children.filter(c => c.type === "COMPONENT");
   const propKeys = detectPropKeys(variants);
@@ -584,11 +587,19 @@ async function buildLinkRow(parent) {
 // =============================================================================
 
 async function main() {
+  console.log("[1/8] selection 수집");
+  collectSelectionVariantSets();
+
+  console.log("[2/8] design system (variables · text styles) 로드");
   await loadDesignSystem();
-  await figma.loadFontAsync({ family: "Pretendard", style: "Regular" });
-  await figma.loadFontAsync({ family: "Pretendard", style: "Medium" });
-  await figma.loadFontAsync({ family: "Pretendard", style: "SemiBold" });
-  await figma.loadFontAsync({ family: "Pretendard", style: "Bold" });
+
+  console.log("[3/8] Pretendard 폰트 로드");
+  await Promise.all([
+    figma.loadFontAsync({ family: "Pretendard", style: "Regular" }),
+    figma.loadFontAsync({ family: "Pretendard", style: "Medium" }),
+    figma.loadFontAsync({ family: "Pretendard", style: "SemiBold" }),
+    figma.loadFontAsync({ family: "Pretendard", style: "Bold" }),
+  ]);
 
   // Mobile screen frame
   const screen = af("Login / Mobile", {
@@ -609,7 +620,10 @@ async function main() {
   screen.x = figma.viewport.center.x - SCREEN_W / 2;
   screen.y = figma.viewport.center.y - SCREEN_H / 2;
 
+  console.log("[4/8] 메인 screen frame 생성");
+
   // Header (logo + title + subtitle)
+  console.log("[5/8] Header (Logo + Title + Subtitle)");
   await buildHeader(screen);
 
   // Form (ID, Password)
@@ -618,7 +632,9 @@ async function main() {
   form.layoutSizingHorizontal = "FILL";
   form.layoutSizingVertical = "HUG";
 
+  console.log("[6/8] Field/아이디");
   await buildField(form, "아이디", "아이디를 입력하세요");
+  console.log("[6/8] Field/비밀번호");
   await buildField(form, "비밀번호", "비밀번호를 입력하세요");
 
   // Login button
@@ -627,9 +643,11 @@ async function main() {
   buttonWrap.layoutSizingHorizontal = "FILL";
   buttonWrap.layoutSizingVertical = "HUG";
 
+  console.log("[7/8] Login Button");
   await buildLoginButton(buttonWrap, "로그인");
 
   // Link row (아이디 찾기 · 비밀번호 찾기 · 회원가입)
+  console.log("[8/8] Link Row");
   await buildLinkRow(buttonWrap);
 
   // Spacer flex grow to push content
