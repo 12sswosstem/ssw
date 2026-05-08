@@ -56,69 +56,73 @@ const FOCUS = {
 const FOCUS_GAP = 2;
 
 // 9 style × (bg, fg, border) — light mode hex + variable name candidates
-// candidates는 첫 매칭 사용. login-runner와 같은 prefix 패턴 (`❤️` 이모지 우선).
+// 새 이름 (2026-05-08 ❤️/✅/💟 prefix 제거 후 baseline).
+// production verbatim: text → subtle, distructive → destructive 명칭 정정.
 const STYLE = {
   "brand-primary": {
     isDark: true,
-    bg:     { hex: "#eb6100", names: ["❤️button/bg/brand-primary", "button/bg/brand-primary", "common/brand-A_default"] },
-    fg:     { hex: "#f9f9f9", names: ["❤️button/fg/brand-primary", "button/fg/brand-primary", "Color(New)/White/50", "Color/Neutral/White/50"] },
-    border: { hex: "#eb6100", names: ["❤️button/border/brand-primary", "button/border/brand-primary"] },
+    bg:     { hex: "#eb6100", names: ["button/bg/brand-primary"] },
+    fg:     { hex: "#f9f9f9", names: ["button/fg/brand-primary"] },
+    border: { hex: "#eb6100", names: ["button/border/brand-primary"] },
   },
   "brand-secondary": {
     isDark: false,
-    bg:     { hex: "#ffffff", names: ["❤️button/bg/brand-secondary", "button/bg/brand-secondary", "Color(New)/White/50"] },
-    fg:     { hex: "#eb6100", names: ["❤️button/fg/brand-secondary", "button/fg/brand-secondary"] },
-    border: { hex: "#727272", names: ["❤️button/border/brand-secondary", "button/border/brand-secondary"] },
+    bg:     { hex: "#ffffff", names: ["button/bg/brand-secondary"] },
+    fg:     { hex: "#eb6100", names: ["button/fg/brand-secondary"] },
+    border: { hex: "#727272", names: ["button/border/brand-secondary"] },
   },
   "brand-tertiary": {
     isDark: false,
-    bg:     { hex: "#fbdfcc", names: ["❤️button/bg/brand-tertiary", "button/bg/brand-tertiary", "common/brand-A_morelighter"] },
-    fg:     { hex: "#eb6100", names: ["❤️button/fg/brand-tertiary", "button/fg/brand-tertiary"] },
-    border: null,
+    bg:     { hex: "#fbdfcc", names: ["button/bg/brand-tertiary"] },
+    fg:     { hex: "#eb6100", names: ["button/fg/brand-tertiary"] },
+    border: { hex: "#ffffff00", names: ["button/border/brand-tertiary"] },
   },
   "neutral-primary": {
     isDark: true,
-    bg:     { hex: "#2b2b2b", names: ["❤️button/bg/neutral-primary", "button/bg/neutral-primary"] },
-    fg:     { hex: "#f9f9f9", names: ["❤️button/fg/neutral-primary", "button/fg/neutral-primary"] },
-    border: { hex: "#2b2b2b", names: ["❤️button/border/neutral-primary", "button/border/neutral-primary"] },
+    bg:     { hex: "#2b2b2b", names: ["button/bg/neutral-primary"] },
+    fg:     { hex: "#f9f9f9", names: ["button/fg/neutral-primary"] },
+    border: { hex: "#2b2b2b", names: ["button/border/neutral-primary"] },
   },
   "neutral-secondary": {
     isDark: false,
-    bg:     { hex: "#ffffff", names: ["❤️button/bg/neutral-secondary", "button/bg/neutral-secondary", "Color(New)/White/50"] },
-    fg:     { hex: "#565656", names: ["❤️button/fg/neutral-secondary", "button/fg/neutral-secondary", "etc/text-secondary"] },
-    border: { hex: "#a5a5a5", names: ["❤️button/border/neutral-secondary", "button/border/neutral-secondary"] },
+    bg:     { hex: "#ffffff", names: ["button/bg/neutral-secondary"] },
+    fg:     { hex: "#565656", names: ["button/fg/neutral-secondary"] },
+    border: { hex: "#a5a5a5", names: ["button/border/neutral-secondary"] },
   },
   "neutral-tertiary": {
     isDark: false,
-    bg:     { hex: "#e9e9e9", names: ["❤️button/bg/neutral-tertiary", "button/bg/neutral-tertiary"] },
-    fg:     { hex: "#565656", names: ["❤️button/fg/neutral-tertiary", "button/fg/neutral-tertiary"] },
-    border: { hex: "#a5a5a5", names: ["❤️button/border/neutral-tertiary", "button/border/neutral-tertiary"] },
+    bg:     { hex: "#e9e9e9", names: ["button/bg/neutral-tertiary"] },
+    fg:     { hex: "#565656", names: ["button/fg/neutral-tertiary"] },
+    border: { hex: "#a5a5a5", names: ["button/border/neutral-tertiary"] },
   },
-  "text": {
+  // 이전 'text' 명칭이 production에서 'subtle'로 표준화됨
+  "subtle": {
     isDark: false,
-    bg:     null,
-    fg:     { hex: "#606881", names: ["❤️button/fg/text", "button/fg/text"] },
-    border: null,
+    bg:     { hex: "#ffffff00", names: ["button/bg/subtle"] },
+    fg:     { hex: "#565656", names: ["button/fg/subtle"] },
+    border: { hex: "#373d4c00", names: ["button/border/subtle"] },
   },
-  "distructive-primary": {
+  // 이전 'distructive' 오타가 production에서 'destructive'로 정정됨
+  "destructive-primary": {
     isDark: true,
-    bg:     { hex: "#f03823", names: ["❤️button/bg/distructive-primary", "button/bg/distructive-primary", "Color(New)/Red/500"] },
-    fg:     { hex: "#f9f9f9", names: ["❤️button/fg/distructive-primary", "button/fg/distructive-primary"] },
-    border: { hex: "#f03823", names: ["❤️button/border/distructive-primary", "button/border/distructive-primary"] },
+    bg:     { hex: "#f03823", names: ["button/bg/destructive-primary"] },
+    fg:     { hex: "#f9f9f9", names: ["button/fg/destructive-primary"] },
+    border: { hex: "#f03823", names: ["button/border/destructive-primary"] },
   },
-  "distructive-secondary": {
+  "destructive-secondary": {
     isDark: false,
-    bg:     null,
-    fg:     { hex: "#f03823", names: ["❤️button/fg/distructive-secondary", "button/fg/distructive-secondary"] },
-    border: { hex: "#f03823", names: ["❤️button/border/distructive-secondary", "button/border/distructive-secondary"] },
+    bg:     { hex: "#ffffff00", names: ["button/bg/destructive-secondary"] },
+    fg:     { hex: "#f03823", names: ["button/fg/destructive-secondary"] },
+    border: { hex: "#f03823", names: ["button/border/destructive-secondary"] },
   },
 };
 const STYLES = Object.keys(STYLE);
 
+// production 명칭: 'disabled' → 'disabled-gray' (button.md verbatim)
 const DISABLED = {
-  bg:     { hex: "#dadada", names: ["❤️button/bg/disabled", "button/bg/disabled"] },
-  fg:     { hex: "#a5a5a5", names: ["❤️button/fg/disabled", "button/fg/disabled"] },
-  border: { hex: "#dadada", names: ["❤️button/border/disabled", "button/border/disabled"] },
+  bg:     { hex: "#bcbcbc", names: ["button/bg/disabled-gray"] },
+  fg:     { hex: "#a5a5a5", names: ["button/fg/disabled-gray"] },
+  border: { hex: "#a5a5a5", names: ["button/border/disabled-gray"] },
 };
 
 const OVERLAY = {
@@ -126,27 +130,27 @@ const OVERLAY = {
   pressed: { dark: { color: "#ffffff", opacity: 0.25 }, light: { color: "#000000", opacity: 0.10 } },
 };
 
-const FOCUS_RING_COLOR = { hex: "#000000", names: ["❤️button/common/focus-ring", "button/common/focus-ring", "common/focus-ring"] };
+const FOCUS_RING_COLOR = { hex: "#000000", names: ["button/common/focus-ring"] };
 
-// Number variable candidates — 사이즈별 토큰 이름 후보
+// Number variable candidates — 사이즈별 토큰 이름 후보 (이모지 제거 + Figma verbatim)
+// ⚠️ 'conrner radius'는 Figma 변수명의 오타 그대로 (corner 아님). verbatim 매칭 필요.
 function numVarsForSize(sz) {
   return {
-    height:    [`❤️button/size/${sz}`,         `button/size/${sz}`,         `Size/height/button_${sz}`],
-    hPad:      [`❤️button/h-padding/${sz}`,    `button/h-padding/${sz}`],
-    radius:    [`❤️button/corner-radius/${sz}`,`button/corner-radius/${sz}`],
-    border:    [`❤️button/border/${sz}`,       `button/border/${sz}`],
-    fontSize:  [`❤️button/font-size/${sz}`,    `button/font-size/${sz}`,    `Typography/font size/button_${sz}`],
-    lineHeight:[`❤️button/line-height/${sz}`,  `button/line-height/${sz}`,  `Size/height/button_lh_${sz}`],
+    height:    [`button/size/${sz}`,             `Size/height/button_${sz}`],
+    hPad:      [`button/h-padding/${sz}`],
+    radius:    [`button/conrner radius/${sz}`,   `button/corner-radius/${sz}`],
+    border:    [`button/border/${sz}`],
+    fontSize:  [`Typography/font size/button_${sz}`, `button/font-size/${sz}`],
+    lineHeight:[`Size/height/button_${sz}`,      `button/line-height/${sz}`],
   };
 }
 
-// TextStyle name candidates — button.md Typography 표 이름
+// TextStyle name candidates — production은 'v0.4/button/{sz} (SB)' 형식
 function textStyleNamesForSize(sz) {
   return [
-    `❤️button/${sz} (SB)`,
-    `button/${sz} (SB)`,
-    `❤️v0.4/button/${sz}`,
+    `v0.4/button/${sz} (SB)`,
     `v0.4/button/${sz}`,
+    `button/${sz} (SB)`,
   ];
 }
 
