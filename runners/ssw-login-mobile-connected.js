@@ -38,6 +38,7 @@ const T = {
 // ===== 변수 / 텍스트 스타일 캐시 =====
 const COLOR_VARS = {};
 const TEXT_STYLES = {};
+const STYLE_FONTS = new Set(); // textStyle이 사용하는 fontName 집합 (미리 로드용)
 let MATCH_COUNTS = { colorTotal: 0, colorHits: 0, styleTotal: 0, styleHits: 0 };
 
 // ===== timeout 헬퍼 =====
@@ -95,6 +96,11 @@ async function loadDesignSystem() {
       for (const name of names) {
         if (TEXT_STYLES[name]) {
           TEXT_STYLES[`__slot__${slot}`] = TEXT_STYLES[name];
+          // 매칭된 style이 사용하는 fontName 수집 (이후 미리 로드)
+          const style = styles.find(s => s.name === name);
+          if (style && style.fontName && typeof style.fontName === "object") {
+            STYLE_FONTS.add(JSON.stringify(style.fontName));
+          }
           MATCH_COUNTS.styleHits++;
           break;
         }
@@ -102,6 +108,25 @@ async function loadDesignSystem() {
     }
   } catch (e) {
     console.log(`  [DS] text styles 실패: ${e.message} → 기본 폰트 fallback`);
+  }
+
+  // textStyle이 사용하는 폰트 미리 로드 (Pretendard 등). 실패하면 textStyle 적용 스킵.
+  if (STYLE_FONTS.size > 0) {
+    const fonts = Array.from(STYLE_FONTS).map(s => JSON.parse(s));
+    console.log(`  [DS] textStyle 폰트 ${fonts.length}종 로드 중: ${fonts.map(f => `${f.family} ${f.style}`).join(", ")}`);
+    try {
+      await Promise.all(fonts.map(f =>
+        withTimeout(figma.loadFontAsync(f), 3000, `font ${f.family} ${f.style}`)
+      ));
+      console.log(`  [DS] textStyle 폰트 로드 완료`);
+    } catch (e) {
+      console.log(`  [DS] textStyle 폰트 로드 실패: ${e.message} → textStyle 적용 스킵 (Inter fallback)`);
+      // 매칭 슬롯 제거 → applyStyle no-op
+      for (const k of Object.keys(TEXT_STYLES)) {
+        if (k.startsWith("__slot__")) delete TEXT_STYLES[k];
+      }
+      MATCH_COUNTS.styleHits = 0;
+    }
   }
 }
 
@@ -302,10 +327,8 @@ function buildField(parent, labelText, placeholderText) {
   input.strokes = [{ type: "SOLID", color: T.inputBd.hex }];
   input.strokeWeight = 1.5;
   input.strokeAlign = "INSIDE";
-  // Border 변수 바인딩
+  // Border 변수 바인딩 (strokes의 boundVariables 직접 설정)
   if (T.inputBd.var) {
-    try { input.setBoundVariable("strokes", T.inputBd.var); } catch (_) {}
-    // 또는 strokes의 boundVariables 직접 설정
     try {
       input.strokes = [{
         type: "SOLID",
