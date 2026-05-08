@@ -1,404 +1,494 @@
 // Number · Component Tokens
-// Source: Figma Variable Collection Number_component (923:58268)
-// 데이터 출처: components/*.md (figma-export.json 2026-05-04 + 일부 production variable_defs)
-
-// ============================================================
-// Form / Input
-// ============================================================
+// Source: Figma Variable Collection — Number_component (Mode 1)
+//
+// 24 컴포넌트 — 각 컴포넌트의 layout/spacing/radius/border 토큰.
+// Sub-category 이름은 Figma 원본 verbatim:
+//   - "h-padding"        : horizontal padding
+//   - "conrner radius"   : Figma 원본 typo 그대로 (corner)
+//   - "container size", "dot size", "icon size", "text size" : Badge sub-categories
 
 export const button = {
-  size: {
-    xxs: { height: 20, hPadding: 4,  textPadding: 4, cornerRadius: 4,  border: 1 },
-    xs:  { height: 24, hPadding: 6,  textPadding: 4, cornerRadius: 4,  border: 1 },
-    sm:  { height: 28, hPadding: 8,  textPadding: 4, cornerRadius: 4,  border: 1 },   // hPadding/textPadding 추정
-    md:  { height: 32, hPadding: 8,  textPadding: 4, cornerRadius: 6,  border: 1 },
-    lg:  { height: 40, hPadding: 12, textPadding: 4, cornerRadius: 6,  border: 1 },
-    xl:  { height: 48, hPadding: 12, textPadding: 8, cornerRadius: 8,  border: 1.5 },
-    "2xl": { height: 64, hPadding: 16, textPadding: 8, cornerRadius: 8,  border: 2 },
-    "3xl": { height: 80, hPadding: 24, textPadding: 8, cornerRadius: 12, border: 2.5 },
-    "4xl": { height: 96, hPadding: 24, textPadding: 8, cornerRadius: 14, border: 3 },
+  gap: {
+    "4xl": 12,
+    "3xl": 8,
+    "2xl": 8,
+    xl: 6,
+    lg: 6,
+    md: 4,
+    sm: 4,
+    xs: 4,
+    xxs: 2,
   },
-  cornerRadius2xlAlt: 10,  // 2xl 둥글기 약화 변형
-  focusRing: {
-    xxs:   { inset: -3,   weight: 1,   radius: 6 },
-    xs:    { inset: -3,   weight: 1,   radius: 6 },
-    sm:    { inset: -3,   weight: 1,   radius: 6 },
-    md:    { inset: -3,   weight: 1,   radius: 8 },
-    lg:    { inset: -3,   weight: 1,   radius: 8 },
-    xl:    { inset: -3.5, weight: 1.5, radius: 10 },
-    "2xl": { inset: -4,   weight: 2,   radius: 10 },
-    "3xl": { inset: -4.5, weight: 2.5, radius: 13 },
-    "4xl": { inset: -5,   weight: 3,   radius: 14 },
-  },
-};
-
-// input/textinput/dropdown 공유 사이즈 (input_(dropdown)/* + textinput/border)
-export const input = {
-  size: {
-    "xs_24":  { height: 24, hPadding: 4,  cornerRadius: 4, border: 1 },   // hPadding 4 추정
-    "sm_28":  { height: 28, hPadding: 8,  cornerRadius: 4, border: 1 },
-    "md_32":  { height: 32, hPadding: 8,  cornerRadius: 4, border: 1 },
-    "lg_40":  { height: 40, hPadding: 12, cornerRadius: 6, border: 1 },
-    "xl_48":  { height: 48, hPadding: 12, cornerRadius: 6, border: 1.5 },
-    "2xl_64": { height: 64, hPadding: 16, cornerRadius: 8, border: 2 },
-  },
-};
-
-// textarea: 별도 토큰 미정의 — Size 스펙 표 기준 (W×H, textArea height)
-export const textarea = {
-  size: {
-    sm: { width: 288, height: 116, textAreaHeight: 68 },  // textAreaHeight 추정
-    md: { width: 288, height: 124, textAreaHeight: 68 },
-    lg: { width: 288, height: 134, textAreaHeight: 78 },
-  },
-};
-
-// dropdown: input과 동일 토큰 공유
-export const dropdown = {
-  size: {
-    "xs_24":  { height: 24, hPadding: 4,  cornerRadius: 4, border: 1 },
-    "sm_28":  { height: 28, hPadding: 8,  cornerRadius: 4, border: 1 },
-    "md_32":  { height: 32, hPadding: 8,  cornerRadius: 4, border: 1 },
-    "lg_40":  { height: 40, hPadding: 12, cornerRadius: 6, border: 1 },
-    "xl_48":  { height: 48, hPadding: 12, cornerRadius: 6, border: 1.5 },
-    "2xl_64": { height: 64, hPadding: 16, cornerRadius: 8, border: 2 },
-  },
-};
-
-// valueStepper: 별도 토큰 없음 (input과 공유)
-export const valueStepper = {};
-
-// ============================================================
-// Selection — control 공유
-// ============================================================
-
-// selection control/* — checkbox/radio/switch 공유
-export const selectionControl = {
-  size: {
-    sm: { container: 20, innerBox: 16,   text: 14, gap: 4, border: 1,    focusRing: 2   },
-    md: { container: 24, innerBox: 19.2, text: 16, gap: 4, border: 1.2,  focusRing: 2.4 },
-    lg: { container: 32, innerBox: 24,   text: 18, gap: 8, border: 1.5,  focusRing: 2   },
-  },
-  // figma-export.json은 md innerBox=20이지만 production은 19.2 (미세차)
-  // lg border 1.875는 indeterminate 변형 추정값
-};
-
-// switch 전용 (track + thumb)
-export const switchControl = {
-  size: {
-    sm: { trackW: 28, trackH: 16, thumb: 12, textSize: 14, gap: 4 },
-    md: { trackW: 36, trackH: 20, thumb: 16, textSize: 16, gap: 4 },
-    lg: { trackW: 44, trackH: 24, thumb: 20, textSize: 18, gap: 8 },
-  },
-  trackRadius: 100,  // pill
-  thumbRadius: 100,
-};
-
-// ============================================================
-// Navigation
-// ============================================================
-
-export const tab = {
-  lined: {
-    size: {
-      xxs: { height: 24, hPadding: 12, border: 2, radius: 4 },
-      xs:  { height: 28, hPadding: 12, border: 2, radius: 4 },
-      sm:  { height: 32, hPadding: 12, border: 2, radius: 4 },
-      md:  { height: 40, hPadding: 16, border: 2, radius: 4 },
-      lg:  { height: 48, hPadding: 20, border: 2, radius: 6 },
-    },
-    gap: 2,
-  },
-  contained: {
-    size: {
-      xxs: { height: 24, hPadding: 12, border: 1 },
-      xs:  { height: 28, hPadding: 12, border: 1 },
-      sm:  { height: 32, hPadding: 12, border: 1 },
-      md:  { height: 40, hPadding: 16, border: 1 },
-      lg:  { height: 48, hPadding: 20, border: 2 },
-    },
-    gap: 2,
-  },
-};
-
-export const segmentedControl = {
-  outlined: {
-    size: {
-      sm: { height: 24 },
-      md: { height: 28 },
-      lg: { height: 32 },
-    },
-  },
-  filled: {
-    size: {
-      sm: { height: 20, width: 24 },  // width = icon only
-      md: { height: 24, width: 28 },
-      lg: { height: 28, width: 32 },
-    },
-  },
-  hPadding: {
-    sm: { iconText: 8,  iconOnly: 2 },
-    md: { iconText: 12, iconOnly: 4 },
-    lg: { iconText: 12, iconOnly: 6 },
-  },
-  gap: 2,
-  radiusSm: 4,
-};
-
-export const menu = {
-  height:  { sm: 32 },
-  padding: { sm: 6, md: 8 },
-  gap:     { sm: 4 },
-  radius:  { sm: 4 },
-  border:  { xs: 1, sm: 2 },
-};
-
-export const breadcrumb = {
-  padding: 2,
-  gap: 4,
-  size: {
-    sm: { itemHeight: 20, font: 12, lineHeight: 14 },  // itemHeight 18~20
-    md: { itemHeight: 24, font: 14, lineHeight: 20 },
-  },
-};
-
-// gnb는 별도 number tokens 표 미제공 — anatomy 폭만
-export const gnb = {
-  cloudx: {
-    collapsed: { width: 44,  height: 908 },  // 추정
-    expanded:  { width: 118, height: 908 },
-  },
-  hmi: {
-    "lg_10": { width: 80, height: 80 },
-    "sm_7":  { width: 48, height: 48 },
-  },
-};
-
-export const toolbar = {};  // 70 tool components × 3 states (별도 size 토큰 없음)
-
-// ============================================================
-// Display
-// ============================================================
-
-export const tag = {
-  height: { xs: 18, sm: 20, md: 24 },
-  padding: {
+  "h-padding": {
+    "4xl": 24,
+    "3xl": 24,
+    "2xl": 16,
+    xl: 12,
+    lg: 12,
+    md: 8,
+    sm: 8,
     xs: 6,
-    // sm: 미정의 (production variable_defs 미노출, 통상 6 또는 10 보간)
-    md: 10,
+    xxs: 4,
   },
-  radius: { xs: 2 },
-};
-
-export const chip = {
-  height:  { xs: 28, sm: 32, md: 40 },
-  padding: { xs: 8,  sm: 10, md: 12 },
-  gap:     { xs: 4,  sm: 6,  md: 8 },
-  radius: {
-    rounded: 999,  // production 또는 가이드 480 추정
-    sqaure:  4,    // Figma 원본 오타 보존
+  border: {
+    "4xl": 3,
+    "3xl": 2.5,
+    "2xl": 2,
+    xl: 1.5,
+    lg: 1,
+    md: 1,
+    sm: 1,
+    xs: 1,
+    xxs: 1,
+  },
+  "conrner radius": {
+    "4xl": 14,
+    "3xl": 12,
+    "2xl 2": 10,
+    "2xl": 8,
+    xl: 8,
+    lg: 6,
+    md: 6,
+    sm: 4,
+    xs: 4,
+    xxs: 4,
+  },
+  "text-padding": {
+    "4xl": 8,
+    "3xl": 8,
+    "2xl": 8,
+    xl: 8,
+    lg: 4,
+    md: 4,
+    sm: 4,
+    xs: 4,
+    xxs: 4,
+  },
+  size: {
+    "4xl": 96,
+    "3xl": 80,
+    "2xl": 64,
+    xl: 48,
+    lg: 40,
+    md: 32,
+    sm: 28,
+    xs: 24,
+    xxs: 20,
   },
 };
 
 export const badge = {
-  size: {
-    xs: { container: 14, dot: 4,  icon: 10, text: 10, border: 1 },
-    sm: { container: 18, dot: 6,  icon: 10, text: 12, border: 1.35 },
-    md: { container: 24, dot: 8,  icon: 14, text: 16, border: 1.8 },
-    lg: { container: 32, dot: 10, icon: 20, text: 18, border: 2.4 },
-    xl: { container: 40, dot: 12, icon: 24, text: 24, border: 3 },
+  "container size": {
+    xl: 40,
+    lg: 32,
+    md: 24,
+    sm: 18,
+    xs: 14,
   },
-  longWidth: {
-    xs: { numberLong: 36.8, text: 33.8 },
-    sm: { numberLong: 41.8, text: 37.8 },
-    md: { numberLong: 55.4, text: 50.4 },
-    lg: { numberLong: 65.2, text: 60.2 },
-    xl: { numberLong: 85,   text: 78 },
+  "dot size": {
+    xl: 12,
+    lg: 10,
+    md: 8,
+    sm: 6,
+    xs: 4,
   },
-};
-
-export const avatar = {
-  radius: {
-    "circle":        999,
-    "rounded":       12,
-    "rounded-ring":  14,
-    "square":        0,
+  "icon size": {
+    xl: 24,
+    lg: 20,
+    md: 14,
+    sm: 10,
+    xs: 10,
   },
-  stroke: {
-    "xs_24":  1,
-    "sm_32":  1.6,
-    "md_40":  2.2,
-    "lg_48":  2.6,
-    "xl_64":  3,
-    "2xl_80": 4.2,
+  "text size": {
+    xl: 24,
+    lg: 18,
+    md: 16,
+    sm: 12,
+    xs: 10,
   },
-  size: {
-    "xs_24":  24,
-    "sm_32":  32,
-    "md_40":  40,
-    "lg_48":  48,
-    "xl_64":  64,
-    "2xl_80": 80,
-  },
-  array: {
-    spread: {
-      "xs_24":  { width: 24, spacing: 26, gap: 2 },
-      "sm_32":  { width: 32, spacing: 36, gap: 4 },
-      "md_40":  { width: 40, spacing: 46, gap: 6 },
-      "lg_48":  { width: 48, spacing: 56, gap: 8 },
-      "xl_64":  { width: 64, spacing: 74, gap: 10 },
-      "2xl_80": { width: 80, spacing: 92, gap: 12 },
-    },
-    stack: {
-      "xs_24":  { width: 24, spacing: 22, overlap: -2 },
-      "sm_32":  { width: 32, spacing: 28, overlap: -4 },
-      "md_40":  { width: 40, spacing: 34, overlap: -6 },
-      "lg_48":  { width: 48, spacing: 40, overlap: -8 },
-      "xl_64":  { width: 64, spacing: 54, overlap: -10 },
-      "2xl_80": { width: 80, spacing: 68, overlap: -12 },
-    },
+  border: {
+    xl: 3,
+    lg: 2.4,
+    md: 1.8,
+    sm: 1.35,
+    xs: 1,
   },
 };
 
-export const divider = {
-  thickness: {
-    "xs":          0.5,
-    "sm_Default":  1,
-    "md":          2,
-    "lg":          4,
-  },
-  inset: {
-    "inset-sm":  16,
-    "inset-md":  24,
-    "inset_lg":  32,  // lg만 underscore
-    "full":      0,
-  },
-  frame: {
-    width:       300,
-    titleHeight: 24,  // Title=true 시
-  },
-};
-
-export const rating = {};  // type/state variant만 정의됨
-
-// ============================================================
-// Layout
-// ============================================================
-
-export const card = {
-  cornerRadius: { sm: 12, md: 8 },
-  size: {
-    "basic":      { width: 360, height: 250 },
-    "vertical":   { width: 360, height: 330, imageHeight: 70 },
-    "horizontal": { width: 777, height: 332, imageWidth: 407, imageHeight: 300 },
-    "filled":     { width: 360, height: 420, overlayHeight: 168 },
-    "harf":       { width: 360, height: 420, overlayHeight: 168 },  // harf=half (Figma 오타)
-  },
-  body: { width: 328, height: 218, padding: 16 },
-  focusRing: 2,
-  borderWidth: 1,
-  disabledOpacity: 0.4,
-};
-
-export const reservationCard = {
-  size: {
-    "case1Default":   { width: 190, height: 46 },  // 30분
-    "case1Disabled":  { width: 190, height: 32 },
-    "case2Default":   { width: 190, height: 92 },  // 1시간
-    "case2Default2":  { width: 186, height: 92 },  // stae=defalut-2
-    "case2Disabled":  { width: 186, height: 92 },
-  },
-  font: { size: 12, lineHeight: 14, weight: 600 },
+export const gnb = {
+  gap: 4,
+  radius: 4,
+  border_hover: 1,
+  border_focused: 2,
+  padding: 2,
+  title: 2,
 };
 
 export const table = {
-  size: {
-    "xs_24":  { height: 24, padding: 8,  gap: 4,  textSize: 14 },
-    "sm_28":  { height: 28, padding: 8,  gap: 4,  textSize: 14 },
-    "md_32":  { height: 32, padding: 8,  gap: 8,  textSize: 14 },
-    "lg_40":  { height: 40, padding: 8,  gap: 8,  textSize: 16 },
-    "xl_48":  { height: 48, padding: 12, gap: 12, textSize: 16 },
-    "2xl_56": { height: 56, padding: 12, gap: 16, textSize: 18 },
+  padding: {
+    xs_24: 8,
+    sm_28: 8,
+    md_32: 8,
+    lg_40: 8,
+    xl_48: 12,
+    "2xl_56": 12,
   },
-  frame: { width: 995, height: 2351 },
+  height: {
+    xs_24: 24,
+    sm_28: 28,
+    md_32: 32,
+    lg_40: 40,
+    xl_48: 48,
+    "2xl_56": 56,
+  },
+  "text-size": {
+    xs_24: 14,
+    sm_28: 14,
+    md_32: 14,
+    lg_40: 16,
+    xl_48: 16,
+    "2xl_56": 18,
+  },
+  gap: {
+    xs_24: 4,
+    sm_28: 4,
+    md_32: 8,
+    lg_40: 8,
+    xl_48: 12,
+    "2xl_56": 16,
+  },
 };
 
-export const list = {};  // MD에 number tokens 미정의 (divider 1px만 언급)
-
-export const expandableList = {
-  nestedPaddingStep: 16,  // depth별 +16 권장
+export const chip = {
+  gap: {
+    xs: 4,
+    sm: 6,
+    md: 8,
+  },
+  radius: {
+    xs: 4,
+    circle: 999,
+  },
+  padding: {
+    sm: 8,
+    md: 10,
+    lg: 12,
+  },
+  height: {
+    xs: 28,
+    sm: 32,
+    md: 40,
+  },
 };
 
-export const hmi = {
-  touchTarget: { min: 48 },  // Apple HIG / Material 권장
+export const selectionControl = {
+  icon: {
+    sm: 16,
+    md: 20,
+    lg: 24,
+  },
+  text: {
+    sm: 16,
+    md: 20,
+    lg: 24,
+  },
 };
 
-// ============================================================
-// Feedback
-// ============================================================
-
-export const tooltip = {
-  padding: { md: 8, lg: 8 },
+export const inputDropdown = {
+  padding: {
+    xs_24: 4,
+    sm_28: 8,
+    md_32: 8,
+    lg_40: 12,
+    xl_48: 12,
+    "2xl_64": 16,
+  },
+  height: {
+    xs_24: 24,
+    sm_28: 28,
+    md_32: 32,
+    lg_40: 40,
+    xl_48: 48,
+    "2xl_64": 64,
+  },
+  "corner radius": {
+    xs_24: 4,
+    sm_28: 4,
+    md_32: 4,
+    lg_40: 6,
+    xl_48: 6,
+    "2xl_64": 8,
+  },
 };
 
-export const popover = {
-  padding: { md: 12 },
-  gap: 12,
-  gapContent: 8,
-  radius: { md: 4 },  // tooltip/radius-md 공유
+export const toolbar = {
+  gap: 6,
+  radius: 4,
+  border_hover: 1,
+  border_focused: 2,
+  padding: 2,
+  title: 2,
 };
 
-export const popup = {
-  padding:            4,
-  border:             1,
-  radius:             4,
-  headerPadding:      8,
-  sectionPadding:     12,
-  sectionGap:         12,
-  sectionContentsGap: 16,
-  gap:                4,  // footer button group
-};
-
-export const modal = {
-  padding:     20,
-  gap:         16,
-  gapText:     8,
-  gapIcon:     12,
-  radius:      2,
-  borderWidth: 2,
-  width: { horizontal: 400, vertical: 320 },
+export const progressBar = {
+  height_xs: 2,
+  height_sm: 4,
+  height_md: 8,
+  height_lg: 12,
+  "conrner radius_pill": 99,
+  "conrner radius_square": 0,
 };
 
 export const notification = {
-  padding:     { md: 16, lg: 16 },
-  radius:      { md: 8,  lg: 8 },
-  gap:         { md: 8,  lg: 12 },
-  textPadding: { md: 2,  lg: 4 },
-  radiusBar:   { md: 0,  lg: 0 },
+  "padding-md": 16,
+  "padding-lg": 16,
+  "gap-md": 8,
+  "gap-lg": 12,
+  "radius-md": 8,
+  "radius-lg": 8,
+  "radius-bar": 0,
+  "text-padding-md": 2,
+  "text-padding-lg": 4,
 };
 
-export const progress = {
-  bar: {
-    height:       { xs: 2, sm: 4, md: 8, lg: 12 },
-    cornerRadius: { pill: 99, square: 0 },  // "conrner" Figma 원본 오타
+export const avatar = {
+  stroke: {
+    xs: 1,
+    sm: 1.6,
+    md: 2.2,
+    lg: 2.6,
+    xl: 3,
+    "2xl": 4.2,
   },
-  stepper: {
-    atom: {
-      md: { width: 40 },
-      sm: { width: 40 },
-      vertical:   { height: { md: 84, sm: 54 } },
-      horizontal: { height: { md: 20, sm: 10 } },
-    },
-  },
-  circle: {
-    animatedSize: { xxs: 20, xs: 48, sm: 64, md: 96, lg: 160 },
-    staticSize:   { sm: 48, md: 64, lg: 96, xl: 160 },
+  "corner radius": {
+    circle: 999,
+    rounded: 12,
+    "rounded-ring": 14,
+    square: 0,
   },
 };
 
-// spinner: 별도 전용 토큰 없음 — atom 48×48 + 가이드 sample 추정
-// (color/component.js 의 spinner와 매칭)
-// number 영역에는 export 없음
+export const card = {
+  "corner radius md": 8,
+  "corner radius sm": 12,
+};
 
-// slider: 별도 number 토큰 없음 (color만 정의)
-// calendar: 별도 number 토큰 없음 (color만 정의)
+export const textinput = {
+  common: {
+    height: 20,
+    "height 2": 32,
+  },
+  padding: {
+    "4xl_96": 32,
+    "3xl_80": 24,
+    "2xl_64": 16,
+    xl_48: 12,
+    lg_40: 12,
+    md_32: 8,
+    sm_28: 8,
+    xs_24: 6,
+    underline: 0,
+  },
+  "corner radius": {
+    "4xl_96": 12,
+    "3xl_80": 8,
+    "2xl_64": 8,
+    xl_48: 6,
+    lg_40: 6,
+    md_32: 4,
+    sm_28: 4,
+    xs_24: 4,
+    underline: 0,
+  },
+  border: {
+    "4xl_96": 4,
+    "3xl_80": 3,
+    "2xl_64": 2,
+    xl_48: 1.5,
+    lg_40: 1,
+    md_32: 1,
+    sm_28: 1,
+    xs_24: 1,
+    underline: 0,
+  },
+  "border-hover": {
+    "4xl_96": 5,
+    "3xl_80": 4,
+    "2xl_64": 3,
+    xl_48: 3,
+    lg_40: 2,
+    md_32: 2,
+    sm_28: 2,
+    xs_24: 2,
+    underline: 0,
+  },
+};
+
+export const tooltip = {
+  "padding-md": 8,
+  "padding-lg": 8,
+  "radius-md": 4,
+  "radius-lg": 4,
+};
+
+export const tab = {
+  lined: {
+    "height-xxs": 24,
+    "height-xs": 28,
+    "height-sm": 32,
+    "height-md": 40,
+    "height-lg": 48,
+    "h-padding-xxs": 12,
+    "h-padding-xs": 12,
+    "h-padding-sm": 12,
+    "h-padding-md": 16,
+    "h-padding-lg": 20,
+    "radius-xxs": 4,
+    "radius-xs": 4,
+    "radius-sm": 4,
+    "radius-md": 4,
+    "radius-lg": 6,
+    "border-xxs": 2,
+    "border-xs": 2,
+    "border-sm": 2,
+    "border-md": 2,
+    "border-lg": 2,
+    gap: 2,
+  },
+  contained: {
+    "height-xxs": 24,
+    "height-xs": 28,
+    "height-sm": 32,
+    "height-md": 40,
+    "height-lg": 48,
+    padding: 1,
+    "h-padding-xxs": 12,
+    "h-padding-xs": 12,
+    "h-padding-sm": 12,
+    "h-padding-md": 16,
+    "h-padding-lg": 20,
+    "border-xxs": 1,
+    "border-xs": 1,
+    "border-sm": 1,
+    "border-md": 1,
+    "border-lg": 2,
+    gap: 2,
+  },
+};
+
+export const tag = {
+  height: {
+    xs: 18,
+    sm: 20,
+    md: 24,
+  },
+  radius: {
+    xs: 2,
+  },
+  padding: {
+    xs: 6,
+    sm: 8,
+    md: 10,
+  },
+};
+
+export const breadcrumb = {
+  gap: 4,
+  radius: 4,
+  border_hover: 1,
+  border_focused: 2,
+  padding: 2,
+};
+
+export const segmentedControl = {
+  "height-sm-outline": 24,
+  "height-md-outline": 28,
+  "height-lg-outline": 32,
+  "height-sm-solid": 20,
+  "height-md-solid": 24,
+  "height-lg-solid": 28,
+  "width-sm-solid": 24,
+  "width-md-solid": 28,
+  "width-lg-solid": 32,
+  "h-padding-sm": 8,
+  "h-padding-md": 12,
+  "h-padding-lg": 12,
+  "h-padding-sm-icon only": 2,
+  "h-padding-md-icon only": 4,
+  "h-padding-lg-icon only": 6,
+  "radius-sm": 4,
+  "radius-md": 4,
+  "radius-lg": 4,
+  "border-sm": 2,
+  "border-md": 2,
+  "border-lg": 2,
+  gap: 2,
+};
+
+export const menu = {
+  gap: {
+    xs: 2,
+    sm: 4,
+    md: 6,
+    lg: 8,
+    xl: 12,
+  },
+  radius: {
+    xs: 2,
+    sm: 4,
+  },
+  height: {
+    sm: 32,
+  },
+  border: {
+    xs: 1,
+    sm: 2,
+  },
+  padding: {
+    xxs: 2,
+    xs: 4,
+    sm: 6,
+    md: 8,
+    lg: 12,
+  },
+};
+
+export const modal = {
+  padding: 20,
+  gap: 16,
+  "gap-text": 8,
+  "gap-icon": 12,
+  radius: 2,
+};
+
+export const popover = {
+  "padding-md": 12,
+  "padding-lg": 8,
+  "radius-md": 4,
+  "radius-lg": 4,
+  "gap-content": 8,
+  gap: 12,
+};
+
+export const coachmark = {
+  radius: 2,
+  padding: 20,
+  gap: 16,
+  "gap-text": 8,
+};
+
+export const popup = {
+  radius: 4,
+  border: 1,
+  padding: 4,
+  header_padding: 8,
+  footer_padding: 8,
+  section_padding: 12,
+  gap: 4,
+  section_contents_gap: 16,
+};
+
+// quantityStepper: Figma 원본 namespace 이름에 한글 prefix `[민지-삭제예정 test]` 포함됨 (mojibake로 깨져 들어옴) — 정리/제거 후보
+export const quantityStepper = {
+  quantity_number: 95,
+};

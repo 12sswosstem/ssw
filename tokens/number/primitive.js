@@ -1,14 +1,51 @@
 // Number · Primitive Tokens
-// Source: Figma Variable Collection  Number_primitive (26:48408)
-// 39단계 스케일 (none, 1, 2, 3 ... 39)
+// Source: Figma Variable Collection — Number_primitive
+// Mode: Mode 1
+// 41 단계 (none 0 → full 999)
 //
-// 출처: Figma get_variable_defs (LxBPQF1oFOfiNdX5qzLcik / 14:4156)
-// ⚠️ 부분 추출 — Figma 세션 만료 후 재연결 필요.
+// Key 형식: "<step> (<px>px)" — Figma variable name verbatim
+// (예: "9 (16px)" = 9번 step = 16px)
 
-// `Size/<step>` 직접 추출분
 export const scale = {
-  "lg":  18,   // Size/lg
-  "2xl": 24,   // Size/2xl
-  "5xl": 40,   // Size/5xl
-  // TODO: 나머지 ~36단계 (xxs, xs, sm, md, xl, 3xl, 4xl, 6xl ... 39)
+  "none (0px)": 0,
+  "1 (1px)": 1,
+  "2 (2px)": 2,
+  "3 (4px)": 4,
+  "4 (6px)": 6,
+  "5 (8px)": 8,
+  "6 (10px)": 10,
+  "7 (12px)": 12,
+  "8 (14px)": 14,
+  "9 (16px)": 16,
+  "10 (18px)": 18,
+  "11 (20px)": 20,
+  "12 (22px)": 22,
+  "13 (24px)": 24,
+  "14 (26px)": 26,
+  "15 (28px)": 28,
+  "16 (30px)": 30,
+  "17 (32px)": 32,
+  "18 (36px)": 36,
+  "19 (40px)": 40,
+  "20 (44px)": 44,
+  "21 (48px)": 48,
+  "22 (52px)": 52,
+  "23 (56px)": 56,
+  "24 (64px)": 64,
+  "25 (72px)": 72,
+  "26 (80px)": 80,
+  "27 (88px)": 88,
+  "28 (90px)": 90,
+  "29 (96px)": 96,
+  "30 (104px)": 104,
+  "31 (112px)": 112,
+  "32 (116px)": 116,
+  "33 (128px)": 128,
+  "34 (144px)": 144,
+  "35 (160px)": 160,
+  "36 (180px)": 180,
+  "37 (240px)": 240,
+  "38 (320px)": 320,
+  "39 (480px)": 480,
+  "full (999px)": 999,
 };
