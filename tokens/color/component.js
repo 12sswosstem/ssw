@@ -1,1432 +1,853 @@
 // Color · Component Tokens
-// Source: Figma Variable Collection Color_component (896:76023) + common (694:51198)
-// 데이터 출처: components/*.md (figma-export.json 2026-05-04 + 일부 production variable_defs)
-//
-// 각 컴포넌트는 `light` / `dark` 키 아래 카테고리(bg/fg/border/icon/common/text 등) 보유.
-// `dark`가 비어있는 컴포넌트는 production variable_defs가 light 단일 모드만 정의함.
+// Source: Figma Variable Collection — Color_component (light/dark modes)
+// 각 leaf: { light: "#hex", dark: "#hex" }
+// 컴포넌트별 nested 구조 (button.bg.brand-primary, modal.outline-critical 등)
 
-// ============================================================
-// Form / Input
-// ============================================================
-
-export const button = {
-  light: {
-    bg: {
-      "brand-primary":         "#eb6100",
-      "brand-secondary":       "#ffffff",
-      "brand-tertiary":        "#fbdfcc",
-      "neutral-primary":       "#2b2b2b",
-      "neutral-secondary":     "#ffffff",
-      "neutral-tertiary":      "#e9e9e9",
-      "destructive-primary":   "#f03823",
-      "destructive-secondary": "#ffffff00",
-      "text":                  "#ffffff00",
-      "subtle":                "#ffffff00",
-      "disabled":              "#dadada",
-      "disabled-gray":         "#bcbcbc",
-      "disabled-inactive":     "#8f8f8f",
-    },
+export const hmi = {
+  bg: {
+    active: { light: "#FFFFFF", dark: "#020202" },
+    default: { light: "#FFFFFF", dark: "#020202" },
+    dim: { light: "#FFFFFF66", dark: "#00000066" },
+    disabled: { light: "#BCBCBC", dark: "#2B2B2B" },
+    hover: { light: "#FFFFFF0D", dark: "#020202" },
+    selected: { light: "#EB61001A", dark: "#020202" },
+  },
+  border: {
+    default: { light: "#BCBCBC", dark: "#8F8F8F" },
+    illust: { light: "#565656", dark: "#E9E9E9" },
+    logo: { light: "#EB6100", dark: "#FFFFFF" },
+  },
+  etc: {
+    error: { light: "#F03823", dark: "#F03823" },
+    "required mark": { light: "#F03823", dark: "#D2D2D2" },
+    success: { light: "#05834E", dark: "#05834E" },
+  },
+  icon: {
+    default: { light: "#8F8F8F", dark: "#727272" },
+  },
+  text: {
+    accent: { light: "{HMI.text.secondary-label}", dark: "{HMI.text.secondary-label}" },
+    disabled: { light: "#8F8F8F", dark: "#BCBCBC" },
     fg: {
-      "brand-primary":         "#f9f9f9",
-      "brand-secondary":       "#eb6100",
-      "brand-tertiary":        "#eb6100",
-      "neutral-primary":       "#f9f9f9",
-      "neutral-secondary":     "#565656",
-      "neutral-tertiary":      "#565656",
-      "destructive-primary":   "#f9f9f9",
-      "destructive-secondary": "#f03823",
-      "text":                  "#606881",
-      "subtle":                "#565656",
-      "disabled":              "#a5a5a5",
-      "disabled-gray":         "#a5a5a5",
-      "disabled-inactive":     "#a5a5a5",
+      active: { light: "#2B2B2B", dark: "#E9E9E9" },
+      default: { light: "#8F8F8F", dark: "#D2D2D2" },
+      disabled: { light: "#8F8F8F", dark: "#BCBCBC" },
     },
-    border: {
-      "brand-primary":         "#eb6100",
-      "brand-secondary":       "#727272",
-      "brand-tertiary":        "#ffffff00",
-      "neutral-primary":       "#2b2b2b",
-      "neutral-secondary":     "#a5a5a5",
-      "neutral-tertiary":      "#a5a5a5",
-      "destructive-primary":   "#f03823",
-      "destructive-secondary": "#f03823",
-      "text":                  "#373d4c00",
-      "subtle":                "#373d4c00",
-      "disabled":              "#dadada",
-      "disabled-gray":         "#a5a5a5",
-      "disabled-inactive":     "#8f8f8f",
-    },
-    icon: {
-      "neutral":           "#bcbcbc",
-      "dark":              "#0e0e0e",
-      "invert":            "#0e0e0e",
-      "disabled-inactive": "#a5a5a5",
-      "disabled-gray":     "#393939",
-    },
-    common: {
-      "default":         "#00000000",
-      "hover":           "#0000000d",
-      "pressed":         "#0000001a",
-      "hover-neutral":   "#ffffff0d",
-      "pressed-neutral": "#ffffff1a",
-      "selected":        "rgba(59,99,251,0.2)",
-      "focus-ring":      "#000000",
-      "focus-ring-2":    "#fefefe",
-    },
-  },
-  dark: {
-    bg: {
-      "brand-secondary":       "#0e0e0e",
-      "destructive-secondary": "rgba(255,255,255,0)",
-      "neutral-primary":       "#bcbcbc",
-      "neutral-secondary":     "#f4f4f4",
-      "neutral-tertiary":      "#eeeeee",
-      "subtle":                "rgba(255,255,255,0)",
-      "disabled-gray":         "#f4f4f4",
-      "disabled-inactive":     "#bcbcbc",
-    },
-    fg: {
-      "brand-primary":       "#0e0e0e",
-      "neutral-primary":     "#000000",
-      "neutral-secondary":   "#8f8f8f",
-      "neutral-tertiary":    "#0e0e0e",
-      "destructive-primary": "#0e0e0e",
-      "subtle":              "#8f8f8f",
-      "disabled-gray":       "#e9e9e9",
-      "disabled-inactive":   "#bcbcbc",
-    },
-    border: {
-      "brand-secondary":   "#dddddd",
-      "brand-tertiary":    "#a5a5a5",
-      "neutral-primary":   "#bcbcbc",
-      "neutral-secondary": "#dddddd",
-      "neutral-tertiary":  "#dddddd",
-      "subtle":            "rgba(55,61,76,0)",
-      "disabled-gray":     "#f4f4f4",
-      "disabled-inactive": "#8f8f8f",
-    },
-    icon: {
-      "neutral":           "#8f8f8f",
-      "dark":              "#f4f4f4",
-      "invert":            "#e9e9e9",
-      "disabled-inactive": "#bcbcbc",
-      "disabled-gray":     "#bcbcbc",
-    },
-    common: {
-      "default":         "rgba(0,0,0,0)",
-      "hover":           "rgba(0,0,0,0.05)",
-      "pressed":         "rgba(0,0,0,0.15)",
-      "hover-neutral":   "rgba(59,99,251,0.1)",
-      "pressed-neutral": "rgba(59,99,251,0.2)",
-      "selected":        "rgba(59,99,251,0.2)",
-      "focus-ring-2":    "#f9f9f9",
-    },
+    placeholder: { light: "#8F8F8F", dark: "#A5A5A5" },
+    "primary-active": { light: "#020202", dark: "#FEFEFE" },
+    "primary-default": { light: "#565656", dark: "#D2D2D2" },
+    read: { light: "#727272", dark: "#A5A5A5" },
+    "secondary-label": { light: "#727272", dark: "#727272" },
   },
 };
 
-export const input = {
-  light: {
-    bg: {
-      "default":  "#ffffff",
-      "disabled": "#bcbcbc",
-    },
-    fg: {
-      "default":       "#2b2b2b",
-      "label":         "#565656",
-      "placeholder":   "#8f8f8f",
-      "disabled":      "#8f8f8f",
-      "read-only-pms": "#2b2b2b",
-    },
-    border: {
-      "default":        "#a5a5a5",
-      "hover":          "#eb6100",
-      "focused":        "#000000",
-      "disabled":       "#a5a5a5",
-      "common-default": "#bcbcbc",
-      "error":          "#f03823",
-      "success":        "#a5a5a5",
-    },
-    icon: {
-      "default": "#8f8f8f",
-    },
-    common: {
-      "required-mark": "#f03823",
-      "error":         "#f03823",
-      "success":       "#05834e",
-    },
-  },
-  dark: {},
+export const string1 = { light: "year.month.day", dark: "year.month.day" };
+
+export const badge = {
+  "accent-bg": { light: "#F03823", dark: "#F03823" },
+  border: { light: "#FFFFFF", dark: "#DDDDDD" },
+  "brand-bg": { light: "#EB6100", dark: "#EB6100" },
+  "icon-default": { light: "#565656", dark: "#8F8F8F" },
+  "icon-invert": { light: "#FFFFFF", dark: "#1D1D1D" },
+  "neutral-bg": { light: "#1D1D1D", dark: "#FFFFFF" },
 };
 
-export const textarea = {
-  light: {
-    bg: {
-      "default":  "#ffffff",
-      "disabled": "#bcbcbc",
-    },
-    fg: {
-      "default":     "#2b2b2b",
-      "placeholder": "#8f8f8f",
-      "disabled":    "#8f8f8f",
-      "label":       "#565656",
-    },
-    border: {
-      "default":  "#bcbcbc",
-      "hover":    "#eb6100",
-      "focused":  "#000000",
-      "disabled": "#a5a5a5",
-    },
-    icon: {
-      "default": "#8f8f8f",
-    },
-    common: {
-      "error":         "#f03823",
-      "success":       "#05834e",
-      "required-mark": "#f03823",
-    },
-  },
-  dark: {},
-};
+export const bgActive = { light: "#FEF7F2", dark: "#5E2700" };
 
-export const dropdown = {
-  light: {
-    bg: {
-      "default":        "#ffffff",
-      "menu-hover":     "#f4f4f4",
-      "selected":       "#fef7f2",
-      "disabled":       "#eeeeee",
-      "common-default": "#ffffff",
-    },
-    fg: {
-      "default":     "#2b2b2b",
-      "placeholder": "#8f8f8f",
-      "disabled":    "#a5a5a5",
-      "label":       "#565656",
-    },
-    border: {
-      "default":        "#a5a5a5",
-      "hover":          "#eb6100",
-      "focused":        "#000000",
-      "selected":       "#f7c099",
-      "disabled":       "#bcbcbc",
-      "common-default": "#bcbcbc",
-    },
-    icon: {},
-    common: {
-      "required-mark": "#f03823",
-    },
-  },
-  dark: {},
-};
+export const bgDate = { light: "#FFFFFF", dark: "#393939" };
 
-export const valueStepper = {
-  light: {
-    bg: {},
-    fg: {
-      "default": "#d2d2d2",
-    },
-    border: {
-      "default": "#a5a5a5",
-    },
-    common: {
-      // light 모드에서 컨테이너 bg가 검정 — MD 표기 그대로
-      "container-bg": "#000000",
-    },
-  },
-  dark: {
-    fg: {
-      "default": "#a5a5a5",
-    },
-    border: {
-      "default": "#dddddd",
-    },
-    common: {
-      "container-bg": "#ffffff",
-    },
-  },
-};
+export const bgDay = { light: "#EEEEEE", dark: "#393939" };
 
-// ============================================================
-// Selection (control 공유 토큰 + 개별)
-// ============================================================
+export const bgDefault = { light: "#FFFFFF", dark: "#2B2B2B" };
 
-export const checkbox = {
-  light: {
-    bg: {
-      "default":  "#fefefe",
-      "brand-1":  "#eb6100",  // checked / indeterminate
-      "disabled": "#d2d2d2",
-      "ranking":  "#faec88",  // Color/selection/surface/surface-ranking
-    },
-    fg: {
-      "default":  "#fefefe",
-      "disabled": "#a5a5a5",
-      "ranking":  "#1d1d1d",
-    },
-    border: {
-      "default":  "#727272",
-      "brand":    "#eb6100",  // active/checked
-      "disabled": "#a5a5a5",
-    },
-    common: {
-      "text-default":  "#565656",
-      "text-active":   "#1d1d1d",
-      "text-disabled": "#a5a5a5",
-      "required-mark": "#ef0101",
-    },
-  },
-  dark: {},
-};
+export const bgDual = { light: "#F9F9F9", dark: "#393939" };
 
-export const radio = {
-  light: {
-    bg: {
-      "default":  "#fefefe",
-      "brand-1":  "#eb6100",  // checked-2
-      "disabled": "#d2d2d2",
-    },
-    fg: {
-      "default":  "#fefefe",  // 흰 dot
-      "disabled": "#a5a5a5",
-    },
-    border: {
-      "default":  "#727272",
-      "brand":    "#eb6100",
-      "disabled": "#a5a5a5",
-    },
-    text: {
-      "default":  "#565656",
-      "active":   "#1d1d1d",
-      "disabled": "#a5a5a5",
-    },
-  },
-  dark: {},
-};
+export const bgFirst = { light: "#F5C700", dark: "#724800" };
 
-export const switchControl = {
-  light: {
-    bg: {
-      "inactive": "#d2d2d2",  // off track
-      "selected": "#eb6100",  // on track orange
-      "disabled": "#d2d2d2",
-    },
-    fg: {
-      "default":  "#fefefe",  // 흰 thumb
-      "disabled": "#a5a5a5",
-    },
-    text: {
-      "default":  "#565656",
-      "active":   "#1d1d1d",
-      "disabled": "#a5a5a5",
-    },
-    common: {
-      "switch-border": "#d2d2d2",
-    },
-  },
-  dark: {},
-};
+export const bgGeneral = { light: "#F03823", dark: "#9C2113" };
 
-// checkbox/radio/switch 공유 토큰 (control/*).
-// 각 컴포넌트의 통합 정의 — checkbox.md가 가장 완전한 출처.
-export const control = {
-  light: {
-    bg: {
-      "default":  "#fefefe",
-      "brand-1":  "#eb6100",  // checked / indeterminate
-      "inactive": "#d2d2d2",  // switch off
-      "selected": "#eb6100",  // switch on
-      "disabled": "#d2d2d2",
-    },
-    fg: {
-      "default":  "#fefefe",
-      "disabled": "#a5a5a5",
-    },
-    border: {
-      "default":  "#727272",
-      "brand":    "#eb6100",
-      "disabled": "#a5a5a5",
-    },
-    text: {
-      "default":  "#565656",
-      "active":   "#1d1d1d",
-      "disabled": "#a5a5a5",
-    },
-    common: {
-      "switch-border":   "#d2d2d2",
-      "fg-ranking":      "#1d1d1d",
-      "surface-ranking": "#faec88",
-    },
-  },
-  dark: {},
-};
+export const bgGeneral2 = { light: "#F03823", dark: "#F03823" };
 
-// ============================================================
-// Navigation
-// ============================================================
+export const bgHover = { light: "#F4F4F4", dark: "#565656" };
 
-export const tab = {
-  light: {
-    lineTab: {
-      bg: {
-        "default":  "#ffffff00",
-        "hover":    "#f4f4f4",
-        "pressed":  "#eeeeee",
-        "selected": "#ffffff00",
-        "disabled": "#ffffff00",
-      },
-      text: {
-        "default":     "#565656",
-        "default-num": "#eb6100",
-        "selected":    "#eb6100",
-        "disabled":    "#a5a5a5",
-      },
-    },
-    containedTab: {
-      bg: {
-        "default":  "#ffffff00",
-        "hover":    "#f8f8f8",
-        "pressed":  "#eeeeee",
-        "selected": "#fefefe",
-        "disabled": "#ffffff00",
-      },
-      border: {
-        "default":  "#ffffff00",
-        "selected": "#eb6100",
-      },
-      text: {
-        "default":     "#000000",
-        "default-num": "#eb6100",
-        "selected":    "#eb6100",
-        "disabled":    "#a5a5a5",
-      },
-      container: {
-        "bg":     "#ffffff",
-        "border": "#a5a5a5",
-      },
-    },
-  },
-  dark: {},
-};
+export const bgIcon = { light: "#565656", dark: "#A5A5A5" };
 
-export const segmentedControl = {
-  light: {
-    bg: {
-      "default":  "#ffffff00",
-      "hover":    "#f4f4f4",
-      "pressed":  "#eeeeee",
-      "selected": "#fefefe",
-      "disabled": "#ffffff00",
-    },
-    border: {
-      "default":  "#a5a5a5",
-      "selected": "#eb6100",
-    },
-    text: {
-      "default":        "#727272",
-      "selected":       "#eb6100",
-      "selected-solid": "#1d1d1d",
-      "disabled":       "#a5a5a5",
-    },
-    container: {
-      "bg-contained":     "#ffffff",
-      "border-contained": "#a5a5a5",
-      "bg-solid":         "#e9e9e9",
-      "border-solid":     "#e9e9e9",
-    },
-  },
-  dark: {},
-};
+export const bgImaging = { light: "#A65CE7", dark: "#A65CE7" };
 
-export const menu = {
-  light: {
-    bg: {
-      "default":  "#ffffff",
-      "hover":    "#e9e9e9",
-      "selected": "#fef7f2",
-      "disabled": "#e9e9e9",
-    },
-    border: {
-      "active":   "#1d1d1d",  // focused ring
-      "selected": "#f3a066",
-    },
-    icon: {
-      "default":  "#393939",
-      "hover":    "#393939",
-      "selected": "#eb6100",
-      "disabled": "#a5a5a5",
-      "danger":   "#d73220",
-    },
-    text: {
-      "primary":   "#1d1d1d",
-      "secondary": "#393939",
-      "selected":  "#eb6100",
-      "disabled":  "#a5a5a5",
-      "danger":    "#d73220",
-    },
-    common: {
-      "divider":          "#bcbcbc",
-      "divider-selected": "#f7c099",
-      "divider-disabled": "#bcbcbc",
-      "divider-danger":   "#d73220",
-      "section-divider":  "#bcbcbc",
-    },
-  },
-  dark: {},
-};
+export const bgInpatient = { light: "#27CAD8", dark: "#056C5C" };
+
+export const bgInpatient2 = { light: "#27CAD8", dark: "#27CAD8" };
+
+export const bgLabTest = { light: "#FF98BB", dark: "#FF98BB" };
+
+export const bgMedication = { light: "#1286CD", dark: "#1286CD" };
+
+export const bgNight = { light: "#DDC1F6", dark: "#3B006F" };
+
+export const bgReservation = { light: "#FFB9D0", dark: "#880033" };
+
+export const bgReservation2 = { light: "#FFBCB4", dark: "#FFBCB4" };
+
+export const bgReturn = { light: "#52A119", dark: "#2C5C09" };
+
+export const bgSelect = { light: "#FEF7F2", dark: "#5E2700" };
+
+export const bgToday = { light: "#EB6100", dark: "#EB6100" };
+
+export const brandAccent = { light: "#FFFFFF", dark: "#727272" };
 
 export const breadcrumb = {
-  light: {
-    border: {
-      "default":        "#000000",
-      "selected_hover": "#bc4e00",
-    },
-    text: {
-      "default":          "#565656",
-      "current":          "#000000",
-      "hover":            "#000000",
-      "focused":          "#000000",
-      "selected":         "#eb6100",
-      "selected_hover":   "#bc4e00",
-      "selected_focused": "#bc4e00",
-    },
-  },
-  dark: {},
+  border: { light: "#000000", dark: "#F4F4F4" },
+  border_selected_hover: { light: "#BC4E00", dark: "#BC4E00" },
+  "text-current": { light: "#000000", dark: "#F4F4F4" },
+  "text-default": { light: "#565656", dark: "#BCBCBC" },
+  "text-focused": { light: "#000000", dark: "#F4F4F4" },
+  "text-hover": { light: "#000000", dark: "#F4F4F4" },
+  "text-selected": { light: "#EB6100", dark: "#EB6100" },
+  "text-selected_focused": { light: "#BC4E00", dark: "#BC4E00" },
+  "text-selected_hover": { light: "#BC4E00", dark: "#BC4E00" },
 };
 
-export const gnb = {
-  light: {
-    icon: {
-      "default":       "#8f8f8f",
-      "hover":         "#565656",
-      "selected":      "#e9e9e9",
-      "selected-line": "#f3a066",
-      "stroke":        "#bcbcbc",
-    },
-    container: {
-      "bg-default":         "#0e0e0e",
-      "bg-hover":           "#eeeeee",
-      "bg-selected":        "#000000",
-      "bg-selected-brand":  "#fef7f2",
-    },
-    bg: {
-      "gnb-bg":       "#727272",
-      "gnb-bg-pms":   "#f9f9f9",
-      "gnb-bg-onesw": "#d2d2d2",
-      "bg_layer_2":   "#f4f4f4",
-    },
-    text: {
-      "default":  "#565656",
-      "active":   "#1d1d1d",
-      "disabled": "#bcbcbc",
-    },
-    border: {
-      "default": "#bcbcbc",
-    },
-    common: {
-      "divider": "#a5a5a5",
-    },
+export const button = {
+  bg: {
+    "brand-primary": { light: "#EB6100", dark: "#EB6100" },
+    "brand-secondary": { light: "#FFFFFF", dark: "#F9F9F9" },
+    "brand-tertiary": { light: "#FBDFCC", dark: "#BC4E00" },
+    "destructive-primary": { light: "#F03823", dark: "#F03823" },
+    "destructive-secondary": { light: "#FFFFFF00", dark: "#FFFFFF00" },
+    "disabled-gray": { light: "#BCBCBC", dark: "#1D1D1D" },
+    "disabled-inactive": { light: "#BCBCBC", dark: "#8F8F8F" },
+    "neutral-primary": { light: "#2B2B2B", dark: "#8F8F8F" },
+    "neutral-secondary": { light: "#FFFFFF", dark: "#1D1D1D" },
+    "neutral-tertiary": { light: "#E9E9E9", dark: "#2B2B2B" },
+    subtle: { light: "#FFFFFF00", dark: "#FFFFFF00" },
   },
-  dark: {},
-};
-
-export const toolbar = {
-  light: {
-    icon: {
-      "default":  "#a5a5a5",
-      "hover":    "#d2d2d2",
-      "selected": "#eeeeee",
-      "stroke":   "#bcbcbc",
-    },
-    container: {
-      "bg-default":     "#0e0e0e",
-      "bg-hover":       "rgba(255,255,255,0.2)",
-      "tool-bg-base":   "#393939",
-      "tool-bg-layer1": "#1d1d1d",
-    },
-    bg: {
-      "bg_base":    "#1d1d1d",
-      "bg_ct":      "#0e0e0e",
-      "bg_layer_1": "#e9e9e9",
-      "bg_layer_2": "#1d1d1d",
-    },
-    text: {
-      "default":  "#d2d2d2",
-      "selected": "#f4f4f4",
-    },
-    border: {
-      "default": "#a5a5a5",
-    },
-    common: {
-      "divider": "#8f8f8f",
-      "gnb-bg":  "#d2d2d2",
-    },
+  border: {
+    "brand-primary": { light: "#EB6100", dark: "#EB6100" },
+    "brand-secondary": { light: "#727272", dark: "#565656" },
+    "brand-tertiary": { light: "#FFFFFF00", dark: "#FFFFFF00" },
+    "destructive-primary": { light: "#F03823", dark: "#F03823" },
+    "destructive-secondary": { light: "#F03823", dark: "#F03823" },
+    "disabled-gray": { light: "#A5A5A5", dark: "#1D1D1D" },
+    "disabled-inactive": { light: "#BCBCBC", dark: "#BCBCBC" },
+    "neutral-primary": { light: "#2B2B2B", dark: "#8F8F8F" },
+    "neutral-secondary": { light: "#A5A5A5", dark: "#565656" },
+    "neutral-tertiary": { light: "#A5A5A5", dark: "#565656" },
+    subtle: { light: "#373D4C00", dark: "#373D4C00" },
   },
-  dark: {
-    icon: {
-      "default":  "#d2d2d2",
-      "hover":    "#a5a5a5",
-      "selected": "#000000",
-      "stroke":   "#8f8f8f",
-    },
-    container: {
-      "bg-default":     "#d2d2d2",
-      "bg-hover":       "#dddddd",
-      "bg-selected":    "#ffffff",
-      "tool-bg-base":   "#ffffff",
-      "tool-bg-layer1": "#e9e9e9",
-    },
-    bg: {
-      "bg_base":    "#e9e9e9",
-      "bg_ct":      "#ffffff",
-      "bg_layer_1": "#e9e9e9",
-      "bg_layer_2": "#eeeeee",
-    },
-    text: {
-      "default":        "#393939",
-      "selected":       "#000000",
-      "selected-brand": "#000000",
-    },
-    border: {
-      "default": "#e9e9e9",
-    },
-    common: {
-      "divider": "#d2d2d2",
-      "gnb-bg":  "#bcbcbc",
-    },
+  common: {
+    default: { light: "#00000000", dark: "#00000000" },
+    "focus-ring": { light: "#000000", dark: "#000000" },
+    "focus-ring 2": { light: "#FEFEFE", dark: "#0E0E0E" },
+    hover: { light: "#0000000D", dark: "#0000000D" },
+    "hover-neutral": { light: "#FFFFFF0D", dark: "#3B63FB1A" },
+    pressed: { light: "#0000001A", dark: "#00000026" },
+    "pressed-neutral": { light: "#FFFFFF1A", dark: "#3B63FB33" },
+    selected: { light: "#3B63FB33", dark: "#3B63FB33" },
+  },
+  etc: {
+    border: { light: "#DADADA", dark: "#DADADA" },
+    "container-bg-default": { light: "#FFFFFF", dark: "#FFFFFF" },
+    "container-bg-hover": { light: "#F8F8F8", dark: "#F8F8F8" },
+    "container-bg-selected": { light: "#FFFFFF", dark: "#FFFFFF" },
+    "fg-default": { light: "#FFFFFF", dark: "#FFFFFF" },
+    "fg-disabled": { light: "#FFFFFF", dark: "#FFFFFF" },
+    "fg-selected": { light: "#00E1FF", dark: "#00E1FF" },
+    "fg-selected-2": { light: "#CAD1DE", dark: "#CAD1DE" },
+    "fg-selected-2-detail": { light: "#B5BDD0", dark: "#B5BDD0" },
+    "fg-selected-detail": { light: "#00E1FF", dark: "#00E1FF" },
+  },
+  fg: {
+    "brand-primary": { light: "#F9F9F9", dark: "#F9F9F9" },
+    "brand-secondary": { light: "#EB6100", dark: "#F7C099" },
+    "brand-tertiary": { light: "#EB6100", dark: "#FBDFCC" },
+    "destructive-primary": { light: "#F9F9F9", dark: "#F9F9F9" },
+    "destructive-secondary": { light: "#F03823", dark: "#F03823" },
+    "disabled-gray": { light: "#A5A5A5", dark: "#393939" },
+    "disabled-inactive": { light: "#A5A5A5", dark: "#8F8F8F" },
+    "neutral-primary": { light: "#F9F9F9", dark: "#FFFFFF" },
+    "neutral-secondary": { light: "#565656", dark: "#BCBCBC" },
+    "neutral-tertiary": { light: "#565656", dark: "#F9F9F9" },
+    subtle: { light: "#565656", dark: "#BCBCBC" },
+  },
+  icon: {
+    brand: { light: "#EB6100", dark: "#EB6100" },
+    dark: { light: "#F9F9F9", dark: "#1D1D1D" },
+    destructive: { light: "#F03823", dark: "#F03823" },
+    "disabled-gray": { light: "#E9E9E9", dark: "#8F8F8F" },
+    "disabled-inactive": { light: "#A5A5A5", dark: "#8F8F8F" },
+    invert: { light: "#F9F9F9", dark: "#393939" },
+    neutral: { light: "#8F8F8F", dark: "#BCBCBC" },
   },
 };
 
-// ============================================================
-// Display
-// ============================================================
+export const calendar = {
+  bg: {
+    bg_active: { light: "#FEF7F2", dark: "#5E2700" },
+    bg_date: { light: "#FFFFFF", dark: "#393939" },
+    bg_day: { light: "#EEEEEE", dark: "#393939" },
+    bg_default: { light: "#FFFFFF", dark: "#2B2B2B" },
+    bg_dual: { light: "#F9F9F9", dark: "#393939" },
+    bg_hover: { light: "#F4F4F4", dark: "#565656" },
+    bg_select: { light: "#FEF7F2", dark: "#5E2700" },
+    bg_today: { light: "#EB6100", dark: "#EB6100" },
+  },
+  border: {
+    default: { light: "#E9E9E9", dark: "#393939" },
+    disabled: { light: "#A5A5A5", dark: "#565656" },
+    focused: { light: "#000000", dark: "#000000" },
+    hover: { light: "#EB6100", dark: "#EB6100" },
+    thisweek: { light: "#1286CD", dark: "#1286CD" },
+  },
+  legend: {
+    bg_first: { light: "#F5C700", dark: "#724800" },
+    bg_general: { light: "#F03823", dark: "#9C2113" },
+    bg_icon: { light: "#565656", dark: "#A5A5A5" },
+    bg_imaging: { light: "#A65CE7", dark: "#A65CE7" },
+    bg_inpatient: { light: "#27CAD8", dark: "#056C5C" },
+    "bg_lab-test": { light: "#FF98BB", dark: "#FF98BB" },
+    bg_medication: { light: "#1286CD", dark: "#1286CD" },
+    bg_night: { light: "#DDC1F6", dark: "#3B006F" },
+    bg_reservation: { light: "#FFB9D0", dark: "#880033" },
+    bg_return: { light: "#52A119", dark: "#2C5C09" },
+  },
+  mark: {
+    bg_general: { light: "#F03823", dark: "#F03823" },
+    bg_inpatient: { light: "#27CAD8", dark: "#27CAD8" },
+    bg_reservation: { light: "#FFBCB4", dark: "#FFBCB4" },
+    "mark_doctor-1": { light: "#FF4885", dark: "#FF4885" },
+    "mark_doctor-2": { light: "#B539C8", dark: "#B539C8" },
+    "mark_doctor-3": { light: "#0DB595", dark: "#0DB595" },
+    "mark_doctor-4": { light: "#B86D46", dark: "#B86D46" },
+    mark_first: { light: "#F5C700", dark: "#F5C700" },
+    mark_icon: { light: "#565656", dark: "#A5A5A5" },
+    mark_imaging: { light: "#A65CE7", dark: "#A65CE7" },
+    "mark_lab-test": { light: "#FF98BB", dark: "#FF98BB" },
+    mark_medication: { light: "#1286CD", dark: "#1286CD" },
+    mark_return: { light: "#52A119", dark: "#52A119" },
+  },
+  text: {
+    default: { light: "#000000", dark: "#F4F4F4" },
+    legend: { light: "#393939", dark: "#DDDDDD" },
+    saturday: { light: "#4B75FF", dark: "#729EFD" },
+    select: { light: "#FFFFFF", dark: "#FFFFFF" },
+    sunday: { light: "#F03823", dark: "#FF7665" },
+    today: { light: "#EB6100", dark: "#EF8133" },
+  },
+};
 
-export const tag = {
-  light: {
-    bg: {
-      "red":       "#ffebe8",
-      "orange":    "#fdefe5",
-      "yellow":    "#fff8cc",
-      "green":     "#d7f7e1",
-      "blue":      "#e5f0fe",
-      "turquoise": "#d1f5f5",
-      "magenta":   "#ffe8f0",
-      "indigo":    "#ebeeff",
-      "gray":      "#dddddd",
-    },
-    accent: {
-      "red":         "#d73220",
-      "orange":      "#eb6100",
-      "yellow":      "#f5c700",
-      "yellow_dark": "#d29500",
-      "green":       "#05834e",
-      "blue":        "#3b63fb",
-      "turquoise":   "#087e89",
-      "magenta":     "#d92361",
-      "indigo":      "#7155fa",
-      "gray":        "#565656",
-      "black":               "#000000",
-      "white":               "#ffffff",
-      // Figma 원본 오타 보존 (cautuion = caution)
-      "black_for cautuion":  "#000000",
-    },
-  },
-  dark: {
-    bg: {
-      "red":       "#501006",
-      "orange":    "#471d00",
-      "yellow":    "#4b2f00",
-      "green":     "#002e22",
-      "blue":      "#0c1f69",
-      "turquoise": "#002e28",
-      "magenta":   "#880033",
-      "indigo":    "#2a0081",
-      "gray":      "#565656",
-    },
-    accent: {
-      "red":         "#ff513d",
-      "orange":      "#ef8133",
-      "yellow":      "#e6af00",
-      "yellow_dark": "#e6af00",
-      "green":       "#0ba45d",
-      "blue":        "#5d89ff",
-      "turquoise":   "#0c9eab",
-      "magenta":     "#ff709f",
-      "indigo":      "#8480fe",
-      "gray":        "#bcbcbc",
-      "black":               "#ffffff",
-      "white":               "#000000",
-      "black_for cautuion":  "#000000",
-    },
-  },
+export const card = {
+  bg: { light: "#FEFEFE", dark: "#0E0E0E" },
+  icon: { light: "#565656", dark: "#D2D2D2" },
+  "text-body": { light: "#393939", dark: "#E9E9E9" },
+  "text-title": { light: "#1D1D1D", dark: "#FEFEFE" },
 };
 
 export const chip = {
-  light: {
-    bg: {
-      "default":         "#ffffff",
-      "hover":           "#f4f4f4",
-      "disabled":        "#f4f4f4",
-      "selected-orange": "#ef8133",
-      "selected-gray":   "#505050",
-    },
-    outline: {
-      "default":  "#bcbcbc",
-      "selected": "#ef8133",
-      "focused":  "#000000",
-      "disabled": "#eeeeee",
-    },
-    fg: {
-      "default":  "#393939",
-      "selected": "#eb6100",
-      "invert":   "#ffffff",
-      "disabled": "#a5a5a5",
-    },
-    icon: {
-      "default":  "#565656",
-      "selected": "#eb6100",
-      "invert":   "#ffffff",
-      "disabled": "#a5a5a5",
-    },
+  bg: {
+    default: { light: "#FFFFFF", dark: "#1D1D1D" },
+    disabled: { light: "#F4F4F4", dark: "#565656" },
+    hover: { light: "#F4F4F4", dark: "#565656" },
+    "selected-gray": { light: "#505050", dark: "#727272" },
+    "selected-orange": { light: "#EF8133", dark: "#EB6100" },
   },
-  dark: {},
-};
-
-export const badge = {
-  light: {
-    border: {
-      "default": "#ffffff",  // border boolean=true 시 외곽 ring
-    },
-    bg: {
-      "neutral": "#1d1d1d",
-      "accent":  "#f03823",
-    },
-    icon: {
-      "invert":  "#ffffff",
-      "default": "#dddddd",
-    },
+  font: {
+    default: { light: "#393939", dark: "#FFFFFF" },
+    disabled: { light: "#A5A5A5", dark: "#8F8F8F" },
+    invert: { light: "#FFFFFF", dark: "#FFFFFF" },
+    selected: { light: "#EB6100", dark: "#EB6100" },
   },
-  dark: {
-    icon: {
-      "default": "#bcbcbc",
-      "invert":  "#f4f4f4",
-    },
+  icon: {
+    default: { light: "#565656", dark: "#8F8F8F" },
+    disabled: { light: "#A5A5A5", dark: "#8F8F8F" },
+    invert: { light: "#FFFFFF", dark: "#FFFFFF" },
+    selected: { light: "#EB6100", dark: "#EB6100" },
+  },
+  outline: {
+    default: { light: "#BCBCBC", dark: "#393939" },
+    disabled: { light: "#EEEEEE", dark: "#565656" },
+    focused: { light: "#000000", dark: "#FFFFFF" },
+    selected: { light: "#EF8133", dark: "#BC4E00" },
   },
 };
 
-export const avatar = {
-  light: {
-    bg: {
-      "default": "#c6c6c6",  // common/avatar-bg-default
-    },
-    common: {
-      "default": "#c6c6c6",
-    },
-    // 이니셜·image·ring 색상은 DS 토큰 미바인딩 (인스턴스 fill로 처리)
-  },
-  dark: {},
+export const coachmark = {
+  bg: { light: "#FFFFFF", dark: "#393939" },
+  "text-body": { light: "#393939", dark: "#FFFFFF" },
+  "text-step": { light: "#8F8F8F", dark: "#A5A5A5" },
+  "text-title": { light: "#000000", dark: "#FFFFFF" },
 };
+
+export const common = {
+  "bg-test-border": { light: "#D2D2D2", dark: "#F9F9F9" },
+  "bg-test-fg": { light: "#1D1D1D", dark: "#F9F9F9" },
+  "focus-ring": { light: "#000000", dark: "#000000" },
+  hover: { light: "#0000000D", dark: "#FFFFFF" },
+  layout: {
+    "bg-base": { light: "#FFFFFF", dark: "#020202" },
+    "bg-layer1": { light: "#F9F9F9", dark: "#0E0E0E" },
+    "bg-layer2": { light: "#E9E9E9", dark: "#1D1D1D" },
+    "bg-layer3": { light: "#D2D2D2", dark: "#727272" },
+  },
+  pressed: { light: "#0000001A", dark: "#FFFFFF" },
+  scroll: {
+    bar: { light: "#D2D2D2", dark: "#565656" },
+  },
+};
+
+export const control = {
+  bg: {
+    "bg-brand-1": { light: "#EB6100", dark: "#EB6100" },
+    "bg-default": { light: "#FEFEFE", dark: "#1D1D1D" },
+    "bg-disabled": { light: "#D2D2D2", dark: "#393939" },
+    "bg-inactive": { light: "#D2D2D2", dark: "#393939" },
+    "bg-selected": { light: "#EB6100", dark: "#EB6100" },
+  },
+  border: {
+    "border-brand": { light: "#EB6100", dark: "#EB6100" },
+    "border-default": { light: "#727272", dark: "#727272" },
+    "border-disabled": { light: "#A5A5A5", dark: "#565656" },
+  },
+  common: {
+    "bg-ranking": { light: "#D2D2D2", dark: "#393939" },
+    default: { light: "#00000000", dark: "#00000000" },
+    "fg-ranking": { light: "#1D1D1D", dark: "#1D1D1D" },
+    "focus-ring": { light: "#000000", dark: "#000000" },
+    hover: { light: "#00000033", dark: "#00000033" },
+    "hover-brand": { light: "#3B63FB33", dark: "#3B63FB33" },
+    pressed: { light: "#00000066", dark: "#00000033" },
+    "pressed-brand": { light: "#3B63FB66", dark: "#3B63FB66" },
+    "switch-border": { light: "#D2D2D2", dark: "#565656" },
+  },
+  fg: {
+    "fg-default": { light: "#FEFEFE", dark: "#FEFEFE" },
+    "fg-disabled": { light: "#A5A5A5", dark: "#727272" },
+  },
+  text: {
+    "text-active": { light: "#1D1D1D", dark: "#FFFFFF" },
+    "text-default": { light: "#565656", dark: "#E9E9E9" },
+    "text-disabled": { light: "#A5A5A5", dark: "#565656" },
+  },
+};
+
+export const default = { light: "#000000", dark: "#F4F4F4" };
+
+export const default2 = { light: "#E9E9E9", dark: "#393939" };
+
+export const disabled = { light: "#A5A5A5", dark: "#565656" };
 
 export const divider = {
-  light: {
-    common: {
-      "line":           "#e9e9e9",
-      "line_contents": "#bcbcbc",  // production 해석값 (figma-export는 #8f8f8f)
-      "text":          "#a5a5a5",
-      "etc-divider":   "#d2d2d2",  // 별도 namespace — etc/divider
-    },
-  },
-  dark: {},
+  line: { light: "#E9E9E9", dark: "#565656" },
+  line_contents: { light: "#BCBCBC", dark: "#565656" },
+  text: { light: "#A5A5A5", dark: "#A5A5A5" },
 };
 
-export const rating = {
-  light: {
-    fg: {
-      "favorite-fill": "#3d2700",
-      "bookmark-fill": "#5681ff",
-      "default":       "#bcbcbc",
-    },
-    bg: {
-      "rest": "#727272",
-    },
+export const dropdown = {
+  bg: {
+    default: { light: "#FFFFFF", dark: "#020202" },
+    disabled: { light: "#EEEEEE", dark: "#2B2B2B" },
+    menu_bg: { light: "#FFFFFF", dark: "#1D1D1D" },
+    menu_hover: { light: "#F4F4F4", dark: "#565656" },
+    selected: { light: "#FEF7F2", dark: "#5E2700" },
   },
-  dark: {
-    fg: {
-      "favorite-fill": "#3d2700",
-      "bookmark-fill": "#5681ff",
-      "default":       "#bcbcbc",
-    },
-    bg: {
-      "rest": "#727272",
-    },
+  border: {
+    default: { light: "#A5A5A5", dark: "#2B2B2B" },
+    default_mpr: { light: "#A5A5A5", dark: "#1D1D1D" },
+    disabled: { light: "#BCBCBC", dark: "#565656" },
+    focused: { light: "#000000", dark: "#000000" },
+    hover: { light: "#EB6100", dark: "#EB6100" },
+    menu_border: { light: "#EEEEEE", dark: "#565656" },
+    selected: { light: "#F7C099", dark: "#EF8133" },
   },
-};
-
-// ============================================================
-// Layout
-// ============================================================
-
-export const card = {
-  light: {
-    bg: {
-      "default":  "#ffffff",
-      "pressed":  "#f4f4f4",
-      "selected": "#ffffff",
-      "hover":    "#ffffff",
-      "focus":    "#ffffff",
-      "disabled": "#ffffff",
-    },
-    fg: {
-      "title":       "#000000",
-      "body":        "#393939",
-      "description": "#a5a5a5",
-    },
-    border: {
-      "default":  "#dadada",
-      "hover":    "#292929",
-      "pressed":  "#292929",
-      "selected": "#fc7d00",
-      "focus":    "#020202",
-      "disabled": "#dadada",
-    },
-    icon: {
-      "default": "#393939",
-    },
-    common: {
-      "gray400-disabled": "#c6c6c6",
-    },
+  etc: {
+    error: { light: "#F03823", dark: "#F03823" },
+    "required mark": { light: "#F03823", dark: "#D2D2D2" },
+    "scroll-default": { light: "#E9E9E9", dark: "#565656" },
+    success: { light: "#05834E", dark: "#05834E" },
   },
-  dark: {},
-};
-
-export const reservationCard = {
-  light: {
-    bg: {
-      // Figma 원본 오타(stae/defalut/harf/ㅋ) 보존
-      "defalut1case":   { fill: "#eeeeee", overlay: "rgba(255,255,255,0.9)" },
-      "defalutKa":      { fill: "#8f8f8f", overlay: "rgba(255,255,255,0.9)" },
-      "defalut2case":   { fill: "#eeeeee", overlay: "rgba(255,255,255,0.9)" },
-      "defalut2_2case": { fill: "#8f8f8f", overlay: "rgba(255,255,255,0.9)" },
-      "disabled1case":  { fill: "#393939", overlay: "rgba(255,255,255,0.9)" },
-      "disabled2case":  { fill: "#393939", overlay: "rgba(255,255,255,0.9)" },
-    },
-    fg: {
-      "defalut":       "#000000",
-      "disabled1case": "#727272",
-      "disabled2case": "#000000",
-    },
-    common: {
-      "overlay-opacity": 0.9,
-    },
-  },
-  dark: {},
-};
-
-export const table = {
-  light: {
-    bg: {
-      "header":        "#f4f4f4",
-      "subheader":     "#e9e9e9",
-      "cell-default":  "#fefefe",
-      "cell-zebra":    "#f4f4f4",
-      "cell-hover":    "transparent",
-      "cell-selected": "transparent",
-      "sum":           "#dddddd",
-    },
-    fg: {
-      "header": "#1d1d1d",
-      "cell":   "#e9e9e9",
-    },
-    border: {
-      "default":  "#d2d2d2",
-      "divider":  "#d2d2d2",
-      "selected": "#eb6100",
-    },
-    icon: {
-      "default": "#727272",
-    },
-    common: {
-      // PMS theme namespace
-      "pms-cell-divider":   "#bdc9da",
-      "pms-border-default": "#d2dae6",
-      "pms-border-hover":   "#3796fe",
-      "pms-border-selected":"#ff8000",
-    },
-  },
-  dark: {
-    bg: {
-      "header":        "#dddddd",
-      "subheader":     "#eeeeee",
-      "cell-default":  "#f4f4f4",
-      "cell-zebra":    "#eeeeee",
-      "cell-hover":    "#dddddd",
-      "cell-selected": "#fbdfcc",
-      "sum":           "#e9e9e9",
-    },
-    fg: {
-      "cell": "#393939",
-    },
-    border: {
-      "default":  "#dddddd",
-      "divider":  "#dddddd",
-      "selected": "#ef8133",
-    },
-    icon: {
-      "default": "#8f8f8f",
-    },
-  },
-};
-
-export const list = {
-  light: {
-    bg: {
-      "default":  "#000000",
-      "active":   "#000000",
-      "hover":    "rgba(255,255,255,0.05)",
-      "selected": "rgba(235,97,0,0.1)",
-      "disabled": "#8f8f8f",
-    },
-    fg: {
-      "primary-default":   "#dddddd",
-      "primary-active":    "#fefefe",
-      "secondary-label":   "#d2d2d2",
-      "placeholder":       "#bcbcbc",
-      "read":              "#d2d2d2",
-      "disabled":          "#bcbcbc",
-      "fg-default":        "#bcbcbc",
-      "fg-active":         "#eeeeee",
-      "fg-disabled":       "#bcbcbc",
-    },
-    border: {
-      "default": "#8f8f8f",
-    },
-    icon: {
-      "default": "#bcbcbc",
-    },
-    common: {
-      "required-mark": "#df3422",
-    },
-  },
-  dark: {
-    bg: {
-      "default":  "#fefefe",
-      "active":   "#fefefe",
-      "hover":    "#fefefe",
-      "selected": "rgba(235,97,0,0.15)",
-      "disabled": "#eeeeee",
-    },
-    fg: {
-      "primary-default":  "#727272",
-      "primary-active":   "#020202",
-      "secondary-label":  "#d2d2d2",
-      "placeholder":      "#a5a5a5",
-      "read":             "#a5a5a5",
-      "disabled":         "#8f8f8f",
-      "fg-default":       "#727272",
-      "fg-active":        "#393939",
-      "fg-disabled":      "#8f8f8f",
-    },
-    border: {
-      "default": "#e9e9e9",
-    },
-    icon: {
-      "default": "#d2d2d2",
-    },
-    common: {
-      "required-mark": "#727272",
-    },
+  text: {
+    default: { light: "#2B2B2B", dark: "#E9E9E9" },
+    disabled: { light: "#A5A5A5", dark: "#BCBCBC" },
+    label: { light: "#565656", dark: "#F9F9F9" },
+    placeholder: { light: "#8F8F8F", dark: "#A5A5A5" },
+    "read only": { light: "#8F8F8F", dark: "#A5A5A5" },
   },
 };
 
 export const expandableList = {
-  light: {
-    bg: {
-      "default":  "#000000",
-      "selected": "#1d1d1d",
-      "disabled": "#393939",
-    },
-    fg: {
-      "primary":   "transparent",
-      "secondary": "transparent",
-      "disabled":  "#a5a5a5",
-    },
-    border: {
-      "default":  "#8f8f8f",
-      "selected": "#8f8f8f",
-      "disabled": "#727272",
-    },
+  "bg-default": { light: "#FFFFFF", dark: "#0E0E0E" },
+  "bg-disabled": { light: "#E9E9E9", dark: "#E9E9E9" },
+  "bg-selected": { light: "#F4F4F4", dark: "#393939" },
+  "border-default": { light: "#BCBCBC", dark: "#565656" },
+  "border-disabled": { light: "#D2D2D2", dark: "#D2D2D2" },
+  "border-selected": { light: "#BCBCBC", dark: "#565656" },
+  "text-disabled": { light: "#A5A5A5", dark: "#A5A5A5" },
+  "text-primary": { light: "#1D1D1D", dark: "#E9E9E9" },
+  "text-secondary": { light: "#727272", dark: "#D2D2D2" },
+};
+
+export const focused = { light: "#000000", dark: "#000000" };
+
+export const gnb = {
+  bg: {
+    "gnb-bg": { light: "#727272", dark: "#8F8F8F" },
+    "gnb-bg-onesw": { light: "#D2D2D2", dark: "#8F8F8F" },
+    "gnb-bg-pms": { light: "#F9F9F9", dark: "#8F8F8F" },
   },
-  dark: {
-    bg: {
-      "default":  "#f9f9f9",
-      "selected": "#e9e9e9",
-      "disabled": "#393939",
-    },
-    fg: {
-      "primary":   "#393939",
-      "secondary": "#727272",
-      "disabled":  "#a5a5a5",
-    },
-    border: {
-      "default":  "#dddddd",
-      "selected": "#dddddd",
-      "disabled": "#727272",
-    },
+  container: {
+    "container-bg-default": { light: "#F9F9F9", dark: "#727272" },
+    "container-bg-hover": { light: "#EEEEEE", dark: "#393939" },
+    "container-bg-selected": { light: "#FFFFFF", dark: "#1D1D1D" },
+    "container-bg-selected-brand": { light: "#FEF7F2", dark: "#F7C099" },
+  },
+  etc: {
+    border: { light: "#BCBCBC", dark: "#393939" },
+    divider: { light: "#A5A5A5", dark: "#727272" },
+    "text default": { light: "#565656", dark: "#E9E9E9" },
+    text_active: { light: "#1D1D1D", dark: "#FFFFFF" },
+    text_disabled: { light: "#8F8F8F", dark: "#8F8F8F" },
+  },
+  icon: {
+    "icon-default": { light: "#8F8F8F", dark: "#565656" },
+    "icon-hover": { light: "#565656", dark: "#D2D2D2" },
+    "icon-selected": { light: "#393939", dark: "#FFFFFF" },
+    "icon-selected line": { light: "#EB6100", dark: "#EB6100" },
+    "icon-stroke": { light: "#8F8F8F", dark: "#BCBCBC" },
+  },
+  "xx-bg": {
+    bg_base: { light: "#F4F4F4", dark: "#393939" },
+    bg_ct: { light: "#F9F9F9", dark: "#F9F9F9" },
+    "bg_layer _1": { light: "#393939", dark: "#393939" },
+    bg_layer_2: { light: "#F4F4F4", dark: "#2B2B2B" },
   },
 };
 
-export const hmi = {
-  light: {
-    bg: {
-      "default":  "#000000",
-      "active":   "#000000",
-      "hover":    "rgba(255,255,255,0.05)",
-      "selected": "rgba(235,97,0,0.1)",
-      "disabled": "#8f8f8f",
-      "dim":      "rgba(255,255,255,0.4)",
-    },
+export const hover = { light: "#EB6100", dark: "#EB6100" };
+
+export const inputCommon = {
+  bg: {
+    default: { light: "#FFFFFF", dark: "#020202" },
+    disabled: { light: "#BCBCBC", dark: "#2B2B2B" },
+  },
+  border: {
+    default: { light: "#BCBCBC", dark: "#2B2B2B" },
+    disabled: { light: "#A5A5A5", dark: "#565656" },
+    focused: { light: "#000000", dark: "#000000" },
+    hover: { light: "#EB6100", dark: "#BC4E00" },
+  },
+  etc: {
+    error: { light: "#F03823", dark: "#F03823" },
+    "required mark": { light: "#F03823", dark: "#D2D2D2" },
+    success: { light: "#05834E", dark: "#05834E" },
+  },
+  icon: {
+    default: { light: "#8F8F8F", dark: "#8F8F8F" },
+  },
+  text: {
+    default: { light: "#2B2B2B", dark: "#E9E9E9" },
+    disabled: { light: "#8F8F8F", dark: "#BCBCBC" },
     fg: {
-      "primary-default":  "#dddddd",
-      "primary-active":   "#fefefe",
-      "secondary-label":  "#d2d2d2",
-      "disabled":         "#bcbcbc",
-      "placeholder":      "#bcbcbc",
-      "read":             "#d2d2d2",
-      "fg-default":       "#bcbcbc",
-      "fg-active":        "#eeeeee",
-      "fg-disabled":      "#bcbcbc",
+      active: { light: "#2B2B2B", dark: "#E9E9E9" },
+      default: { light: "#8F8F8F", dark: "#D2D2D2" },
+      disabled: { light: "#8F8F8F", dark: "#BCBCBC" },
     },
-    border: {
-      "default": "#8f8f8f",
-      "illust":  "#dddddd",
-      "logo":    "transparent",
-    },
-    icon: {
-      "default": "#bcbcbc",
-    },
-    common: {
-      "required-mark": "#df3422",
-    },
+    label: { light: "#565656", dark: "#F9F9F9" },
+    placeholder: { light: "#8F8F8F", dark: "#A5A5A5" },
+    "read only": { light: "#727272", dark: "#A5A5A5" },
+    "read only-pms": { light: "#2B2B2B", dark: "#A5A5A5" },
   },
-  dark: {
-    bg: {
-      "default":  "#fefefe",
-      "active":   "#fefefe",
-      "hover":    "#fefefe",
-      "selected": "#fefefe",
-      "disabled": "#eeeeee",
-      "dim":      "rgba(0,0,0,0.4)",
-    },
+};
+
+export const legend = { light: "#393939", dark: "#DDDDDD" };
+
+export const list = {
+  bg: {
+    active: { light: "#FFFFFF", dark: "#020202" },
+    default: { light: "#FFFFFF", dark: "#020202" },
+    disabled: { light: "#BCBCBC", dark: "#2B2B2B" },
+    hover: { light: "#FFFFFF0D", dark: "#020202" },
+    selected: { light: "#EB61001A", dark: "#EB610026" },
+  },
+  border: {
+    default: { light: "#BCBCBC", dark: "#393939" },
+  },
+  etc: {
+    error: { light: "#F03823", dark: "#F03823" },
+    "required mark": { light: "#F03823", dark: "#D2D2D2" },
+    success: { light: "#05834E", dark: "#05834E" },
+  },
+  icon: {
+    default: { light: "#8F8F8F", dark: "#727272" },
+  },
+  text: {
+    disabled: { light: "#8F8F8F", dark: "#BCBCBC" },
     fg: {
-      "primary-default":  "#727272",
-      "primary-active":   "#020202",
-      "secondary-label":  "#d2d2d2",
-      "disabled":         "#8f8f8f",
-      "placeholder":      "#a5a5a5",
-      "read":             "#a5a5a5",
-      "fg-default":       "#727272",
-      "fg-active":        "#393939",
-      "fg-disabled":      "#8f8f8f",
+      active: { light: "#2B2B2B", dark: "#E9E9E9" },
+      default: { light: "#8F8F8F", dark: "#D2D2D2" },
+      disabled: { light: "#8F8F8F", dark: "#BCBCBC" },
     },
-    border: {
-      "default": "#bcbcbc",
-      "illust":  "#393939",
-      "logo":    "#000000",
-    },
-    icon: {
-      "default": "#d2d2d2",
-    },
-    common: {
-      "required-mark": "#727272",
-    },
+    placeholder: { light: "#8F8F8F", dark: "#A5A5A5" },
+    "primary-active": { light: "#020202", dark: "#FEFEFE" },
+    "primary-default": { light: "#565656", dark: "#D2D2D2" },
+    read: { light: "#727272", dark: "#A5A5A5" },
+    "secondary-label": { light: "#727272", dark: "#727272" },
   },
 };
 
-// ============================================================
-// Feedback
-// ============================================================
+export const markDoctor1 = { light: "#FF4885", dark: "#FF4885" };
 
-export const tooltip = {
-  light: {
-    bg: {
-      "default": "#eeeeee",
-      "invert":  "#0e0e0e",
-      "info":    "#0f1c52",
-      "warning": "#2f1d00",
-    },
-    text: {
-      "default":  "#000000",
-      "inverted": "#ffffff",
-      "info":     "#ffffff",
-      "warning":  "#ffffff",
-    },
-    line: {
-      "info":    "#122d9a",
-      "warning": "#533400",
-      "invert":  "#565656",
-    },
-  },
-  dark: {
-    bg: {
-      "default": "#0e0e0e",
-      "invert":  "#eeeeee",
-      "info":    "#d5e7fe",
-      "warning": "#da9f00",
-    },
-    text: {
-      "default":  "#ffffff",
-      "inverted": "#000000",
-      "info":     "#000000",
-      "warning":  "#000000",
-    },
-    line: {
-      "info":    "#6995fe",
-      "warning": "#825200",
-      "invert":  "#dddddd",
-    },
-  },
-};
+export const markDoctor2 = { light: "#B539C8", dark: "#B539C8" };
 
-export const popover = {
-  light: {
-    bg: {
-      "default":  "#2b2b2b",
-      "inverted": "#f9f9f9",
-      "info":     "#e5f0fe",
-      "warning":  "#fff197",
-    },
-    line: {
-      "info":    "#accffd",
-      "warning": "#f5c700",
-    },
-    shadow: "#d2d2d2",
-  },
-  dark: {},
-};
+export const markDoctor3 = { light: "#0DB595", dark: "#0DB595" };
 
-export const popup = {
-  light: {
-    bg: {
-      "default": "#f4f4f4",
-      "header":  "#f4f4f4",
-      "surface": "#ffffff",
-      "footer":  "#f4f4f4",
-    },
-    border: {
-      "surface": "#dddddd",
-    },
-    text: {
-      "header-title":   "#000000",
-      "contents-title": "#000000",
-    },
-    // v0.1/elevation-50 = (0,4) blur 4 #0000004D + (0,8) blur 12 spread 6 #00000026
-    shadow: "v0.1/elevation-50",
-  },
-  dark: {},
+export const markDoctor4 = { light: "#B86D46", dark: "#B86D46" };
+
+export const markFirst = { light: "#F5C700", dark: "#F5C700" };
+
+export const markIcon = { light: "#565656", dark: "#A5A5A5" };
+
+export const markImaging = { light: "#A65CE7", dark: "#A65CE7" };
+
+export const markLabTest = { light: "#FF98BB", dark: "#FF98BB" };
+
+export const markMedication = { light: "#1286CD", dark: "#1286CD" };
+
+export const markReturn = { light: "#52A119", dark: "#52A119" };
+
+export const menu = {
+  "bg-default": { light: "#FFFFFF", dark: "#1D1D1D" },
+  "bg-disabled": { light: "#E9E9E9", dark: "#2B2B2B" },
+  "bg-hover": { light: "#E9E9E9", dark: "#2B2B2B" },
+  "bg-layout": { light: "#FFFFFF", dark: "#1D1D1D" },
+  "bg-selected": { light: "#FEF7F2", dark: "#EB61004D" },
+  "border-active": { light: "#1D1D1D", dark: "#FFFFFF" },
+  "border-default": { light: "#BCBCBC", dark: "#E9E9E9" },
+  "border-selected": { light: "#F3A066", dark: "#BC4E00" },
+  divider: { light: "#BCBCBC", dark: "#8F8F8F" },
+  "divider-danger": { light: "#D73220", dark: "#FF7665" },
+  "divider-disabled": { light: "#BCBCBC", dark: "#565656" },
+  "divider-selected": { light: "#F7C099", dark: "#EF8133" },
+  "fg-default": { light: "#1D1D1D", dark: "#393939" },
+  "fg-disabled": { light: "#A5A5A5", dark: "#2B2B2B" },
+  "fg-hover": { light: "#1D1D1D", dark: "#2B2B2B" },
+  "fg-selected": { light: "#EB6100", dark: "#1D1D1D" },
+  icon: { light: "#565656", dark: "#E9E9E9" },
+  "icon-danger": { light: "#D73220", dark: "#FF7665" },
+  "icon-default": { light: "#393939", dark: "#FFFFFF" },
+  "icon-disabled": { light: "#A5A5A5", dark: "#565656" },
+  "icon-hover": { light: "#393939", dark: "#2B2B2B" },
+  "icon-selected": { light: "#EB6100", dark: "#FFFFFF" },
+  "section-divider": { light: "#BCBCBC", dark: "#565656" },
+  "text-danger": { light: "#D73220", dark: "#FF7665" },
+  "text-disabled": { light: "#A5A5A5", dark: "#565656" },
+  "text-primary": { light: "#1D1D1D", dark: "#FEFEFE" },
+  "text-secondary": { light: "#393939", dark: "#E9E9E9" },
+  "text-selected": { light: "#EB6100", dark: "#FFFFFF" },
 };
 
 export const modal = {
-  light: {
-    bg: "#ffffff",
-    text: {
-      "title-primary":  "#000000",
-      "body-secondary": "#393939",
-    },
-    outline: {
-      "critical": "#f03823",
-      "warning":  "#e6af00",
-      "info":     "#3b63fb",
-      "success":  "#05834e",  // 가이드는 #0ba45d도 사용
-      "question": "#9a47e2",
-      "general":  "#727272",
-    },
-    shadow: "v0.1/elevation-50",
-  },
-  dark: {},
+  bg: { light: "#FFFFFF", dark: "#393939" },
+  "outline-critical": { light: "#F03823", dark: "#F03823" },
+  "outline-general": { light: "#727272", dark: "#BCBCBC" },
+  "outline-info": { light: "#3B63FB", dark: "#3B63FB" },
+  "outline-question": { light: "#9A47E2", dark: "#9A47E2" },
+  "outline-success": { light: "#05834E", dark: "#05834E" },
+  "outline-warning": { light: "#E6AF00", dark: "#E6AF00" },
+  "text-body-secondary": { light: "#393939", dark: "#E9E9E9" },
+  "text-title-primary": { light: "#000000", dark: "#FFFFFF" },
 };
 
 export const notification = {
-  light: {
-    bg: {
-      "default":         "#000000",
-      "general":         "#1d1d1d",
-      "general-default": "#eeeeee",
-      "general2":        "#eeeeee",
-      "general3":        "#eeeeee",
-      "warning":         "#eeeeee",
-      "info-primary":    "#0c2175",
-      "invert00":        "#393939",
-    },
-    text: {
-      "default-title":       "#000000",
-      "default-title2":      "#000000",
-      "default-button-text": "#8f8f8f",
-      "invert-title00":      "#ffffff",
-    },
-    primary: {
-      "info":      "#5681ff",
-      "info2":     "#0f1c52",
-      "critical":  "#df3422",
-      "critical2": "#440d05",
-      "warning":   "#6b4300",
-      "warning2":  "#251700",
-      "success":   "#047c4b",
-      "success2":  "#00261d",
-      "question":  "#ad69e9",
-      "question2": "#320060",
-    },
-    border: {
-      "default": "#a5a5a5",
-      "info2":   "#a5a5a5",
-    },
-    icon:     "#000000",
-    shadow00: "#727272",
-    invert2:  "#f4f4f4",
-  },
-  dark: {
-    bg: {
-      "default":         "#000000",
-      "general":         "#1d1d1d",
-      "general-default": "#1d1d1d",
-      "general2":        "#1d1d1d",
-      "general3":        "#1d1d1d",
-      "warning":         "#1d1d1d",
-      "info-primary":    "#1d1d1d",
-      "invert00":        "#e9e9e9",
-    },
-    text: {
-      "default-title":       "#ffffff",
-      "default-title2":      "#ffffff",
-      "default-button-text": "#dddddd",
-      "invert-title00":      "#000000",
-    },
-    primary: {
-      "info":      "#000000",
-      "info2":     "#000000",
-      "critical":  "#000000",
-      "critical2": "#000000",
-      "warning":   "#000000",
-      "warning2":  "#000000",
-      "success":   "#000000",
-      "success2":  "#000000",
-      "question":  "#000000",
-      "question2": "#000000",
-    },
-    border: {
-      "default": "#000000",
-      "info2":   "#000000",
-    },
-    icon:     "#ffffff",
-    shadow00: "#dddddd",
-    invert2:  "#ffffff",
-  },
+  "bg-default": { light: "#FFFFFF", dark: "#FFFFFF" },
+  "bg-general": { light: "#F4F4F4", dark: "#F4F4F4" },
+  "bg-general-2": { light: "#2B2B2B", dark: "#F4F4F4" },
+  "bg-general-3": { light: "#2B2B2B", dark: "#F4F4F4" },
+  "bg-general-default": { light: "#2B2B2B", dark: "#F4F4F4" },
+  "bg-info-primary": { light: "#CBE2FE", dark: "#F4F4F4" },
+  "bg-invert-00": { light: "#E9E9E9", dark: "#393939" },
+  "bg-warning": { light: "#2B2B2B", dark: "#F4F4F4" },
+  "border-default": { light: "#A5A5A5", dark: "#FFFFFF" },
+  "border-info 2": { light: "#A5A5A5", dark: "#FFFFFF" },
+  "critical-primary": { light: "#F03823", dark: "#FFFFFF" },
+  "critical-primary 2": { light: "#FFEBE8", dark: "#FFFFFF" },
+  icon: { light: "#FFFFFF", dark: "#000000" },
+  "info-primary": { light: "#3B63FB", dark: "#FFFFFF" },
+  "info-primary 2": { light: "#E5F0FE", dark: "#FFFFFF" },
+  invert2: { light: "#1D1D1D", dark: "#000000" },
+  "question-primary": { light: "#9A47E2", dark: "#FFFFFF" },
+  "question-primary 2": { light: "#F4EBFC", dark: "#FFFFFF" },
+  "shadow-00": { light: "#D2D2D2", dark: "#565656" },
+  "success-primary": { light: "#0BA45D", dark: "#FFFFFF" },
+  "success-primary 2": { light: "#D7F7E1", dark: "#FFFFFF" },
+  "text-default-button text": { light: "#BCBCBC", dark: "#565656" },
+  "text-default-title": { light: "#FFFFFF", dark: "#000000" },
+  "text-default-title 2": { light: "#FFFFFF", dark: "#000000" },
+  "text-invert-title-00": { light: "#000000", dark: "#FFFFFF" },
+  "warning-primary": { light: "#E6AF00", dark: "#FFFFFF" },
+  "warning-primary 2": { light: "#FFF8CC", dark: "#FFFFFF" },
 };
 
-// progress · progress-stepper · circle 통합
-export const progress = {
-  light: {
-    bar: {
-      bg: "#ffffff",
-      track: {
-        "rest-primary":   "#e1e1e199",  // ~60% alpha gray
-        "rest-secondary": "#e9e9e9",
-        "bg-rest":        "#e1e1e1",
-      },
-      active:  "#3b63fb",  // blue
-      success: "#05834e",  // alert/strong/success_positive
-      text: {
-        "main": "#1d1d1d",
-        "sub":  "#565656",
-      },
-    },
-    circle: {
-      active: {
-        "primary-brand": "#eb6100",
-        "invert":        "#ffffff",
-      },
-      track: {
-        "rest-primary":   "#e1e1e199",
-        "rest-secondary": "#e9e9e9",
-        "rest-invert":    "#8f8f8f",
-      },
-      etc: {
-        "progress-color":   "#40bf80",
-        "uds-green-600":    "#0eb3d7",
-      },
-    },
-    stepper: {
-      "active":         "#1d1d1d",
-      "active-invert":  "#ffffff",
-      "inactive":       "#bcbcbc",
-      text: {
-        "main":     "#1d1d1d",
-        "sub":      "#565656",
-        "inactive": "#bcbcbc",
-      },
-      etc: {
-        "fg-neutral-selected":     "#000000",
-        "border-neutral-selected": "#373d4c",
-        "border-default":          "#dadada",
-        "fg-disabled-2":           "#dadada",
-        "text-disabled":           "#c6c6c6",
-        "common-inverse":          "#ffffff",
-      },
-    },
-  },
-  dark: {},
+export const popover = {
+  "bg-default": { light: "#2B2B2B", dark: "#F9F9F9" },
+  "bg-info": { light: "#E5F0FE", dark: "#0C1F69" },
+  "bg-inverted": { light: "#F9F9F9", dark: "#2B2B2B" },
+  "bg-warning": { light: "#FFF197", dark: "#724800" },
+  "line-info": { light: "#ACCFFD", dark: "#274DEA" },
+  "line-warning": { light: "#F5C700", dark: "#AF7400" },
 };
 
-export const spinner = {
-  light: {
-    brand: {
-      "default":     "#eb6100",  // brand-A_default
-      "lighter":     "#f3a066",
-      "darker":      "#8d3a00",
-      "morelighter": "#fbdfcc",
-    },
-    track: {
-      "rest-primary": "#e1e1e199",
-    },
-    active: "#eb6100",
-  },
-  dark: {},
+export const popup = {
+  bg: { light: "#F4F4F4", dark: "#1D1D1D" },
+  "bg-container": { light: "#F4F4F4", dark: "#1D1D1D" },
+  "bg-footer": { light: "#F4F4F4", dark: "#1D1D1D" },
+  "bg-header": { light: "#F4F4F4", dark: "#1D1D1D" },
+  "bg-surface": { light: "#FFFFFF", dark: "#393939" },
+  border: { light: "#A5A5A5", dark: "#393939" },
+  "border-surface": { light: "#DDDDDD", dark: "#393939" },
+  "text-contents-body": { light: "#000000", dark: "#E9E9E9" },
+  "text-contents-title": { light: "#000000", dark: "#E9E9E9" },
+  "text-header-sub title": { light: "#565656", dark: "#D2D2D2" },
+  "text-header-title": { light: "#000000", dark: "#E9E9E9" },
 };
+
+export const progressCircleBar = {
+  active: { light: "#1D1D1D", dark: "#FFFFFF" },
+  "active-invert": { light: "#FFFFFF", dark: "#1D1D1D" },
+  "active-primary-brand": { light: "#EB6100", dark: "#EB6100" },
+  "active-primary-invert": { light: "#FEFEFE", dark: "#FEFEFE" },
+  "active-primary-neutral": { light: "#EB6100", dark: "#EB6100" },
+  bg: { light: "#FFFFFF", dark: "#1D1D1D" },
+  inactive: { light: "#BCBCBC", dark: "#393939" },
+  "progress bar_active": { light: "#3B63FB", dark: "#3B63FB" },
+  "rest-invert": { light: "#8F8F8F", dark: "#D2D2D2" },
+  "rest-primary": { light: "#E1E1E199", dark: "#565656" },
+  "rest-secondary": { light: "#E9E9E9", dark: "#565656" },
+  "text-inactive": { light: "#BCBCBC", dark: "#565656" },
+  "text-main": { light: "#1D1D1D", dark: "#FFFFFF" },
+  "text-sub": { light: "#565656", dark: "#D2D2D2" },
+};
+
+export const rating = {
+  "bg-rest": { light: "#D2D2D2", dark: "#D2D2D2" },
+  "bookmark-fill": { light: "#3B63FB", dark: "#3B63FB" },
+  default: { light: "#8F8F8F", dark: "#8F8F8F" },
+  "favorite-fill": { light: "#FFDE2C", dark: "#FFDE2C" },
+  "like-fill": { light: "#EB6100", dark: "#EB6100" },
+};
+
+export const saturday = { light: "#4B75FF", dark: "#729EFD" };
+
+export const segmentedControl = {
+  bg: { light: "#FFFFFF", dark: "#565656" },
+  "bg-default": { light: "#FFFFFF00", dark: "#FFFFFF00" },
+  "bg-disabled": { light: "#FFFFFF00", dark: "#727272" },
+  "bg-hover": { light: "#F4F4F4", dark: "#393939" },
+  "bg-pressed": { light: "#EEEEEE", dark: "#1D1D1D" },
+  "bg-selected": { light: "#FEFEFE", dark: "#1D1D1D" },
+  border: { light: "#A5A5A5", dark: "#727272" },
+  "border-selected": { light: "#EB6100", dark: "#EF8133" },
+  container: {
+    "bg-contained type": { light: "#FFFFFF", dark: "#2B2B2B" },
+    "bg-solid type": { light: "#E9E9E9", dark: "#FFFFFF" },
+    "border-contained type": { light: "#A5A5A5", dark: "#565656" },
+    "border-solid type": { light: "#E9E9E9", dark: "#727272" },
+  },
+  "text-default": { light: "#727272", dark: "#D2D2D2" },
+  "text-default-num": { light: "#EB6100", dark: "#EB6100" },
+  "text-disabled": { light: "#A5A5A5", dark: "#A5A5A5" },
+  "text-selected": { light: "#EB6100", dark: "#FEFEFE" },
+  "text-selected-solid": { light: "#1D1D1D", dark: "#FEFEFE" },
+};
+
+export const select = { light: "#FFFFFF", dark: "#FFFFFF" };
 
 export const slider = {
-  light: {
-    handle: {
-      "bg":            "#000000",
-      "bg-hover":      "#000000",
-      "bg-select":     "#030100",
-      "border":        "#d2d2d2",
-      "border-hover":  "#d2d2d2",
-      "border-select": "#ef8133",
-    },
-    track: {
-      "progress-on":  "#8d3a00",
-      "progress-off": "#393939",
-    },
-    text: "#dddddd",
+  handle_bg: { light: "#FFFFFF", dark: "#2B2B2B" },
+  handle_bg_hover: { light: "#FFFFFF", dark: "#2B2B2B" },
+  handle_bg_select: { light: "#FFFDFC", dark: "#8D3A00" },
+  handle_border: { light: "#727272", dark: "#8F8F8F" },
+  handle_border_hover: { light: "#727272", dark: "#EF8133" },
+  handle_border_select: { light: "#EF8133", dark: "#EF8133" },
+  handle_focused: { light: "{common.focus-ring}", dark: "{common.focus-ring}" },
+  progress_off: { light: "#E9E9E9", dark: "#565656" },
+  progress_on: { light: "#F9CFB2", dark: "#EF8133" },
+  slider_text: { light: "#565656", dark: "#A5A5A5" },
+};
+
+export const sunday = { light: "#F03823", dark: "#FF7665" };
+
+export const tab = {
+  contained_tab: {
+    "bg-default": { light: "#FFFFFF00", dark: "#FFFFFF00" },
+    "bg-disabled": { light: "#FFFFFF00", dark: "#727272" },
+    "bg-hover": { light: "#F8F8F8", dark: "#393939" },
+    "bg-pressed": { light: "#EEEEEE", dark: "#1D1D1D" },
+    "bg-selected": { light: "#FEFEFE", dark: "#393939" },
+    "border-default": { light: "#FFFFFF00", dark: "#FFFFFF00" },
+    "border-selected": { light: "#EB6100", dark: "#FFFFFF00" },
+    "text-default": { light: "#000000", dark: "#D2D2D2" },
+    "text-default-num": { light: "#EB6100", dark: "#EB6100" },
+    "text-disabled": { light: "#A5A5A5", dark: "#A5A5A5" },
+    "text-selected": { light: "#EB6100", dark: "#FEFEFE" },
   },
-  dark: {
-    handle: {
-      "bg":            "#eeeeee",
-      "bg-hover":      "#eeeeee",
-      "bg-select":     "#f9cfb2",
-      "border":        "#bcbcbc",
-      "border-hover":  "#ef8133",
-      "border-select": "#ef8133",
-    },
-    track: {
-      "progress-on":  "#ef8133",
-      "progress-off": "#dddddd",
-    },
-    text: "#a5a5a5",
+  container: {
+    bg: { light: "#FFFFFF", dark: "#393939" },
+    border: { light: "#A5A5A5", dark: "#1D1D1D" },
+  },
+  line_tab: {
+    "bg-default": { light: "#FFFFFF00", dark: "#2B2B2B" },
+    "bg-disabled": { light: "#FFFFFF00", dark: "#8F8F8F" },
+    "bg-hover": { light: "#F4F4F4", dark: "#393939" },
+    "bg-pressed": { light: "#EEEEEE", dark: "#1D1D1D" },
+    "bg-selected": { light: "#FFFFFF", dark: "#393939" },
+    "border-default": { light: "#FFFFFF00", dark: "#565656" },
+    "border-selected": { light: "#000000", dark: "#BCBCBC" },
+    "border-unselected": { light: "#A5A5A5", dark: "#A5A5A5" },
+    icon: { light: "#393939", dark: "#F9F9F9" },
+    "text-default": { light: "#565656", dark: "#F4F4F4" },
+    "text-default-num": { light: "#EB6100", dark: "#EB6100" },
+    "text-disabled": { light: "#A5A5A5", dark: "#565656" },
+    "text-selected": { light: "#EB6100", dark: "#FEFEFE" },
   },
 };
 
-// ============================================================
-// Calendar / Date
-// ============================================================
+export const table = {
+  bg: {
+    "bg-cell-default": { light: "#FEFEFE", dark: "#1D1D1D" },
+    "bg-cell-hover": { light: "#D2D2D2", dark: "#565656" },
+    "bg-cell-selected": { light: "#F7C099", dark: "#5E2700" },
+    "bg-cell-zebra": { light: "#F4F4F4", dark: "#2B2B2B" },
+    "bg-header": { light: "#F4F4F4", dark: "#565656" },
+    "bg-subheader": { light: "#E9E9E9", dark: "#2B2B2B" },
+    "bg-sum": { light: "#DDDDDD", dark: "#393939" },
+  },
+  border: {
+    "border-default": { light: "#D2D2D2", dark: "#565656" },
+    "border-selected": { light: "#EB6100", dark: "#EF8133" },
+    divider: { light: "#D2D2D2", dark: "#565656" },
+  },
+  icon: {
+    default: { light: "#727272", dark: "#BCBCBC" },
+  },
+  text: {
+    "text-cell": { light: "#393939", dark: "#E9E9E9" },
+    "text-header": { light: "#1D1D1D", dark: "#FEFEFE" },
+  },
+};
 
-export const calendar = {
-  light: {
-    bg: {
-      "default": "#000000",
-      "dual":    "#0e0e0e",
-      "day":     "#2b2b2b",
-      "date":    "#000000",
-      "active":  "#180a00",
-      "select":  "#180a00",
-      "hover":   "#1d1d1d",
-    },
-    text: {
-      "default":  "#ffffff",
-      "select":   "#000000",
-      "sunday":   "#df3422",
-      "saturday": "#4069fd",
-      "legend":   "#e9e9e9",
-    },
-    border: {
-      "default":  "#393939",
-      "disabled": "#a5a5a5",
-      "thisweek": "#0d7dba",
-    },
-    mark: {
-      "doctor1":        "#cf1f5c",
-      "doctor2":        "#d549eb",
-      "doctor3":        "#046959",
-      "doctor4":        "#b0623b",
-      "first":          "#533400",
-      "return":         "#3c7a0f",
-      "medication":     "#0d7dba",
-      "imaging":        "#9d4ee4",
-      "lab-test":       "#98073c",
-      "icon":           "#dddddd",
-      "bg-general":     "#df3422",
-      "bg-inpatient":   "#03545c",
-      "bg-reservation": "#73180b",
-    },
-    legend: {
-      "bg-first":       "#533400",
-      "bg-return":      "#3c7a0f",
-      "bg-medication":  "#0d7dba",
-      "bg-imaging":     "#9d4ee4",
-      "bg-lab-test":    "#98073c",
-      "bg-general":     "#df3422",
-      "bg-inpatient":   "#03545c",
-      "bg-reservation": "#7b002d",
-      "bg-night":       "#53009f",
-      "bg-icon":        "#dddddd",
-    },
+export const tag = {
+  accent: {
+    black: { light: "#000000", dark: "#FFFFFF" },
+    "black_for cautuion": { light: "#000000", dark: "#000000" },
+    blue: { light: "#3B63FB", dark: "#5D89FF" },
+    gray: { light: "#565656", dark: "#BCBCBC" },
+    green: { light: "#05834E", dark: "#0BA45D" },
+    indigo: { light: "#7155FA", dark: "#8480FE" },
+    magenta: { light: "#D92361", dark: "#FF709F" },
+    orange: { light: "#EB6100", dark: "#EF8133" },
+    red: { light: "#D73220", dark: "#FF513D" },
+    turquoise: { light: "#087E89", dark: "#0C9EAB" },
+    white: { light: "#FFFFFF", dark: "#000000" },
+    yellow: { light: "#F5C700", dark: "#E6AF00" },
+    yellow_dark: { light: "#D29500", dark: "#E6AF00" },
   },
-  dark: {
-    bg: {
-      "default": "#eeeeee",
-      "dual":    "#e9e9e9",
-      "day":     "#e9e9e9",
-      "date":    "#e9e9e9",
-      "active":  "#fbdfcc",
-      "select":  "#fbdfcc",
-      "hover":   "#dddddd",
-    },
-    text: {
-      "default":  "#1d1d1d",
-      "select":   "#000000",
-      "sunday":   "#b12617",
-      "saturday": "#2549e5",
-      "legend":   "#565656",
-    },
-    border: {
-      "default":  "#e9e9e9",
-      "disabled": "#dddddd",
-      "thisweek": "#0d7dba",
-    },
-    mark: {
-      "doctor1":        "#cf1f5c",
-      "doctor2":        "#d549eb",
-      "doctor3":        "#046959",
-      "doctor4":        "#b0623b",
-      "first":          "#533400",
-      "return":         "#3c7a0f",
-      "medication":     "#0d7dba",
-      "imaging":        "#9d4ee4",
-      "lab-test":       "#98073c",
-      "icon":           "#a5a5a5",
-      "bg-general":     "#df3422",
-      "bg-inpatient":   "#03545c",
-      "bg-reservation": "#73180b",
-    },
-    legend: {
-      "bg-first":       "#da9f00",
-      "bg-return":      "#64be23",
-      "bg-medication":  "#0d7dba",
-      "bg-imaging":     "#9d4ee4",
-      "bg-lab-test":    "#98073c",
-      "bg-general":     "#ff8678",
-      "bg-inpatient":   "#0cad8e",
-      "bg-reservation": "#ffa3c2",
-      "bg-night":       "#eee0fa",
-      "bg-icon":        "#a5a5a5",
-    },
+  bg: {
+    blue: { light: "#E5F0FE", dark: "#0C1F69" },
+    gray: { light: "#DDDDDD", dark: "#565656" },
+    green: { light: "#D7F7E1", dark: "#002E22" },
+    indigo: { light: "#EBEEFF", dark: "#2A0081" },
+    magenta: { light: "#FFE8F0", dark: "#880033" },
+    orange: { light: "#FDEFE5", dark: "#471D00" },
+    red: { light: "#FFEBE8", dark: "#501006" },
+    turquoise: { light: "#D1F5F5", dark: "#002E28" },
+    yellow: { light: "#FFF8CC", dark: "#4B2F00" },
   },
+};
+
+export const text = { light: "text", dark: "text" };
+
+export const textInput = {
+  bg: {
+    default: { light: "#FFFFFF", dark: "#020202" },
+    disabled: { light: "#EEEEEE", dark: "#2B2B2B" },
+  },
+  border: {
+    default: { light: "#A5A5A5", dark: "#393939" },
+    disabled: { light: "#BCBCBC", dark: "#565656" },
+    focused: { light: "#000000", dark: "#000000" },
+    hover: { light: "#EB6100", dark: "#BC4E00" },
+  },
+  etc: {
+    error: { light: "#F03823", dark: "#F03823" },
+    "required mark": { light: "#F03823", dark: "#D2D2D2" },
+    success: { light: "#05834E", dark: "#05834E" },
+  },
+  icon: {
+    default: { light: "#8F8F8F", dark: "#8F8F8F" },
+  },
+  text: {
+    default: { light: "#2B2B2B", dark: "#E9E9E9" },
+    disabled: { light: "#A5A5A5", dark: "#BCBCBC" },
+    label: { light: "#565656", dark: "#F9F9F9" },
+    placeholder: { light: "#8F8F8F", dark: "#A5A5A5" },
+    "read only": { light: "#727272", dark: "#A5A5A5" },
+    "read only-pms": { light: "#2B2B2B", dark: "#A5A5A5" },
+  },
+};
+
+export const thisweek = { light: "#1286CD", dark: "#1286CD" };
+
+export const today = { light: "#EB6100", dark: "#EF8133" };
+
+export const toolbar = {
+  bg: {
+    bg_base: { light: "#F4F4F4", dark: "#393939" },
+    bg_ct: { light: "#F9F9F9", dark: "#000000" },
+    "bg_layer _1": { light: "#393939", dark: "#393939" },
+    bg_layer_2: { light: "#F4F4F4", dark: "#2B2B2B" },
+  },
+  container: {
+    "container-bg-default": { light: "#F9F9F9", dark: "#727272" },
+    "container-bg-hover": { light: "#FFFFFF33", dark: "#565656" },
+    "container-bg-selected": { light: "#FEF7F2", dark: "#000000" },
+    "tool-bg-base": { light: "#E9E9E9", dark: "#000000" },
+    "tool-bg-layer1": { light: "#F4F4F4", dark: "#393939" },
+  },
+  etc: {
+    border: { light: "#A5A5A5", dark: "#393939" },
+    divider: { light: "#BCBCBC", dark: "#727272" },
+    "gnb-bg": { light: "#727272", dark: "#8F8F8F" },
+    "text-default": { light: "#727272", dark: "#E9E9E9" },
+    "text-selected": { light: "#1D1D1D", dark: "#FFFFFF" },
+    "text-selected-brand": { light: "#EB6100", dark: "#FFFFFF" },
+  },
+  icon: {
+    "border-selected-brand": { light: "#EB6100", dark: "#EB6100" },
+    "icon-default": { light: "#A5A5A5", dark: "#727272" },
+    "icon-hover": { light: "#727272", dark: "#A5A5A5" },
+    "icon-selected": { light: "#2B2B2B", dark: "#FFFFFF" },
+    "icon-selected line": { light: "#EB6100", dark: "#EB6100" },
+    "icon-selected-brand": { light: "#EB6100", dark: "#EB6100" },
+    "icon-stroke": { light: "#8F8F8F", dark: "#BCBCBC" },
+  },
+};
+
+export const tooltip = {
+  "bg-default": { light: "#2B2B2B", dark: "#F9F9F9" },
+  "bg-info": { light: "#E5F0FE", dark: "#0C1F69" },
+  "bg-invert": { light: "#F9F9F9", dark: "#2B2B2B" },
+  "bg-warning": { light: "#FFF197", dark: "#724800" },
+  "line-info": { light: "#ACCFFD", dark: "#274DEA" },
+  "line-invert": { light: "#DDDDDD", dark: "#565656" },
+  "line-warning": { light: "#F5C700", dark: "#D29500" },
+  "text-default": { light: "#FFFFFF", dark: "#000000" },
+  "text-info": { light: "#000000", dark: "#FFFFFF" },
+  "text-inverted": { light: "#000000", dark: "#FFFFFF" },
+  "text-warning": { light: "#000000", dark: "#FFFFFF" },
+};
+
+export const valueStepper = {
+  bg: { light: "#FFFFFF", dark: "#000000" },
+  border: { light: "#A5A5A5", dark: "#565656" },
+  fg: { light: "#727272", dark: "#A5A5A5" },
 };

@@ -1,71 +1,71 @@
 // Color · Semantic Tokens
-// Source: Figma Variable Collection  Color_semantic (966:86157)
-// Modes: light · dark
-//
-// 데이터 출처: Figma get_variable_defs (LxBPQF1oFOfiNdX5qzLcik / 14:4156, 14:4208)
-//   + components/*.md
-//
-// ⚠️ 부분 추출. Figma 세션 만료 후 재연결 필요.
-// 더 채우려면 Figma에서 다양한 컴포넌트 페이지의 variable_defs 호출 필요.
+// Source: Figma Variable Collection — Color_semantic (light/dark modes)
+// 각 leaf: { light: "#hex", dark: "#hex" }
 
-// alert: normal · ready · info · success · warning · error · question
-// TODO: Figma 직접 추출 필요 (Avatar 페이지에 alert 변수 노출 안 됨)
 export const alert = {
-  // notification.md에서 관측된 alert 컬러 시드
   strong: {
-    "success_positive": "#05834e",
+    caution: { light: "#E6AF00", dark: "#F5C700" },
+    custom_1: { light: "#D92361", dark: "#FF709F" },
+    custom_2_black: { light: "#000000", dark: "#FFFFFF" },
+    custom_3_white_inverse: { light: "#FFFFFF", dark: "#000000" },
+    error_danger: { light: "#F03823", dark: "#F03823" },
+    info_progress: { light: "#3B63FB", dark: "#5D89FF" },
+    question_discovery: { light: "#9A47E2", dark: "#B272EB" },
+    ready_neutral: { light: "#565656", dark: "#BCBCBC" },
+    success_positive: { light: "#05834E", dark: "#0BA45D" },
+    warning: { light: "#EB6100", dark: "#EF8133" },
+  },
+  weak: {
+    caution: { light: "#FFF8CC", dark: "#4B2F00" },
+    custom_1: { light: "#FFE8F0", dark: "#880033" },
+    custom_2_black: { light: "#FFFFFF", dark: "#000000" },
+    custom_3_white: { light: "#FFFFFF", dark: "#000000" },
+    error_danger: { light: "#FFEBE8", dark: "#501006" },
+    info_progress: { light: "#E5F0FE", dark: "#0C1F69" },
+    question: { light: "#F4EBFC", dark: "#3B006F" },
+    ready_neutral: { light: "#DDDDDD", dark: "#565656" },
+    success: { light: "#D7F7E1", dark: "#002E22" },
+    warning: { light: "#FBDFCC", dark: "#2F1300" },
   },
 };
 
-// common: brand · text · disabled
+export const brand = {
+  "brand-A_dark": { light: "#BC4E00", dark: "#BC4E00" },
+  "brand-A_darker": { light: "#8D3A00", dark: "#8D3A00" },
+  "brand-A_default": { light: "#EB6100", dark: "#EB6100" },
+  "brand-A_light": { light: "#F3A066", dark: "#F3A066" },
+  "brand-A_light 2": { light: "#EF8133", dark: "#EF8133" },
+  "brand-A_lighter": { light: "#F7C099", dark: "#F7C099" },
+  "brand-A_lightest": { light: "#FEF7F2", dark: "#FEF7F2" },
+  "brand-A_morelighter": { light: "#FBDFCC", dark: "#FBDFCC" },
+};
+
 export const common = {
-  // Figma 직접 추출 (Avatar canvas)
-  "text-primary":        "#0e101b",
-  "border":              "#ffffff",
-  "avatar-bg-default":   "#c6c6c6",
-  // button.md (production variable_defs)
-  "default":             "#00000000",
-  "hover":               "#0000000d",
-  "pressed":             "#0000001a",
-  "hover-neutral":       "#ffffff0d",
-  "pressed-neutral":     "#ffffff1a",
-  "selected":            "rgba(59,99,251,0.2)",
-  "focus-ring":          "#000000",
-  "focus-ring-2":        "#fefefe",
-  // brand-A_*
-  "brand-A_default":     "#eb6100",
-  "brand-A_light":       "#f3a066",
-  "brand-A_darker":      "#8d3a00",
-  "brand-A_morelighter": "#fbdfcc",
-};
-
-// bg: base · layer1 · layer2 · layer3
-// TODO: Figma 직접 추출 필요 (구조 확인용 placeholder)
-export const bg = {
-  // gnb.md에서 관측 (xx-bg/bg_layer_2)
-  "layer_2": "#f4f4f4",
-};
-
-// etc: divider · border-default · border-hover · border-disabled
-export const etc = {
-  // Figma 직접 추출
-  "text-primary":   "#131313",
-  "text-secondary": "#505050",
-  "border-inverse": "#ffffff",
-  // divider.md 관측
-  "divider":        "#d2d2d2",
-};
-
-// system / Light / Border (figma 추출에서 발견된 추가 namespace)
-export const system = {
-  "invert": "#ffffff",
-};
-
-export const light = {
-  "text-01":           "#242424",
-  "table-header2-bg":  "#D8E3F4",  // Light/table/header2-bg
-};
-
-export const border = {
-  "gray-light": "#e0e3ed",
+  alpha: {
+    default: { light: "#00000000", dark: "#FFFFFF00" },
+    dim: { light: "#00000099", dark: "#00000099" },
+    hover: { light: "#0000001A", dark: "#FFFFFF1A" },
+    pressed: { light: "#00000033", dark: "#FFFFFF33" },
+    shadow: { light: "#0000004D", dark: "#FFFFFF4D" },
+  },
+  bg: {
+    base: { light: "#FEFEFE", dark: "#1D1D1D" },
+    layer1: { light: "#F4F4F4", dark: "#020202" },
+    layer2: { light: "#EEEEEE", dark: "#393939" },
+    layer3: { light: "#E9E9E9", dark: "#565656" },
+  },
+  border: {
+    "(active)": { light: "{brand.👌brand-A_default}", dark: "#FFFFFF" },
+    "(default)": { light: "#BCBCBC", dark: "#E9E9E9" },
+    "(diabled)": { light: "#A5A5A5", dark: "#A5A5A5" },
+    "inverse??": { light: "#E9E9E9", dark: "#000000" },
+  },
+  "focus ring": { light: "#000000", dark: "#FFFFFF" },
+  text: {
+    inverse: { light: "#FFFFFF", dark: "#000000" },
+    primary_active: { light: "#1D1D1D", dark: "#FFFFFF" },
+    primary_default: { light: "#393939", dark: "#A5A5A5" },
+    "secondary_(default)": { light: "#727272", dark: "#BCBCBC" },
+    "tertiary_(diabled)": { light: "#8F8F8F", dark: "#A5A5A5" },
+  },
 };
