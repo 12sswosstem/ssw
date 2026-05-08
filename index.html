@@ -55,7 +55,6 @@
   .spacing-meta strong { color: #1d1d1d; }
   .spacing-bar { background: #eb6100; height: 16px; border-radius: 2px; }
 
-  .spec-frame { width: 100%; height: calc(100vh - 180px); border: 1px solid #e9e9e9; border-radius: 6px; }
   .stat-pill { display: inline-block; padding: 3px 10px; background: #fef0ee; color: #eb6100; font-size: 12px; border-radius: 12px; margin-right: 6px; font-weight: 600; }
   .info-card { background: #f9f9f9; border: 1px solid #e9e9e9; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
   .info-card h3 { margin-top: 0; }
@@ -266,14 +265,6 @@ function renderTokenSource(key) {
   </div>`;
 }
 
-function renderVisualSpec() {
-  return `<div class="foundation">
-    <h1>Visual Specs</h1>
-    <p class="lead">팀에서 손으로 작성한 컴포넌트 시각 스펙 시트. <code>docs/spec.html</code> (anatomy/callout, Do/Don't 카드).</p>
-    <iframe src="docs/spec.html" class="spec-frame"></iframe>
-  </div>`;
-}
-
 function renderIconGroup(groupKey) {
   const items = ICONS[groupKey] || [];
   let html = `<div class="foundation"><h1>🖼 Icons · ${escapeHtml(groupKey)}</h1>`;
@@ -409,7 +400,6 @@ const linkBuilder = (it) => {
 addGroup('🎨 Foundation', FOUNDATION_PAGES, linkBuilder);
 addGroup('🖼 Icons', ICON_PAGES, linkBuilder);
 addGroup('💎 Token Source', TOKEN_PAGES, linkBuilder);
-addGroup('🖥 Visual Specs', [{id: 'visual/spec', label: 'Component Spec Sheets'}], linkBuilder);
 
 Object.keys(mdGroups).sort((a,b) => a === '(root)' ? -1 : b === '(root)' ? 1 : a.localeCompare(b)).forEach(group => {
   const label = group === '(root)' ? '📄 Root' : group === 'components' ? '🧩 Components' : group === 'icons' ? '📁 Icons (md)' : '📁 ' + group;
@@ -458,10 +448,6 @@ function show(path) {
       article.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
     }
   }
-  else if (path === 'visual/spec') {
-    article.className = '';
-    article.innerHTML = renderVisualSpec();
-  }
   else if (DOCS[path]) {
     const md = DOCS[path];
     const html = marked.parse(md);
@@ -492,7 +478,6 @@ const validIds = new Set([
   ...FOUNDATION_PAGES.map(p => p.id),
   ...TOKEN_PAGES.map(p => p.id),
   ...ICON_PAGES.map(p => p.id),
-  'visual/spec',
   ...Object.keys(DOCS),
 ]);
 if (hash && validIds.has(hash)) show(hash);
