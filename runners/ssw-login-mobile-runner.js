@@ -100,7 +100,9 @@ const allTextStyleNames = [];
 
 async function loadDesignSystem() {
   // 1. Color variables
+  console.log("  [load] color variables...");
   const colorVars = await figma.variables.getLocalVariablesAsync("COLOR");
+  console.log(`  [load] color variables: ${colorVars.length}개`);
   const colorByName = {};
   for (const v of colorVars) {
     colorByName[v.name] = v;
@@ -115,8 +117,10 @@ async function loadDesignSystem() {
     }
   }
 
-  // 2. Text styles — button xl (SB), body md
+  // 2. Text styles
+  console.log("  [load] text styles...");
   const styles = await figma.getLocalTextStylesAsync();
+  console.log(`  [load] text styles: ${styles.length}개`);
   const styleByName = {};
   for (const s of styles) {
     styleByName[s.name] = s.id;
@@ -279,25 +283,9 @@ function collectSelectionVariantSets() {
   if (sets.length) {
     console.log(`[selection] variant set ${sets.length}개:`);
     for (const s of sets) console.log(`            · ${s.name}`);
-  }
-}
-
-// 같은 파일의 모든 페이지에서 COMPONENT_SET 수집 (선택 사항).
-// findAllWithCriteria는 인덱스 기반 — findAll보다 안전하지만 매우 큰 파일에선 느림.
-async function collectAllVariantSets() {
-  try {
-    if (typeof figma.loadAllPagesAsync === "function") {
-      console.log("[search] loadAllPagesAsync...");
-      await figma.loadAllPagesAsync();
-    }
-    console.log("[search] findAllWithCriteria(COMPONENT_SET)...");
-    const all = (typeof figma.root.findAllWithCriteria === "function")
-      ? figma.root.findAllWithCriteria({ types: ["COMPONENT_SET"] })
-      : figma.root.findAll(n => n.type === "COMPONENT_SET");
-    console.log(`[search] 전체 파일 COMPONENT_SET ${all.length}개 발견`);
-    SELECTION_SETS = SELECTION_SETS.concat(all);
-  } catch (e) {
-    console.log(`[search] 전체 검색 실패: ${e.message} — selection만 사용`);
+  } else {
+    console.log(`[selection] 비어있음 — instance 모드 비활성, native fallback 사용`);
+    console.log(`            👉 instance 매칭 원할 시: button + textinput variant set을 selection 후 다시 실행`);
   }
 }
 
@@ -603,12 +591,8 @@ async function buildLinkRow(parent) {
 // =============================================================================
 
 async function main() {
-  console.log("[1/8] selection 수집 + 전체 파일 검색");
+  console.log("[1/8] selection 수집 (hang 방지: 전체 파일 검색 안 함)");
   collectSelectionVariantSets();
-  if (SELECTION_SETS.length === 0) {
-    // selection 없을 때만 전체 파일 검색 (test 페이지 같은 빈 페이지에서 사용)
-    await collectAllVariantSets();
-  }
 
   console.log("[2/8] design system (variables · text styles) 로드");
   await loadDesignSystem();
