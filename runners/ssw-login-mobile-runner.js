@@ -252,10 +252,26 @@ const COMP_CACHE = {};
 async function findComponentSet(namePattern, label) {
   if (COMP_CACHE[label] !== undefined) return COMP_CACHE[label];
 
-  // 1. 같은 파일 전체에서 이름 매칭
-  const all = figma.root.findAll(n => n.type === "COMPONENT_SET" && namePattern.test(n.name));
+  // 1. selection 우선 (가장 빠름, hang 위험 없음)
+  const sel = figma.currentPage.selection;
+  for (const s of sel) {
+    if (s.type === "COMPONENT_SET" && namePattern.test(s.name)) {
+      console.log(`[${label}] ✅ selection: '${s.name}' (variants: ${s.children.length})`);
+      COMP_CACHE[label] = s;
+      return s;
+    }
+    if (s.type === "COMPONENT" && s.parent && s.parent.type === "COMPONENT_SET" && namePattern.test(s.parent.name)) {
+      console.log(`[${label}] ✅ selection (variant): '${s.parent.name}'`);
+      COMP_CACHE[label] = s.parent;
+      return s.parent;
+    }
+  }
+
+  // 2. 현재 페이지만 검색 (root 전체 트래버스 회피 — hang 방지)
+  const all = figma.currentPage.findAll(n => n.type === "COMPONENT_SET" && namePattern.test(n.name));
   if (!all.length) {
     console.log(`[${label}] ❌ COMPONENT_SET 미발견 → native fallback`);
+    console.log(`         💡 hang 회피: 현재 페이지만 검색합니다. button/textinput variant set이 같은 페이지에 있어야 매칭됩니다.`);
     COMP_CACHE[label] = null;
     return null;
   }
@@ -299,9 +315,9 @@ function findVariant(variants, propKeys, target) {
   });
 }
 
-// instance 안의 첫 TEXT node에 텍스트 주입
-function setInstanceText(instance, text) {
-  // 1. componentProperties (TEXT 타입 prop) 우선
+// instance 안의 첫 TEXT node에 텍스트 주입 (fully async)
+async function setInstanceText(instance, text) {
+  // 1. componentProperties (TEXT 타입 prop) 우선 — 가장 빠름, hang 없음
   if (instance.componentProperties) {
     for (const [k, v] of Object.entries(instance.componentProperties)) {
       if (v.type === "TEXT") {
@@ -309,13 +325,16 @@ function setInstanceText(instance, text) {
       }
     }
   }
-  // 2. nested TEXT 노드 직접 변경
-  const textNode = instance.findOne(n => n.type === "TEXT");
-  if (textNode) {
-    figma.loadFontAsync(textNode.fontName).then(() => {
-      try { textNode.characters = text; } catch (_) {}
-    });
-    return true;
+  // 2. nested TEXT 노드 직접 변경 (await 보장)
+  try {
+    const textNode = instance.findOne(n => n.type === "TEXT");
+    if (textNode) {
+      await figma.loadFontAsync(textNode.fontName);
+      textNode.characters = text;
+      return true;
+    }
+  } catch (e) {
+    console.log(`  · text override 실패: ${e.message}`);
   }
   return false;
 }
@@ -337,8 +356,8 @@ async function tryButtonInstance(parent, labelText) {
   console.log(`[button] variant: ${v.name}`);
   const inst = v.createInstance();
   parent.appendChild(inst);
-  inst.layoutSizingHorizontal = "FILL";
-  setInstanceText(inst, labelText);
+  try { inst.layoutSizingHorizontal = "FILL"; } catch (_) {}
+  await setInstanceText(inst, labelText);
   return inst;
 }
 
@@ -360,8 +379,8 @@ async function tryInputInstance(parent, placeholderText) {
   console.log(`[input] variant: ${v.name}`);
   const inst = v.createInstance();
   parent.appendChild(inst);
-  inst.layoutSizingHorizontal = "FILL";
-  setInstanceText(inst, placeholderText);
+  try { inst.layoutSizingHorizontal = "FILL"; } catch (_) {}
+  await setInstanceText(inst, placeholderText);
   return inst;
 }
 
