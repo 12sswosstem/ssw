@@ -5,13 +5,8 @@
 <title>SSW Design System Docs</title>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5/github-markdown-light.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github.min.css">
-<script src="https://cdn.jsdelivr.net/npm/highlight.js@11/lib/core.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/highlight.js@11/lib/languages/typescript.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/highlight.js@11/lib/languages/javascript.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/highlight.js@11/lib/languages/json.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/highlight.js@11/lib/languages/css.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/highlight.js@11/lib/languages/xml.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; display: flex; height: 100vh; overflow: hidden; background: #fff; color: #1d1d1d; }
@@ -320,10 +315,9 @@ Object.keys(mdGroups).sort((a,b) => a==='(root)' ? -1 : b==='(root)' ? 1 : a.loc
   });
 });
 
-hljs.registerLanguage('ts', () => hljs.getLanguage('typescript'));
 marked.setOptions({
   highlight: (code, lang) => {
-    if (lang && hljs.getLanguage(lang)) {
+    if (typeof hljs !== 'undefined' && lang && hljs.getLanguage(lang)) {
       try { return hljs.highlight(code, { language: lang }).value; } catch (e) {}
     }
     return code;
@@ -341,7 +335,7 @@ function show(path) {
     article.innerHTML = fp.render();
   } else if (path.startsWith('tokens/')) {
     const tp = TOKEN_PAGES.find(p => p.id === path);
-    if (tp) { article.className = ''; article.innerHTML = renderTokenSource(tp.key); article.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b)); }
+    if (tp) { article.className = ''; article.innerHTML = renderTokenSource(tp.key); if (typeof hljs !== 'undefined') article.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b)); }
   } else if (path.startsWith('icons/')) {
     const key = path.substring(6);
     article.className = '';
