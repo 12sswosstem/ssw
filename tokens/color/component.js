@@ -330,9 +330,11 @@ export const control = {
   },
 };
 
-export const default = { light: "#000000", dark: "#F4F4F4" };
+// `default` is a reserved word in JS — renamed to `defaultColor`.
+// `default2` is renamed alongside for naming consistency.
+export const defaultColor = { light: "#000000", dark: "#F4F4F4" };
 
-export const default2 = { light: "#E9E9E9", dark: "#393939" };
+export const defaultColor2 = { light: "#E9E9E9", dark: "#393939" };
 
 export const disabled = { light: "#A5A5A5", dark: "#565656" };
 
