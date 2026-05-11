@@ -3,7 +3,10 @@
 // GitHub MD ↔ Figma library variant matrix diff
 //
 // Env:
-//   FIGMA_TOKEN     (required) — Figma Personal Access Token (scope: file_content:read)
+//   FIGMA_TOKEN     (required) — Figma Personal Access Token.
+//                                Required scope: `library_content:read`
+//                                (the /files/{key}/components and /component_sets
+//                                 endpoints reject `file_content:read` with 403)
 //   FIGMA_FILE_KEY  (optional) — defaults to current source-of-truth library file
 //
 // Exit codes:
