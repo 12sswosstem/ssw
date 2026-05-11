@@ -1,114 +1,375 @@
 // Color · Primitive Tokens
-// Source: Figma file lIIen1jmIhT0vuyXCMQDQA (공통 컴포넌트-test)
-// Last sync: 2026-05-07 via Figma MCP get_variable_defs
-//
-// 출처 표기:
-//   ✓ = Figma Variable 직접 확인 (get_variable_defs 결과)
-//   ⚠ = Color 가이드 페이지 라벨에서 hex 추출 (변수 정의 아님 — 시각 가이드)
-//   △ = 컴포넌트 토큰 hex에서 역추적 (단계 번호는 미확인)
+// Source: Figma Variable Collection — Color_primitive (light/dark modes)
+// 각 leaf: { light: "#hex", dark: "#hex" }
+// 알파 채널은 hex8 형식 (#RRGGBBAA)
 
-// ---------------------------------------------------------------------------
-// Static/Neutral Gray — 17단계 (tint/shade % 기반 네이밍)
-// 0=흰색, 999=거의 검정 (#020202)
-// ---------------------------------------------------------------------------
-export const neutral = {
-  0:   "#ffffff", // ✓
-  1:   "#fefefe", // ✓
-  25:  "#f9f9f9", // ✓
-  50:  "#f4f4f4", // ✓
-  75:  "#eeeeee", // ✓
-  100: "#e9e9e9", // ✓
-  150: "#dddddd", // ✓
-  200: "#d2d2d2", // ⚠
-  300: "#bcbcbc", // ⚠
-  400: "#a5a5a5", // ⚠
-  500: "#8f8f8f", // ⚠
-  600: "#727272", // ⚠
-  700: "#565656", // ⚠
-  800: "#393939", // ✓
-  850: "#2b2b2b", // ✓
-  900: "#1d1d1d", // ✓
-  950: "#0e0e0e", // ✓
-  999: "#020202", // ✓
-};
-
-// ---------------------------------------------------------------------------
-// Static/Gray — Neutral Gray와 별개 컬렉션 (컴포넌트에서 부분만 노출)
-// ---------------------------------------------------------------------------
-export const gray = {
-  300: "#dadada", // ✓
-  800: "#292929", // ✓
-};
-
-// ---------------------------------------------------------------------------
-// Static/Orange — 변수 600만 직접 확인.
-// Color 페이지의 17단계 swatch는 변수 미바인딩이라 나머지 단계 hex 미추출.
-// TODO: 디자이너가 Orange swatch에 변수 바인딩 또는 hex 라벨 추가 시 재추출
-// ---------------------------------------------------------------------------
-export const orange = {
-  600: "#fc7d00", // ✓ Static/Orange/600
-  // 컴포넌트에서 직접 hex로 관측된 것 (단계 매핑 미확정):
-  // △ "#eb6100" — base/brand (button bg/brand-primary, tag/accent/orange)
-  // △ "#fbdfcc" — light tertiary (button bg/brand-tertiary)
-  // △ "#fdefe5" — extra-light tag bg (tag/bg/orange)
-};
-
-// ---------------------------------------------------------------------------
-// 이하 컬러는 컴포넌트 토큰에서 관측된 hex만 모음.
-// Figma Color primitive collection 자체에 동일 단계가 정의돼있는지는 미확인.
-// 키는 의미 기반(primary/dark/bg_light)으로 부여.
-// ---------------------------------------------------------------------------
-
-// blue (info)
 export const blue = {
-  primary:  "#3b63fb", // △ notification/info-primary
-  bg_light: "#e5f0fe", // △ notification/info-primary 2 (light bg)
-  accent:   "#4b75ff", // △ system accent/blue
+  "100": { light: "#F5F9FF", dark: "#0E173F" },
+  "1000": { light: "#274DEA", dark: "#6995FE" },
+  "1100": { light: "#1D3ECF", dark: "#7CA9FC" },
+  "1200": { light: "#1532AD", dark: "#98C0FC" },
+  "1300": { light: "#10288C", dark: "#B5D5FD" },
+  "1400": { light: "#0C1F69", dark: "#D5E7FE" },
+  "1500": { light: "#0E1843", dark: "#EEF5FF" },
+  "1600": { light: "#070B1E", dark: "#FFFFFF" },
+  "200": { light: "#E5F0FE", dark: "#0F1C52" },
+  "300": { light: "#CBE2FE", dark: "#0C2175" },
+  "400": { light: "#ACCFFD", dark: "#122D9A" },
+  "500": { light: "#8EB9FC", dark: "#1A3AC3" },
+  "600": { light: "#729EFD", dark: "#2549E5" },
+  "700": { light: "#5D89FF", dark: "#345BF8" },
+  "800": { light: "#4B75FF", dark: "#4069FD" },
+  "900": { light: "#3B63FB", dark: "#5681FF" },
 };
 
-// red (destructive / critical)
-export const red = {
-  primary:  "#f03823", // △ notification/critical-primary, button destructive
-  bg_light: "#ffebe8", // △ notification/critical-primary 2, tag/bg/red
-  dark:     "#d73220", // △ tag/accent/red
+export const brown = {
+  "100": { light: "#FCF7F2", dark: "#231808" },
+  "1000": { light: "#775B32", dark: "#B59362" },
+  "1100": { light: "#674C23", dark: "#C7A370" },
+  "1200": { light: "#583D15", dark: "#DEB982" },
+  "1300": { light: "#463111", dark: "#E8CFA9" },
+  "1400": { light: "#34250D", dark: "#F2E3CE" },
+  "1500": { light: "#261A09", dark: "#FAF4EC" },
+  "1600": { light: "#100C04", dark: "#FFFFFF" },
+  "200": { light: "#F7EEE1", dark: "#2C1F0B" },
+  "300": { light: "#EFDDC3", dark: "#3A280E" },
+  "400": { light: "#E5C89D", dark: "#4E3713" },
+  "500": { light: "#D6B17B", dark: "#62471E" },
+  "600": { light: "#BE9B68", dark: "#73582F" },
+  "700": { light: "#AB8A5A", dark: "#84683D" },
+  "800": { light: "#9A7B4D", dark: "#8F7245" },
+  "900": { light: "#8B6D42", dark: "#A38454" },
 };
 
-// green (success)
+export const celery = {
+  "100": { light: "#EBFFDC", dark: "#0B1F00" },
+  "1000": { light: "#346D0C", dark: "#58AC1C" },
+  "1100": { light: "#2C5C09", dark: "#64BE23" },
+  "1200": { light: "#234B06", dark: "#74D52E" },
+  "1300": { light: "#1B3C03", dark: "#88EA41" },
+  "1400": { light: "#132E00", dark: "#AAFB70" },
+  "1500": { light: "#0C2100", dark: "#DEFFC6" },
+  "1600": { light: "#040F00", dark: "#FFFFFF" },
+  "200": { light: "#C5FF9C", dark: "#0F2600" },
+  "300": { light: "#9DF75C", dark: "#153301" },
+  "400": { light: "#81E43A", dark: "#1F4304" },
+  "500": { light: "#6ECE2A", dark: "#295608" },
+  "600": { light: "#5DB41F", dark: "#32690B" },
+  "700": { light: "#52A119", dark: "#3C7A0F" },
+  "800": { light: "#489014", dark: "#428612" },
+  "900": { light: "#408111", dark: "#4E9A17" },
+};
+
+export const chartreuse = {
+  "100": { light: "#F6FBDE", dark: "#171C00" },
+  "1000": { light: "#566700", dark: "#88A400" },
+  "1100": { light: "#495700", dark: "#97B500" },
+  "1200": { light: "#3C4700", dark: "#A9CB00" },
+  "1300": { light: "#2F3900", dark: "#BBE100" },
+  "1400": { light: "#232B00", dark: "#DBF075" },
+  "1500": { light: "#191E00", dark: "#F2F9CE" },
+  "1600": { light: "#0B0E00", dark: "#FFFFFF" },
+  "200": { light: "#EAF6AD", dark: "#1E2400" },
+  "300": { light: "#D0EC46", dark: "#272F00" },
+  "400": { light: "#B6DB00", dark: "#353F00" },
+  "500": { light: "#A3C400", dark: "#445200" },
+  "600": { light: "#8FAC00", dark: "#536400" },
+  "700": { light: "#809900", dark: "#617400" },
+  "800": { light: "#728900", dark: "#6A7F00" },
+  "900": { light: "#667A00", dark: "#7A9300" },
+};
+
+export const cinnamon = {
+  "100": { light: "#FDF7F3", dark: "#301104" },
+  "1000": { light: "#934D2B", dark: "#CE8863" },
+  "1100": { light: "#803E20", dark: "#DC9A76" },
+  "1200": { light: "#6E3015", dark: "#E8B395" },
+  "1300": { light: "#5C230B", dark: "#EFCBB7" },
+  "1400": { light: "#481906", dark: "#F6E1D6" },
+  "1500": { light: "#341204", dark: "#FCF4EF" },
+  "1600": { light: "#180802", dark: "#FFFFFF" },
+  "200": { light: "#F9ECE5", dark: "#3B1505" },
+  "300": { light: "#F4DACB", dark: "#4F1C07" },
+  "400": { light: "#EDC4AC", dark: "#64290F" },
+  "500": { light: "#E5AA88", dark: "#7A391C" },
+  "600": { light: "#D4916C", dark: "#8F4A28" },
+  "700": { light: "#C67E58", dark: "#A35834" },
+  "800": { light: "#B86D46", dark: "#B0623B" },
+  "900": { light: "#AA5E38", dark: "#C07750" },
+};
+
+export const cyan = {
+  "100": { light: "#EEFAFE", dark: "#001D27" },
+  "1000": { light: "#046691", dark: "#269FF4" },
+  "1100": { light: "#005779", dark: "#3FB1FF" },
+  "1200": { light: "#004762", dark: "#6BC7FF" },
+  "1300": { light: "#00394E", dark: "#98DBFF" },
+  "1400": { light: "#002B3B", dark: "#C3ECFC" },
+  "1500": { light: "#001F2B", dark: "#E6F8FD" },
+  "1600": { light: "#000E14", dark: "#FFFFFF" },
+  "200": { light: "#D9F4FD", dark: "#002431" },
+  "300": { light: "#B7E7FC", dark: "#003041" },
+  "400": { light: "#8AD5FF", dark: "#004058" },
+  "500": { light: "#5CC0FF", dark: "#005271" },
+  "600": { light: "#30A7FE", dark: "#03638C" },
+  "700": { light: "#1D95E7", dark: "#0873A8" },
+  "800": { light: "#1286CD", dark: "#0D7DBA" },
+  "900": { light: "#0B78B3", dark: "#188EDC" },
+};
+
+export const fuchsia = {
+  "100": { light: "#FEF6FF", dark: "#32003D" },
+  "1000": { light: "#9C28AF", dark: "#E85BFD" },
+  "1100": { light: "#871B9A", dark: "#F07AFF" },
+  "1200": { light: "#710F83", dark: "#F59FFF" },
+  "1300": { light: "#5C046D", dark: "#F8BFFF" },
+  "1400": { light: "#480058", dark: "#FBDBFF" },
+  "1500": { light: "#360042", dark: "#FDF1FF" },
+  "1600": { light: "#1D0023", dark: "#FFFFFF" },
+  "200": { light: "#FDE9FF", dark: "#3D004A" },
+  "300": { light: "#FAD3FF", dark: "#4F005F" },
+  "400": { light: "#F7B5FF", dark: "#660978" },
+  "500": { light: "#F393FF", dark: "#7F1792" },
+  "600": { light: "#EC69FF", dark: "#9726AA" },
+  "700": { light: "#DF4DF5", dark: "#AD33C0" },
+  "800": { light: "#C844DC", dark: "#BA3CCE" },
+  "900": { light: "#B539C8", dark: "#D549EB" },
+};
+
 export const green = {
-  primary:  "#0ba45d", // △ notification/success-primary
-  bg_light: "#d7f7e1", // △ notification/success-primary 2, tag/bg/green
-  dark:     "#05834e", // △ tag/accent/green, text-input success
-  accent:   "#079355", // △ system accent/green
+  "100": { light: "#EDFCF1", dark: "#001E17" },
+  "1000": { light: "#036E45", dark: "#0EAF62" },
+  "1100": { light: "#025D3C", dark: "#18C16E" },
+  "1200": { light: "#014C34", dark: "#39D786" },
+  "1300": { light: "#003D2C", dark: "#7EE7AC" },
+  "1400": { light: "#002E22", dark: "#BDF1D0" },
+  "1500": { light: "#002119", dark: "#E5FAEC" },
+  "1600": { light: "#000F0C", dark: "#FFFFFF" },
+  "200": { light: "#D7F7E1", dark: "#00261D" },
+  "300": { light: "#ADEEC5", dark: "#003326" },
+  "400": { light: "#6BE3A2", dark: "#004430" },
+  "500": { light: "#2BD17D", dark: "#02573A" },
+  "600": { light: "#12B867", dark: "#036A43" },
+  "700": { light: "#0BA45D", dark: "#047C4B" },
+  "800": { light: "#079355", dark: "#068850" },
+  "900": { light: "#05834E", dark: "#099D59" },
 };
 
-// yellow (warning)
-export const yellow = {
-  primary:  "#e6af00", // △ notification/warning-primary
-  bg_light: "#fff8cc", // △ notification/warning-primary 2, tag/bg/yellow
-  dark:     "#d29500", // △ tag/accent/yellow_dark, system accent/yellow
-  base:     "#f5c700", // △ tag/accent/yellow
-};
-
-// purple (question)
-export const purple = {
-  primary:   "#9a47e2", // △ notification/question-primary, system accent/purple
-  bg_light:  "#f4ebfc", // △ notification/question-primary 2
-};
-
-// indigo
 export const indigo = {
-  primary:  "#7155fa", // △ tag/accent/indigo
-  bg_light: "#ebeeff", // △ tag/bg/indigo
+  "100": { light: "#F7F8FF", dark: "#1E005D" },
+  "1000": { light: "#6338EE", dark: "#8B8DFE" },
+  "1100": { light: "#5424DB", dark: "#99A1FF" },
+  "1200": { light: "#4513BF", dark: "#B0BAFF" },
+  "1300": { light: "#3706A0", dark: "#C7D0FF" },
+  "1400": { light: "#2A0081", dark: "#DFE4FF" },
+  "1500": { light: "#1F0062", dark: "#F3F4FF" },
+  "1600": { light: "#110036", dark: "#FFFFFF" },
+  "200": { light: "#EBEEFF", dark: "#23006E" },
+  "300": { light: "#D8DEFF", dark: "#2F008C" },
+  "400": { light: "#C0C9FF", dark: "#3E0CAE" },
+  "500": { light: "#A7B2FF", dark: "#4F1ED1" },
+  "600": { light: "#9197FE", dark: "#5F34EB" },
+  "700": { light: "#8480FE", dark: "#6D4BF8" },
+  "800": { light: "#7A6AFD", dark: "#745BFC" },
+  "900": { light: "#7155FA", dark: "#8077FE" },
 };
 
-// magenta
 export const magenta = {
-  primary:  "#d92361", // △ tag/accent/magenta
-  bg_light: "#ffe8f0", // △ tag/bg/magenta
+  "100": { light: "#FFF5F8", dark: "#3B0016" },
+  "1000": { light: "#BA1650", dark: "#FF6095" },
+  "1100": { light: "#A3053E", dark: "#FF80AB" },
+  "1200": { light: "#880033", dark: "#FFA3C2" },
+  "1300": { light: "#6F0028", dark: "#FFC1D6" },
+  "1400": { light: "#56001E", dark: "#FFDCE8" },
+  "1500": { light: "#400016", dark: "#FFF1F6" },
+  "1600": { light: "#23000C", dark: "#FFFFFF" },
+  "200": { light: "#FFE8F0", dark: "#4A001B" },
+  "300": { light: "#FFD5E3", dark: "#5D0022" },
+  "400": { light: "#FFB9D0", dark: "#7B002D" },
+  "500": { light: "#FF98BB", dark: "#98073C" },
+  "600": { light: "#FF709F", dark: "#B5134C" },
+  "700": { light: "#FF4885", dark: "#CF1F5C" },
+  "800": { light: "#F02D6E", dark: "#E02665" },
+  "900": { light: "#D92361", dark: "#FF3377" },
 };
 
-// turquoise
-export const turquoise = {
-  primary:  "#087e89", // △ tag/accent/turquoise
-  bg_light: "#d1f5f5", // △ tag/bg/turquoise
+export const neutralGray = {
+  "0": { light: "#FFFFFF", dark: "#000000" },
+  "1": { light: "#FEFEFE", dark: "#020202" },
+  "100": { light: "#E9E9E9", dark: "#393939" },
+  "1000": { light: "#000000", dark: "#FFFFFF" },
+  "150": { light: "#DDDDDD", dark: "#565656" },
+  "200": { light: "#D2D2D2", dark: "#727272" },
+  "25": { light: "#F9F9F9", dark: "#0E0E0E" },
+  "300": { light: "#BCBCBC", dark: "#8F8F8F" },
+  "400": { light: "#A5A5A5", dark: "#A5A5A5" },
+  "50": { light: "#F4F4F4", dark: "#1D1D1D" },
+  "500": { light: "#8F8F8F", dark: "#BCBCBC" },
+  "600": { light: "#727272", dark: "#D2D2D2" },
+  "700": { light: "#565656", dark: "#DDDDDD" },
+  "75": { light: "#EEEEEE", dark: "#2B2B2B" },
+  "800": { light: "#393939", dark: "#E9E9E9" },
+  "850": { light: "#2B2B2B", dark: "#EEEEEE" },
+  "900": { light: "#1D1D1D", dark: "#F4F4F4" },
+  "950": { light: "#0E0E0E", dark: "#F9F9F9" },
+  "999": { light: "#020202", dark: "#FEFEFE" },
 };
+
+export const newOrange = {
+  "1": { light: "#FFFDFC", dark: "#030100" },
+  "100": { light: "#FBDFCC", dark: "#5E2700" },
+  "150": { light: "#F9CFB2", dark: "#8D3A00" },
+  "200": { light: "#F7C099", dark: "#BC4E00" },
+  "25": { light: "#FEF7F2", dark: "#180A00" },
+  "300": { light: "#F3A066", dark: "#EB6100" },
+  "400": { light: "#EF8133", dark: "#EF8133" },
+  "50": { light: "#FDEFE5", dark: "#2F1300" },
+  "500": { light: "#EB6100", dark: "#F3A066" },
+  "600": { light: "#BC4E00", dark: "#F7C099" },
+  "700": { light: "#8D3A00", dark: "#F9CFB2" },
+  "75": { light: "#FCE7D9", dark: "#471D00" },
+  "800": { light: "#5E2700", dark: "#FBDFCC" },
+  "850": { light: "#471D00", dark: "#FCE7D9" },
+  "900": { light: "#2F1300", dark: "#FDEFE5" },
+  "950": { light: "#180A00", dark: "#FEF7F2" },
+  "999": { light: "#030100", dark: "#FFFDFC" },
+};
+
+export const pink = {
+  "100": { light: "#FFF6FC", dark: "#3A0025" },
+  "1000": { light: "#B01F7B", dark: "#FB5AC4" },
+  "1100": { light: "#981668", dark: "#FF7AD2" },
+  "1200": { light: "#800C55", dark: "#FF9FDF" },
+  "1300": { light: "#690344", dark: "#FFBFEA" },
+  "1400": { light: "#530035", dark: "#FFDBF3" },
+  "1500": { light: "#3E0027", dark: "#FFF1FA" },
+  "1600": { light: "#210015", dark: "#FFFFFF" },
+  "200": { light: "#FFE8F7", dark: "#47002C" },
+  "300": { light: "#FFD3F0", dark: "#5A0039" },
+  "400": { light: "#FFB5E6", dark: "#73074B" },
+  "500": { light: "#FF94DB", dark: "#8F1261" },
+  "600": { light: "#FF67CC", dark: "#AB1D77" },
+  "700": { light: "#F24CB8", dark: "#C4278A" },
+  "800": { light: "#E434A3", dark: "#D52D97" },
+  "900": { light: "#CE2A92", dark: "#EC43AF" },
+};
+
+export const purple = {
+  "100": { light: "#FBF7FE", dark: "#29004F" },
+  "1000": { light: "#8628D9", dark: "#BA7FED" },
+  "1100": { light: "#730DCC", dark: "#C595F0" },
+  "1200": { light: "#5D00B1", dark: "#D4B0F4" },
+  "1300": { light: "#4B0090", dark: "#E1C9F7" },
+  "1400": { light: "#3B006F", dark: "#EEE0FA" },
+  "1500": { light: "#2C0054", dark: "#F8F3FD" },
+  "1600": { light: "#17002D", dark: "#FFFFFF" },
+  "200": { light: "#F4EBFC", dark: "#320060" },
+  "300": { light: "#EBDAF9", dark: "#40007A" },
+  "400": { light: "#DDC1F6", dark: "#53009F" },
+  "500": { light: "#D0A7F3", dark: "#6B06C3" },
+  "600": { light: "#BF8AEE", dark: "#8222D7" },
+  "700": { light: "#B272EB", dark: "#943EE0" },
+  "800": { light: "#A65CE7", dark: "#9D4EE4" },
+  "900": { light: "#9A47E2", dark: "#AD69E9" },
+};
+
+export const red = {
+  "100": { light: "#FFF6F5", dark: "#360A03" },
+  "1000": { light: "#B72818", dark: "#FF6756" },
+  "1100": { light: "#9C2113", dark: "#FF8678" },
+  "1200": { light: "#811B0E", dark: "#FFA79D" },
+  "1300": { light: "#68150A", dark: "#FFC4BD" },
+  "1400": { light: "#501006", dark: "#FFDEDB" },
+  "1500": { light: "#3B0B04", dark: "#FFF2F0" },
+  "1600": { light: "#1D0502", dark: "#FFFFFF" },
+  "200": { light: "#FFEBE8", dark: "#440D05" },
+  "300": { light: "#FFD6D1", dark: "#571107" },
+  "400": { light: "#FFBCB4", dark: "#73180B" },
+  "500": { light: "#FF9D91", dark: "#931F11" },
+  "600": { light: "#FF7665", dark: "#B12617" },
+  "700": { light: "#FF513D", dark: "#CD2E1D" },
+  "800": { light: "#F03823", dark: "#DF3422" },
+  "900": { light: "#D73220", dark: "#FC432E" },
+};
+
+export const seafoam = {
+  "100": { light: "#EBFBF6", dark: "#001E1B" },
+  "1000": { light: "#056C5C", dark: "#0CAD8E" },
+  "1100": { light: "#035C50", dark: "#0EBE9C" },
+  "1200": { light: "#014B43", dark: "#1DD6B0" },
+  "1300": { light: "#003C36", dark: "#7AE5CB" },
+  "1400": { light: "#002E28", dark: "#BAF1DE" },
+  "1500": { light: "#00211D", dark: "#E5F9F3" },
+  "1600": { light: "#000F0E", dark: "#FFFFFF" },
+  "200": { light: "#D3F6EA", dark: "#002723" },
+  "300": { light: "#A9EDD8", dark: "#00322C" },
+  "400": { light: "#5CE1C2", dark: "#00433B" },
+  "500": { light: "#10CFA9", dark: "#02564B" },
+  "600": { light: "#0DB595", dark: "#046959" },
+  "700": { light: "#0BA286", dark: "#067A67" },
+  "800": { light: "#099078", dark: "#088670" },
+  "900": { light: "#07816D", dark: "#0A9A80" },
+};
+
+export const turquoise = {
+  "100": { light: "#EEFBFB", dark: "#001E1B" },
+  "1000": { light: "#056C5C", dark: "#0CAD8E" },
+  "1100": { light: "#035C50", dark: "#0EBE9C" },
+  "1200": { light: "#014B43", dark: "#1DD6B0" },
+  "1300": { light: "#003C36", dark: "#7AE5CB" },
+  "1400": { light: "#002E28", dark: "#BAF1DE" },
+  "1500": { light: "#00211D", dark: "#E5F9F3" },
+  "1600": { light: "#000F0E", dark: "#FFFFFF" },
+  "200": { light: "#D1F5F5", dark: "#002529" },
+  "300": { light: "#A9ECED", dark: "#003136" },
+  "400": { light: "#6FDDE4", dark: "#004248" },
+  "500": { light: "#27CAD8", dark: "#03545C" },
+  "600": { light: "#0FB1C0", dark: "#056770" },
+  "700": { light: "#0C9EAB", dark: "#077883" },
+  "800": { light: "#0A8D99", dark: "#09838E" },
+  "900": { light: "#087E89", dark: "#0B97A4" },
+};
+
+export const yellow = {
+  "100": { light: "#FFF8CC", dark: "#251700" },
+  "1000": { light: "#865500", dark: "#CB8D00" },
+  "1100": { light: "#724800", dark: "#DA9F00" },
+  "1200": { light: "#5D3B00", dark: "#EBB700" },
+  "1300": { light: "#4B2F00", dark: "#F9CE00" },
+  "1400": { light: "#382300", dark: "#FFE656" },
+  "1500": { light: "#281900", dark: "#FFF6C3" },
+  "1600": { light: "#120B00", dark: "#FFFFFF" },
+  "200": { light: "#FFF197", dark: "#2F1D00" },
+  "300": { light: "#FFDE2C", dark: "#3D2700" },
+  "400": { light: "#F5C700", dark: "#533400" },
+  "500": { light: "#E6AF00", dark: "#6B4300" },
+  "600": { light: "#D29500", dark: "#825200" },
+  "700": { light: "#C18300", dark: "#976100" },
+  "800": { light: "#AF7400", dark: "#A46A00" },
+  "900": { light: "#9E6600", dark: "#BA7C00" },
+};
+
+export const alphaBlack = {
+  "0": { light: "#00000000", dark: "#FFFFFF" },
+  "10": { light: "#0000001A", dark: "#FFFFFF" },
+  "100": { light: "#000000", dark: "#FFFFFF" },
+  "20": { light: "#00000033", dark: "#FFFFFF" },
+  "30": { light: "#0000004D", dark: "#FFFFFF" },
+  "40": { light: "#00000066", dark: "#FFFFFF" },
+  "5": { light: "#0000000D", dark: "#FFFFFF" },
+  "60": { light: "#00000099", dark: "#FFFFFF" },
+  "80": { light: "#000000CC", dark: "#FFFFFF" },
+};
+
+export const alphaWhite = {
+  "0": { light: "#FFFFFF00", dark: "#FFFFFF" },
+  "10": { light: "#FFFFFF1A", dark: "#FFFFFF" },
+  "100": { light: "#FFFFFF", dark: "#FFFFFF" },
+  "20": { light: "#FFFFFF33", dark: "#FFFFFF" },
+  "30": { light: "#FFFFFF4D", dark: "#FFFFFF" },
+  "40": { light: "#FFFFFF66", dark: "#FFFFFF" },
+  "5": { light: "#FFFFFF0D", dark: "#FFFFFF" },
+  "60": { light: "#FFFFFF99", dark: "#FFFFFF" },
+  "80": { light: "#FFFFFFCC", dark: "#FFFFFF" },
+};
+

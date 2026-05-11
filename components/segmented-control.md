@@ -2,9 +2,9 @@
 
 > 출처:
 > - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA`:
->   - `2441:102875` `✅segmented control_items` (atom — 120+ variants, 5축)
+>   - `2441:102875` `segmented control_items` (atom — 120+ variants, 5축)
 >   - `2461:38873` `segmented control_icon_items` (스크롤 화살표)
->   - `2441:103526` `✅segmented control` (container/wrapper)
+>   - `2441:103526` `segmented control` (container/wrapper)
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`:
 >   - `1:322219`, `100:46962` (가이드 페이지)
 > - `figma-export.json` (2026-05-04 export)
@@ -161,7 +161,7 @@
 
 좌우 스크롤 화살표 (overflow 시 사용). variant ID는 별도 호출 필요.
 
-## Wrapper — `✅segmented control` (`2441:103526`)
+## Wrapper — `segmented control` (`2441:103526`)
 
 container 외곽 컴포넌트. style별 container 토큰:
 - **outlined**: bg=transparent, border=`#a5a5a5`

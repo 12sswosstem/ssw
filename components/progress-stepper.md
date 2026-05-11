@@ -1,10 +1,10 @@
 # Progress Stepper
 
 > 출처:
-> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `671:38516` `✅progress stepper`
+> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `671:38516` `progress stepper`
 > - 컴포넌트 셋:
 >   - `671:38517` `progress stepper_atom` (atom — ~72 variants, 5축)
->   - `732:34819` `✅progress stepper_module` (module — ~72 variants, 5축)
+>   - `732:34819` `progress stepper_module` (module — ~72 variants, 5축)
 >   - `671:38741` `Progress Tracker` (dot/circle 6 variants)
 >   - `671:38760` `track line` (연결선 12 variants)
 >   - `671:38858` `step text` (라벨 12 variants)
@@ -84,7 +84,7 @@
 | md | `732:47700` | `732:47732` | `732:47764` | `732:47708` | `732:47740` | `732:47756` | `732:47724` | `732:47780` | `732:47788` |
 | sm | `732:47704` | `732:47736` | `732:47776` | `732:47716` | `732:47748` | `732:47768` | `732:47728` | `732:47784` | `732:47792` |
 
-## Module Variants — `✅progress stepper_module` (5축)
+## Module Variants — `progress stepper_module` (5축)
 
 atom + 라벨 텍스트 통합 컴포넌트. atom과 동일한 5축 prop, ~72 variants.
 

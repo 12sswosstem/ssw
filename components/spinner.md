@@ -1,8 +1,8 @@
 # Spinner
 
 > 출처:
-> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `4206:45745` `✅spinner_v0.2`
-> - 컴포넌트 셋: `4206:44689` `✅spinner_atom_v0.2` (12 variants)
+> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `4206:45745` `spinner_v0.2`
+> - 컴포넌트 셋: `4206:44689` `spinner_atom_v0.2` (12 variants)
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG` / page `1:204842`
 >
 > JS 토큰: `tokens/color/component.js#spinner`.
@@ -11,9 +11,9 @@
 ## Overview
 - 무한 로딩(indeterminate) 표시용 회전 스피너
 - 모드: **light** (production variable_defs 기준)
-- 컴포넌트 셋: `✅spinner_atom_v0.2` — 단일 atom (3 style × 4 step animation frame = 12 variants)
+- 컴포넌트 셋: `spinner_atom_v0.2` — 단일 atom (3 style × 4 step animation frame = 12 variants)
 - 기본 크기: **48 × 48 px** (atom)
-- progress circle (`✅Animated progress circle-v0.12`)와 별개 — spinner는 단순 회전, circle은 % 진행 단계
+- progress circle (`Animated progress circle-v0.12`)와 별개 — spinner는 단순 회전, circle은 % 진행 단계
 
 ## Variants — 2축
 

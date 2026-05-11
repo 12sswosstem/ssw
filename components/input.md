@@ -1,12 +1,13 @@
 # Input (TextInput)
 
 > 출처:
-> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `2448:19421` `✅text input_v1.0`
->   - `2420:29885` `✅Textinput/Text Field` (wrapper — 6 variants, 2축)
+> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `2448:19421` `text input_v1.0`
+>   - `2420:29885` `Textinput/Text Field` (wrapper — 6 variants, 2축)
 >   - `2420:63610` `Textinput/Resource/label` (label sub — 3 variants)
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`:
 >   - `1:357168`, `1:357020` (가이드 페이지)
 > - `figma-export.json` (2026-05-04 export)
+> - **사용자 작업 파일 `↪️ Text input`** (page id `1161:30083`) — TalkToFigma MCP로 variant 전수 추출 (2026-05-07)
 >
 > JS 토큰: `tokens/color/component.js#input`, `tokens/number/component.js#input`.
 > 토큰 prefix: `text input/*`, `input common/*`, `textinput/*`, `input_(dropdown)/*`.
@@ -14,8 +15,43 @@
 ## Overview
 - 텍스트 입력 필드
 - 모드: **light** (production variable_defs 기준)
-- 컴포넌트: `✅Textinput/Text Field` (wrapper) — text input + label + footer 통합
+- 컴포넌트: `Textinput/Text Field` (wrapper) — text input + label + footer 통합
 - 사이즈: xs_24 → sm_28 → md_32 → lg_40 → xl_48 → 2xl_64
+
+## Figma Variable Name Lookup (이모지 제거 후)
+
+> 사용자 file에서 variable / textStyle / component name의 이모지 prefix 일괄 제거 (2026-05-08).
+> Figma library publish 완료. variable ID는 그대로 유지되어 binding/instance 영향 없음.
+> DS Runner / TalkToFigma 호출 시 아래 새 이름 사용.
+
+### Color
+input은 4개 prefix로 분리되어 있음:
+
+#### `text input/*` — wrapper-level (label · required mark · validation 표시)
+- `text input/bg/default` = `#ffffff`
+- `text input/text/default` = `#2b2b2b`
+- `text input/text/label` = `#565656`
+- `text input/text/read only-pms` = `#2b2b2b`
+- `text input/border/default` = `#a5a5a5`
+- `text input/icon/default` = `#8f8f8f`
+- `text input/etc/required mark` = `#f03823` (필수 `*`)
+- `text input/etc/error` = `#f03823` (validation=error)
+- `text input/etc/success` = `#05834e` (validation=success)
+
+#### `input common/*` — inner input field (모든 input 공유)
+- `input common/bg/{default, disabled}` = `#ffffff` / `#bcbcbc`
+- `input common/text/{default, placeholder, disabled, read only-pms}` = `#2b2b2b` / `#8f8f8f` / `#8f8f8f` / `#2b2b2b`
+- `input common/border/{default, hover, focused, disabled}` = `#bcbcbc` / `#eb6100` (orange) / `#000000` / `#a5a5a5`
+
+### Number
+- `input_(dropdown)/height/{xs_24, sm_28, md_32, lg_40, xl_48, 2xl_64}` → 24 / 28 / 32 / 40 / 48 / 64
+- `textinput/border/{xs_24..2xl_64}` → 1 / 1 / 1 / 1 / 1.5 / 2 (size별 굵기)
+
+### Typography (textStyle)
+- 라벨 size별: `body/sm (M)` (m_14, default) · `body/md (M)` (l_16) · 12pt Medium 직접 지정 (s_12)
+- 본문: `body/sm` / `body/md` / `body/xl` (size별)
+- help text · count: `body/xxs (M)` (12 / 14)
+- `tokens/typography/text-style.js#body` 에 verbatim 등록됨
 
 ## Number tokens (Mode 1)
 
@@ -87,17 +123,24 @@
 > - 신규: `input common/border/hover` `#eb6100`, `border/focused` `#000000`
 > - 신규: `text input/etc/error` `#f03823`, `etc/success` `#05834e`
 
-## Wrapper Variants — `✅Textinput/Text Field` (2축, 6 variants)
+## Wrapper Variants — `Textinput/Text Field` (2축, 6 variants)
 
-### prop verbatim
-- **label position**: `top` / `side`
-- **validation**: `default` / `success` / `error`
+### prop verbatim (TalkToFigma 추출)
+- **`label position`**: `top` / `side` (lowercase, 공백 포함 — `label position`이 prop 키 그대로)
+- **`validation`**: `default` / `success` / `error`
 
-### Variant IDs
-| label position \\ validation | default | success | error |
+### Variant IDs (실제 prop value verbatim)
+
+| variant ID | label position | validation | 비고 |
 |---|---|---|---|
-| top | `2420:29886` | `2420:29902` | `2420:29918` |
-| side | `2420:29934` | `2420:29948` | `2420:29962` |
+| `2420:29886` | `Textinput` | `Text Field` | **default variant fallback** — prop value가 `top/default`가 아니라 컴포넌트 base 명칭. instance에서 `top/default`로 매칭 시 이 variant가 반환됨 |
+| `2420:29902` | `top` | `success` | |
+| `2420:29918` | `top` | `error` | |
+| `2420:29934` | `side` | `default` | |
+| `2420:29948` | `side` | `success` | |
+| `2420:29962` | `side` | `error` | |
+
+> **이전 메모리 정정**: 이전 표에서 `top/default = 2420:29886`라 했지만, 실제 그 variant의 prop value는 `label position=✅Textinput, validation=Text Field`이며 default fallback 역할. `top/default` 별도 variant는 존재하지 않음 (default variant가 그 자리를 대신).
 
 > 6 variants — `validation`은 시각적 피드백 (default 회색, success 녹색, error 빨강).
 
@@ -117,7 +160,7 @@ set ID: `2420:63610`. 라벨 컴포넌트.
 
 > Label과 wrapper는 **별도 axis** — wrapper의 size 변경 시 label size도 인스턴스로 함께 조정.
 
-## Inner Input — `✅input_v0.2`
+## Inner Input — `input_v0.2`
 
 text 영역 자체 (wrapper 내부에 포함):
 - size: xs_24 / sm_28 / md_32 (default) / lg_40 / xl_48 / 2xl_64
@@ -198,4 +241,4 @@ text 영역 자체 (wrapper 내부에 포함):
 - placeholder와 disabled text는 같은 `#8f8f8f` (구분은 disabled bg `#bcbcbc`로)
 - size별 border 굵기 다름: xs~md=1, xl=1.5, 2xl=2
 - Character Count: footer 우측, `body/xxs (M)` 12px
-- 6 wrapper variants는 validation 상태 변형 — 인터랙션 state(hover/focus/disabled)는 inner `✅input_v0.2`에서 처리
+- 6 wrapper variants는 validation 상태 변형 — 인터랙션 state(hover/focus/disabled)는 inner `input_v0.2`에서 처리

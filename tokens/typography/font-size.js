@@ -1,51 +1,53 @@
 // Typography · Font Size
-// Source: Figma Typography.font-size — components/*.md 관측값 기반
-// 각 항목: { size, lineHeight }  (px)
+// Source: Figma Variable Collection — Number_sementic > Typography > "font size" + Size > "height"
+//   - 각 항목: { size, lineHeight } (px)
+//   - lineHeight는 같은 컬렉션의 Size > height에서 카테고리 매칭으로 페어링
+//   - "headline" 폰트 사이즈는 Figma `heading_*` height와 페어링됨 (이름 불일치 정정)
 
-// button (모두 SemiBold 600)
-export const button = {
-  xxs: { size: 12, lineHeight: 16 },
-  xs:  { size: 14, lineHeight: 20 },
-  sm:  { size: 14, lineHeight: 20 },
-  md:  { size: 16, lineHeight: 24 },
-  lg:  { size: 16, lineHeight: 24 },
-  xl:  { size: 18, lineHeight: 24 },
-  "2xl": { size: 24, lineHeight: 30 },
-  "3xl": { size: 28, lineHeight: 36 },
-  "4xl": { size: 32, lineHeight: 40 },
+export const display = {
+  "3xl": { size: 112, lineHeight: 180 },
+  "2xl": { size: 72, lineHeight: 116 },
+  xl: { size: 64, lineHeight: 104 },
+  lg: { size: 56, lineHeight: 90 },
+  md: { size: 40, lineHeight: 64 },
+  sm: { size: 32, lineHeight: 52 },
+  xs: { size: 24, lineHeight: 40 },
 };
 
-// body — Regular(R) 400 / Medium(M) 500 / SemiBold(SB) 600 / Bold(B) 700 weight 변형 공유
-export const body = {
-  xxs: { size: 12, lineHeight: 14 }, // 일부 컨텍스트에서 12/16
-  xs:  { size: 14, lineHeight: 20 },
-  sm:  { size: 14, lineHeight: 20 },
-  md:  { size: 16, lineHeight: 24 },
-  lg:  { size: 18, lineHeight: 26 },
+export const headline = {
+  md: { size: 24, lineHeight: 30 },
+  sm: { size: 20, lineHeight: 24 },
 };
 
-// title
 export const title = {
   sm: { size: 16, lineHeight: 20 },
 };
 
-// caption
-export const caption = {
-  sm: { size: 12, lineHeight: 16 },
+export const body = {
+  xl: { size: 20, lineHeight: 28 },
+  lg: { size: 18, lineHeight: 26 },
+  md: { size: 16, lineHeight: 24 },
+  sm: { size: 14, lineHeight: 20 },
+  xs: { size: 12, lineHeight: 18 },
 };
 
-// display — 가이드 코멘트 참조 (`3xl(112) ~ xs(24)`). 정확한 lineHeight는 figma 직접 추출 필요.
-// TODO: Figma Typography에서 display/3xl ~ xs 추출
-export const display = {};
+export const label = {
+  sm: { size: 18, lineHeight: 22 },
+};
 
-// headline — md(24), sm(20) 코멘트. lineHeight 미확인
-// TODO
-export const headline = {};
+export const description = {
+  md: { size: 16 },  // ⚠️ lineHeight: Figma height 컬렉션 미존재
+  sm: { size: 12 },  // ⚠️ lineHeight: Figma height 컬렉션 미존재
+};
 
-// label — sm(18) 코멘트.
-// TODO
-export const label = {};
-
-// description — md(16), sm(12) 코멘트.
-// TODO
-export const description = {};
+export const button = {
+  "4xl": { size: 32, lineHeight: 40 },
+  "3xl": { size: 28, lineHeight: 36 },
+  "2xl": { size: 24, lineHeight: 30 },
+  xl: { size: 18, lineHeight: 26 },
+  lg: { size: 16, lineHeight: 24 },
+  md: { size: 16, lineHeight: 24 },
+  sm: { size: 14, lineHeight: 20 },
+  xs: { size: 14, lineHeight: 20 },
+  xxs: { size: 12, lineHeight: 16 },
+};

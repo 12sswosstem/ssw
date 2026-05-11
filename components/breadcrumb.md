@@ -3,7 +3,7 @@
 > 출처:
 > - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA`:
 >   - `2254:35041` `Breadcrumb` (wrapper)
->   - `2248:58964` `✅breadcrumb_item` (item — **30 variants**, 5축)
+>   - `2248:58964` `breadcrumb_item` (item — **30 variants**, 5축)
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`:
 >   - `1:211588` (가이드 페이지)
 >   - `100:59080` (가이드 페이지)
@@ -119,7 +119,7 @@ State × Variant 4×4 매트릭스는 가이드 `1:211804`에 단일 size로 1�
 - home 아이콘 = `system/general/fill/home` (20×20)
 - 마지막 current item은 `state=current, show divider=false` 자동 적용 (chevron 없음)
 
-## Item — `✅breadcrumb_item` (5축, 30 variants)
+## Item — `breadcrumb_item` (5축, 30 variants)
 
 ### prop verbatim
 - **size**: `sm` / `md`

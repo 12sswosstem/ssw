@@ -2,8 +2,8 @@
 
 > 출처:
 > **Bar**:
-> - 공통 컴포넌트(Copy) file `lIIen1jmIhT0vuyXCMQDQA` / section `671:38020` `✅progress bar_v0.1`
->   - `671:38133` `✅bar_atom` (atom — 80 variants, 4축)
+> - 공통 컴포넌트(Copy) file `lIIen1jmIhT0vuyXCMQDQA` / section `671:38020` `progress bar_v0.1`
+>   - `671:38133` `bar_atom` (atom — 80 variants, 4축)
 >   - `671:38059` `progress bar` (wrapper — 20 variants, 2축)
 >   - `2241:20359` `progress bar module` (3 type)
 >   - `671:38052` `text` (6 variants)
@@ -11,9 +11,9 @@
 >
 > **Circle**:
 > - 공통 컴포넌트(Copy) / section `671:39499` `progress circle_v0.1`
->   - `671:39500` `✅circle_module` (5 variants — Property 1: icon/outer/inner/both/test)
->   - `671:39533` `✅Animated progress circle-v0.12` (60 variants — state×size×invert)
->   - `671:39827` `✅static progress circle` (~84 variants — Property 1×size×style)
+>   - `671:39500` `circle_module` (5 variants — Property 1: icon/outer/inner/both/test)
+>   - `671:39533` `Animated progress circle-v0.12` (60 variants — state×size×invert)
+>   - `671:39827` `static progress circle` (~84 variants — Property 1×size×style)
 > - UI-Kit-Guide / `1:186642`
 >
 > `figma-export.json` (2026-05-04 export)
@@ -75,7 +75,7 @@
 
 > **주요 변경**: 진행 바의 active 색은 **blue `#3b63fb`** (기본). 완료 강조는 **success green `#05834e`** (step=success). 이전 버전의 `active-primary-brand` orange는 별도 토큰 — 기본 동작 색은 blue.
 
-## Bar — Atom Variants `✅bar_atom` (4축)
+## Bar — Atom Variants `bar_atom` (4축)
 
 ### prop verbatim
 - **bar size**: `xs` (2h) / `sm` (4h) / `md` (8h) / `lg` (12h)
@@ -191,7 +191,7 @@
 
 ---
 
-## Circle — Module Variants `✅circle_module`
+## Circle — Module Variants `circle_module`
 
 set ID: `671:39500`. `Property 1` 단일 prop.
 
@@ -203,7 +203,7 @@ set ID: `671:39500`. `Property 1` 단일 prop.
 | `both` | `671:39524` | 160×200 | outer + inner 조합 |
 | `test` | `4351:151031` | 160×200 | (검토용 — 일반 사용 비권장) |
 
-## Circle — Animated `✅Animated progress circle-v0.12` (4축, 60 variants)
+## Circle — Animated `Animated progress circle-v0.12` (4축, 60 variants)
 
 ### prop verbatim
 
@@ -234,7 +234,7 @@ set ID: `671:39500`. `Property 1` 단일 prop.
 | state4 | `3476:902` | `3476:888` | `3476:916` | `3476:930` | `3476:944` |
 | end | `3476:960` | `3476:958` | `3476:962` | `3476:964` | `3476:966` |
 
-## Circle — Static `✅static progress circle` (3축, ~84 variants)
+## Circle — Static `static progress circle` (3축, ~84 variants)
 
 ### prop verbatim
 

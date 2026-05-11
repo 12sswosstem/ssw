@@ -1,8 +1,8 @@
 # Textarea
 
 > 출처:
-> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `1161:127630` `✅Text area`
->   - `1161:127652` `✅Textinput/Text Area` (wrapper — **24 variants**, 3축)
+> - **공통 컴포넌트(Copy)** file `lIIen1jmIhT0vuyXCMQDQA` / section `1161:127630` `Text area`
+>   - `1161:127652` `Textinput/Text Area` (wrapper — **24 variants**, 3축)
 >   - `1161:127635` `Textinput/Resource/Textarea/Content` (content sub — 4 variants)
 > - **UI-Kit-Guide** file `ky00DVb1Q3RmiMlYWwdSGG`:
 >   - `1:385666`, `1:385613` (가이드 페이지)
@@ -13,10 +13,10 @@
 ## Overview
 - 다중행 텍스트 입력 필드
 - 모드: **light** (production variable_defs 기준)
-- 컴포넌트: `✅Textinput/Text Area` (wrapper) + Content sub (4 type)
+- 컴포넌트: `Textinput/Text Area` (wrapper) + Content sub (4 type)
 - 3축 prop: Size × type × state (24 variants)
 
-## Wrapper Variants — `✅Textinput/Text Area` (3축, 24 variants)
+## Wrapper Variants — `Textinput/Text Area` (3축, 24 variants)
 
 ### prop verbatim
 - **Size**: `sm` / `md` / `lg` (대문자 S)

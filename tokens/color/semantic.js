@@ -1,133 +1,71 @@
 // Color · Semantic Tokens
-// Source: Figma file lIIen1jmIhT0vuyXCMQDQA (공통 컴포넌트-test)
-// Last sync: 2026-05-07 via Figma MCP get_variable_defs
-//
-// 출처 표기:
-//   ✓ = Figma Variable 직접 확인 (get_variable_defs 결과)
-//   △ = 컴포넌트 토큰에서 의미 역추적 (semantic 컬렉션 자체는 미확인)
+// Source: Figma Variable Collection — Color_semantic (light/dark modes)
+// 각 leaf: { light: "#hex", dark: "#hex" }
 
-// ---------------------------------------------------------------------------
-// alert — notification/* 변수에서 직접 확인. light/dark 모두 정의 가능 시 분리.
-// ---------------------------------------------------------------------------
 export const alert = {
-  // primary = solid icon/foreground, bg_light = soft background
-  success: {
-    primary:  "#0ba45d", // ✓ notification/success-primary
-    bg_light: "#d7f7e1", // ✓ notification/success-primary 2
-    dark:     "#05834e", // △ text-input success, tag/accent/green (legacy "success_positive")
+  strong: {
+    caution: { light: "#E6AF00", dark: "#F5C700" },
+    custom_1: { light: "#D92361", dark: "#FF709F" },
+    custom_2_black: { light: "#000000", dark: "#FFFFFF" },
+    custom_3_white_inverse: { light: "#FFFFFF", dark: "#000000" },
+    error_danger: { light: "#F03823", dark: "#F03823" },
+    info_progress: { light: "#3B63FB", dark: "#5D89FF" },
+    question_discovery: { light: "#9A47E2", dark: "#B272EB" },
+    ready_neutral: { light: "#565656", dark: "#BCBCBC" },
+    success_positive: { light: "#05834E", dark: "#0BA45D" },
+    warning: { light: "#EB6100", dark: "#EF8133" },
   },
-  warning: {
-    primary:  "#e6af00", // ✓ notification/warning-primary
-    bg_light: "#fff8cc", // ✓ notification/warning-primary 2
-    dark:     "#d29500", // △ tag/accent/yellow_dark, accent/yellow
-  },
-  critical: { // = error/destructive
-    primary:  "#f03823", // ✓ notification/critical-primary
-    bg_light: "#ffebe8", // ✓ notification/critical-primary 2
-    dark:     "#d73220", // △ tag/accent/red
-  },
-  info: {
-    primary:  "#3b63fb", // ✓ notification/info-primary
-    bg_light: "#e5f0fe", // ✓ notification/info-primary 2
-    accent:   "#4b75ff", // ✓ system accent/blue
-  },
-  question: {
-    primary:  "#9a47e2", // ✓ notification/question-primary, system accent/purple
-    bg_light: "#f4ebfc", // ✓ notification/question-primary 2
+  weak: {
+    caution: { light: "#FFF8CC", dark: "#4B2F00" },
+    custom_1: { light: "#FFE8F0", dark: "#880033" },
+    custom_2_black: { light: "#FFFFFF", dark: "#000000" },
+    custom_3_white: { light: "#FFFFFF", dark: "#000000" },
+    error_danger: { light: "#FFEBE8", dark: "#501006" },
+    info_progress: { light: "#E5F0FE", dark: "#0C1F69" },
+    question: { light: "#F4EBFC", dark: "#3B006F" },
+    ready_neutral: { light: "#DDDDDD", dark: "#565656" },
+    success: { light: "#D7F7E1", dark: "#002E22" },
+    warning: { light: "#FBDFCC", dark: "#2F1300" },
   },
 };
 
-// ---------------------------------------------------------------------------
-// common — brand · text · interaction state (button/common/* + system/*)
-// ---------------------------------------------------------------------------
+export const brand = {
+  "brand-A_dark": { light: "#BC4E00", dark: "#BC4E00" },
+  "brand-A_darker": { light: "#8D3A00", dark: "#8D3A00" },
+  "brand-A_default": { light: "#EB6100", dark: "#EB6100" },
+  "brand-A_light": { light: "#F3A066", dark: "#F3A066" },
+  "brand-A_light 2": { light: "#EF8133", dark: "#EF8133" },
+  "brand-A_lighter": { light: "#F7C099", dark: "#F7C099" },
+  "brand-A_lightest": { light: "#FEF7F2", dark: "#FEF7F2" },
+  "brand-A_morelighter": { light: "#FBDFCC", dark: "#FBDFCC" },
+};
+
 export const common = {
-  // text
-  "text-primary":   "#0e101b",  // △ avatar canvas
-  "text-secondary": "#505050",  // △
-  // border
-  "border":         "#ffffff",  // △ avatar
-  "border-inverse": "#ffffff",  // △
-  // interaction states (button/common/*)
-  "default":         "#00000000", // ✓ button/common/default
-  "hover":           "#0000000d", // ✓ button/common/hover
-  "pressed":         "#0000001a", // ✓ button/common/pressed
-  "hover-neutral":   "#ffffff0d", // ✓ button/common/hover-neutral
-  "pressed-neutral": "#ffffff1a", // ✓ button/common/pressed-neutral
-  "selected":        "rgba(59,99,251,0.2)",
-  "focus-ring":      "#000000",  // ✓ button/common/focus-ring
-  "focus-ring-2":    "#fefefe",  // ✓ button/common/focus-ring 2
-  // brand-A_*
-  "brand-A_default":     "#eb6100", // △ button bg/brand-primary, tag/accent/orange
-  "brand-A_light":       "#f3a066",
-  "brand-A_darker":      "#8d3a00",
-  "brand-A_morelighter": "#fbdfcc", // △ button bg/brand-tertiary
-  // misc
-  "avatar-bg-default":   "#c6c6c6", // △ avatar
-};
-
-// ---------------------------------------------------------------------------
-// system — 💟 system/* 변수 (light/dark 토글 가능)
-// ---------------------------------------------------------------------------
-export const system = {
-  light: {
-    "default": "#565656", // ✓ 💟 system/default
-    "invert":  "#ffffff", // ✓ 💟 system/invert
+  alpha: {
+    default: { light: "#00000000", dark: "#FFFFFF00" },
+    dim: { light: "#00000099", dark: "#00000099" },
+    hover: { light: "#0000001A", dark: "#FFFFFF1A" },
+    pressed: { light: "#00000033", dark: "#FFFFFF33" },
+    shadow: { light: "#0000004D", dark: "#FFFFFF4D" },
   },
-  dark: {
-    "invert": "#2b2b2b",  // ✓ 💟 system/invert 2 (notification context)
-    "invert_alt": "#1d1d1d", // ✓ notification/invert2
+  bg: {
+    base: { light: "#FEFEFE", dark: "#1D1D1D" },
+    layer1: { light: "#F4F4F4", dark: "#020202" },
+    layer2: { light: "#EEEEEE", dark: "#393939" },
+    layer3: { light: "#E9E9E9", dark: "#565656" },
   },
-};
-
-// ---------------------------------------------------------------------------
-// accent — 💟 accent/* (system 강조색)
-// ---------------------------------------------------------------------------
-export const accent = {
-  purple: "#9a47e2", // ✓ 💟 accent/purple
-  blue:   "#4b75ff", // ✓ 💟 accent/blue
-  yellow: "#d29500", // ✓ 💟 accent/yellow
-  green:  "#079355", // ✓ 💟 accent/green
-};
-
-// ---------------------------------------------------------------------------
-// bg — layer 시스템 (figma 컴포넌트에서 부분만 노출)
-// ---------------------------------------------------------------------------
-export const bg = {
-  "layer1": "#f9f9f9", // ✓ ❤️common/layout/bg-layer1
-  "layer2": "#f4f4f4", // △ gnb (xx-bg/bg_layer_2)
-};
-
-// ---------------------------------------------------------------------------
-// etc — divider 등
-// ---------------------------------------------------------------------------
-export const etc = {
-  "text-primary":   "#131313",  // △
-  "text-secondary": "#505050",  // △
-  "border-inverse": "#ffffff",  // △
-  "divider":        "#d2d2d2",  // △ divider component
-};
-
-// ---------------------------------------------------------------------------
-// light / Border / icon — 추가 namespace
-// ---------------------------------------------------------------------------
-export const light = {
-  "text-01":           "#242424",
-  "table-header2-bg":  "#D8E3F4",
-};
-
-export const border = {
-  "gray-light":  "#e0e3ed",
-  "input-default": "#bcbcbc", // ✓ ❤️input common/border/default
-  "border-1":      "#c9c9c9", // ✓ --slds-g-color-border-1 (외부 SLDS 토큰)
-};
-
-export const icon = {
-  "default_solid": "#6c90c1", // ✓ icon/Icon_default_Solid
-};
-
-// ---------------------------------------------------------------------------
-// neutral white (별도 컬렉션 — Color/Neutral/White/N)
-// ---------------------------------------------------------------------------
-export const neutralWhite = {
-  50: "#ffffff", // ✓ Color/Neutral/White/50
+  border: {
+    "(active)": { light: "{brand.👌brand-A_default}", dark: "#FFFFFF" },
+    "(default)": { light: "#BCBCBC", dark: "#E9E9E9" },
+    "(diabled)": { light: "#A5A5A5", dark: "#A5A5A5" },
+    "inverse??": { light: "#E9E9E9", dark: "#000000" },
+  },
+  "focus ring": { light: "#000000", dark: "#FFFFFF" },
+  text: {
+    inverse: { light: "#FFFFFF", dark: "#000000" },
+    primary_active: { light: "#1D1D1D", dark: "#FFFFFF" },
+    primary_default: { light: "#393939", dark: "#A5A5A5" },
+    "secondary_(default)": { light: "#727272", dark: "#BCBCBC" },
+    "tertiary_(diabled)": { light: "#8F8F8F", dark: "#A5A5A5" },
+  },
 };
