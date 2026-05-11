@@ -19,8 +19,15 @@ const CAT = {
   Date: ["calendar"],
 };
 
-// ── Load tokens via dynamic import ─────────────────────────
-const load = (rel) => import(pathToFileURL(path.join(repoRoot, rel)).href);
+// ── Load tokens via dynamic import (resilient to broken modules) ───
+const load = async (rel) => {
+  try {
+    return await import(pathToFileURL(path.join(repoRoot, rel)).href);
+  } catch (e) {
+    console.warn(`⚠ Skipping ${rel}: ${e.message.split("\n")[0]}`);
+    return {};
+  }
+};
 const colorPrim = await load("tokens/color/primitive.js");
 const colorSem = await load("tokens/color/semantic.js");
 const colorComp = await load("tokens/color/component.js");

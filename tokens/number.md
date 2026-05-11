@@ -5,7 +5,7 @@
 > - 페이지 `1:30287` (`↪️ Number ✅`) / 프레임 `1:30666` (`Number`)
 > - Last sync: 2026-05-11 via TalkToFigma MCP `get_node_info`
 >
-> JS 토큰: `tokens/number/primitive.js#number` (px 값 1~39), `tokens/number/primitive.js#padding/height/border/gap` (의미별 매핑).
+> JS 토큰: `tokens/number/primitive.js#scale` (41 entries: `none (0px)` → 1~39 → `full (999px)`, Figma 변수명 verbatim), `tokens/number/primitive.js#padding/height/border/gap` (의미별 매핑).
 
 ## Overview
 
@@ -26,6 +26,11 @@ OX 디자인 시스템에서 숫자(Number)는 금액, 수량, 비율, 상태 �
 Number 스케일은 숫자 정보의 크기 차이를 일관되게 관리하기 위해 단계적으로 정의된 기준입니다. 각 단계는 px 기준 크기와 rem 단위 변환값을 함께 제공하여, 다양한 해상도와 디바이스 환경에서도 동일한 기준으로 숫자를 사용할 수 있도록 설계되었습니다.
 
 > **Number 스케일은 임의 조정을 허용하지 않으며**, 모든 숫자 표현은 본 가이드에서 정의된 스케일을 기준으로 사용합니다.
+
+> **JS 매핑 보강**: `tokens/number/primitive.js#scale`은 시각 스케일 39단계 외에 양 끝 엣지 케이스를 추가로 export합니다.
+> - `"none (0px)"` = 0 — 패딩·간격을 명시적으로 제거할 때
+> - `"full (999px)"` = 999 — 완전 원형(pill) 등 ∞에 수렴하는 radius 표현용
+> 두 값은 시각 스케일의 일부가 아니므로 표에는 포함하지 않습니다.
 
 | naming    | size (px) | rem (base = 4) | rem (base = 16) | difference (px) |
 |-----------|-----------|----------------|------------------|------------------|
