@@ -132,9 +132,13 @@ async function buildNumberPage() {
 }
 
 // ── Typography foundation ──────────────────────────────────
-function buildTypographyPage() {
-  let html = `<h1>Typography</h1>
-  <p class="lead">font-family · font-size · text-style. v0.4 시리즈가 현행.</p>`;
+async function buildTypographyPage() {
+  // 1. Figma UI-Kit-Guide canonical 문서 (MD)
+  const mdPath = path.join(repoRoot, "tokens/typography.md");
+  let md = "";
+  try { md = await fs.readFile(mdPath, "utf8"); } catch {}
+
+  let html = `<p class="lead">font-family · font-size · text-style. v0.4 시리즈가 현행.</p>`;
 
   // Font family
   html += `<h2>Font Family</h2><div class="key-list">`;
@@ -189,7 +193,8 @@ function buildTypographyPage() {
     html += `</div>`;
   }
 
-  return html;
+  // md(canonical) + html(자동 추출 + preview). marked.js가 raw HTML passthrough.
+  return md + `\n\n---\n\n# JS 토큰 매핑 (자동 생성)\n\n` + html;
 }
 
 // ── Icons foundation ───────────────────────────────────────
@@ -226,7 +231,7 @@ const docs = {
   __readme: { type: "md", content: readme },
   __color: { type: "html", content: buildColorPage() },
   __number: { type: "md", content: await buildNumberPage() },
-  __typography: { type: "html", content: buildTypographyPage() },
+  __typography: { type: "md", content: await buildTypographyPage() },
   __icons: { type: "html", content: await buildIconsPage() },
 };
 for (const f of compFiles) {
