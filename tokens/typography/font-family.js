@@ -1,5 +1,5 @@
 // Typography · Font Family + Weight
-// Source: Figma Variable Collection — Number_sementic > Typography (Mode 1)
+// Source: Figma Variable Collection — Number_semantic > Typography (Mode 1)
 //   - font-family : base / alter
 //   - font-weight : numeric → name string
 //   - weight      : name → numeric
