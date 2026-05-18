@@ -55,7 +55,7 @@ export const common = {
     layer3: { light: "#E9E9E9", dark: "#565656" },
   },
   border: {
-    "(active)": { light: "{brand.👌brand-A_default}", dark: "#FFFFFF" },
+    "(active)": { light: "{brand.brand-A_default}", dark: "#FFFFFF" },
     "(default)": { light: "#BCBCBC", dark: "#E9E9E9" },
     "(diabled)": { light: "#A5A5A5", dark: "#A5A5A5" },
     "inverse??": { light: "#E9E9E9", dark: "#000000" },
