@@ -57,7 +57,7 @@ export const common = {
   border: {
     "(active)": { light: "{brand.brand-A_default}", dark: "#FFFFFF" },
     "(default)": { light: "#BCBCBC", dark: "#E9E9E9" },
-    "(diabled)": { light: "#A5A5A5", dark: "#A5A5A5" },
+    "(disabled)": { light: "#A5A5A5", dark: "#A5A5A5" },
     "inverse??": { light: "#E9E9E9", dark: "#000000" },
   },
   "focus ring": { light: "#000000", dark: "#FFFFFF" },
@@ -66,6 +66,6 @@ export const common = {
     primary_active: { light: "#1D1D1D", dark: "#FFFFFF" },
     primary_default: { light: "#393939", dark: "#A5A5A5" },
     "secondary_(default)": { light: "#727272", dark: "#BCBCBC" },
-    "tertiary_(diabled)": { light: "#8F8F8F", dark: "#A5A5A5" },
+    "tertiary_(disabled)": { light: "#8F8F8F", dark: "#A5A5A5" },
   },
 };
