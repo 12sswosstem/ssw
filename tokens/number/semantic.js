@@ -1,12 +1,12 @@
 // Number · Semantic Tokens
-// Source: Figma Variable Collection — Number_sementic (Mode 1)
+// Source: Figma Variable Collection — Number_semantic (Mode 1)
 //
 // 5 카테고리: radius · padding · gap · height · border
 //
 // 대부분 Number_primitive를 alias함 (값은 동일).
 // height 카테고리는 typography line-height용.
 //
-// Note: Number_sementic에는 Typography (font-family, weight, font size) 섹션도 포함되어 있음 —
+// Note: Number_semantic에는 Typography (font-family, weight, font size) 섹션도 포함되어 있음 —
 //   해당 데이터는 tokens/typography/* 파일에서 관리.
 
 export const radius = {
