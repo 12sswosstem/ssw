@@ -740,7 +740,7 @@ export const table = {
 export const tag = {
   accent: {
     black: { light: "#000000", dark: "#FFFFFF" },
-    "black_for cautuion": { light: "#000000", dark: "#000000" },
+    "black_for caution": { light: "#000000", dark: "#000000" },
     blue: { light: "#3B63FB", dark: "#5D89FF" },
     gray: { light: "#565656", dark: "#BCBCBC" },
     green: { light: "#05834E", dark: "#0BA45D" },
