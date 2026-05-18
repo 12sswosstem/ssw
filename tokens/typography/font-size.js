@@ -1,5 +1,5 @@
 // Typography · Font Size
-// Source: Figma Variable Collection — Number_sementic > Typography > "font size" + Size > "height"
+// Source: Figma Variable Collection — Number_semantic > Typography > "font size" + Size > "height"
 //   - 각 항목: { size, lineHeight } (px)
 //   - lineHeight는 같은 컬렉션의 Size > height에서 카테고리 매칭으로 페어링
 //   - "headline" 폰트 사이즈는 Figma `heading_*` height와 페어링됨 (이름 불일치 정정)
